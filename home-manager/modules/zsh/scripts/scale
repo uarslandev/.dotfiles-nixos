@@ -1,0 +1,26 @@
+scale() {
+	if [ -z $1 ]; then
+		echo "set a dpi"
+		return 1
+	fi
+
+	factor=$1
+	dpi=$((factor * 96))
+
+	if [ ! -f ~/.Xresources ]; then
+		echo "Creating .Xresources"
+		touch ~/.Xresources
+	fi
+
+	if grep -q '^Xft.dpi:' ~/.Xresources; then
+		sed -i "s/^Xft.dpi:.*/Xft.dpi: $dpi/" ~/.Xresources
+		sed -i "s/^dpi =.*/dpi = $dpi/" ~/.config/polybar/config.ini
+	else
+		echo "Xft.dpi: $dpi" >> ~/.Xresources
+	fi
+
+	xrdb ~/.Xresources
+	# i3-msg restart
+	
+	echo "xft.dpi and Polybar set to $dpi"
+}
