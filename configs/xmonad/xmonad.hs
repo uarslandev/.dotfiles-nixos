@@ -264,6 +264,7 @@ myStartupHook = do
 --
 main = do
 	xbg <- spawnPipe "feh --bg-fill ~/.config/bg.jpg"
+	xmobar <- spawnPipe "xmobar"
 	xmonad $ fullscreenSupport $ docks $ defaults
 
 -- A structure containing your configuration settings, overriding

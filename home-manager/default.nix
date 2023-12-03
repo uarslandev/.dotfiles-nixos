@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-	home = /home/umut/.dotfiles/configs;
+	home = "/home/umut/.dotfiles/configs";
 	link = config.lib.file.mkOutOfStoreSymlink;
 in
 {
@@ -57,6 +57,7 @@ in
 	".config/GIMP".source = link "${home}"+"/GIMP";
 	".config/gtk-3.0".source = link "${home}"+"/gtk-3.0";
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
+	".config/xmonad".source = link "${home}"+"/xmonad";
 	".config/picom".source = link "${home}"+"/picom";
 	".config/rofi".source = link "${home}"+"/rofi";
 	".xmobarrc".source = link "${home}"+"/xmobar/xmobarrc";
