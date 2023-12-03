@@ -19,7 +19,9 @@
     gb = "git branch -a";
     gco = "git checkout";
     gt = "git ls-tree";
+	gs = "git status";
     gl = "git log --graph --pretty=oneline --abbrev-commit";
+	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
   };
   plugins = [
 	{

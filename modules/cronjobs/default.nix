@@ -5,18 +5,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
-  imports =
-    [ 
-	#./audio
-	./cronjobs
-	./desktop
-	./environmental
-	./fonts
-	./programs
-#	./services
-	./virtualisation
+# Enable cron service
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/1 * * * *      umut    cdi ~/Drive && grive"
     ];
+  };
 }
-
