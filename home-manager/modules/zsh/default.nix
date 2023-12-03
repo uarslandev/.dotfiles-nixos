@@ -14,7 +14,7 @@
     rb = "systemctl reboot -i";
     ga = "git add";
     gc = "git commit -m";
-    gcd = "git commit -m '$(date)'";
+    gcd = "git commit -m $(date +'%F_%T')";
     gp = "git push";
     gb = "git branch -a";
     gco = "git checkout";

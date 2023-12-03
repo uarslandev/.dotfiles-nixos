@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
-
+let
+	home = /home/umut/.dotfiles/configs;
+	link = config.lib.file.mkOutOfStoreSymlink;
+in
 {
 
   imports = [
@@ -47,6 +50,17 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+	".config/bg.jpg".source = link "${home}"+"/bg.jpg";
+	".config/lock.png".source = link "${home}"+"/lock.png";
+	".config/dunst".source = link "${home}"+"/dunst";
+	".config/fcitx5".source = link "${home}"+"/fcitx5";
+	".config/GIMP".source = link "${home}"+"/GIMP";
+	".config/gtk-3.0".source = link "${home}"+"/gtk-3.0";
+	".config/keepassxc".source = link "${home}"+"/keepassxc";
+	".config/picom".source = link "${home}"+"/picom";
+	".config/rofi".source = link "${home}"+"/rofi";
+	".xmobarrc".source = link "${home}"+"/xmobar/xmobarrc";
+
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
