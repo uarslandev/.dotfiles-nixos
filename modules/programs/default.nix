@@ -18,6 +18,10 @@
     zsh.enable = true;
 	fzf.fuzzyCompletion = true;
 	direnv.enable = true;
+	thunar.enable = true;
+  };
+  services = {
+	gvfs.enable = true;
   };
 }
 

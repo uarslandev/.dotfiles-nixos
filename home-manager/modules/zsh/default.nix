@@ -32,6 +32,12 @@
 		src = ./scripts;
 		file = "scale";
 	}
+	{
+		name = "lock script";
+		src = ./scripts;
+		file = "lock";
+	}
+
 
   ];
  
