@@ -17,11 +17,13 @@
 
    environment.systemPackages = with pkgs; [
 		dmenu
-		autorandr
 		trayer
+		arandr
+		autorandr
 		gnome.gnome-terminal
 		flameshot
 		rofi
+		brightnessctl
 		picom
 		dunst
 		playerctl

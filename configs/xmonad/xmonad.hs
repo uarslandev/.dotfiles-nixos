@@ -256,6 +256,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
 	spawnOnce "keepassxc"
+	spawnOnce "picom --glx backend"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

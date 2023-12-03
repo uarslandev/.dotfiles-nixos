@@ -14,13 +14,14 @@ scale() {
 
 	if grep -q '^Xft.dpi:' ~/.Xresources; then
 		sed -i "s/^Xft.dpi:.*/Xft.dpi: $dpi/" ~/.Xresources
-		sed -i "s/^dpi =.*/dpi = $dpi/" ~/.config/polybar/config.ini
+#		sed -i "s/^dpi =.*/dpi = $dpi/" ~/.config/polybar/config.ini
 	else
 		echo "Xft.dpi: $dpi" >> ~/.Xresources
 	fi
 
 	xrdb ~/.Xresources
 	# i3-msg restart
+	xmonad --recompile; xmonad --restart
 	
 	echo "xft.dpi and Polybar set to $dpi"
 }

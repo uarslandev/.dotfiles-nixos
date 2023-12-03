@@ -12,7 +12,9 @@
   networking.hostName = "dell";
 
   boot.kernelParams = [ "intel_iommu=on" ];
-  boot.blacklistedKernelModules = [ "nvidia" "nouveau" ];
+  boot.blacklistedKernelModules = [ "nvidia" "nouveau" "nvidia-gpu" "nvidiafb" ];
+
+  boot.extraModprobeConfig = "options vfio-pci ids=10de:1f12,10de:10f9,10de:1ada,10de:1adb";
  
 }
 
