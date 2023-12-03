@@ -8,6 +8,10 @@
   environment.systemPackages = with pkgs; [
   	libreoffice
 	gimp
+	calibre
+	libreoffice
+	texstudio
+	texliveFull
 	inkscape
   ];
 }
