@@ -9,6 +9,7 @@
   	discord
 	slack
 	thunderbird
+	youtube-music
 	google-chrome
 	firefox
   ];
