@@ -21,11 +21,11 @@
     background:                  rgba ( 45, 48, 59, 95 % );
     alternate-normal-foreground: @foreground;
     normal-background:           @background;
-    font: "Iosevka Regular 15";
+    font: "Iosevka Regular 12";
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  rgba ( 64, 132, 214, 100 % );
     border-color:                rgba ( 124, 131, 137, 100 % );
-    spacing:                     2;
+    spacing:                     5;
     separatorcolor:              rgba ( 29, 31, 33, 100 % );
     urgent-background:           rgba ( 29, 31, 33, 17 % );
     selected-urgent-background:  rgba ( 165, 66, 66, 100 % );
@@ -54,7 +54,7 @@ textbox {
 }
 listview {
     fixed-height: 0;
-    border:       4px 0px 0px ;
+    border:       1px 0px 0px ;
     border-color: @separatorcolor;
     spacing:      4px ;
     scrollbar:    false;
