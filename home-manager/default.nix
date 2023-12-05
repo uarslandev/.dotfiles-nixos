@@ -59,9 +59,6 @@ in
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
 	".config/picom".source = link "${home}"+"/picom";
 	".config/rofi".source = link "${home}"+"/rofi";
-	".config/sxhkd".source = link "${home}"+"/sxhkd";
-	".config/bspwm".source = link "${home}"+"/bspwm";
-
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

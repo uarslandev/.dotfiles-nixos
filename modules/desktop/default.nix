@@ -5,7 +5,7 @@
 { config, pkgs, lib, ... }:
 
 {
-   services.xserver.windowManager.bspwm = {
+   services.xserver.windowManager.i3 = {
    enable = true;
  };
 
@@ -16,6 +16,7 @@
 		gnome.gnome-terminal
 		flameshot
 		rofi
+		networkmanagerapplet
 		brightnessctl
 		picom
 		dunst
