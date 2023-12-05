@@ -57,10 +57,10 @@ in
 	".config/GIMP".source = link "${home}"+"/GIMP";
 	".config/gtk-3.0".source = link "${home}"+"/gtk-3.0";
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
-	".config/xmonad".source = link "${home}"+"/xmonad";
 	".config/picom".source = link "${home}"+"/picom";
 	".config/rofi".source = link "${home}"+"/rofi";
-	".xmobarrc".source = link "${home}"+"/xmobar/xmobarrc";
+	".config/sxhkd".source = link "${home}"+"/sxhkd";
+	".config/bspwm".source = link "${home}"+"/bspwm";
 
 
     # # You can also set the file content immediately.

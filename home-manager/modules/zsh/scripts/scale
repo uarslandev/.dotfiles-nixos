@@ -21,7 +21,6 @@ scale() {
 
 	xrdb ~/.Xresources
 	# i3-msg restart
-	xmonad --recompile; xmonad --restart
 	
 	echo "xft.dpi and Polybar set to $dpi"
 }

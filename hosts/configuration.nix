@@ -15,6 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+  boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModprobeConfig = "options kvm_intel nested=1";
 
   # Pick only one of the below networking options.

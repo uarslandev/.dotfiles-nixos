@@ -5,19 +5,12 @@
 { config, pkgs, lib, ... }:
 
 {
-   services.xserver.windowManager.xmonad = {
+   services.xserver.windowManager.bspwm = {
    enable = true;
-   enableContribAndExtras = true;
-   extraPackages = haskellPackages: [
-      haskellPackages.dbus
-      haskellPackages.List
-      haskellPackages.monad-logger
-    ];
  };
 
    environment.systemPackages = with pkgs; [
 		dmenu
-		trayer
 		arandr
 		autorandr
 		gnome.gnome-terminal
@@ -27,6 +20,7 @@
 		picom
 		dunst
 		playerctl
+		sxhkd
 		i3lock-color
 		feh
 		graphite-cursors
@@ -37,7 +31,6 @@
 		luna-icons
 		tango-icon-theme
 		numix-icon-theme
-		xmobar
 		polybar
 		sierra-breeze-enhanced
 		lxappearance

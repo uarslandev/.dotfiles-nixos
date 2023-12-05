@@ -14,6 +14,7 @@
     win-virtio
     win-spice
 	dmidecode
+	looking-glass-client
   ];
 
   virtualisation = {
