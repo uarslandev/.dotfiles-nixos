@@ -15,6 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+  boot.extraModprobeConfig = "options kvm_intel nested=1";
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -61,7 +62,7 @@
   users.users.umut = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" "libvirt" "network" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "libvirtd" "network" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:

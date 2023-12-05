@@ -14,14 +14,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/db9d1547-c785-4686-851c-cb1e4a4097ab";
+    { device = "/dev/disk/by-uuid/23a70a8c-2f0f-4b25-8fd6-ec9c81c5f582";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/84bd9fd0-9a34-4481-b68e-1670b0cd3059";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/c0a24b91-24c9-4574-b22e-e34cb898f54b";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/13D0-07C6";
+    { device = "/dev/disk/by-uuid/2DFD-A087";
       fsType = "vfat";
     };
 
@@ -32,6 +32,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
