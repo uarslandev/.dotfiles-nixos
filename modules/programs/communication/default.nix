@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
   	discord
+	zoom-us
 	slack
 	thunderbird
 	youtube-music

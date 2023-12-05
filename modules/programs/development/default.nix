@@ -10,6 +10,7 @@
 	jetbrains.idea-ultimate
 	git
 	ngrok
+	insomnia
 	maven
 	nodejs
 	jdk17
