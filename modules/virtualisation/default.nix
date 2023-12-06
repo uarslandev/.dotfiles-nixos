@@ -13,8 +13,11 @@
     spice-protocol
     win-virtio
     win-spice
+	scream
 	dmidecode
 	looking-glass-client
+	pv
+	pigz
   ];
 
   virtualisation = {

@@ -9,6 +9,7 @@
 	xclip
 	grive2
 	keepassxc
+	copyq
 	imagemagick
 	rclone
 	scrot

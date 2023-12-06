@@ -28,6 +28,7 @@
 		graphite-gtk-theme
 		numix-cursor-theme
 		apple-cursor
+		volumeicon
 		whitesur-cursors
 		luna-icons
 		tango-icon-theme
