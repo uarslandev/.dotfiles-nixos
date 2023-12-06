@@ -5,7 +5,6 @@
 { config, pkgs, lib, ... }:
 
 {
-# Enable cron service
 security.rtkit.enable = true;
 services.pipewire = {
   enable = true;
