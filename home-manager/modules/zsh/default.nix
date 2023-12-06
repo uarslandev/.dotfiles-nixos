@@ -21,6 +21,7 @@
     gt = "git ls-tree";
 	gs = "git status";
     gl = "git log --graph --pretty=oneline --abbrev-commit";
+	lg = "looking-glass-client -F";
 	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
   };
   plugins = [

@@ -20,6 +20,22 @@
 	pigz
   ];
 
+  systemd.tmpfiles.rules = [
+    "f	/dev/shm/looking-glass	0660	umut	kvm	-"
+  ];
+
+  # Scream Audio Server Service
+  systemd.user.services.scream = {
+   enable = true;
+   description = "Scream Audio Server";
+   serviceConfig = {
+      ExecStart = "${pkgs.scream}/bin/scream -u -i virbr0 -p 4012";
+      Restart = "always";
+   };
+   wantedBy = [ "default.target" ];
+   requires = [ "pipewire-pulse.service" ];
+};
+
   virtualisation = {
   docker.enable = true;
 	libvirtd = {
