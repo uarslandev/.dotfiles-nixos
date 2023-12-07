@@ -6,7 +6,6 @@
 
 {
 environment.systemPackages = with pkgs; [
-	carla
 	guitarix
 	ardour
 	jack2
@@ -14,8 +13,9 @@ environment.systemPackages = with pkgs; [
 	qjackctl
 ];
 
+sound.enable = false;
 # hardware.pulseaudio.enable = true;
-hardware.pulseaudio.package = pkgs.pulseaudio.override { jackaudioSupport = true; };
+hardware.pulseaudio.enable = false;
 # rtkit is optional but recommended
 security.rtkit.enable = true;
 services.pipewire = {
