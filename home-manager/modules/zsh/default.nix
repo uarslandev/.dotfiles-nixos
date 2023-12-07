@@ -40,8 +40,11 @@
 		src = ./scripts;
 		file = "lock";
 	}
-
-
+	{
+		name = "evdev script";
+		src = ./scripts;
+		file = "evdev";
+	}
   ];
  
   zplug = {
