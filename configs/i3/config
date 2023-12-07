@@ -25,6 +25,7 @@ hide_edge_borders both
 for_window [class="steam_app.*"] floating enable
 
 # Key binding
+bindsym $mod+shift+p exec --no-startup-id looking-glass-client -F
 
 # Auto start
 exec --no-startup-id keepassc
