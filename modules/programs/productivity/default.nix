@@ -9,7 +9,6 @@
   	libreoffice
 	gimp
 	calibre
-	libreoffice
 	texstudio
 	texliveFull
 	inkscape

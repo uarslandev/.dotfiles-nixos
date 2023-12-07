@@ -33,7 +33,7 @@ systemd.user.services.scream = {
       Restart = "always";
    };
    wantedBy = [ "default.target" ];
-   requires = [ "pulseaudio.service" ];
+   requires = [ "pipewire-pulse.service" ];
 };  
 
   virtualisation = {

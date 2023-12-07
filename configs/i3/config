@@ -28,7 +28,6 @@ for_window [class="steam_app.*"] floating enable
 
 # Auto start
 exec --no-startup-id keepassc
-exec --no-startup-id picom
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id copyq
