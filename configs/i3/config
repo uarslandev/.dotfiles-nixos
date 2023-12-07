@@ -26,6 +26,7 @@ for_window [class="steam_app.*"] floating enable
 
 # Key binding
 bindsym $mod+shift+p exec --no-startup-id looking-glass-client -F
+bindsym $mod+shift+s exec --no-startup-id flameshot gui
 
 # Auto start
 exec --no-startup-id keepassc

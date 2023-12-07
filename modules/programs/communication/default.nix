@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
   	discord
 	zoom-us
+	teamspeak_client
 	slack
 	thunderbird
 	youtube-music
