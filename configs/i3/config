@@ -24,6 +24,8 @@ for_window [class=".*"] border pixel 1
 hide_edge_borders both
 for_window [class="steam_app.*"] floating enable
 
+# Key binding
+
 # Auto start
 exec --no-startup-id keepassc
 exec --no-startup-id picom

@@ -1,0 +1,11 @@
+mouse=$(ls /dev/input/by-id/ | grep -i event | grep -v if | grep Mouse)
+keyboard=$(ls /dev/input/by-id/ | grep -i event | grep -v if | grep kbd)
+
+rm ~/evdev.txt
+echo "<input type='evdev'>" >> ~/evdev
+echo "<source dev='/dev/input/by-id/$mouse'/>" >> ~/evdev
+echo "</input>" >> ~/evdev
+
+echo "<input type='evdev'>" >> ~/evdev
+echo "<source dev='/dev/input/by-id/$keyboard' grab='all' repeat='on' grabToggle='ctrl-ctrl'/>" >> ~/evdev
+echo "</input>" >> ~/evdev

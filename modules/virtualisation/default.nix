@@ -21,20 +21,20 @@
   ];
 
   systemd.tmpfiles.rules = [
-    "f	/dev/shm/looking-glass	0660	umut	kvm	-"
+  "f /dev/shm/looking-glass 0660 umut qemu-libvirtd -"
   ];
 
-  # Scream Audio Server Service
-  systemd.user.services.scream = {
-   enable = true;
-   description = "Scream Audio Server";
-   serviceConfig = {
-      ExecStart = "${pkgs.scream}/bin/scream -u -i virbr0 -p 4012";
-      Restart = "always";
-   };
-   wantedBy = [ "default.target" ];
-   requires = [ "pipewire-pulse.service" ];
+  systemd.user.services.scream-ivshmem = {
+  enable = true;
+  description = "Scream IVSHMEM";
+  serviceConfig = {
+    ExecStart = "${pkgs.scream}/bin/scream-ivshmem-pulse /dev/shm/scream";
+    Restart = "always";
+  };
+  wantedBy = [ "multi-user.target" ];
+  requires = [ "pulseaudio.service" ];
 };
+
 
   virtualisation = {
   docker.enable = true;
@@ -45,6 +45,8 @@
 			ovmf.enable = true;
 			ovmf.packages = [ pkgs.OVMFFull.fd ];
 		};
+		onBoot = "ignore";
+		onShutdown = "shutdown";
 	};
 	spiceUSBRedirection.enable = true;
   };
