@@ -11,9 +11,10 @@
     ];
   networking.hostName = "dell";
 
-  boot.kernelParams = [ "intel_iommu=on" ];
+  boot.kernelParams = [ "intel_iommu=on" "i915.force_probe=46a8" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModprobeConfig = "options vfio-pci ids=10de:1f12,10de:10f9,10de:1ada,10de:1adb";
-
+  boot.blacklistedKernelModules = lib.mkForce [ "nouveau" "nvidia_drm" "nvidia_modeset" "nvidia" "nvidiafb" "nvidia-gpu" "i2c_nvidia_gpu"];
+  services.xserver.videoDrivers = lib.mkForce [ "intel" ];
 }
 
