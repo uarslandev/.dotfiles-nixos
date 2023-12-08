@@ -1,11 +1,14 @@
-mouse=$(ls /dev/input/by-id/ | grep -i event | grep -v if | grep Mouse)
-keyboard=$(ls /dev/input/by-id/ | grep -i event | grep -v if | grep kbd)
+input_devices=$(ls /dev/input/by-id/*event* | grep -v if)
 
-rm ~/evdev
-echo "<input type='evdev'>" >> ~/evdev
-echo "<source dev='/dev/input/by-id/$mouse'/>" >> ~/evdev
-echo "</input>" >> ~/evdev
-
-echo "<input type='evdev'>" >> ~/evdev
-echo "<source dev='/dev/input/by-id/$keyboard' grab='all' repeat='on' grabToggle='ctrl-ctrl'/>" >> ~/evdev
-echo "</input>" >> ~/evdev
+for device in $input_devices
+do
+if [[ $device == *"kbd"* ]]; then
+        echo "<input type='evdev'>
+  <source dev='$device' grab='all' repeat='on' grabToggle='ctrl-ctrl'/>
+</input>"
+    else
+        echo "<input type='evdev'>
+  <source dev='$device'/>
+</input>"
+    fi
+done | xclip -sel c
