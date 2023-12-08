@@ -12,9 +12,17 @@
   networking.hostName = "dell";
 
   boot.kernelParams = [ "intel_iommu=on" ];
-  boot.blacklistedKernelModules = [ "nvidia" "nouveau" "nvidia-gpu" "nvidiafb" ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModprobeConfig = "options vfio-pci ids=8086:1901,10de:1f12,10de:10f9,10de:1ada,10de:1adb";
 
-  boot.extraModprobeConfig = "options vfio-pci ids=10de:1f12,10de:10f9,10de:1ada,10de:1adb";
- 
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["intel"];
 }
 

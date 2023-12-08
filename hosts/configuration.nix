@@ -60,7 +60,7 @@
   users.users.umut = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" "libvirtd" "network" "kvm" "jackaudio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "kvm" "jackaudio" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
