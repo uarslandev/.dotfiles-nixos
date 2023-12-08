@@ -2,7 +2,7 @@ input_devices=$(ls /dev/input/by-id/*event* | grep -v if)
 
 for device in $input_devices
 do
-if [[ $device == *"kbd"* ]]; then
+if [[ $device == *"kbd"* && $device == *"Keyboard"* ]]; then
         echo "<input type='evdev'>
   <source dev='$device' grab='all' repeat='on' grabToggle='ctrl-ctrl'/>
 </input>"
