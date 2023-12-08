@@ -22,6 +22,8 @@
   };
   services = {
 	gvfs.enable = true;
+	tlp.enable = false;
+	power-profiles-daemon.enable = false;
   };
 }
 
