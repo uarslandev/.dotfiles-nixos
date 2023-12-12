@@ -10,12 +10,14 @@
     virt-viewer
     spice
     spice-gtk
+	distrobox
     spice-protocol
     win-virtio
     win-spice
 	scream
 	dmidecode
 	looking-glass-client
+	vmware-workstation
 	pv
 	pigz
   ];
@@ -37,6 +39,7 @@ systemd.user.services.scream = {
 };  
 
   virtualisation = {
+  vmware.guest.enable = true;
   docker.enable = true;
 	libvirtd = {
 		enable = true;

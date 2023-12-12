@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
 	xclip
 	grive2
+	distrobox
 	keepassxc
 	copyq
 	imagemagick
