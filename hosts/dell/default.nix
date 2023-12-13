@@ -11,9 +11,9 @@
     ];
   networking.hostName = "dell";
   boot.kernelParams = ["intel_iommu=on"];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = ["kvm-intel"];
 
-  # Enable OpenGL
+    # Enable OpenGL
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -50,5 +50,16 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  		hardware.nvidia.prime = {
+		offload = {
+			enable = true;
+			enableOffloadCmd = true;
+		};
+		# Make sure to use the correct Bus ID values for your system!
+		intelBusId = "PCI:0:2:0";
+		nvidiaBusId = "PCI:1:0:0";
+	};
+
 }
 

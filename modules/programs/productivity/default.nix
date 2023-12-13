@@ -8,6 +8,9 @@
   environment.systemPackages = with pkgs; [
   	libreoffice
 	gimp
+	obs-studio
+	blender
+	kdenlive
 	calibre
 	texstudio
 	texliveFull
