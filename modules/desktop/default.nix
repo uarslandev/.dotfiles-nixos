@@ -19,8 +19,25 @@
 	WLR_NO_HARDWARE_CURSORS = "1";
 	NIXOS_OZONE_WL = "1";
  };
-   xdg.portal.enable = true;
-   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  };
+    security.pam.services.swaylock = {};
+	programs.light.enable = true;
+
+	  # kanshi systemd service
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+    };
+  };
+
 
    environment.systemPackages = with pkgs; [
 		waybar
