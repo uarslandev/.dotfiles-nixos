@@ -21,10 +21,9 @@
 			enable = true;
 			extraPortals = with pkgs; [
 #				xdg-desktop-portal-wlr
-				xdg-desktop-portal
-#				xdg-desktop-portal-gtk
+#				xdg-desktop-portal
+				xdg-desktop-portal-gtk
     ];
-    gtkUsePortal = true;
   };
 };
 
@@ -53,7 +52,12 @@
 		libnotify
 		swww
 		kitty
-		swaylock
+		xdg-utils
+		glib
+		grim
+		slurp
+		wl-clipboard
+		swaylock-effects
 		rofi-wayland
 		wofi
 		kanshi

@@ -4,8 +4,9 @@
 (dynamics "Dynamics Off")
 (pattern "Pine")
 (palette "Standard")
-(brush-size 8)
+(brush-size 36)
 (brush-spacing 0.050000000000000003)
-(brush-force 0.46999999999999997)
+(brush-hardness 0)
+(brush-force 0.059999999999999998)
 
 # end of gimp-clone-tool options
