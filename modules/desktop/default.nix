@@ -6,7 +6,7 @@
 
 {
    services.xserver.windowManager.i3 = {
-   enable = true;
+   enable = false;
  };
 
    programs.hyprland = {
@@ -15,10 +15,21 @@
 	xwayland.enable = true;
  };
 
-	xdg.portal.enable = true;
-	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+	services.dbus.enable = true;
+	xdg = {
+		portal = {
+			enable = true;
+			extraPortals = with pkgs; [
+#				xdg-desktop-portal-wlr
+				xdg-desktop-portal
+#				xdg-desktop-portal-gtk
+    ];
+    gtkUsePortal = true;
+  };
+};
 
     security.pam.services.swaylock = {};
+
 	programs.light.enable = true;
 
 	environment.sessionVariables = {
@@ -49,6 +60,8 @@
 		wdisplays
 		wlr-randr
 		wl-gammactl
+		xwaylandvideobridge
+		xwayland
 
 		dmenu
 		arandr

@@ -7,8 +7,11 @@
 {
   environment.systemPackages = with pkgs; [
   	vscode
-	jetbrains.idea-ultimate
 	git
+	ghidra
+	jetbrains.idea-ultimate
+	gdb
+	nmap
 	ngrok
 	insomnia
 	maven

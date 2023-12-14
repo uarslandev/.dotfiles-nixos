@@ -25,6 +25,7 @@
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
+	setup-flatpak = "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak update";
   };
   plugins = [
 	{

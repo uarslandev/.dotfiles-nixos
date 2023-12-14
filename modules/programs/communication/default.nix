@@ -6,15 +6,16 @@
 
 {
   environment.systemPackages = with pkgs; [
-  	discord
 	vesktop
+	discord
+	slack
 	zoom-us
 	teamspeak_client
-	slack
 	thunderbird
 	youtube-music
 	google-chrome
 	firefox
+	chromium
   ];
 }
 
