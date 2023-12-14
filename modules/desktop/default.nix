@@ -52,18 +52,19 @@
 		libnotify
 		swww
 		kitty
-		xdg-utils
+		wl-clipboard
 		glib
+		swayidle
+		xdg-utils
+		wl-clipboard
 		grim
 		slurp
-		wl-clipboard
 		swaylock-effects
 		rofi-wayland
 		wofi
 		kanshi
 		wdisplays
 		wlr-randr
-		wl-gammactl
 		xwaylandvideobridge
 		xwayland
 

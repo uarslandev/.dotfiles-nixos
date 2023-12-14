@@ -63,6 +63,7 @@ in
 	".config/hypr".source = link "${home}"+"/hypr";
 	".config/waybar".source = link "${home}"+"/waybar";
 	".config/kanshi".source = link "${home}"+"/kanshi";
+	".config/kitty".source = link "${home}"+"/kitty";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

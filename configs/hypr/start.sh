@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-kanshi &
+kanshi
 
 keepassxc &
 
 swww init &
 
-swww img ~/.config/bg.jpg
+swww img ~/.config/bg.jpg &
 
 nm-applet --indicator &
 

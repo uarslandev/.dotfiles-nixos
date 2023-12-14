@@ -22,6 +22,9 @@
 	gs = "git status";
     gl = "git log --graph --pretty=oneline --abbrev-commit";
 	lg = "looking-glass-client -F";
+	g = "grep -i";
+	i = "iname";
+	wlc = "wl-copy";
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
