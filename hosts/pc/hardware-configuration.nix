@@ -8,20 +8,20 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/23a70a8c-2f0f-4b25-8fd6-ec9c81c5f582";
+    { device = "/dev/disk/by-uuid/000cc1a5-d104-4b91-bf06-2b6b7395ccc9";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/c0a24b91-24c9-4574-b22e-e34cb898f54b";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/ccb9da69-b6ac-46bf-b2c6-88e8dcff3044";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2DFD-A087";
+    { device = "/dev/disk/by-uuid/110B-144E";
       fsType = "vfat";
     };
 
@@ -34,7 +34,8 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vmnet1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vmnet8.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

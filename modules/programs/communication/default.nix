@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
   	discord
+	vesktop
 	zoom-us
 	teamspeak_client
 	slack

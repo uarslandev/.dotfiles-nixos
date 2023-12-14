@@ -7,6 +7,21 @@
 {
   environment.systemPackages = with pkgs; [
   	steam
+	bottles
+	wineWowPackages.stable
+	(wine.override { wineBuild = "wine64"; })
+
+    # wine-staging (version with experimental features)
+    wineWowPackages.staging
+
+    # winetricks (all versions)
+    winetricks
+
+    # native wayland support (unstable)
+    wineWowPackages.waylandFull
+	gamemode
+	lutris
+
   ];
 }
 

@@ -60,6 +60,9 @@ in
 	".config/picom".source = link "${home}"+"/picom";
 	".config/rofi".source = link "${home}"+"/rofi";
 	".config/i3".source = link "${home}"+"/i3";
+	".config/hypr".source = link "${home}"+"/hypr";
+	".config/waybar".source = link "${home}"+"/waybar";
+	".config/kanshi".source = link "${home}"+"/kanshi";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
