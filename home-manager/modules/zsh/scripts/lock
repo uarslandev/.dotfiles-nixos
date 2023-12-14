@@ -1,16 +1,18 @@
 lock(){
-scrot -d 1 /tmp/locking_screen.png
-convert -blur 0x8 /tmp/locking_screen.png /tmp/screen_blur.png
-convert -composite /tmp/screen_blur.png ~/.config/lock.png -gravity South -geometry -20x1200 /tmp/screen.png
-i3lock -i /tmp/screen.png \
-      --pass-media-keys \
-      --pass-screen-keys \
-      --pass-volume-keys \
-      --force-clock \
-      --inside-color 00000000 --insidever-color 00000000 --insidewrong-color 00000000 \
-      --date-str %F \
-      --date-color ffffff \
-      --time-color ffffff \
-      --verif-text= --wrong-text= --noinput-text= \
-      --redraw-thread
+swaylock \
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --effect-blur 10x10 \
+        --effect-vignette 0.5:0.5 \
+        --ring-color bb00cc \
+        --key-hl-color 880033 \
+        --line-color 00000000 \
+        --inside-color 00000088 \
+        --separator-color 00000000 \
+        --grace 2 \
+        --fade-in 0.2 \
+		--effect-compose "north;$HOME/.config/lock.png"
 }
