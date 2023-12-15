@@ -1,3 +1,4 @@
+evdev(){
 input_devices=$(ls /dev/input/by-id/*event* | grep -v if)
 
 for device in $input_devices
@@ -11,4 +12,5 @@ if [[ $device == *"kbd"* && $device == *"Keyboard"* ]]; then
   <source dev='$device'/>
 </input>"
     fi
-done | xclip -sel c
+done | wl-copy
+}

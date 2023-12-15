@@ -14,5 +14,5 @@ swaylock \
         --separator-color 00000000 \
         --grace 2 \
         --fade-in 0.2 \
-		--effect-compose "north;$HOME/.config/lock.png"
+		--effect-compose "10%x10%;north;$HOME/.config/lock.png"
 }

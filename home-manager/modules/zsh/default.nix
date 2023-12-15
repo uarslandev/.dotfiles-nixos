@@ -51,6 +51,11 @@
 		src = ./scripts;
 		file = "evdev";
 	}
+	{
+		name = "monitor toggle script";
+		src = ./scripts;
+		file = "monitor";
+	}
   ];
  
   zplug = {
