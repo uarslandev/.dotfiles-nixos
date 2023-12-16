@@ -10,7 +10,7 @@
     ll = "ls -l";
     dfs = "cd ~/.dotfiles";
     update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
-    sd = "systemctl poweroff -i";
+    sd = "backup && systemctl poweroff -i";
     rb = "systemctl reboot -i";
     ga = "git add";
     gc = "git commit -m";
@@ -28,7 +28,6 @@
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
-	setup-flatpak = "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak update";
   };
   plugins = [
 	{
