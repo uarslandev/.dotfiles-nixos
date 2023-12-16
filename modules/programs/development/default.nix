@@ -10,7 +10,6 @@
 	jetbrains-toolbox
 	git
 	ghidra
-	jetbrains.idea-ultimate
 	gdb
 	nmap
 	ngrok
