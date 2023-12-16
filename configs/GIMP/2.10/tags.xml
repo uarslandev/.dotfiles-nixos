@@ -1426,7 +1426,7 @@
   <resource identifier="${gimp_data_dir}/gradients/Yellow_Orange.ggr" checksum="428584726006e23e260baa2a7d79f295">
   </resource>
 
-  <resource identifier="gimp-palette-color-history" checksum="60ba784033789a4da93077dad9ab72e1">
+  <resource identifier="gimp-palette-color-history" checksum="ace30fabbc38c4323762d5b7c181f74c">
   </resource>
 
   <resource identifier="${gimp_data_dir}/palettes/Bears.gpl" checksum="e82e818c20ac12bdd21049924ea2d1e7">
@@ -2492,18 +2492,6 @@
   </resource>
 
   <resource identifier="GoMono Nerd Font Semi-Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Hack" checksum="(null)">
-  </resource>
-
-  <resource identifier="Hack Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Hack Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Hack Italic" checksum="(null)">
   </resource>
 
   <resource identifier="Hack Nerd Font" checksum="(null)">
@@ -9479,24 +9467,6 @@
   </resource>
 
   <resource identifier="progsole" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed," checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Light Italic" checksum="(null)">
   </resource>
 
   <resource identifier="RobotoMono Nerd Font" checksum="(null)">

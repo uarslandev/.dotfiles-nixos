@@ -2,6 +2,7 @@
 
 (tool "gimp-paintbrush-tool")
 (paint-info "gimp-paintbrush")
+(foreground (color-rgb 1 0 0))
 (brush "2. Hardness 025")
 (dynamics "Dynamics Off")
 (mybrush "100% Opaque")

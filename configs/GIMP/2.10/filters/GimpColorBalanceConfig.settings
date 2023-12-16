@@ -1,6 +1,21 @@
 # settings
 
-(GimpColorBalanceConfig "2020-06-16 14:22:39"
+(GimpColorBalanceConfig "2023-12-16 23:33:22"
+    (time 1702766002)
+    (range shadows)
+    (cyan-red 0)
+    (magenta-green 0)
+    (yellow-blue 1)
+    (range midtones)
+    (cyan-red 0)
+    (magenta-green 0)
+    (yellow-blue 0)
+    (range highlights)
+    (cyan-red 0)
+    (magenta-green 0)
+    (yellow-blue 0)
+    (preserve-luminosity yes))
+(GimpColorBalanceConfig "2020-06-16 19:22:39"
     (time 1592328159)
     (range shadows)
     (cyan-red 0)
@@ -15,7 +30,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-06-16 12:19:55"
+(GimpColorBalanceConfig "2020-06-16 17:19:55"
     (time 1592320795)
     (range shadows)
     (cyan-red 0)
@@ -30,7 +45,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-06-15 18:08:33"
+(GimpColorBalanceConfig "2020-06-15 23:08:33"
     (time 1592255313)
     (range shadows)
     (cyan-red 0)
@@ -45,7 +60,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-06-15 14:34:39"
+(GimpColorBalanceConfig "2020-06-15 19:34:39"
     (time 1592242479)
     (range shadows)
     (cyan-red 0)
@@ -60,7 +75,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-06-10 10:37:28"
+(GimpColorBalanceConfig "2020-06-10 15:37:28"
     (time 1591796248)
     (range shadows)
     (cyan-red 0)
@@ -75,7 +90,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-06-09 22:25:40"
+(GimpColorBalanceConfig "2020-06-10 03:25:40"
     (time 1591752340)
     (range shadows)
     (cyan-red 0)
@@ -90,7 +105,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-06-07 17:23:52"
+(GimpColorBalanceConfig "2020-06-07 22:23:52"
     (time 1591561432)
     (range shadows)
     (cyan-red 0)
@@ -105,7 +120,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-05-29 16:06:35"
+(GimpColorBalanceConfig "2020-05-29 21:06:35"
     (time 1590779195)
     (range shadows)
     (cyan-red 0)
@@ -120,7 +135,7 @@
     (magenta-green 0)
     (yellow-blue 0)
     (preserve-luminosity yes))
-(GimpColorBalanceConfig "2020-05-28 17:50:39"
+(GimpColorBalanceConfig "2020-05-28 22:50:39"
     (time 1590699039)
     (range shadows)
     (cyan-red 0)

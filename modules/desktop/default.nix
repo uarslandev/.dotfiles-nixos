@@ -12,6 +12,7 @@
    environment.systemPackages = with pkgs; [
 		dmenu
 		kitty
+		termite
 		arandr
 		autorandr
 		flameshot
