@@ -24,7 +24,6 @@
 	gvfs.enable = true;
 	tlp.enable = true;
 	power-profiles-daemon.enable = false;
-	flatpak.enable = true;
   };
 }
 

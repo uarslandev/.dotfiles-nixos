@@ -22,4 +22,3 @@ fonts.packages = with pkgs; [
   proggyfonts
 ];
 }
-
