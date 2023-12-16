@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-kanshi
-
 keepassxc &
 
 swww init &
@@ -13,3 +11,5 @@ nm-applet --indicator &
 waybar &
 
 xwaylandvideobridge &
+
+kanshi &

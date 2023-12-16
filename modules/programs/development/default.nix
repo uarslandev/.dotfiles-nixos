@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
   	vscode
+	jetbrains-toolbox
 	git
 	ghidra
 	jetbrains.idea-ultimate

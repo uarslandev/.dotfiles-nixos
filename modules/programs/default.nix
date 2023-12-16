@@ -22,7 +22,7 @@
   };
   services = {
 	gvfs.enable = true;
-	tlp.enable = false;
+	tlp.enable = true;
 	power-profiles-daemon.enable = false;
 	flatpak.enable = true;
   };

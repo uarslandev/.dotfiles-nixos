@@ -2494,6 +2494,18 @@
   <resource identifier="GoMono Nerd Font Semi-Bold Italic" checksum="(null)">
   </resource>
 
+  <resource identifier="Hack" checksum="(null)">
+  </resource>
+
+  <resource identifier="Hack Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Hack Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Hack Italic" checksum="(null)">
+  </resource>
+
   <resource identifier="Hack Nerd Font" checksum="(null)">
   </resource>
 
@@ -9467,6 +9479,24 @@
   </resource>
 
   <resource identifier="progsole" checksum="(null)">
+  </resource>
+
+  <resource identifier="Roboto Condensed," checksum="(null)">
+  </resource>
+
+  <resource identifier="Roboto Condensed, Bold" checksum="(null)">
+  </resource>
+
+  <resource identifier="Roboto Condensed, Bold Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Roboto Condensed, Italic" checksum="(null)">
+  </resource>
+
+  <resource identifier="Roboto Condensed, Light" checksum="(null)">
+  </resource>
+
+  <resource identifier="Roboto Condensed, Light Italic" checksum="(null)">
   </resource>
 
   <resource identifier="RobotoMono Nerd Font" checksum="(null)">
