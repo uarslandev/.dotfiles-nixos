@@ -47,6 +47,7 @@
 
    environment.systemPackages = with pkgs; [
     alacritty # gpu accelerated terminal
+	wlr-randr
 	kanshi
 	wofi
 	waybar
@@ -57,7 +58,7 @@
     glib # gsettings
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme  # default gnome cursors
-    swaylock-effects
+    swaylock-fancy
     swayidle
     grim # screenshot functionality
     slurp # screenshot functionality
