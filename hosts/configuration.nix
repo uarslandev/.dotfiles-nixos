@@ -80,6 +80,8 @@
 	fuse
 	ntfs3g
 	fuse3
+	cudatoolkit
+	cudaPackages_12.cudnn
   ];
 
   # List services that you want to enable:
