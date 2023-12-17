@@ -35,7 +35,7 @@
 
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

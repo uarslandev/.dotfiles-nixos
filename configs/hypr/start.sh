@@ -11,5 +11,3 @@ nm-applet --indicator &
 waybar &
 
 xwaylandvideobridge &
-
-kanshi &
