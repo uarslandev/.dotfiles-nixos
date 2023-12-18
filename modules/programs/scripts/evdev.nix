@@ -1,4 +1,6 @@
-evdev(){
+{pkgs}:
+
+pkgs.writeShellScriptBin "evdev" ''
 input_devices=$(ls /dev/input/by-id/*event* | grep -v if)
 
 for device in $input_devices
@@ -13,4 +15,4 @@ if [[ $device == *"kbd"* && $device == *"Keyboard"* ]]; then
 </input>"
     fi
 done | wl-copy
-}
+''

@@ -35,16 +35,6 @@
 		src = ./p10k;
 		file = "p10k.zsh";
 	}	
-	{
-		name = "scale script";
-		src = ./scripts;
-		file = "scale";
-	}
-	{
-		name = "evdev script";
-		src = ./scripts;
-		file = "evdev";
-	}
   ];
  
   zplug = {
