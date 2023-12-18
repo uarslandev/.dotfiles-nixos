@@ -41,19 +41,9 @@
 		file = "scale";
 	}
 	{
-		name = "lock script";
-		src = ./scripts;
-		file = "lock";
-	}
-	{
 		name = "evdev script";
 		src = ./scripts;
 		file = "evdev";
-	}
-	{
-		name = "monitor toggle script";
-		src = ./scripts;
-		file = "monitor";
 	}
   ];
  
