@@ -6,7 +6,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-  	steam
 	bottles
 	wineWowPackages.stable
 	(wine.override { wineBuild = "wine64"; })

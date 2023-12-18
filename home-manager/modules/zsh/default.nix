@@ -11,7 +11,7 @@
     dfs = "cd ~/.dotfiles";
     update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
     sd = "backup && systemctl poweroff -i";
-    rb = "systemctl reboot -i";
+    rb = "backup && systemctl reboot -i";
     ga = "git add";
     gc = "git commit -m";
     gcd = "git commit -m $(date +'%F_%T')";
