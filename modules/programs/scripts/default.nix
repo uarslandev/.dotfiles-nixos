@@ -4,7 +4,7 @@ let
 in
 {
 	environment.systemPackages = [
-		(import ./hello.nix { inherit pkgs; })
+		(import ./scale.nix { inherit pkgs; })
 		(import ./lock.nix { inherit pkgs; })
 	];
 }
