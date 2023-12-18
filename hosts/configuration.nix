@@ -80,6 +80,8 @@
 	fuse
 	ntfs3g
 	fuse3
+	zip
+	unzip
 	cudatoolkit
 	cudaPackages_12.cudnn
   ];

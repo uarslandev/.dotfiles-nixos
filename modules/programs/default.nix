@@ -11,6 +11,7 @@
 	./communication
 	./development
 	./productivity
+	./scripts
   ];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;

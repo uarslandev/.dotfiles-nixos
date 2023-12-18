@@ -11,6 +11,9 @@
 
    environment.systemPackages = with pkgs; [
 		kitty
+		pulseaudioFull
+		brightnessctl
+		autotiling
 		dmenu
 		termite
 		arandr
@@ -18,7 +21,6 @@
 		flameshot
 		rofi
 		networkmanagerapplet
-		brightnessctl
 		picom
 		dunst
 		playerctl

@@ -18,6 +18,7 @@ smart_gaps on
 gaps inner 10
 gaps outer 10
 
+
 # Window Rule
 default_border pixel 1
 for_window [class=".*"] border pixel 1
@@ -25,15 +26,23 @@ hide_edge_borders both
 for_window [class="steam_app.*"] floating enable
 
 # Key binding
-bindsym $mod+shift+p exec --no-startup-id looking-glass-client -F
+bindsym $mod+shift+p exec --no-startup-id thunar
+bindsym $mod+shift+o exec --no-startup-id keepassxc
+bindsym $mod+shift+i exec --no-startup-id pavucontrol
+bindsym $mod+shift+u exec --no-startup-id arandr
+bindsym $mod+shift+semicolon exec --no-startup-id copyq show
 bindsym $mod+shift+s exec --no-startup-id flameshot gui
 
 # Auto start
+exec_always --no-startup-id feh --bg-fill ~/.config/bg.jpg
+exec --no-startup-id fcitx5
 exec --no-startup-id keepassc
+exec --no-startup-id autotiling
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id copyq
 exec --no-startup-id volumeicon
+exec --no-startup-id picom
 
 # Exec always
 exec_always --no-startup-id feh --bg-fill ~/.config/i3/bg.jpg
@@ -67,6 +76,16 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

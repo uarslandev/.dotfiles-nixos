@@ -7,9 +7,9 @@
 {
   environment.systemPackages = with pkgs; [
 	vesktop
-	discord
 	slack
 	zoom-us
+	zerotierone
 	teamspeak_client
 	thunderbird
 	youtube-music
