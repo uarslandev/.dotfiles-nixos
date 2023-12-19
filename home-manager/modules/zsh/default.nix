@@ -8,6 +8,7 @@
   autocd = true;
   shellAliases = {
     ll = "ls -l";
+	cal = "cal -mw";
     dfs = "cd ~/.dotfiles";
     update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
     sd = "backup && systemctl poweroff -i";
