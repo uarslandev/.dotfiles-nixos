@@ -67,6 +67,7 @@ in
 	".config/picom".source = link "${home}"+"/picom";
 	".config/rofi".source = link "${home}"+"/rofi";
 	".config/i3".source = link "${home}"+"/i3";
+	".config/i3status".source = link "${home}"+"/i3status";
 	".config/kitty".source = link "${home}"+"/kitty";
 
     # # You can also set the file content immediately.
