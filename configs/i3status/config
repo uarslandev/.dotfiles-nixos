@@ -15,13 +15,12 @@
            order += "memory"
            order += "load"
            order += "tztime local"
-           order += "tztime berlin"
 
            wireless wlan0 {
                    format_up = "W: (%quality at %essid, %bitrate) %ip"
                    format_down = "W: down"
            }
-		              ethernet eth0 {
+		   ethernet eth0 {
                    format_up = "E: %ip (%speed)"
                    format_down = "E: down"
            }
@@ -53,13 +52,7 @@
            }
 
            tztime local {
-                   format = "%Y-%m-%d %H:%M:%S"
-                   hide_if_equals_localtime = true
-           }
-
-           tztime berlin {
-                   format = "%Y-%m-%d %H:%M:%S %Z"
-                   timezone = "Europe/Berlin"
+                   format = "%Y-%m-%d %U %H:%M:%S %Z"
            }
 
            load {
