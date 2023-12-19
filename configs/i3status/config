@@ -65,7 +65,7 @@
            }
 
            memory {
-                   format = "%used"
+                   format = "%used < %total"
                    threshold_degraded = "10%"
                    format_degraded = "MEMORY: %free"
            }
