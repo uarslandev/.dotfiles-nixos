@@ -3,13 +3,13 @@
                    interval = 5
            }
 
+           order += "ethernet enp119s0u1u2"
+           order += "wireless wlan0"
            order += "ipv6"
            order += "disk /"
            order += "run_watch DHCP"
            order += "run_watch VPNC"
            order += "path_exists VPN"
-           order += "wireless wlan0"
-           order += "ethernet eth0"
            order += "battery 0"
            order += "cpu_temperature 0"
            order += "memory"
@@ -17,21 +17,21 @@
            order += "tztime local"
 
            wireless wlan0 {
-                   format_up = "W: (%quality at %essid, %bitrate) %ip"
-                   format_down = "W: down"
+                   format_up = "󰖩 (%quality at %essid, %bitrate) %ip"
+                   format_down = "󰖪"
            }
-		   ethernet eth0 {
-                   format_up = "E: %ip (%speed)"
-                   format_down = "E: down"
+		   ethernet enp119s0u1u2 {
+                   format_up = "󰈁 %ip (%speed)"
+                   format_down = "󰈂"
            }
 
            battery 0 {
                    format = "%status %percentage %remaining %emptytime"
                    format_down = "No battery"
-                   status_chr = "⚡ CHR"
-                   status_bat = "🔋 BAT"
+                   status_chr = "󰂄 CHR"
+                   status_bat = "󱧥 BAT"
                    status_unk = "? UNK"
-                   status_full = "☻ FULL"
+                   status_full = "󱈏 FULL"
                    path = "/sys/class/power_supply/BAT%d/uevent"
                    low_threshold = 10
 				   last_full_capacity = true
@@ -65,13 +65,13 @@
            }
 
            memory {
-                   format = "%used < %total"
+                   format = "󰍛 %used < %total"
                    threshold_degraded = "10%"
                    format_degraded = "MEMORY: %free"
            }
 
            disk "/" {
-                   format = "%free"
+                   format = "󱛟 %free"
            }
 
            read_file uptime {
