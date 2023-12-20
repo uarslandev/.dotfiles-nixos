@@ -84,6 +84,7 @@
 	fuse3
 	zip
 	unzip
+	steam-run
 	cudatoolkit
 	cudaPackages_12.cudnn
   ];
