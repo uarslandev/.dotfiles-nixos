@@ -3,7 +3,7 @@
                    interval = 5
            }
 
-           order += "ethernet enp119s0u1u2"
+           order += "ethernet lo"
            order += "wireless wlan0"
            order += "ipv6"
            order += "disk /"
@@ -20,7 +20,8 @@
                    format_up = "󰖩 (%quality at %essid, %bitrate) %ip"
                    format_down = "󰖪"
            }
-		   ethernet enp119s0u1u2 {
+
+		   ethernet lo {
                    format_up = "󰈁 %ip (%speed)"
                    format_down = "󰈂"
            }
