@@ -1,12 +1,13 @@
-{ stdenv, fetchurl }:
+{ stdenv, fetchurl, lib, ...}:
 
 stdenv.mkDerivation rec {
-  name = "Jdownloder${version}";
+  name = "jdownloder${version}";
   version = "2.0";
-  src = fetchurl {
-    url = "https://mega.nz/file/bZtTnSDL#nVnOHuT8LMvvB9EuXp1nrEvjKjzQ6lSRShKkyGNRYPo";
-    sha256 = "16c44729294dc54ffba74176356264bd2bd8f1c8b1a0924c13395c3358857a67";
-  };
+#  src = fetchurl {
+#    url = "https://mega.nz/file/bZtTnSDL#nVnOHuT8LMvvB9EuXp1nrEvjKjzQ6lSRShKkyGNRYPo";
+#    sha256 = "sha256-nmNGcUVOAZLgc/od4z5ZYkZ2pcjL3JmNVepPplo/IaY=";
+#  };
+src = ./jdl2.sh;
 
   installPhase = ''
     mkdir -p $out/bin

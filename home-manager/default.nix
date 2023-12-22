@@ -28,7 +28,7 @@ in
   home.packages = 
 	let
 		    darknet = pkgs.callPackage derivations/darknet.nix {};
-			jdownloader = pkgs.callPackage derivations/jdownloder {};
+			jdownloader = pkgs.callPackage derivations/jdownloader.nix {};
 	in with pkgs; [
 		darknet
 		jdownloader
