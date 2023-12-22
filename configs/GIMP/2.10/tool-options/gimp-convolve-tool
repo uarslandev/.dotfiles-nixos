@@ -4,8 +4,9 @@
 (brush "2. Hardness 025")
 (dynamics "Dynamics Off")
 (palette "Standard")
-(brush-size 682)
+(brush-size 169)
 (brush-spacing 0.050000000000000003)
+(brush-hardness 0)
 (brush-force 0.059999999999999998)
 (rate 37.899999999999999)
 
