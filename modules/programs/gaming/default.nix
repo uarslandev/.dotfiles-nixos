@@ -6,6 +6,9 @@
 
 {
   environment.systemPackages = with pkgs; [
+	yuzu
+	xemu
+	pcsx2
 	bottles
 	wineWowPackages.stable
 	(wine.override { wineBuild = "wine64"; })
