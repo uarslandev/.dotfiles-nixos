@@ -3,11 +3,10 @@
 stdenv.mkDerivation rec {
   name = "jdownloder${version}";
   version = "2.0";
-#  src = fetchurl {
-#    url = "https://mega.nz/file/bZtTnSDL#nVnOHuT8LMvvB9EuXp1nrEvjKjzQ6lSRShKkyGNRYPo";
-#    sha256 = "sha256-nmNGcUVOAZLgc/od4z5ZYkZ2pcjL3JmNVepPplo/IaY=";
-#  };
-src = ./jdl2.sh;
+  src = fetchurl {
+    url = "https://mega.nz/file/bZtTnSDL#nVnOHuT8LMvvB9EuXp1nrEvjKjzQ6lSRShKkyGNRYPo";
+    sha256 = "sha256-nmNGcUVOAZLgc/od4z5ZYkZ2pcjL3JmNVepPplo/IaY=";
+  };
 
   installPhase = ''
     mkdir -p $out/bin
