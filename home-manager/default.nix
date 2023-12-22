@@ -2,7 +2,6 @@
 let
 	home = "/home/umut/.dotfiles/configs";
 	link = config.lib.file.mkOutOfStoreSymlink;
-
 in
 {
 
@@ -29,8 +28,10 @@ in
   home.packages = 
 	let
 		    darknet = pkgs.callPackage derivations/darknet.nix {};
+			jdownloader = pkgs.callPackage derivations/jdownloder {};
 	in with pkgs; [
 		darknet
+		jdownloader
 	];
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
