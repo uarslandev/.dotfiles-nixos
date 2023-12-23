@@ -7,10 +7,12 @@
 {
   environment.systemPackages = with pkgs; [
   	vscode
-	python39Full
-	python39
-	python39Packages.pip
-	python39Packages.virtualenv
+	python3
+	python3Packages.pip
+	python3Packages.virtualenv
+	arduino-core
+	arduino
+	arduino-cli
 	jetbrains-toolbox
 	git
 	ghidra
