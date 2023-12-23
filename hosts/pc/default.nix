@@ -15,11 +15,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModprobeConfig = "options vfio-pci ids=10de:0ff3, 10de:0e1b";
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
-
-
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
