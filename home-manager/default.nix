@@ -28,10 +28,8 @@ in
   home.packages = 
 	let
 		    darknet = pkgs.callPackage derivations/darknet.nix {};
-			jdownloader = pkgs.callPackage derivations/jdownloader.nix {};
 	in with pkgs; [
 		darknet
-		jdownloader
 	];
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

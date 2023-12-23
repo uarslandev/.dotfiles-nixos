@@ -7,8 +7,10 @@
 {
   environment.systemPackages = with pkgs; [
   	vscode
-	python3Full
-	python3
+	python39Full
+	python39
+	python39Packages.pip
+	python39Packages.virtualenv
 	jetbrains-toolbox
 	git
 	ghidra
