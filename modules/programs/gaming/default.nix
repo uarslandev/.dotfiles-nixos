@@ -9,6 +9,7 @@
 	yuzu
 	xemu
 	pcsx2
+	mangohud
 	bottles
 	wineWowPackages.stable
 	(wine.override { wineBuild = "wine64"; })
