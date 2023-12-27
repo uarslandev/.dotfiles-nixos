@@ -14,5 +14,5 @@ if [[ $device == *"kbd"* && $device == *"Keyboard"* ]]; then
   <source dev='$device'/>
 </input>"
     fi
-done | wl-copy
+done | xclip -sel c
 ''
