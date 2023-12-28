@@ -25,6 +25,7 @@
 	gvfs.enable = true;
 	tlp.enable = true;
 	power-profiles-daemon.enable = false;
+	autorandr.enable = true;
   };
 }
 
