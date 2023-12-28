@@ -15,6 +15,9 @@
   ];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;
+  nixpkgs.config.permittedInsecurePackages = [
+                "electron-25.9.0"
+              ];
   programs = {
     zsh.enable = true;
 	fzf.fuzzyCompletion = true;

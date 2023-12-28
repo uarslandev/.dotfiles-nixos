@@ -7,7 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
   	libreoffice
-	kdenlive
+	davinci-resolve
 	glaxnimate
 	gimp
 	obs-studio
