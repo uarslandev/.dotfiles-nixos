@@ -13,6 +13,17 @@
   boot.kernelParams = ["intel_iommu=on"];
   boot.kernelModules = ["kvm-intel"];
 
+  services.cron = {
+    systemCronJobs = [
+      "*/1 * * * *      umut    echo 'connect DC:2C:26:3A:09:04' | bluetoothctl"
+    ];
+  };
+  
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
+
+
     # Enable OpenGL
   hardware.opengl = {
     enable = true;

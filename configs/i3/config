@@ -46,7 +46,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id copyq
 exec --no-startup-id volumeicon
-exec --no-startup-id picom
 
 # Exec always
 exec_always --no-startup-id feh --bg-fill ~/.config/i3/bg.jpg

@@ -10,6 +10,7 @@
 	../modules
     ];
 
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,9 +37,6 @@
 
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

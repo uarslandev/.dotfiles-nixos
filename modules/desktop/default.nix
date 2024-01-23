@@ -5,13 +5,21 @@
 { config, pkgs, lib, ... }:
 
 {
+	services.xserver.displayManager.gdm.enable = true;
+	#services.xserver.desktopManager.gnome.enable = true;
+
    services.xserver.windowManager.i3 = {
    enable = true;
  };
 
    environment.systemPackages = with pkgs; [
+		waybar
 		kitty
-		pulseaudioFull
+		rofi-wayland
+		wofi
+		mako
+
+		kitty
 		brightnessctl
 		autotiling
 		dmenu

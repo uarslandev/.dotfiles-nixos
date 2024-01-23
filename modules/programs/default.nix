@@ -26,9 +26,27 @@
   };
   services = {
 	gvfs.enable = true;
+	printing = {
+		enable = true;
+		drivers = with pkgs; [ gutenprint hplip samsung-unified-linux-driver brlaser ];
+	};
+	avahi = {
+		enable = true;
+		nssmdns = true;
+		openFirewall = true;
+	};
 	tlp.enable = true;
 	power-profiles-daemon.enable = false;
 	autorandr.enable = true;
+	logind = {
+	lidSwitch = "ignore";
+      extraConfig = ''
+        HandlePowerKey=ignore
+        HandleSuspendKey=ignore
+        HandleHibernateKey=ignore
+        HandleLidSwitchDocked=ignore
+    '';
   };
+};
 }
 
