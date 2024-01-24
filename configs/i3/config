@@ -12,16 +12,16 @@
 set $mod Mod4
 
 # Borders and Gaps
-default_border pixel 1
-default_floating_border pixel 1
+default_border pixel 2
+default_floating_border pixel 2
 smart_gaps on
 gaps inner 10
 gaps outer 10
 
 
 # Window Rule
-default_border pixel 1
-for_window [class=".*"] border pixel 1
+default_border pixel 2
+for_window [class=".*"] border pixel 2
 hide_edge_borders both
 for_window [class="steam_app.*"] floating enable
 
@@ -98,7 +98,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
