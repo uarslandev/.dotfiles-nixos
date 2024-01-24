@@ -1,6 +1,9 @@
            general {
                    colors = true
                    interval = 5
+				   color_good = '#88b090'  
+				   color_degraded = '#ccdc90'  
+				   color_bad = '#e89393'   
            }
 
            order += "ethernet lo"
