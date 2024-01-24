@@ -149,3 +149,4 @@ textbox-prompt-colon {
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
 }
+@theme "/nix/store/p3issq5ddm5y3a9annxd8y18b1v3k37s-rofi-1.7.5/share/rofi/themes/Arc-Dark.rasi"

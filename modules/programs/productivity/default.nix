@@ -11,6 +11,7 @@
 	davinci-resolve
 	glaxnimate
 	gimp
+	gpick
 	obs-studio
 	blender
 	kdenlive
