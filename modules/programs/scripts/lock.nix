@@ -1,7 +1,7 @@
 {pkgs}:
 
 pkgs.writeShellScriptBin "lock" ''
-i3lock -C -i $HOME/.config/lock.png -B \
+i3lock -C -i $HOME/.config/lock.png -c 000000 \
 	  --pass-media-keys \
       --pass-screen-keys \
       --pass-volume-keys \
