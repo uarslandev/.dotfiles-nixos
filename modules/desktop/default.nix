@@ -13,12 +13,6 @@
  };
 
    environment.systemPackages = with pkgs; [
-		waybar
-		kitty
-		rofi-wayland
-		wofi
-		mako
-
 		kitty
 		brightnessctl
 		autotiling
@@ -29,7 +23,6 @@
 		flameshot
 		rofi
 		networkmanagerapplet
-		picom
 		dunst
 		playerctl
 		sxhkd

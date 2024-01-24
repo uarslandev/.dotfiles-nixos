@@ -63,7 +63,6 @@ in
 	".config/GIMP".source = link "${home}"+"/GIMP";
 	".config/gtk-3.0".source = link "${home}"+"/gtk-3.0";
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
-	".config/picom".source = link "${home}"+"/picom";
 	".config/rofi".source = link "${home}"+"/rofi";
 	".config/i3".source = link "${home}"+"/i3";
 	".config/i3status".source = link "${home}"+"/i3status";
