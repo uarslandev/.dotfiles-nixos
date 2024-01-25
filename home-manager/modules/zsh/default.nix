@@ -51,7 +51,7 @@
   };
    oh-my-zsh = {
     enable = true;
-    plugins = [ "git" "zsh-syntax-highlighting" "zsh-history-substring-search" "zsh-autosuggestions" "zsh-completions"];
+    plugins = [ "git"];
   };
 };
 }

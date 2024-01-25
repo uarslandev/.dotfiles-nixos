@@ -50,7 +50,6 @@ exec_always --no-startup-id feh --bg-fill ~/.config/bg.jpg
 exec_always --no-startup-id autorandr -l $(autorandr)
 exec --no-startup-id fcitx5
 exec --no-startup-id keepassc
-exec --no-startup-id autotiling
 exec --no-startup-id nm-applet
 exec --no-startup-id flameshot
 exec --no-startup-id copyq
