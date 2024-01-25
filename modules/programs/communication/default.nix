@@ -14,6 +14,7 @@
 	thunderbird
 	youtube-music
 	google-chrome
+	tor-browser
   ];
 }
 
