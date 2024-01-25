@@ -75,6 +75,7 @@
 	killall
 	neofetch
 	btop
+	nvtop
 	htop
 	steam
 	tmux

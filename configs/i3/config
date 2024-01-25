@@ -48,6 +48,7 @@ bindsym $mod+p exec --no-startup-id ranger
 exec --no-startup-id cd ~/.dotfiles && git pull
 exec_always --no-startup-id feh --bg-fill ~/.config/bg.jpg
 exec_always --no-startup-id autorandr -l $(autorandr)
+exec_always --no-startup-id autotiling
 exec --no-startup-id fcitx5
 exec --no-startup-id keepassc
 exec --no-startup-id nm-applet
