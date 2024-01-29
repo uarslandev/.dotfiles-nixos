@@ -17,7 +17,7 @@ in
   dconf.settings = {
     "org/gnome/mutter" = {
       experimental-features = [ "scale-monitor-framebuffer" ];
-	  check-alive-timeout = [ 60000 ];
+	  #check-alive-timeout = [ 60000 ];
     };
   };
 
@@ -36,7 +36,7 @@ in
 
   home.packages = 
 	let
-		    darknet = pkgs.callPackage derivations/darknet.nix {};
+	    darknet = pkgs.callPackage derivations/darknet.nix {};
 	in with pkgs; [
 		darknet
 	];
