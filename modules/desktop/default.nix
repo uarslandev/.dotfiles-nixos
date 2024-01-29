@@ -13,14 +13,13 @@
 
    #environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-
-
    environment.systemPackages = with pkgs; [
 		dconf2nix
 		gnome.gnome-tweaks
 		gnome.gnome-terminal
 		gnomeExtensions.arcmenu
 		gnomeExtensions.gtile
+		gnomeExtensions.dash-to-dock
 		endeavour
 		#xwaylandvideobridge
 		xwayland

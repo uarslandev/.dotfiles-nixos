@@ -13,7 +13,7 @@
 
   boot.kernelParams = [ "amd_iommu=on" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModprobeConfig = "options vfio-pci ids=10de:0ff3, 10de:0e1b";
+  boot.extraModprobeConfig = "options vfio-pci ids=10de:1d01, 10de:0fb8";
 
   # Enable OpenGL
   hardware.opengl = {

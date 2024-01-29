@@ -10,7 +10,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "wifi";
+      last-panel = "keyboard";
       window-state = mkTuple [ 1920 522 true ];
     };
 
@@ -52,7 +52,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/input-sources" = {
       mru-sources = [ (mkTuple [ "xkb" "us" ]) ];
-      sources = [ (mkTuple [ "xkb" "us" ]) ];
+      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "de" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" ];
     };
 
@@ -66,10 +66,11 @@ with lib.hm.gvariant;
       font-hinting = "slight";
       icon-theme = "graphite-dark-nord";
       show-battery-percentage = true;
+      toolkit-accessibility = false;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" "vencorddesktop" "gnome-power-panel" "jetbrains-idea-69004353-e215-4602-b52a-39b496e0bbe2" "org-keepassxc-keepassxc" "thunderbird" "slack" ];
+      application-children = [ "org-gnome-console" "vencorddesktop" "gnome-power-panel" "jetbrains-idea-69004353-e215-4602-b52a-39b496e0bbe2" "org-keepassxc-keepassxc" "thunderbird" "slack" "jetbrains-toolbox" ];
     };
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
@@ -78,6 +79,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/jetbrains-idea-69004353-e215-4602-b52a-39b496e0bbe2" = {
       application-id = "jetbrains-idea-69004353-e215-4602-b52a-39b496e0bbe2.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/jetbrains-toolbox" = {
+      application-id = "JetBrains Toolbox.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-console" = {
@@ -90,6 +95,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/slack" = {
       application-id = "slack.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/steam" = {
+      application-id = "steam.desktop";
     };
 
     "org/gnome/desktop/notifications/application/thunderbird" = {
@@ -145,12 +154,16 @@ with lib.hm.gvariant;
       center-new-windows = true;
       dynamic-workspaces = true;
       edge-tiling = true;
-      experimental-features = [ "scale-monitor-framebuffer" ];
+      experimental-features = [ "scale-monitor-framebuffer" "scale-monitor-framebuffer" ];
       overlay-key = "Super_L";
     };
 
     "org/gnome/nautilus/preferences" = {
       migrated-gtk-settings = true;
+    };
+
+    "org/gnome/portal/filechooser/steam" = {
+      last-folder-path = "/home/umut/HDD";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -185,6 +198,7 @@ with lib.hm.gvariant;
       disable-user-extensions = false;
       disabled-extensions = [ "places-menu@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "arcmenu@arcmenu.com" "gTile@vibou" "user-theme@gnome-shell-extensions.gcampax.github.com" "launch-new-instance@gnome-shell-extensions.gcampax.github.com" ];
+      favorite-apps = [ "org.gnome.Geary.desktop" "org.gnome.Calendar.desktop" "org.gnome.Music.desktop" "org.gnome.Nautilus.desktop" ];
       last-selected-power-profile = "performance";
       welcome-dialog-last-shown-version = "45.2";
     };
@@ -205,7 +219,7 @@ with lib.hm.gvariant;
       menu-layout = "Runner";
       menu-separator-color = "rgba(255,255,255,0.1)";
       prefs-visible-page = 0;
-      recently-installed-apps = [ "org.gnome.Terminal.desktop" "fedora.desktop" "arch.desktop" ];
+      recently-installed-apps = [ "org.gnome.Terminal.desktop" "fedora.desktop" "arch.desktop" "Proton Experimental.desktop" "Steam Linux Runtime 3.0 (sniper).desktop" "Brawlhalla.desktop" "DRAGON BALL XENOVERSE 2.desktop" "NARUTO SHIPPUDEN Ultimate Ninja STORM 4.desktop" "THE FINALS.desktop" "Proton Hotfix.desktop" "The Elder Scrolls V Skyrim Special Edition.desktop" "PAYDAY 2.desktop" "jetbrains-pycharm-7cd051eb-f773-45a3-941b-91d3bf00bb85.desktop" ];
       runner-position = "Centered";
       search-entry-border-radius = mkTuple [ true 25 ];
     };

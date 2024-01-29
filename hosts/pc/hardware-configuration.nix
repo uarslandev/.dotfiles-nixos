@@ -14,22 +14,21 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/16543643-e562-4003-b5bd-7e4b749ebccb";
+    { device = "/dev/disk/by-uuid/7ce4f5ab-60b5-48db-8755-f94b2c7b793c";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/c16622d0-aca0-4b86-9cdf-c4a2208bb38a";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/f3bf9b9b-7423-470e-b754-91871d99ff7d";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/FB29-928C";
+    { device = "/dev/disk/by-uuid/CF1F-0014";
       fsType = "vfat";
     };
 
   fileSystems."/home/umut/HDD" =
-    { device = "/dev/sda1";
-      fsType = "ntfs-3g"; 
-      options = [ "rw" "uid=1000"];
-  };
+    { device = "/dev/disk/by-uuid/4d9fc0ef-7425-419b-912c-e42dfacc6761";
+      fsType = "ext4";
+    };
 
   swapDevices = [ ];
 
@@ -38,7 +37,10 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vmnet1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vmnet8.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

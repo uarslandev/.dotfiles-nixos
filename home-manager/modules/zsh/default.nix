@@ -24,12 +24,9 @@
 	gs = "git status";
     gl = "git log --graph --pretty=oneline --abbrev-commit";
 	lg = "looking-glass-client -F";
-	g = "grep -i";
-	i = "iname";
-	wlc = "wl-copy";
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
-	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
+	backup = "pushd ~/.dotfiles; dconf-save; ga .; gcd; gp; popd";
 	dconf-save = "pushd ~/.dotfiles/home-manager/; dconf dump / | dconf2nix > dconf.nix; popd";
   };
   plugins = [
