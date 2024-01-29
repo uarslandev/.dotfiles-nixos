@@ -82,6 +82,7 @@
 	fuse
 	ntfs3g
 	fuse3
+	lsof
 	zip
 	unzip
 	steam-run

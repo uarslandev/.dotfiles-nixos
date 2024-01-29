@@ -3510,296 +3510,6 @@
         (proc-arg 16 "drawable" "Drawable to export")
         (proc-arg 4 "filename" "The name of the file to export the image in")
         (proc-arg 4 "raw-filename" "The name of the file to export the image in")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/colormap-remap/colormap-remap" 1
-    (proc-def "plug-in-colormap-remap" 1
-         "Rearrange the colormap"
-         "This procedure takes an indexed image and lets you alter the positions of colors in the colormap without visually changing the image."
-         "Mukund Sivaraman <muks@mukund.org>"
-         "Mukund Sivaraman <muks@mukund.org>"
-         "June 2006"
-         "R_earrange Colormap..."
-         2
-        (menu-path "<Image>/Colors/Map/Colormap")
-        (menu-path "<Colormap>")
-        (icon icon-name -1 "gimp-colormap")
-         "INDEXED*"
-         5 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 0 "num-colors" "Length of 'map' argument (should be equal to colormap size)")
-        (proc-arg 7 "map" "Remap array for the colormap"))
-    (proc-def "plug-in-colormap-swap" 1
-         "Swap two colors in the colormap"
-         "This procedure takes an indexed image and lets you swap the positions of two colors in the colormap without visually changing the image."
-         "Mukund Sivaraman <muks@mukund.org>"
-         "Mukund Sivaraman <muks@mukund.org>"
-         "June 2006"
-         "_Swap Colors"
-         0
-        (icon icon-name -1 "")
-         "INDEXED*"
-         5 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 2 "index1" "First index in the colormap")
-        (proc-arg 2 "index2" "Second (other) index in the colormap")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/colorify/colorify" 1
-    (proc-def "plug-in-colorify" 1
-         "Replace all colors with shades of a specified color"
-         "Makes an average of the RGB channels and uses it to set the color"
-         "Francisco Bustamante"
-         "Francisco Bustamante"
-         "1.1"
-         "Colorif_y..."
-         0
-        (icon icon-name -1 "")
-         "RGB*"
-         4 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 10 "color" "Color to apply")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/color-enhance/color-enhance" 1
-    (proc-def "plug-in-color-enhance" 1
-         "Stretch color saturation to cover maximum possible range"
-         "This simple plug-in does an automatic saturation stretch.  For each channel in the image, it finds the minimum and maximum values... it uses those values to stretch the individual histograms to the full range.  For some images it may do just what you want; for others it may not work that well.  This version differs from Contrast Autostretch in that it works in HSV space, and preserves hue."
-         "Martin Weber"
-         "Martin Weber"
-         "1997"
-         "_Color Enhance (legacy)"
-         1
-        (menu-path "<Image>/Colors/Auto")
-        (icon icon-name -1 "")
-         "RGB*, INDEXED*"
-         3 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/color-cube-analyze/color-cube-analyze" 1
-    (proc-def "plug-in-ccanalyze" 1
-         "Analyze the set of colors in the image"
-         "Analyze colorcube and print some information about the current image (also displays a color-histogram)"
-         "robert@experimental.net"
-         "robert@experimental.net"
-         "June 20th, 1997"
-         "Colorcube A_nalysis..."
-         1
-        (menu-path "<Image>/Colors/Info")
-        (icon icon-name -1 "")
-         "RGB*, GRAY*, INDEXED*"
-         3 1
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 0 "num-colors" "Number of colors in the image")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/cml-explorer/cml-explorer" 1
-    (proc-def "plug-in-cml-explorer" 1
-         "Create abstract Coupled-Map Lattice patterns"
-         "Make an image of Coupled-Map Lattice (CML). CML is a kind of Cellula Automata on continuous (value) domain. In GIMP_RUN_NONINTERACTIVE, the name of a parameter file is passed as the 4th arg. You can control CML_explorer via parameter file."
-         "Shuji Narazaki (narazaki@InetQ.or.jp); http://www.inetq.or.jp/~narazaki/TheGIMP/"
-         "Shuji Narazaki"
-         "1997"
-         "CML _Explorer..."
-         1
-        (menu-path "<Image>/Filters/Render/Pattern")
-        (icon icon-name -1 "")
-         "RGB*, GRAY*"
-         4 0
-        (proc-arg 0 "ru--mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (not used)")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 4 "parameter-filename" "The name of parameter file. CML_explorer makes an image with its settings.")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/checkerboard/checkerboard" 1
-    (proc-def "plug-in-checkerboard" 1
-         "Create a checkerboard pattern"
-         "More here later"
-         "Brent Burton & the Edward Blevins"
-         "Brent Burton & the Edward Blevins"
-         "1997"
-         "_Checkerboard (legacy)..."
-         1
-        (menu-path "<Image>/Filters/Render/Pattern")
-        (icon icon-name -1 "")
-         "RGB*, GRAY*"
-         5 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (unused)")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 0 "check-mode" "Check mode { REGULAR (0), PSYCHOBILY (1) }")
-        (proc-arg 0 "check-size" "Size of the checks")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/cartoon/cartoon" 1
-    (proc-def "plug-in-cartoon" 1
-         "Simulate a cartoon by enhancing edges"
-         "Propagates dark values in an image based on each pixel's relative darkness to a neighboring average. The idea behind this filter is to give the look of a black felt pen drawing subsequently shaded with color. This is achieved by darkening areas of the image which are measured to be darker than a neighborhood average. In this way, sufficiently large shifts in intensity are darkened to black. The rate at which they are darkened to black is determined by the second pct_black parameter. The mask_radius parameter controls the size of the pixel neighborhood over which the average intensity is computed and then compared to each pixel in the neighborhood to decide whether or not to darken it to black. Large values for mask_radius result in very thick black areas bordering the shaded regions of color and much less detail for black areas everywhere including inside regions of color. Small values result in more subtle pen strokes and detail everywhere. Small values for the pct_black make the blend from the color regions to the black border lines smoother and the lines themselves thinner and less noticeable; larger values achieve the opposite effect."
-         "Spencer Kimball"
-         "Bit Specialists, Inc."
-         "2001"
-         "Ca_rtoon (legacy)..."
-         1
-        (menu-path "<Image>/Filters/Artistic")
-        (icon icon-name -1 "")
-         "RGB*, GRAY*"
-         5 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (unused)")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 3 "mask-radius" "Cartoon mask radius (radius of pixel neighborhood)")
-        (proc-arg 3 "pct-black" "Percentage of darkened pixels to set to black (0.0 - 1.0)")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/busy-dialog/busy-dialog" 1
-    (proc-def "plug-in-busy-dialog" 1
-         "Show a dialog while waiting for an operation to finish"
-         "Used by GIMP to display a dialog, containing a spinner and a custom message, while waiting for an ongoing operation to finish. Optionally, the dialog may provide a \"Cancel\" button, which can be used to cancel the operation."
-         "Ell"
-         "Ell"
-         "2018"
-         ""
-         0
-        (icon icon-name -1 "")
-         ""
-         5 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")
-        (proc-arg 0 "read-fd" "The read file descriptor")
-        (proc-arg 0 "write-fd" "The write file descriptor")
-        (proc-arg 4 "message" "The message")
-        (proc-arg 0 "cancelable" "Whether the dialog is cancelable (TRUE or FALSE)")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/border-average/border-average" 1
-    (proc-def "plug-in-borderaverage" 1
-         "Set foreground to the average color of the image border"
-         ""
-         "Philipp Klaus"
-         "Internet Access AG"
-         "1998"
-         "_Border Average..."
-         1
-        (menu-path "<Image>/Colors/Info")
-        (icon icon-name -1 "")
-         "RGB*"
-         5 1
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (unused)")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 0 "thickness" "Border size to take in count")
-        (proc-arg 0 "bucket-exponent" "Bits for bucket size (default=4: 16 Levels)")
-        (proc-arg 10 "borderaverage" "The average color of the specified border.")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/blur/blur" 1
-    (proc-def "plug-in-blur" 1
-         "Simple blur, fast but not very strong"
-         "This plug-in blurs the specified drawable, using a 3x3 blur. Indexed images are not supported."
-         "Miles O'Neal  <meo@rru.com>"
-         "Miles O'Neal, Spencer Kimball, Peter Mattis, Torsten Martinsen, Brian Degenhardt, Federico Mena Quintero, Stephen Norris, Daniel Cotting"
-         "1995-1998"
-         "_Blur"
-         0
-        (icon icon-name -1 "")
-         "RGB*, GRAY*"
-         3 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (unused)")
-        (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/blinds/blinds" 1
-    (proc-def "plug-in-blinds" 1
-         "Simulate an image painted on window blinds"
-         "More here later"
-         "Andy Thomas"
-         "Andy Thomas"
-         "1997"
-         "_Blinds..."
-         0
-        (icon icon-name -1 "")
-         "RGB*, GRAY*"
-         7 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image (unused)")
-        (proc-arg 16 "drawable" "Input drawable")
-        (proc-arg 0 "angle-dsp" "Angle of Displacement")
-        (proc-arg 0 "num-segments" "Number of segments in blinds")
-        (proc-arg 0 "orientation" "The orientation { ORIENTATION-HORIZONTAL (0), ORIENTATION-VERTICAL (1) }")
-        (proc-arg 0 "bg-transparent" "Background transparent { FALSE, TRUE }")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/animation-play/animation-play" 1
-    (proc-def "plug-in-animationplay" 1
-         "Preview a GIMP layer-based animation"
-         ""
-         "Adam D. Moss <adam@gimp.org>"
-         "Adam D. Moss <adam@gimp.org>"
-         "1997, 1998..."
-         "_Playback..."
-         1
-        (menu-path "<Image>/Filters/Animation")
-        (icon icon-name -1 "media-playback-start")
-         "RGB*, INDEXED*, GRAY*"
-         3 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable (unused)")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/animation-optimize/animation-optimize" 1
-    (proc-def "plug-in-animationoptimize" 1
-         "Modify image to reduce size when saved as GIF animation"
-         "This procedure applies various optimizations to a GIMP layer-based animation in an attempt to reduce the final file size.  If a frame of the animation can use the 'combine' mode, this procedure attempts to maximize the number of ajdacent pixels having the same color, which improves the compression for some image formats such as GIF or MNG."
-         "Adam D. Moss <adam@gimp.org>"
-         "Adam D. Moss <adam@gimp.org>"
-         "1997-2003"
-         "Optimize (for _GIF)"
-         1
-        (menu-path "<Image>/Filters/Animation")
-        (icon icon-name -1 "")
-         "RGB*, INDEXED*, GRAY*"
-         3 1
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable (unused)")
-        (proc-arg 13 "result" "Resulting image"))
-    (proc-def "plug-in-animationoptimize-diff" 1
-         "Reduce file size where combining layers is possible"
-         "This procedure applies various optimizations to a GIMP layer-based animation in an attempt to reduce the final file size.  If a frame of the animation can use the 'combine' mode, this procedure uses a simple difference between the frames."
-         "Adam D. Moss <adam@gimp.org>"
-         "Adam D. Moss <adam@gimp.org>"
-         "1997-2001"
-         "_Optimize (Difference)"
-         1
-        (menu-path "<Image>/Filters/Animation")
-        (icon icon-name -1 "")
-         "RGB*, INDEXED*, GRAY*"
-         3 1
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable (unused)")
-        (proc-arg 13 "result" "Resulting image"))
-    (proc-def "plug-in-animationunoptimize" 1
-         "Remove optimization to make editing easier"
-         "This procedure 'simplifies' a GIMP layer-based animation that has been optimized for animation. This makes editing the animation much easier."
-         "Adam D. Moss <adam@gimp.org>"
-         "Adam D. Moss <adam@gimp.org>"
-         "1997-2001"
-         "_Unoptimize"
-         1
-        (menu-path "<Image>/Filters/Animation")
-        (icon icon-name -1 "")
-         "RGB*, INDEXED*, GRAY*"
-         3 1
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable (unused)")
-        (proc-arg 13 "result" "Resulting image")))
-(plug-in-def "${gimp_plug_in_dir}/plug-ins/align-layers/align-layers" 1
-    (proc-def "plug-in-align-layers" 1
-         "Align all visible layers of the image"
-         "Align visible layers"
-         "Shuji Narazaki <narazaki@InetQ.or.jp>"
-         "Shuji Narazaki"
-         "1997"
-         "Align Visi_ble Layers..."
-         1
-        (menu-path "<Image>/Image/Arrange")
-        (icon icon-name -1 "")
-         "RGB*,GRAY*,INDEXED*"
-         5 0
-        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
-        (proc-arg 13 "image" "Input image")
-        (proc-arg 16 "drawable" "Input drawable (not used)")
-        (proc-arg 0 "link-after-alignment" "Link the visible layers after alignment { TRUE, FALSE }")
-        (proc-arg 0 "use-bottom" "use the bottom layer as the base of alignment { TRUE, FALSE }")))
 (plug-in-def "${gimp_plug_in_dir}/plug-ins/file-faxg3/file-faxg3" 1
     (proc-def "file-faxg3-load" 1
          "loads g3 fax files"
@@ -4525,5 +4235,295 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Image to recompose from")
         (proc-arg 16 "drawable" "Not used")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/colormap-remap/colormap-remap" 1
+    (proc-def "plug-in-colormap-remap" 1
+         "Rearrange the colormap"
+         "This procedure takes an indexed image and lets you alter the positions of colors in the colormap without visually changing the image."
+         "Mukund Sivaraman <muks@mukund.org>"
+         "Mukund Sivaraman <muks@mukund.org>"
+         "June 2006"
+         "R_earrange Colormap..."
+         2
+        (menu-path "<Image>/Colors/Map/Colormap")
+        (menu-path "<Colormap>")
+        (icon icon-name -1 "gimp-colormap")
+         "INDEXED*"
+         5 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 0 "num-colors" "Length of 'map' argument (should be equal to colormap size)")
+        (proc-arg 7 "map" "Remap array for the colormap"))
+    (proc-def "plug-in-colormap-swap" 1
+         "Swap two colors in the colormap"
+         "This procedure takes an indexed image and lets you swap the positions of two colors in the colormap without visually changing the image."
+         "Mukund Sivaraman <muks@mukund.org>"
+         "Mukund Sivaraman <muks@mukund.org>"
+         "June 2006"
+         "_Swap Colors"
+         0
+        (icon icon-name -1 "")
+         "INDEXED*"
+         5 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 2 "index1" "First index in the colormap")
+        (proc-arg 2 "index2" "Second (other) index in the colormap")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/colorify/colorify" 1
+    (proc-def "plug-in-colorify" 1
+         "Replace all colors with shades of a specified color"
+         "Makes an average of the RGB channels and uses it to set the color"
+         "Francisco Bustamante"
+         "Francisco Bustamante"
+         "1.1"
+         "Colorif_y..."
+         0
+        (icon icon-name -1 "")
+         "RGB*"
+         4 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 10 "color" "Color to apply")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/color-enhance/color-enhance" 1
+    (proc-def "plug-in-color-enhance" 1
+         "Stretch color saturation to cover maximum possible range"
+         "This simple plug-in does an automatic saturation stretch.  For each channel in the image, it finds the minimum and maximum values... it uses those values to stretch the individual histograms to the full range.  For some images it may do just what you want; for others it may not work that well.  This version differs from Contrast Autostretch in that it works in HSV space, and preserves hue."
+         "Martin Weber"
+         "Martin Weber"
+         "1997"
+         "_Color Enhance (legacy)"
+         1
+        (menu-path "<Image>/Colors/Auto")
+        (icon icon-name -1 "")
+         "RGB*, INDEXED*"
+         3 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/color-cube-analyze/color-cube-analyze" 1
+    (proc-def "plug-in-ccanalyze" 1
+         "Analyze the set of colors in the image"
+         "Analyze colorcube and print some information about the current image (also displays a color-histogram)"
+         "robert@experimental.net"
+         "robert@experimental.net"
+         "June 20th, 1997"
+         "Colorcube A_nalysis..."
+         1
+        (menu-path "<Image>/Colors/Info")
+        (icon icon-name -1 "")
+         "RGB*, GRAY*, INDEXED*"
+         3 1
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 0 "num-colors" "Number of colors in the image")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/cml-explorer/cml-explorer" 1
+    (proc-def "plug-in-cml-explorer" 1
+         "Create abstract Coupled-Map Lattice patterns"
+         "Make an image of Coupled-Map Lattice (CML). CML is a kind of Cellula Automata on continuous (value) domain. In GIMP_RUN_NONINTERACTIVE, the name of a parameter file is passed as the 4th arg. You can control CML_explorer via parameter file."
+         "Shuji Narazaki (narazaki@InetQ.or.jp); http://www.inetq.or.jp/~narazaki/TheGIMP/"
+         "Shuji Narazaki"
+         "1997"
+         "CML _Explorer..."
+         1
+        (menu-path "<Image>/Filters/Render/Pattern")
+        (icon icon-name -1 "")
+         "RGB*, GRAY*"
+         4 0
+        (proc-arg 0 "ru--mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (not used)")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 4 "parameter-filename" "The name of parameter file. CML_explorer makes an image with its settings.")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/checkerboard/checkerboard" 1
+    (proc-def "plug-in-checkerboard" 1
+         "Create a checkerboard pattern"
+         "More here later"
+         "Brent Burton & the Edward Blevins"
+         "Brent Burton & the Edward Blevins"
+         "1997"
+         "_Checkerboard (legacy)..."
+         1
+        (menu-path "<Image>/Filters/Render/Pattern")
+        (icon icon-name -1 "")
+         "RGB*, GRAY*"
+         5 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (unused)")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 0 "check-mode" "Check mode { REGULAR (0), PSYCHOBILY (1) }")
+        (proc-arg 0 "check-size" "Size of the checks")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/cartoon/cartoon" 1
+    (proc-def "plug-in-cartoon" 1
+         "Simulate a cartoon by enhancing edges"
+         "Propagates dark values in an image based on each pixel's relative darkness to a neighboring average. The idea behind this filter is to give the look of a black felt pen drawing subsequently shaded with color. This is achieved by darkening areas of the image which are measured to be darker than a neighborhood average. In this way, sufficiently large shifts in intensity are darkened to black. The rate at which they are darkened to black is determined by the second pct_black parameter. The mask_radius parameter controls the size of the pixel neighborhood over which the average intensity is computed and then compared to each pixel in the neighborhood to decide whether or not to darken it to black. Large values for mask_radius result in very thick black areas bordering the shaded regions of color and much less detail for black areas everywhere including inside regions of color. Small values result in more subtle pen strokes and detail everywhere. Small values for the pct_black make the blend from the color regions to the black border lines smoother and the lines themselves thinner and less noticeable; larger values achieve the opposite effect."
+         "Spencer Kimball"
+         "Bit Specialists, Inc."
+         "2001"
+         "Ca_rtoon (legacy)..."
+         1
+        (menu-path "<Image>/Filters/Artistic")
+        (icon icon-name -1 "")
+         "RGB*, GRAY*"
+         5 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (unused)")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 3 "mask-radius" "Cartoon mask radius (radius of pixel neighborhood)")
+        (proc-arg 3 "pct-black" "Percentage of darkened pixels to set to black (0.0 - 1.0)")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/busy-dialog/busy-dialog" 1
+    (proc-def "plug-in-busy-dialog" 1
+         "Show a dialog while waiting for an operation to finish"
+         "Used by GIMP to display a dialog, containing a spinner and a custom message, while waiting for an ongoing operation to finish. Optionally, the dialog may provide a \"Cancel\" button, which can be used to cancel the operation."
+         "Ell"
+         "Ell"
+         "2018"
+         ""
+         0
+        (icon icon-name -1 "")
+         ""
+         5 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")
+        (proc-arg 0 "read-fd" "The read file descriptor")
+        (proc-arg 0 "write-fd" "The write file descriptor")
+        (proc-arg 4 "message" "The message")
+        (proc-arg 0 "cancelable" "Whether the dialog is cancelable (TRUE or FALSE)")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/border-average/border-average" 1
+    (proc-def "plug-in-borderaverage" 1
+         "Set foreground to the average color of the image border"
+         ""
+         "Philipp Klaus"
+         "Internet Access AG"
+         "1998"
+         "_Border Average..."
+         1
+        (menu-path "<Image>/Colors/Info")
+        (icon icon-name -1 "")
+         "RGB*"
+         5 1
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (unused)")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 0 "thickness" "Border size to take in count")
+        (proc-arg 0 "bucket-exponent" "Bits for bucket size (default=4: 16 Levels)")
+        (proc-arg 10 "borderaverage" "The average color of the specified border.")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/blur/blur" 1
+    (proc-def "plug-in-blur" 1
+         "Simple blur, fast but not very strong"
+         "This plug-in blurs the specified drawable, using a 3x3 blur. Indexed images are not supported."
+         "Miles O'Neal  <meo@rru.com>"
+         "Miles O'Neal, Spencer Kimball, Peter Mattis, Torsten Martinsen, Brian Degenhardt, Federico Mena Quintero, Stephen Norris, Daniel Cotting"
+         "1995-1998"
+         "_Blur"
+         0
+        (icon icon-name -1 "")
+         "RGB*, GRAY*"
+         3 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (unused)")
+        (proc-arg 16 "drawable" "Input drawable")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/blinds/blinds" 1
+    (proc-def "plug-in-blinds" 1
+         "Simulate an image painted on window blinds"
+         "More here later"
+         "Andy Thomas"
+         "Andy Thomas"
+         "1997"
+         "_Blinds..."
+         0
+        (icon icon-name -1 "")
+         "RGB*, GRAY*"
+         7 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image (unused)")
+        (proc-arg 16 "drawable" "Input drawable")
+        (proc-arg 0 "angle-dsp" "Angle of Displacement")
+        (proc-arg 0 "num-segments" "Number of segments in blinds")
+        (proc-arg 0 "orientation" "The orientation { ORIENTATION-HORIZONTAL (0), ORIENTATION-VERTICAL (1) }")
+        (proc-arg 0 "bg-transparent" "Background transparent { FALSE, TRUE }")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/animation-play/animation-play" 1
+    (proc-def "plug-in-animationplay" 1
+         "Preview a GIMP layer-based animation"
+         ""
+         "Adam D. Moss <adam@gimp.org>"
+         "Adam D. Moss <adam@gimp.org>"
+         "1997, 1998..."
+         "_Playback..."
+         1
+        (menu-path "<Image>/Filters/Animation")
+        (icon icon-name -1 "media-playback-start")
+         "RGB*, INDEXED*, GRAY*"
+         3 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable (unused)")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/animation-optimize/animation-optimize" 1
+    (proc-def "plug-in-animationoptimize" 1
+         "Modify image to reduce size when saved as GIF animation"
+         "This procedure applies various optimizations to a GIMP layer-based animation in an attempt to reduce the final file size.  If a frame of the animation can use the 'combine' mode, this procedure attempts to maximize the number of ajdacent pixels having the same color, which improves the compression for some image formats such as GIF or MNG."
+         "Adam D. Moss <adam@gimp.org>"
+         "Adam D. Moss <adam@gimp.org>"
+         "1997-2003"
+         "Optimize (for _GIF)"
+         1
+        (menu-path "<Image>/Filters/Animation")
+        (icon icon-name -1 "")
+         "RGB*, INDEXED*, GRAY*"
+         3 1
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable (unused)")
+        (proc-arg 13 "result" "Resulting image"))
+    (proc-def "plug-in-animationoptimize-diff" 1
+         "Reduce file size where combining layers is possible"
+         "This procedure applies various optimizations to a GIMP layer-based animation in an attempt to reduce the final file size.  If a frame of the animation can use the 'combine' mode, this procedure uses a simple difference between the frames."
+         "Adam D. Moss <adam@gimp.org>"
+         "Adam D. Moss <adam@gimp.org>"
+         "1997-2001"
+         "_Optimize (Difference)"
+         1
+        (menu-path "<Image>/Filters/Animation")
+        (icon icon-name -1 "")
+         "RGB*, INDEXED*, GRAY*"
+         3 1
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable (unused)")
+        (proc-arg 13 "result" "Resulting image"))
+    (proc-def "plug-in-animationunoptimize" 1
+         "Remove optimization to make editing easier"
+         "This procedure 'simplifies' a GIMP layer-based animation that has been optimized for animation. This makes editing the animation much easier."
+         "Adam D. Moss <adam@gimp.org>"
+         "Adam D. Moss <adam@gimp.org>"
+         "1997-2001"
+         "_Unoptimize"
+         1
+        (menu-path "<Image>/Filters/Animation")
+        (icon icon-name -1 "")
+         "RGB*, INDEXED*, GRAY*"
+         3 1
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable (unused)")
+        (proc-arg 13 "result" "Resulting image")))
+(plug-in-def "${gimp_plug_in_dir}/plug-ins/align-layers/align-layers" 1
+    (proc-def "plug-in-align-layers" 1
+         "Align all visible layers of the image"
+         "Align visible layers"
+         "Shuji Narazaki <narazaki@InetQ.or.jp>"
+         "Shuji Narazaki"
+         "1997"
+         "Align Visi_ble Layers..."
+         1
+        (menu-path "<Image>/Image/Arrange")
+        (icon icon-name -1 "")
+         "RGB*,GRAY*,INDEXED*"
+         5 0
+        (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
+        (proc-arg 13 "image" "Input image")
+        (proc-arg 16 "drawable" "Input drawable (not used)")
+        (proc-arg 0 "link-after-alignment" "Link the visible layers after alignment { TRUE, FALSE }")
+        (proc-arg 0 "use-bottom" "use the bottom layer as the base of alignment { TRUE, FALSE }")))
 
 # end of pluginrc
