@@ -5,41 +5,38 @@
 { config, pkgs, lib, ... }:
 
 {
-	services.xserver.displayManager.lightdm.enable = true;
-	# services.xserver.desktopManager.plasma5.enable = true;
+	services.xserver.enable = true;
+	services.xserver.displayManager.gdm.enable = true;
+	services.xserver.desktopManager.gnome = {
+		enable = true;
+	};
 
-   services.xserver.windowManager.i3 = {
-   enable = true;
- };
+   #environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+
 
    environment.systemPackages = with pkgs; [
+		gnome.gnome-tweaks
+		gnome.gnome-terminal
+		gnomeExtensions.arcmenu
+		gnomeExtensions.gtile
+		endeavour
+		#xwaylandvideobridge
+		xwayland
 		kitty
 		brightnessctl
 		autotiling
-		dmenu
-		termite
+		gnome.mutter
 		arandr
 		autorandr
-		flameshot
-		rofi
-		networkmanagerapplet
-		dunst
-		playerctl
-		sxhkd
-		i3lock-color
-		feh
 		graphite-cursors
 		graphite-gtk-theme
 		numix-cursor-theme
-		apple-cursor
-		volumeicon
 		whitesur-cursors
 		luna-icons
 		tango-icon-theme
 		numix-icon-theme
-		polybar
 		sierra-breeze-enhanced
-		lxappearance
 		pavucontrol
    ];
 }

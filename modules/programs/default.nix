@@ -36,9 +36,7 @@
 		nssmdns = true;
 		openFirewall = true;
 	};
-	tlp.enable = true;
-	power-profiles-daemon.enable = false;
-	autorandr.enable = true;
+	power-profiles-daemon.enable = true;
 	logind = {
 	lidSwitch = "ignore";
       extraConfig = ''
