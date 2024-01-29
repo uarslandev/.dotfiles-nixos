@@ -10,7 +10,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "keyboard";
+      last-panel = "wifi";
       window-state = mkTuple [ 1920 522 true ];
     };
 
@@ -52,7 +52,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/input-sources" = {
       mru-sources = [ (mkTuple [ "xkb" "us" ]) ];
-      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "de" ]) ];
+      sources = [ (mkTuple [ "xkb" "us" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" ];
     };
 
@@ -64,13 +64,18 @@ with lib.hm.gvariant;
       enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
+      gtk-theme = "Graphite";
       icon-theme = "graphite-dark-nord";
       show-battery-percentage = true;
       toolkit-accessibility = false;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" "vencorddesktop" "gnome-power-panel" "jetbrains-idea-69004353-e215-4602-b52a-39b496e0bbe2" "org-keepassxc-keepassxc" "thunderbird" "slack" "jetbrains-toolbox" ];
+      application-children = [ "org-gnome-console" "vencorddesktop" "gnome-power-panel" "jetbrains-idea-69004353-e215-4602-b52a-39b496e0bbe2" "org-keepassxc-keepassxc" "thunderbird" "slack" ];
+    };
+
+    "org/gnome/desktop/notifications/application/blender" = {
+      application-id = "blender.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
@@ -158,12 +163,30 @@ with lib.hm.gvariant;
       overlay-key = "Super_L";
     };
 
+    "org/gnome/nautilus/icon-view" = {
+      default-zoom-level = "small-plus";
+    };
+
     "org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "icon-view";
       migrated-gtk-settings = true;
+      search-filter-time-type = "last_modified";
+    };
+
+    "org/gnome/nautilus/window-state" = {
+      initial-size = mkTuple [ 890 550 ];
+    };
+
+    "org/gnome/portal/filechooser/google-chrome" = {
+      last-folder-path = "/home/umut/HDD/Design/Canyon";
     };
 
     "org/gnome/portal/filechooser/steam" = {
       last-folder-path = "/home/umut/HDD";
+    };
+
+    "org/gnome/portal/filechooser/vencorddesktop" = {
+      last-folder-path = "/home/umut/HDD/Design/Canyon";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -219,7 +242,7 @@ with lib.hm.gvariant;
       menu-layout = "Runner";
       menu-separator-color = "rgba(255,255,255,0.1)";
       prefs-visible-page = 0;
-      recently-installed-apps = [ "org.gnome.Terminal.desktop" "fedora.desktop" "arch.desktop" "Proton Experimental.desktop" "Steam Linux Runtime 3.0 (sniper).desktop" "Brawlhalla.desktop" "DRAGON BALL XENOVERSE 2.desktop" "NARUTO SHIPPUDEN Ultimate Ninja STORM 4.desktop" "THE FINALS.desktop" "Proton Hotfix.desktop" "The Elder Scrolls V Skyrim Special Edition.desktop" "PAYDAY 2.desktop" "jetbrains-pycharm-7cd051eb-f773-45a3-941b-91d3bf00bb85.desktop" ];
+      recently-installed-apps = [ "org.gnome.Terminal.desktop" "fedora.desktop" "arch.desktop" ];
       runner-position = "Centered";
       search-entry-border-radius = mkTuple [ true 25 ];
     };
