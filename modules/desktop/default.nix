@@ -16,6 +16,7 @@
 
 
    environment.systemPackages = with pkgs; [
+		dconf2nix
 		gnome.gnome-tweaks
 		gnome.gnome-terminal
 		gnomeExtensions.arcmenu

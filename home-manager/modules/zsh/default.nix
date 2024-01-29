@@ -30,6 +30,7 @@
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
+	dconf-save = "pushd ~/.dotfiles/home-manager/; dconf dump / | dconf2nix > dconf.nix; popd";
   };
   plugins = [
 	{
