@@ -10,8 +10,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "wifi";
-      window-state = mkTuple [ 1920 522 true ];
+      last-panel = "background";
+      window-state = mkTuple [ 1920 522 false ];
     };
 
     "org/gnome/desktop/app-folders" = {
@@ -40,9 +40,9 @@ with lib.hm.gvariant;
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.jpg";
-      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/fold-d.jpg";
-      primary-color = "#26a269";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/pills-l.jpg";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/pills-d.jpg";
+      primary-color = "#d3a778";
       secondary-color = "#000000";
     };
 
@@ -126,8 +126,8 @@ with lib.hm.gvariant;
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/fold-l.jpg";
-      primary-color = "#26a269";
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/pills-l.jpg";
+      primary-color = "#d3a778";
       secondary-color = "#000000";
     };
 
