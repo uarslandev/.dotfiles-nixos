@@ -14,19 +14,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7ce4f5ab-60b5-48db-8755-f94b2c7b793c";
+    { device = "/dev/disk/by-uuid/4c17d151-62db-4301-bdbd-b2e2cae96912";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/f3bf9b9b-7423-470e-b754-91871d99ff7d";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/e847b156-e733-4cbe-a49b-5a9d618d1eba";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/CF1F-0014";
+    { device = "/dev/disk/by-uuid/F176-6C80";
       fsType = "vfat";
     };
 
   fileSystems."/home/umut/HDD" =
-    { device = "/dev/disk/by-uuid/4d9fc0ef-7425-419b-912c-e42dfacc6761";
+    { device = "/dev/disk/by-uuid/99f54e9c-375a-4873-bf92-4ff8b445acee";
       fsType = "ext4";
     };
 
@@ -39,8 +39,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.vmnet1.useDHCP = lib.mkDefault true;
-  # networking.interfaces.vmnet8.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

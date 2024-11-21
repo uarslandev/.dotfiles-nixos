@@ -10,7 +10,6 @@
 	slack
 	zoom-us
 	zerotierone
-	teamspeak_client
 	thunderbird
 	youtube-music
 	google-chrome

@@ -6,10 +6,24 @@
 
 {
 	services.xserver.enable = true;
-	services.xserver.displayManager.gdm.enable = true;
+	services.xserver.displayManager.lightdm.enable = true;
 	services.xserver.desktopManager.gnome = {
 		enable = true;
 	};
+	 #services.xserver.windowManager.xmonad.config = builtins.readFile ../path/to/xmonad.h;
+	 services.xserver.windowManager = {
+		 xmonad = {
+			 enable = true;
+			 enableContribAndExtras = true;
+			 extraPackages = haskellPackages: [
+				 haskellPackages.dbus
+					 haskellPackages.List
+					 haskellPackages.monad-logger
+			 ];
+		 };
+	 };
+
+
 
    #environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -22,13 +36,7 @@
 		gnomeExtensions.dash-to-dock
 		endeavour
 		#xwaylandvideobridge
-		xwayland
-		kitty
-		brightnessctl
-		autotiling
 		gnome.mutter
-		arandr
-		autorandr
 		graphite-cursors
 		graphite-gtk-theme
 		numix-cursor-theme
@@ -37,6 +45,14 @@
 		tango-icon-theme
 		numix-icon-theme
 		sierra-breeze-enhanced
+
+		xmobar
+		rofi
+		arandr
 		pavucontrol
+		autorandr
+		brightnessctl
+		alacritty
+
    ];
 }

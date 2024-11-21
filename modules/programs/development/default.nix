@@ -15,6 +15,7 @@
 	arduino-cli
 	jetbrains-toolbox
 	git
+	gh
 	ghidra
 	gdb
 	nmap

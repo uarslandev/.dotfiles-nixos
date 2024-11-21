@@ -11,9 +11,9 @@
     ];
   networking.hostName = "pc";
 
-  boot.kernelParams = [ "amd_iommu=on" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModprobeConfig = "options vfio-pci ids=10de:1d01, 10de:0fb8";
+  #boot.kernelParams = [ "amd_iommu=on" ];
+  #boot.kernelModules = [ "kvm-amd" ];
+  #boot.extraModprobeConfig = "options vfio-pci ids=10de:1d01, 10de:0fb8";
 
   # Enable OpenGL
   hardware.opengl = {

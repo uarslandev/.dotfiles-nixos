@@ -21,7 +21,6 @@ pkgs.writeShellScriptBin "scale" ''
 	fi
 
 	xrdb $HOME/.Xresources
-	i3-msg restart
 
 	echo "xft.dpi set to $dpi"
 ''

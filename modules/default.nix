@@ -15,7 +15,6 @@
 	./environmental
 	./fonts
 	./programs
-#	./services
 	./virtualisation
     ];
 }
