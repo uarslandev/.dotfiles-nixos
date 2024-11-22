@@ -29,6 +29,7 @@
 
    environment.systemPackages = with pkgs; [
 		xmobar
+		lxappearance
 		feh
 		rofi
 		networkmanagerapplet
