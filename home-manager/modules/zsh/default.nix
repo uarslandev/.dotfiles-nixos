@@ -49,7 +49,10 @@
   };
    oh-my-zsh = {
     enable = true;
-    plugins = [ "git"];
+    plugins = [ "git git-auto-fetch fzf"];
   };
+  initExtra = ''
+	bindkey -s ^f "tmux-sessionizer\n"
+  '';
 };
 }
