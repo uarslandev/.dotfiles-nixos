@@ -32,6 +32,7 @@
 		lxappearance
 		feh
 		rofi
+		flameshot
 		networkmanagerapplet
 		arandr
 		pavucontrol
