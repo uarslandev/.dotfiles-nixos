@@ -29,7 +29,9 @@
 
    environment.systemPackages = with pkgs; [
 		xmobar
+		feh
 		rofi
+		networkmanagerapplet
 		arandr
 		pavucontrol
 		autorandr
