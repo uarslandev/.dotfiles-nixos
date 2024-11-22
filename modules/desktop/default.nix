@@ -28,24 +28,6 @@
    #environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
    environment.systemPackages = with pkgs; [
-		dconf2nix
-		gnome.gnome-tweaks
-		gnome.gnome-terminal
-		gnomeExtensions.arcmenu
-		gnomeExtensions.gtile
-		gnomeExtensions.dash-to-dock
-		endeavour
-		#xwaylandvideobridge
-		gnome.mutter
-		graphite-cursors
-		graphite-gtk-theme
-		numix-cursor-theme
-		whitesur-cursors
-		luna-icons
-		tango-icon-theme
-		numix-icon-theme
-		sierra-breeze-enhanced
-
 		xmobar
 		rofi
 		arandr
@@ -53,6 +35,7 @@
 		autorandr
 		brightnessctl
 		alacritty
-
+		i3lock-color
+		dunst
    ];
 }

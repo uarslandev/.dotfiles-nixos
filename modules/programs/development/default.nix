@@ -6,6 +6,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+	bc
   	vscode
 	python3
 	python3Packages.pip
