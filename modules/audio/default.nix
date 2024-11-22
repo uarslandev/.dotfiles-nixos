@@ -13,7 +13,6 @@ environment.systemPackages = with pkgs; [
 	qjackctl
 ];
 
-sound.enable = false;
 # hardware.pulseaudio.enable = true;
 hardware.pulseaudio.enable = false;
 # rtkit is optional but recommended

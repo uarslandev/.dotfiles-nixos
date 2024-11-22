@@ -12,6 +12,9 @@
     dfs = "cd ~/.dotfiles";
     update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
 	nix-search = "nix search nixpkgs";
+	nix-update = "nix flake update";
+	t = "tmux";
+	n = "nvim";
     sd = "backup && systemctl poweroff -i";
     rb = "backup && systemctl reboot -i";
     ga = "git add";

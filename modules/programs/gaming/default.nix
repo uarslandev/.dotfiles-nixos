@@ -6,7 +6,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-	yuzu
 	xemu
 	pcsx2
 	mangohud
