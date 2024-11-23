@@ -15,7 +15,7 @@
 	XMONAD_CONFIG_DIR = "$XDG_CONFIG_HOME/xmonad";
     XMONAD_CACHE_DIR = "$XDG_CONFIG_HOME/xmonad";
     XMONAD_DATA_DIR = "$XDG_CONFIG_HOME/xmonad";
-
+	
     # Not officially in the specification
     XDG_BIN_HOME    = "$HOME/.local/bin";
     PATH = [ 

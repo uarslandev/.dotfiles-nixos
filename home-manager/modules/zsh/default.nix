@@ -6,6 +6,11 @@
   autosuggestion.enable = true;
   enableCompletion = true;
   autocd = true;
+  sessionVariables = {
+      AWT_TOOLKIT = "MToolkit";
+	  _JAVA_AWT_WM_NONREPARENTING=1;
+    };
+
   shellAliases = {
     ll = "ls -l";
 	cal = "cal -mw";
