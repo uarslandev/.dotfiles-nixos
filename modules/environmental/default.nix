@@ -12,6 +12,10 @@
     XDG_DATA_HOME   = "$HOME/.local/share";
     XDG_STATE_HOME  = "$HOME/.local/state";
 
+	XMONAD_CONFIG_DIR = "$XDG_CONFIG_HOME/xmonad";
+    XMONAD_CACHE_DIR = "$XDG_CONFIG_HOME/xmonad";
+    XMONAD_DATA_DIR = "$XDG_CONFIG_HOME/xmonad";
+
     # Not officially in the specification
     XDG_BIN_HOME    = "$HOME/.local/bin";
     PATH = [ 
@@ -20,7 +24,7 @@
   };
   variables = {
     EDITOR = "nvim";
-    TERMINAL = "gnome-terminal";
+    TERMINAL = "alacritty";
   };
  };
 }

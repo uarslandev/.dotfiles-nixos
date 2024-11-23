@@ -5,11 +5,17 @@
 { config, pkgs, ... }:
 
 {
+services.zerotierone = {
+  enable = true;
+  joinNetworks = [
+    "52b337794ff81812"
+  ];
+};
   environment.systemPackages = with pkgs; [
 	vesktop
+	qbittorrent
 	slack
 	zoom-us
-	zerotierone
 	thunderbird
 	youtube-music
 	google-chrome

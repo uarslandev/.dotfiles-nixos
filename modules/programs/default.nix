@@ -33,7 +33,7 @@
 	};
 	avahi = {
 		enable = true;
-		nssmdns = true;
+		nssmdns4 = true;
 		openFirewall = true;
 	};
 	power-profiles-daemon.enable = true;

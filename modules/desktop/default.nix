@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running `nixos-help`).
-
 { config, pkgs, lib, ... }:
 
 {
@@ -10,24 +6,16 @@
 	services.xserver.desktopManager.gnome = {
 		enable = true;
 	};
-	 #services.xserver.windowManager.xmonad.config = builtins.readFile ../path/to/xmonad.h;
-	 services.xserver.windowManager = {
-		 xmonad = {
-			 enable = true;
-			 enableContribAndExtras = true;
-			 extraPackages = haskellPackages: [
-				 haskellPackages.dbus
-					 haskellPackages.List
-					 haskellPackages.monad-logger
-			 ];
-		 };
-	 };
 
-
-
-   #environment.sessionVariables.NIXOS_OZONE_WL = "1";
+	services.xserver.windowManager.xmonad = {
+    enable = true;
+    enableContribAndExtras = true;
+	extraPackages = hp: [ hp.xmonad hp.xmonad-contrib hp.xmonad-extras hp.xmonad-utils];
+  };
 
    environment.systemPackages = with pkgs; [
+		picom
+		stack
 		xmobar
 		lxappearance
 		feh

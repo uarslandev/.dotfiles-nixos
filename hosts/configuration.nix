@@ -17,7 +17,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" "snd-seq" "snd-rawmidi" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModprobeConfig = "options kvm_intel nested=1";
 
@@ -54,7 +53,7 @@
 };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.umut = {
@@ -76,20 +75,30 @@
 	killall
 	neofetch
 	btop
-	nvtop
+	nvtopPackages.full
 	htop
-	steam
 	tmux
 	fuse
 	ntfs3g
 	fuse3
 	lsof
+	qt5.full
+    qtcreator
 	zip
 	unzip
 	steam-run
 	cudatoolkit
 	cudaPackages_12.cudnn
   ];
+
+    programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+
+
 
   # List services that you want to enable:
 
