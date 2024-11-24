@@ -6,9 +6,11 @@
 
 {
   environment.systemPackages = with pkgs; [
+	obsidian
+	anki
 	evince
   	libreoffice
-	davinci-resolve
+	davinci-resolve-studio
 	glaxnimate
 	gimp
 	gpick

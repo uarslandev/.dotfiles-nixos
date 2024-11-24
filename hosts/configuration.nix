@@ -82,14 +82,13 @@
 	ntfs3g
 	fuse3
 	lsof
-	qt5.full
-    qtcreator
 	zip
 	unzip
 	steam-run
 	cudatoolkit
 	cudaPackages_12.cudnn
   ];
+  programs.dconf.enable = true;
 
     programs.steam = {
     enable = true;

@@ -7,20 +7,11 @@ in
 
   imports = [
     ./modules
-#	./dconf.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "umut";
   home.homeDirectory = "/home/umut";
-
-  dconf.settings = {
-    "org/gnome/mutter" = {
-      experimental-features = [ "scale-monitor-framebuffer" ];
-	  #check-alive-timeout = [ 60000 ];
-    };
-  };
-
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -70,7 +61,6 @@ in
 	".config/dunst".source = link "${home}"+"/dunst";
 	".config/fcitx5".source = link "${home}"+"/fcitx5";
 	".config/GIMP".source = link "${home}"+"/GIMP";
-	".config/gtk-3.0".source = link "${home}"+"/gtk-3.0";
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
 	".config/rofi".source = link "${home}"+"/rofi";
 	".config/i3".source = link "${home}"+"/i3";
@@ -94,10 +84,30 @@ in
   #  /etc/profiles/per-user/umut/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
+
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
+  gtk = {
+	  enable = true;
+	  cursorTheme = {
+		  package = pkgs.bibata-cursors;
+		  name = "Bibata-Modern-Ice";
+	  };
+	  theme = {
+		  name = "SolArc-Dark";
+		  package = pkgs.solarc-gtk-theme;
+	  };
+  };
+  qt = {
+	  enable = true;
+	  platformTheme.name = "gtk";
+	  style = {
+		  name = "adwaita-dark";
+	  };
+  };
+
+# Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

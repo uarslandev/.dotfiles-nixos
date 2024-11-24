@@ -15,7 +15,6 @@
 		]; 
 		};
 
-
 #	services.xserver.windowManager.xmonad.haskellPackages = pkgs.haskell.packages.ghc98.override {
 #         overrides = self: super: {
 #           xmonad-contrib = self.callHackageDirect {
