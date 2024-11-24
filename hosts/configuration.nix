@@ -76,14 +76,18 @@
 	neofetch
 	btop
 	nvtopPackages.full
+	samba4Full
 	htop
 	tmux
+	nautilus
 	fuse
+	rar
 	ntfs3g
 	fuse3
 	lsof
 	zip
 	unzip
+	cifs-utils
 	steam-run
 	cudatoolkit
 	cudaPackages_12.cudnn

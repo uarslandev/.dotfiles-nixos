@@ -16,6 +16,7 @@
 	cal = "cal -mw";
     dfs = "cd ~/.dotfiles";
     update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
+    u = "update";
 	nix-search = "nix search nixpkgs";
 	nix-update = "nix flake update";
 	t = "tmux";

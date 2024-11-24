@@ -6,7 +6,7 @@
     vimAlias = true;
     enable = true;
     extraLuaConfig = ''
-    	${builtins.readFile ./nvim/}
+    	${builtins.readFile ./nvim/remap.lua}
     '';
     plugins = [
 	  pkgs.vimPlugins.nvim-tree-lua
