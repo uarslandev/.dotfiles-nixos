@@ -9,6 +9,12 @@
     	${builtins.readFile ./nvim/remap.lua}
     	${builtins.readFile ./nvim/luasnip.lua}
     	${builtins.readFile ./nvim/set.lua}
+    	${builtins.readFile ./nvim/plugin/lsp.lua}
+    	${builtins.readFile ./nvim/plugin/colors.lua}
+    	${builtins.readFile ./nvim/plugin/fugitive.lua}
+    	${builtins.readFile ./nvim/plugin/telescope.lua}
+    	${builtins.readFile ./nvim/plugin/treesitter.lua}
+    	${builtins.readFile ./nvim/plugin/undotree.lua}
     '';
     extraPackages = with pkgs; [
       csharp-ls
@@ -21,6 +27,7 @@
     ];
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
+      rose-pine
 	  nvim-colorizer-lua
 	  lsp-format-nvim
 	  formatter-nvim
