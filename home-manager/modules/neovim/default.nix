@@ -9,9 +9,16 @@
     	${builtins.readFile ./nvim/remap.lua}
     	${builtins.readFile ./nvim/luasnip.lua}
     	${builtins.readFile ./nvim/set.lua}
-    	${builtins.readFile ./nvim/plugin/colors.lua}
-    	${builtins.readFile ./nvim/plugin/fugitive.lua}
     '';
+    extraPackages = with pkgs; [
+      csharp-ls
+      mesonlsp
+      pyright
+      haskell-language-server
+      luajitPackages.lua-lsp
+      markdown-oxide
+      nixd
+    ];
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
 	  nvim-colorizer-lua

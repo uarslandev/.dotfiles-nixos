@@ -25,7 +25,7 @@
 	maven
 	nodejs
 	jdk17
-	qalculate-gtk
+    qalculate-gtk
   ];
 }
 
