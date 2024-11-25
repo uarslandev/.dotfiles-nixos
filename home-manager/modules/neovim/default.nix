@@ -7,20 +7,30 @@
     enable = true;
     extraLuaConfig = ''
     	${builtins.readFile ./nvim/remap.lua}
+    	${builtins.readFile ./nvim/treesitter.lua}
     '';
-    plugins = [
-	  pkgs.vimPlugins.nvim-tree-lua
-	  pkgs.vimPlugins.nvim-colorizer-lua
-	  pkgs.vimPlugins.lsp-format-nvim
-	  pkgs.vimPlugins.formatter-nvim
-	  pkgs.vimPlugins.nvim-treesitter
-	  pkgs.vimPlugins.playground
-	  pkgs.vimPlugins.lsp-zero-nvim
-	  pkgs.vimPlugins.nvim-lspconfig
-	  pkgs.vimPlugins.nvim-cmp
-	  pkgs.vimPlugins.cmp-nvim-lsp
-	  pkgs.vimPlugins.undotree
-	  pkgs.vimPlugins.vim-fugitive
+    plugins = with pkgs.vimPlugins; [
+	  nvim-tree-lua
+	  nvim-colorizer-lua
+	  lsp-format-nvim
+	  formatter-nvim
+	  (nvim-treesitter.withPlugins (p: [
+	  	p.tree-sitter-nix
+	  	p.tree-sitter-vim
+	  	p.tree-sitter-bash
+	  	p.tree-sitter-lua
+	  	p.tree-sitter-python
+	  	p.tree-sitter-json
+	  	p.tree-sitter-haskell
+	  ]))
+	  playground
+	  vim-nix
+	  lsp-zero-nvim
+	  nvim-lspconfig
+	  nvim-cmp
+	  cmp-nvim-lsp
+	  undotree
+	  vim-fugitive
 	  {
 		plugin = pkgs.vimPlugins.vim-startify;
 		config = "let g:startify_change_to_vcs_root = 0";
