@@ -7,7 +7,10 @@
     enable = true;
     extraLuaConfig = ''
     	${builtins.readFile ./nvim/remap.lua}
-    	${builtins.readFile ./nvim/treesitter.lua}
+    	${builtins.readFile ./nvim/luasnip.lua}
+    	${builtins.readFile ./nvim/set.lua}
+    	${builtins.readFile ./nvim/plugin/colors.lua}
+    	${builtins.readFile ./nvim/plugin/fugitive.lua}
     '';
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
