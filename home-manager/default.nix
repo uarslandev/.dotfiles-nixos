@@ -24,6 +24,11 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+  
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
 
   home.packages = 
 	let
@@ -66,6 +71,8 @@ in
 	".config/i3".source = link "${home}"+"/i3";
 	".config/i3status".source = link "${home}"+"/i3status";
 	".config/kitty".source = link "${home}"+"/kitty";
+	".config/xmonad".source = link "${home}"+"/xmonad";
+	".xmobarrc".source = link "${home}"+"/.xmobarrc";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

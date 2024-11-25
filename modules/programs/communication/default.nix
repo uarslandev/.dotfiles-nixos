@@ -13,7 +13,7 @@ services.zerotierone = {
 };
   environment.systemPackages = with pkgs; [
 	vesktop
-	qbittorrent
+    qbittorrent
 	slack
 	zoom-us
 	thunderbird

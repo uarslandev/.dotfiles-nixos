@@ -1,0 +1,47 @@
+Config { font            = "Ubuntu Bold 9"
+       , additionalFonts = [ "Mononoki 11"
+                           , "Font Awesome 6 Free Solid 12"
+                           , "Font Awesome 6 Brands 12"
+                           ]
+       , bgColor      = "#1a1b26"
+       , fgColor      = "#a9b1d6"
+       -- Position TopSize and BottomSize take 3 arguments:
+       --   an alignment parameter (L/R/C) for Left, Right or Center.
+       --   an integer for the percentage width, so 100 would be 100%.
+       --   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
+       --   NOTE: The height should be the same as the trayer (system tray) height.
+       , position       = TopSize L 100 24
+       , lowerOnStart = True
+       , hideOnStart  = False
+       , allDesktops  = True
+       , persistent   = True
+	   , commands = [ Run Weather "EGPF"
+                        [ "--template", "<weather> <tempC>°C"
+                        , "-L", "0"
+                        , "-H", "25"
+                        , "--low"   , "lightblue"
+                        , "--normal", "#f8f8f2"
+                        , "--high"  , "red"
+                        ] 36000
+                    , Run Cpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high"  , "red"
+                        , "--normal", "green"
+                        ] 10
+                    , Run Alsa "default" "Master"
+                        [ "--template", "<volumestatus>"
+                        , "--suffix"  , "True"
+                        , "--"
+                        , "--on", ""
+                        ]
+                    , Run Memory ["--template", "Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
+                    , Run XMonadLog
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %EGPF% | %date% "
+       }
+
