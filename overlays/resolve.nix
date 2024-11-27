@@ -6,7 +6,7 @@ let
     name = "resolve-patched-binary";
 
     # Replace this with the absolute path to your patched binary
-    src = /home/umut/path/to/your/patched-binary;
+    src = /home/umut/resolve;
 
     installPhase = ''
       mkdir -p $out/bin
