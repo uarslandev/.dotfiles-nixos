@@ -13,6 +13,7 @@
     	${builtins.readFile ./nvim/plugin/colors.lua}
     	${builtins.readFile ./nvim/plugin/fugitive.lua}
     	${builtins.readFile ./nvim/plugin/telescope.lua}
+    	${builtins.readFile ./nvim/plugin/nvim-tree.lua}
     '';
     extraPackages = with pkgs; [
       csharp-ls
