@@ -4,7 +4,10 @@ let
   # Define the patched binary as a custom package
   patchedBinary = super.stdenv.mkDerivation {
     name = "resolve-patched-binary";
-    src = ../resolve; # Replace with the path to your patched binary
+
+    # Replace this with the absolute path to your patched binary
+    src = /home/umut/path/to/your/patched-binary;
+
     installPhase = ''
       mkdir -p $out/bin
       cp ${src} $out/bin/resolve
@@ -13,6 +16,7 @@ let
   };
 in
 # Override the DaVinci Resolve package to use the patched binary
-super.davinci-resolve-studio.overrideAttrs (oldAttrs: {
+super.davinci-resolve.overrideAttrs (oldAttrs: {
   nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ patchedBinary ];
 })
+
