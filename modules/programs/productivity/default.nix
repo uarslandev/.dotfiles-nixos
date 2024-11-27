@@ -10,7 +10,6 @@
 	anki
 	evince
   	libreoffice
-	davinci-resolve-studio
 	glaxnimate
 	gimp
 	gpick

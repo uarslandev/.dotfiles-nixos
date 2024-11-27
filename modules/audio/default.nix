@@ -10,7 +10,8 @@ environment.systemPackages = with pkgs; [
 	ardour
 	jack2
 	libjack2
-	qjackctl
+    qjackctl
+    pulseaudioFull
 ];
 
 # hardware.pulseaudio.enable = true;

@@ -38,10 +38,10 @@
     };
 
 	nixosConfigurations = {
-      dell = nixpkgs.lib.nixosSystem {
+      thinkpad = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/configuration.nix
-		  ./hosts/dell
+		  ./hosts/thinkpad
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -54,6 +54,5 @@
         ];
       };
     };
-
   };
 }

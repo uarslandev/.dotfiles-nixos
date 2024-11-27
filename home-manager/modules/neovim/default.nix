@@ -13,8 +13,6 @@
     	${builtins.readFile ./nvim/plugin/colors.lua}
     	${builtins.readFile ./nvim/plugin/fugitive.lua}
     	${builtins.readFile ./nvim/plugin/telescope.lua}
-    	${builtins.readFile ./nvim/plugin/treesitter.lua}
-    	${builtins.readFile ./nvim/plugin/undotree.lua}
     '';
     extraPackages = with pkgs; [
       csharp-ls
@@ -39,7 +37,8 @@
 	  	p.tree-sitter-python
 	  	p.tree-sitter-json
 	  	p.tree-sitter-haskell
-	  ]))
+      ]))
+      nvim-treesitter.withAllGrammars
 	  playground
 	  vim-nix
 	  lsp-zero-nvim
@@ -47,7 +46,8 @@
 	  nvim-cmp
 	  cmp-nvim-lsp
 	  undotree
-	  vim-fugitive
+      vim-fugitive
+      telescope-nvim
 	  {
 		plugin = pkgs.vimPlugins.vim-startify;
 		config = "let g:startify_change_to_vcs_root = 0";
