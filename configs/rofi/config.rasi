@@ -21,7 +21,7 @@
     background:                  rgba ( 45, 48, 59, 95 % );
     alternate-normal-foreground: @foreground;
     normal-background:           @background;
-    font: "Iosevka Regular 12";
+    font: "Iosevka Regular 8";
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     selected-normal-background:  rgba ( 64, 132, 214, 100 % );
     border-color:                rgba ( 124, 131, 137, 100 % );
@@ -149,4 +149,4 @@ textbox-prompt-colon {
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
 }
-//@theme "/nix/store/p3issq5ddm5y3a9annxd8y18b1v3k37s-rofi-1.7.5/share/rofi/themes/Arc-Dark.rasi
+@theme "/nix/store/qh6shsjfbjlp3m7z3mh3lysaiji3hpiv-rofi-1.7.5/share/rofi/themes/Arc-Dark.rasi"

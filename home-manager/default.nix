@@ -72,7 +72,11 @@ in
 	".config/i3status".source = link "${home}"+"/i3status";
 	".config/kitty".source = link "${home}"+"/kitty";
 	".config/xmonad".source = link "${home}"+"/xmonad";
+	".config/tmux".source = link "${home}"+"/tmux";
+	".config/picom".source = link "${home}"+"/picom";
+	".config/alacritty".source = link "${home}"+"/alacritty";
 	".xmobarrc".source = link "${home}"+"/.xmobarrc";
+	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

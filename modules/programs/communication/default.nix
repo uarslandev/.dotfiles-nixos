@@ -12,7 +12,8 @@ services.zerotierone = {
   ];
 };
   environment.systemPackages = with pkgs; [
-	vesktop
+    vesktop
+    element-desktop
     qbittorrent
 	slack
 	zoom-us
