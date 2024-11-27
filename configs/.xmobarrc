@@ -10,13 +10,13 @@ Config { font            = "Ubuntu Bold 9"
        --   an integer for the percentage width, so 100 would be 100%.
        --   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
        --   NOTE: The height should be the same as the trayer (system tray) height.
-       , position       = TopSize L 100 24
+       , position       = TopSize L 90 24
        , lowerOnStart = True
        , hideOnStart  = False
        , allDesktops  = True
        , persistent   = True
-       , iconRoot = "/home/umut/.config/xmonad/"
-	   , commands = [ Run Weather "EGPF"
+       , iconRoot = ".config/xmonad/"
+	   , commands = [ Run Weather "EDLP"
                         [ "--template", "<weather> <tempC>°C"
                         , "-L", "0"
                         , "-H", "25"
@@ -40,9 +40,9 @@ Config { font            = "Ubuntu Bold 9"
                     , Run Swap [] 10
                     , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M</fc>" "date" 10
                     , Run XMonadLog
+		    , Run Com ".config/xmonad/trayer-padding-icon.sh" [] "trayerpad" 10
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "<fc=#5294e2> <action=`jgmenu_run`><fn=2>  |</fn></action></fc> %XMonadLog%}{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %EGPF% | %date% "
+       , template = "<fc=#5294e2> <action=`jgmenu_run`><fn=2>  |</fn></action></fc> %XMonadLog%}{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %EDLP% | %date% | %trayerpad% "
        }
-
