@@ -10,7 +10,8 @@ local function my_on_attach(bufnr)
 
   -- custom mappings
   vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
-  vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { desc = "Toggle NvimTree" })
+  vim.keymap.set('n', '<C-d>', api.tree.change_root_to_node,        opts('Down'))
+  vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { })
   vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
 end
 
