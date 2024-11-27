@@ -40,6 +40,7 @@ myStartupHook = do
     spawnOnce "flameshot"
     spawnOnce "nm-applet"
     spawnOnce "copyq"
+    spawn "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --height 22"
     spawn "feh --bg-fill ~/.config/bg.jpg"
     spawn "picom"
 
@@ -64,7 +65,7 @@ myKeys =
     , ("M-S-c", kill)  -- Close focused window
     , ("M-b", sendMessage ToggleStruts)
     , ("M-f", sendMessage (Toggle "Full"))
-    , ("M-q", spawn "xmonad --recompile; pkill xmobar; xmonad --restart")
+    , ("M-q", spawn "xmonad --recompile; pkill xmobar; pkill trayer; xmonad --restart")
     ]
 
 myXmobarPP :: PP

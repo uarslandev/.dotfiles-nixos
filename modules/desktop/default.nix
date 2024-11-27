@@ -28,7 +28,8 @@
 
    environment.systemPackages = with pkgs; [
 		picom
-        stalonetray
+                stalonetray
+                trayer
 		stack
 		xmobar
 		lxappearance
