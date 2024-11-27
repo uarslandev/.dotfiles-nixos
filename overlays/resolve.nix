@@ -5,8 +5,11 @@ let
   patchedBinary = super.stdenv.mkDerivation {
     name = "resolve-patched-binary";
 
-    # Replace this with the absolute path to your patched binary
-    src = /home/umut/resolve;
+    # Use builtins.path to handle the absolute path correctly
+    src = builtins.path {
+      path = "/home/umut/resolve";
+      name = "resolve-patched-binary";
+    };
 
     installPhase = ''
       mkdir -p $out/bin
