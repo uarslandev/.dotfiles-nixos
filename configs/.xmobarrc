@@ -15,6 +15,7 @@ Config { font            = "Ubuntu Bold 9"
        , hideOnStart  = False
        , allDesktops  = True
        , persistent   = True
+       , iconRoot = "/home/umut/.config/xmonad/"
 	   , commands = [ Run Weather "EGPF"
                         [ "--template", "<weather> <tempC>°C"
                         , "-L", "0"
@@ -42,6 +43,6 @@ Config { font            = "Ubuntu Bold 9"
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %EGPF% | %date% "
+       , template = "<fc=#5294e2> <action=`jgmenu_run`><fn=2>  |</fn></action></fc> %XMonadLog%}{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %EGPF% | %date% "
        }
 
