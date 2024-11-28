@@ -30,12 +30,6 @@ in
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
-  home.packages = 
-	let
-	    darknet = pkgs.callPackage derivations/darknet.nix {};
-	in with pkgs; [
-		darknet
-	];
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -53,6 +47,11 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
 #  ];
+
+  home.packages = [
+    (import ./overlays/resolve.nix {pkgs = pkgs;})
+  ];
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
