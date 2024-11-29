@@ -23,8 +23,17 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
+#  nixpkgs.overlays = [
+#    (final: prev: {
+#      davinci-resolve-studio = prev.davinci-resolve-studio.overrideAttrs (oldAttrs: {
+#        postInstall = ''
+#          rm -rf $out/bin/resolve
+#        '';
+#      });
+#    })
+#  ];
+#
   environment.systemPackages = with pkgs; [
-    davinci-resolve-studio
   ];
 
   hardware.nvidia = {
