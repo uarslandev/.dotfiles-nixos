@@ -18,6 +18,7 @@ in
       experimental-features = [ "scale-monitor-framebuffer" ];
       #check-alive-timeout = [ 60000 ];
     };
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
   # This value determines the Home Manager release that your configuration is
@@ -31,12 +32,6 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
-
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -101,24 +96,24 @@ in
     # EDITOR = "emacs";
   };
 
-  gtk = {
-	  enable = true;
-	  cursorTheme = {
-		  package = pkgs.bibata-cursors;
-		  name = "Bibata-Modern-Ice";
-	  };
-	  theme = {
-		  name = "SolArc-Dark";
-		  package = pkgs.solarc-gtk-theme;
-	  };
-  };
-  qt = {
-	  enable = true;
-	  platformTheme.name = "gtk";
-	  style = {
-		  name = "adwaita-dark";
-	  };
-  };
+#  gtk = {
+#	  enable = true;
+#	  cursorTheme = {
+#		  package = pkgs.bibata-cursors;
+#		  name = "Bibata-Modern-Ice";
+#	  };
+#	  theme = {
+#		  name = "SolArc-Dark";
+#		  package = pkgs.solarc-gtk-theme;
+#	  };
+#  };
+#  qt = {
+#	  enable = true;
+#	  platformTheme.name = "gtk";
+#	  style = {
+#		  name = "adwaita-dark";
+#	  };
+#  };
 
 # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

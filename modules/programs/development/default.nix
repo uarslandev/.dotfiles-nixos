@@ -6,7 +6,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-	bc
+    bc
+    unityhub
   	vscode
 	python3
 	python3Packages.pip

@@ -11,7 +11,6 @@
         gnome.gnome-terminal
         gnome-network-displays
 		gnomeExtensions.arcmenu
-		gnomeExtensions.next-up
 		gnomeExtensions.gtile
 		gnomeExtensions.dash-to-dock
 		endeavour
