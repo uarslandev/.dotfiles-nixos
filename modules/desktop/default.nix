@@ -4,45 +4,23 @@
 	services.xserver.enable = true;
 	services.xserver.displayManager.gdm.enable = true;
 	services.xserver.desktopManager.gnome.enable = true;
-	services.xserver.windowManager.i3.enable = true;
-	services.xserver.windowManager.xmonad = {
-		enable = true;
-		enableContribAndExtras = true;
-		haskellPackages = pkgs.haskell.packages.ghc98;
-		extraPackages = hpkgs: [
-			hpkgs.xmonad_0_18_0
-			hpkgs.xmonad-extras
-			hpkgs.xmonad-contrib_0_18_1
-		]; 
-		};
-
-#	services.xserver.windowManager.xmonad.haskellPackages = pkgs.haskell.packages.ghc98.override {
-#         overrides = self: super: {
-#           xmonad-contrib = self.callHackageDirect {
-#              pkg = "xmonad-contrib";
-#              ver = "0.18.1";
-#              sha256 = "sha256-3N85ThXu3dhjWNAKNXtJ8rV04n6R+/rGeq5C7fMOefY=";
-#           } {};
-#         };
-#       };
-
-   environment.systemPackages = with pkgs; [
-		picom
-                stalonetray
-                trayer
-		stack
-		xmobar
-		lxappearance
-		feh
-		rofi
-		flameshot
-		networkmanagerapplet
-		arandr
+    
+    environment.systemPackages = with pkgs; [
+      	dconf2nix
+		gnome.gnome-tweaks
+        gnome.gnome-terminal
+        gnome-network-displays
+		gnomeExtensions.arcmenu
+		gnomeExtensions.next-up
+		gnomeExtensions.gtile
+		gnomeExtensions.dash-to-dock
+		endeavour
+		xwayland
+		gnome.mutter
+		graphite-cursors
+		graphite-gtk-theme
+		numix-cursor-theme
+		whitesur-cursors
 		pavucontrol
-		autorandr
-		brightnessctl
-		alacritty
-		i3lock-color
-		dunst
    ];
 }
