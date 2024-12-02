@@ -109,5 +109,9 @@ with lib.hm.gvariant;
       locations = [];
     };
 
+    "org/gnome/tweaks" = {
+      show-extensions-notice = false;
+    };
+
   };
 }

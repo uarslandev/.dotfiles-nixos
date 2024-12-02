@@ -13,6 +13,13 @@ in
   home.username = "umut";
   home.homeDirectory = "/home/umut";
 
+  dconf.settings = {
+    "org/gnome/mutter" = {
+      experimental-features = [ "scale-monitor-framebuffer" ];
+      #check-alive-timeout = [ 60000 ];
+    };
+  };
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
