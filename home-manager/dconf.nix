@@ -78,7 +78,11 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "vesktop" ];
+      application-children = [ "vesktop" "org-keepassxc-keepassxc" ];
+    };
+
+    "org/gnome/desktop/notifications/application/org-keepassxc-keepassxc" = {
+      application-id = "org.keepassxc.KeePassXC.desktop";
     };
 
     "org/gnome/desktop/notifications/application/vesktop" = {
@@ -111,7 +115,7 @@ with lib.hm.gvariant;
 
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
-      experimental-features = [ "scale-monitor-framebuffer" ];
+      experimental-features = [ "scale-monitor-framebuffer" "scale-monitor-framebuffer" ];
       overlay-key = "Super_L";
     };
 
@@ -123,6 +127,7 @@ with lib.hm.gvariant;
 
     "org/gnome/nautilus/window-state" = {
       initial-size = mkTuple [ 890 550 ];
+      initial-size-file-chooser = mkTuple [ 890 550 ];
     };
 
     "org/gnome/settings-daemon/plugins/color" = {
@@ -160,6 +165,7 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "apps-menu@gnome-shell-extensions.gcampax.github.com" "arcmenu@arcmenu.com" "dash-to-dock@micxgx.gmail.com" "gTile@vibou" "launch-new-instance@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "next-up@artisticat1.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" ];
+      favorite-apps = [];
       welcome-dialog-last-shown-version = "47.1";
     };
 
@@ -169,9 +175,24 @@ with lib.hm.gvariant;
       menu-button-icon = "Distro_Icon";
       menu-layout = "Runner";
       prefs-visible-page = 0;
-      recently-installed-apps = [ "unityhub.desktop" ];
+      recently-installed-apps = [];
       runner-position = "Centered";
       search-entry-border-radius = mkTuple [ true 25 ];
+    };
+
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      apply-custom-theme = false;
+      background-opacity = 0.18;
+      custom-background-color = false;
+      custom-theme-shrink = true;
+      dash-max-icon-size = 30;
+      dock-position = "BOTTOM";
+      height-fraction = 0.74;
+      multi-monitor = true;
+      preferred-monitor = -2;
+      preferred-monitor-by-connector = "DVI-D-0";
+      show-mounts-network = true;
+      transparency-mode = "DYNAMIC";
     };
 
     "org/gnome/shell/extensions/gtile" = {
