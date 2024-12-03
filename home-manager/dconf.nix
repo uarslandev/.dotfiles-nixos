@@ -5,6 +5,11 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "org/gnome/Console" = {
+      last-window-maximised = false;
+      last-window-size = mkTuple [ 652 480 ];
+    };
+
     "org/gnome/calendar" = {
       active-view = "month";
       window-maximized = true;
@@ -61,7 +66,11 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "org-keepassxc-keepassxc" "thunderbird" "org-gnome-evolution-alarm-notify" ];
+      application-children = [ "gnome-power-panel" "org-keepassxc-keepassxc" "thunderbird" "org-gnome-evolution-alarm-notify" "element-desktop" ];
+    };
+
+    "org/gnome/desktop/notifications/application/element-desktop" = {
+      application-id = "element-desktop.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
@@ -225,7 +234,7 @@ with lib.hm.gvariant;
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 578 141 ];
+      window-position = mkTuple [ 358 157 ];
       window-size = mkTuple [ 1203 902 ];
     };
 

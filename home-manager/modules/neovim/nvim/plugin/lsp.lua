@@ -28,7 +28,7 @@ lsp_zero.extend_lspconfig({
 -- servers you have installed in your system
 --require('lspconfig').ccls.setup({})
 --require('lspconfig').clangd.setup({})
---require('lspconfig').csharp-ls.setup({})
+require('lspconfig').omnisharp.setup({})
 --require('lspconfig').nixd.setup({})
 --require('lspconfig').cssls.setup({})
 --require('lspconfig').denols.setup({})

@@ -16,7 +16,6 @@
     	${builtins.readFile ./nvim/plugin/nvim-tree.lua}
     '';
     extraPackages = with pkgs; [
-      csharp-ls
       mesonlsp
       pyright
       haskell-language-server
@@ -27,6 +26,7 @@
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
       rose-pine
+      omnisharp-extended-lsp-nvim
 	  nvim-colorizer-lua
 	  lsp-format-nvim
 	  formatter-nvim
