@@ -15,7 +15,7 @@
     ll = "ls -l";
 	cal = "cal -mw";
     dfs = "cd ~/.dotfiles";
-    update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
+    update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd && dconf-load";
     u = "update";
 	nix-search = "nix search nixpkgs";
 	nix-update = "nix flake update";
@@ -36,7 +36,8 @@
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; dconf-save; ga .; gcd; gp; popd";
-	dconf-save = "pushd ~/.dotfiles/home-manager/; dconf dump / | dconf2nix > dconf.nix; popd";
+	dconf-save = "pushd ~/.dotfiles/home-manager; dconf dump / > dconf-settings.ini; popd";
+	dconf-load = "pushd ~/.dotfiles/home-manager/; dconf load / < dconf-settings.ini; popd";
   };
   plugins = [
 	{

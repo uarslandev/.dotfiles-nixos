@@ -2,13 +2,18 @@
 
 {
 	services.xserver.enable = true;
-	services.xserver.displayManager.gdm.enable = true;
-	services.xserver.desktopManager.gnome.enable = true;
+	services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
+#    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     
     environment.systemPackages = with pkgs; [
-      	dconf2nix
+      dconf2nix
+      xwayland
 		gnome.gnome-tweaks
         gnome.gnome-terminal
+        xdg-desktop-portal
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
         gnome-network-displays
 		gnomeExtensions.arcmenu
 		gnomeExtensions.gtile
