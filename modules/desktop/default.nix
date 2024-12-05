@@ -2,8 +2,15 @@
 
 {
 	services.xserver.enable = true;
-	services.xserver.displayManager.lightdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+    services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.desktopManager.gnome = {
+      enable = true;
+      extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
+      extraGSettingsOverrides = ''
+        [org.gnome.mutter]
+        experimental-features=['scale-monitor-framebuffer']
+      '';
+    };
 #    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     
     environment.systemPackages = with pkgs; [
@@ -12,8 +19,8 @@
 		gnome.gnome-tweaks
         gnome.gnome-terminal
         xdg-desktop-portal
-        xdg-desktop-portal-gnome
-        xdg-desktop-portal-gtk
+        mutter43
+        xdg-desktop-portal-gnome xdg-desktop-portal-gtk
         gnome-network-displays
 		gnomeExtensions.arcmenu
 		gnomeExtensions.gtile

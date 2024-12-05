@@ -1,6 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ 
+      anthy 
+      mozc 
+    ];
+  };
+
 fonts.packages = with pkgs; [
   noto-fonts
   meslo-lg

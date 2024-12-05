@@ -16,9 +16,7 @@ in
   dconf.settings = {
     "org/gnome/mutter" = {
       experimental-features = [ "scale-monitor-framebuffer" ];
-      #check-alive-timeout = [ 60000 ];
     };
-    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
   # This value determines the Home Manager release that your configuration is

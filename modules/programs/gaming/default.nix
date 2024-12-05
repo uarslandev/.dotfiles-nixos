@@ -7,7 +7,8 @@
 {
   environment.systemPackages = with pkgs; [
 	xemu
-	ani-cli
+    ani-cli
+    heroic
 	pcsx2
 	mangohud
 	bottles
