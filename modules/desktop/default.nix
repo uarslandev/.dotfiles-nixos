@@ -11,7 +11,7 @@
         experimental-features=['scale-monitor-framebuffer']
       '';
     };
-#    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     
     environment.systemPackages = with pkgs; [
       dconf2nix
@@ -20,7 +20,8 @@
         gnome.gnome-terminal
         xdg-desktop-portal
         mutter43
-        xdg-desktop-portal-gnome xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome 
+        xdg-desktop-portal-gtk
         gnome-network-displays
 		gnomeExtensions.arcmenu
 		gnomeExtensions.gtile
