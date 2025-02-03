@@ -60,6 +60,11 @@ in
 	".config/dunst".source = link "${home}"+"/dunst";
 	".config/fcitx5".source = link "${home}"+"/fcitx5";
 	".config/GIMP".source = link "${home}"+"/GIMP";
+	".config/hypr".source = link "${home}"+"/hypr";
+	".config/neofetch".source = link "${home}"+"/neofetch";
+	".config/swaylock".source = link "${home}"+"/swaylock";
+	".config/wofi".source = link "${home}"+"/wofi";
+	".config/waybar".source = link "${home}"+"/waybar";
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
 	".config/rofi".source = link "${home}"+"/rofi";
 	".config/i3".source = link "${home}"+"/i3";

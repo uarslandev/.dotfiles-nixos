@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" "snd-seq" "snd-rawmidi" ];
+  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" "snd-seq" "snd-rawmidi" ];
   boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModprobeConfig = "options kvm_intel nested=1";
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
@@ -40,6 +40,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  security.polkit.enable = true;
 
   # Fcitx5
   i18n = {

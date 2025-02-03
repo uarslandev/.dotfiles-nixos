@@ -2,7 +2,10 @@
 
 {
 	services.xserver.enable = true;
-    services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
     services.xserver.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
@@ -13,6 +16,11 @@
         hpkgs.xmonad-contrib_0_18_1
       ]; 
     };
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
     services.xserver.desktopManager.gnome = {
       enable = true;
       extraGSettingsOverrides = ''
@@ -21,9 +29,10 @@
       '';
     };
 
- #   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+#   environment.sessionVariables.NIXOS_OZONE_WL = "1";
     
  environment.systemPackages = with pkgs; [
+        # Xmonad
 		picom
 		stack
 		xmobar
@@ -38,27 +47,18 @@
 		brightnessctl
 		alacritty
 		i3lock-color
-		dunst
+        dunst
 
-      dconf2nix
-      xwayland
-      xdg-desktop-portal
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-		gnome.gnome-tweaks
-        gnome.gnome-terminal
-        gnome-network-displays
-		gnomeExtensions.arcmenu
-		gnomeExtensions.gtile
-		gnomeExtensions.dash-to-dock
-		endeavour
-		xwayland
-		gnome.mutter
-		graphite-cursors
-		graphite-gtk-theme
-		numix-cursor-theme
-		whitesur-cursors
-		pavucontrol
+        # Hyprland
+        xdg-desktop-portal-hyprland
+        kitty
+        swww
+        swaylock-effects
+        hypridle
+        waybar
+        hyprshot
+        nwg-look
+        hyprpicker
+        wofi
    ];
 }
