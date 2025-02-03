@@ -24,10 +24,11 @@
 	fzf.fuzzyCompletion = true;
 	xss-lock.enable = true;
 	direnv.enable = true;
-	thunar.enable = true;
+    thunar.enable = true;
   };
   services = {
-	gvfs.enable = true;
+    gvfs.enable = true;
+    flatpak.enable = true;
 	printing = {
 		enable = true;
 		drivers = with pkgs; [ gutenprint hplip samsung-unified-linux-driver brlaser ];

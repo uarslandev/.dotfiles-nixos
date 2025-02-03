@@ -6,7 +6,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-	obsidian
+    obsidian
 	anki
 	evince
   	libreoffice
@@ -16,8 +16,8 @@
 	obs-studio
 	blender
 	kdenlive
-	calibre
-	texstudio
+    calibre
+    texstudio
 	texliveFull
 	inkscape
   ];

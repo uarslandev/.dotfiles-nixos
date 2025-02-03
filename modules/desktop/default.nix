@@ -21,16 +21,6 @@
       xwayland.enable = true;
     };
 
-    services.xserver.desktopManager.gnome = {
-      enable = true;
-      extraGSettingsOverrides = ''
-        [org.gnome.mutter]
-        experimental-features=['scale-monitor-framebuffer']
-      '';
-    };
-
-#   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-    
  environment.systemPackages = with pkgs; [
         # Xmonad
 		picom

@@ -43,18 +43,6 @@
 
   security.polkit.enable = true;
 
-  # Fcitx5
-  i18n = {
-  defaultLocale = "en_US.UTF-8";
-  inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-    ];
-  };
-};
-
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
