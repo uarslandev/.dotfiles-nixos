@@ -8,26 +8,20 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1aa2ed92-5473-43cc-adaa-8253b3f43691";
+    { device = "/dev/disk/by-uuid/a01489fd-009f-4cfe-a92c-bf4189009789";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/e7f3cbf0-31ae-433e-8d8c-2ef665d9c1dd";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/9b8f5b69-c9ea-4175-8aa1-21e282e8c639";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/191B-55C7";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  fileSystems."/home/umut/HDD" =
-    { device = "/dev/disk/by-uuid/99f54e9c-375a-4873-bf92-4ff8b445acee";
+    { device = "/dev/disk/by-uuid/b75bf802-0c3f-4158-8bab-63b58dd75324";
       fsType = "ext4";
     };
 
@@ -38,9 +32,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.ztfp6m6yk5.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
