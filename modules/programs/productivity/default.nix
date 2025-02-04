@@ -10,7 +10,8 @@
 	anki
 	evince
   	libreoffice
-	glaxnimate
+    glaxnimate
+    zotero
 	gimp
 	gpick
 	obs-studio

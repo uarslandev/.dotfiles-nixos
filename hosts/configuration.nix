@@ -72,7 +72,8 @@
 	tmux
 	nautilus
 	fuse
-	rar
+    rar
+    nix-search-cli
 	ntfs3g
 	fuse3
 	lsof
