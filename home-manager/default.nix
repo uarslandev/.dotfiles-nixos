@@ -67,6 +67,7 @@ in
 	".config/waybar".source = link "${home}"+"/waybar";
 	".config/keepassxc".source = link "${home}"+"/keepassxc";
 	".config/rofi".source = link "${home}"+"/rofi";
+	".config/texstudio".source = link "${home}"+"/texstudio";
 	".config/i3".source = link "${home}"+"/i3";
 	".config/i3status".source = link "${home}"+"/i3status";
 	".config/kitty".source = link "${home}"+"/kitty";
