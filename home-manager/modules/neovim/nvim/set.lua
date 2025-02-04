@@ -1,5 +1,7 @@
 vim.opt.guicursor = ""
 
+vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 

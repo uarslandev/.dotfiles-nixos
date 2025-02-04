@@ -19,6 +19,7 @@
       mesonlsp
       pyright
       luajitPackages.lua-lsp
+      lua-language-server
       markdown-oxide
       dockerfile-language-server-nodejs
       typescript-language-server
