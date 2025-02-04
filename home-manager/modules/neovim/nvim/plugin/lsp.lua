@@ -26,13 +26,12 @@ lsp_zero.extend_lspconfig({
 
 -- These are just examples. Replace them with the language
 -- servers you have installed in your system
---require('lspconfig').ccls.setup({})
 --require('lspconfig').clangd.setup({})
 require('lspconfig').omnisharp.setup({})
---require('lspconfig').nixd.setup({})
---require('lspconfig').cssls.setup({})
+require('lspconfig').nixd.setup({})
+require('lspconfig').cssls.setup({})
 --require('lspconfig').denols.setup({})
---require('lspconfig').dockerls.setup({})
+require('lspconfig').dockerls.setup({})
 --require('lspconfig').graphql.setup({})
 --require('lspconfig').haskell-language-server.setup({})
 --require('lspconfig').html.setup({})
@@ -44,7 +43,7 @@ require('lspconfig').omnisharp.setup({})
 require('lspconfig').pyright.setup({})
 --require('lspconfig').sqlls.setup({})
 --require('lspconfig').texlab.setup({})
---require('lspconfig').ts_ls.setup({})
+require('lspconfig').ts_ls.setup({})
 --require('lspconfig').volar.setup({})
 
 

@@ -9,7 +9,7 @@
     bc
     unityhub
   	vscode
-	python3
+    python3
 	python3Packages.pip
 	python3Packages.virtualenv
 	arduino-core
@@ -29,4 +29,3 @@
     qalculate-gtk
   ];
 }
-

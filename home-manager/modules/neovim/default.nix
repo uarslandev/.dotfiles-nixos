@@ -18,15 +18,19 @@
     extraPackages = with pkgs; [
       mesonlsp
       pyright
-      haskell-language-server
       luajitPackages.lua-lsp
       markdown-oxide
+      dockerfile-language-server-nodejs
+      typescript-language-server
+      haskell-language-server
+      ccls
       nixd
     ];
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
       rose-pine
       omnisharp-extended-lsp-nvim
+      haskell-vim
 	  nvim-colorizer-lua
 	  lsp-format-nvim
 	  formatter-nvim

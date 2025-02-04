@@ -15,7 +15,8 @@ services.zerotierone = {
     vesktop
     element-desktop
     qbittorrent
-	slack
+    slack
+    gnome-network-displays
 	zoom-us
 	thunderbird
 	youtube-music
