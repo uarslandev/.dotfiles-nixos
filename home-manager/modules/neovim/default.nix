@@ -13,6 +13,7 @@
     	${builtins.readFile ./nvim/plugin/colors.lua}
     	${builtins.readFile ./nvim/plugin/fugitive.lua}
     	${builtins.readFile ./nvim/plugin/telescope.lua}
+    	${builtins.readFile ./nvim/plugin/flutter-tools.lua}
     	${builtins.readFile ./nvim/plugin/nvim-tree.lua}
     '';
     extraPackages = with pkgs; [
@@ -30,11 +31,14 @@
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
       rose-pine
+      plenary-nvim
+      dressing-nvim
       omnisharp-extended-lsp-nvim
       haskell-vim
 	  nvim-colorizer-lua
 	  lsp-format-nvim
-	  formatter-nvim
+      formatter-nvim
+      flutter-tools-nvim
 	  (nvim-treesitter.withPlugins (p: [
 	  	p.tree-sitter-nix
 	  	p.tree-sitter-vim
