@@ -82,7 +82,8 @@
 	cifs-utils
 	steam-run
 	cudatoolkit
-	cudaPackages_12.cudnn
+    cudaPackages_12.cudnn
+    nixpkgs-manual
   ];
   programs.dconf.enable = true;
 

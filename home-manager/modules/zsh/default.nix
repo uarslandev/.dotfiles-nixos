@@ -13,6 +13,8 @@
 
   shellAliases = {
     ll = "ls -l";
+    chrome = "google-chrome-stable";
+    nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
 	cal = "cal -mw";
     dfs = "cd ~/.dotfiles";
     update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd && dconf-load";
