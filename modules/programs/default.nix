@@ -21,7 +21,7 @@
               ];
   programs = {
     zsh.enable = true;
-	fzf.fuzzyCompletion = true;
+    fzf.fuzzyCompletion = true;
 	xss-lock.enable = true;
 	direnv.enable = true;
     thunar.enable = true;

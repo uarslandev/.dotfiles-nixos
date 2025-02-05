@@ -13,6 +13,13 @@
   boot.kernelParams = ["intel_iommu=on"];
   boot.kernelModules = ["kvm-intel"];
 
+
+  systemd.targets.sleep.enable = true;
+  systemd.targets.suspend.enable = true;
+  systemd.targets.hibernate.enable = true;
+  systemd.targets.hybrid-sleep.enable = true;
+
+
   services.cron = {
     systemCronJobs = [
       "*/1 * * * *      umut    echo 'connect DC:2C:26:3A:09:04' | bluetoothctl"

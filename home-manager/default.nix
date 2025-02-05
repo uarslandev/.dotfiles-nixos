@@ -13,12 +13,6 @@ in
   home.username = "umut";
   home.homeDirectory = "/home/umut";
 
-  dconf.settings = {
-    "org/gnome/mutter" = {
-      experimental-features = [ "scale-monitor-framebuffer" ];
-    };
-  };
-
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -97,28 +91,36 @@ in
   # if you don't want to manage your shell through Home Manager.
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    TERMINAL = "kitty";
   };
 
-#  gtk = {
-#	  enable = true;
-#	  cursorTheme = {
-#		  package = pkgs.bibata-cursors;
-#		  name = "Bibata-Modern-Ice";
-#	  };
-#	  theme = {
-#		  name = "SolArc-Dark";
-#		  package = pkgs.solarc-gtk-theme;
-#	  };
-#  };
-#  qt = {
-#	  enable = true;
-#	  platformTheme.name = "gtk";
-#	  style = {
-#		  name = "adwaita-dark";
-#	  };
-#  };
+ dconf.settings = {
+      "org/gnome/desktop/background" = {
+        picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
+      };
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
 
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Adwaita-dark";
+        package = pkgs.gnome.gnome-themes-extra;
+      };
+    };
+
+    # Wayland, X, etc. support for session vars
+#    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
+
+#  qt = {
+#    enable = true;
+#    platformTheme = "gnome";
+#    style = "adwaita-dark";
+#  };
+ 
 # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

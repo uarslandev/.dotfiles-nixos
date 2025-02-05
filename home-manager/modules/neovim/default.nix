@@ -24,9 +24,12 @@
       markdown-oxide
       dockerfile-language-server-nodejs
       typescript-language-server
+      vscode-langservers-extracted
+      kotlin-language-server
       haskell-language-server
       ccls
       nixd
+      nodePackages.prettier
     ];
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
@@ -34,6 +37,7 @@
       plenary-nvim
       dressing-nvim
       omnisharp-extended-lsp-nvim
+      vim-prettier
       haskell-vim
 	  nvim-colorizer-lua
 	  lsp-format-nvim
