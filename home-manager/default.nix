@@ -102,6 +102,10 @@ in
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
       };
+      "org/gnome/settings-daemon/plugins/power" = {
+        power-button-action="suspend";
+      };
+
     };
 
     gtk = {
