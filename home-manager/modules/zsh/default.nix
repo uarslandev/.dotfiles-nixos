@@ -12,7 +12,6 @@
     };
 
   shellAliases = {
-    ll = "ls -l";
     chrome = "google-chrome-stable";
     nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
 	cal = "cal -mw";
@@ -34,12 +33,14 @@
     gt = "git ls-tree";
 	gs = "git status";
     gl = "git log --graph --pretty=oneline --abbrev-commit";
+    glu = "git ls-files";
+    gluf = "git ls-files --others --exclude-standard | awk -F'/' '{print \$1}' | sort | uniq";
+    gls = "git ls-files";
+    glsu = "git ls-files | awk -F'/' '{print \$1}' | sort | uniq";
 	lg = "looking-glass-client -F";
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; dconf-save; ga .; gcd; gp; popd";
-	dconf-save = "pushd ~/.dotfiles/home-manager; dconf dump / > dconf-settings.ini; popd";
-	dconf-load = "pushd ~/.dotfiles/home-manager/; dconf load / < dconf-settings.ini; popd";
   };
   plugins = [
 	{
