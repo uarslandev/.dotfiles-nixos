@@ -1,12 +1,11 @@
 { lib, pkgs, ... }:
-
-         #${lib.getExe pkgs.perl} -pi -e 's/\x74\x11\xe8\x21\x23\x00\x00/\xeb\x11\xe8\x21\x23\x00\x00/g' $out/bin/resolve
 let
   davinci-resolve-studio =
     let
       davinci-patched = pkgs.davinci-resolve-studio.davinci.overrideAttrs (old: {
         postInstall = ''
           ${old.postInstall or ""}
+         ${lib.getExe pkgs.perl} -pi -e 's/\x74\x11\xe8\x21\x23\x00\x00/\xeb\x11\xe8\x21\x23\x00\x00/g' $out/bin/resolve
         '';
       });
     in
