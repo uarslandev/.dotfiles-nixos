@@ -41,7 +41,6 @@
 
         # Hyprland
         xdg-desktop-portal-hyprland
-        dolphin
         kitty
         swww
         swaylock-effects
