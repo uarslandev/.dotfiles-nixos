@@ -84,6 +84,7 @@
 	cudatoolkit
     cudaPackages_12.cudnn
     nixpkgs-manual
+    ripgrep
   ];
   programs.dconf.enable = true;
 
