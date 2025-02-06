@@ -52,7 +52,7 @@
     },
     "clock": {
    //     "format": " {:%I:%M %p   %d/%m/%Y}"
-   "format": " {:%Y年 %m月 %d日 (%a)}"
+   "format": " {:%Y年 %m月 %d日 (%a) 第%V周 %H:%M %p}"
     },
     "cpu": {
         "interval": 15,

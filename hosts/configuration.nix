@@ -28,6 +28,11 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  i18n.extraLocaleSettings = {
+    LC_MESSAGES = "en_US.UTF-8";
+    LC_TIME = "ja_JP.UTF-8";
+    };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -78,7 +83,8 @@
 	fuse3
 	lsof
 	zip
-	unzip
+    unzip
+    playerctl
 	cifs-utils
 	steam-run
 	cudatoolkit
@@ -93,8 +99,6 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-
-
 
 
   # List services that you want to enable:
