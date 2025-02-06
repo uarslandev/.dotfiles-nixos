@@ -46,6 +46,7 @@
         swww
         swaylock-effects
         hypridle
+        wl-clipboard
         waybar
         hyprshot
         nwg-look
