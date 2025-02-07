@@ -16,7 +16,7 @@
     nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
 	cal = "cal -mw";
     dfs = "cd ~/.dotfiles";
-    update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd && dconf-load";
+    update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
     u = "update";
 	nix-search = "nix search nixpkgs";
 	nix-update = "nix flake update";
@@ -40,7 +40,7 @@
 	lg = "looking-glass-client -F";
 	startvm = "sudo virsh start win11";
 	stopvm = "sudo virsh shutdown win11";
-	backup = "pushd ~/.dotfiles; dconf-save; ga .; gcd; gp; popd";
+	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
   };
   plugins = [
 	{
