@@ -10,7 +10,8 @@
     localsend
 	anki
 	evince
-  	libreoffice
+    libreoffice
+    vlc
     glaxnimate
     zotero
 	gimp
