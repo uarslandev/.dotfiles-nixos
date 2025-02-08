@@ -10,7 +10,7 @@ pkgs.writeShellScriptBin "scale" ''
 	factor=$1
 
 	# Calculate dpi using bc for floating point precision
-	dpi=$(echo "$factor * 96" | bc)
+	dpi=$(echo "$factor * 97" | bc)
 
 	# Check if .Xresources exists, and create if not
 	if [ ! -f ~/.Xresources ]; then
