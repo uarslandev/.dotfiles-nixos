@@ -8,5 +8,6 @@ in
 		(import ./lock.nix { inherit pkgs; })
 		(import ./evdev.nix { inherit pkgs; })
 		(import ./tmux-sessionizer.nix { inherit pkgs; })
+		(import ./convert { inherit pkgs; })
 	];
 }
