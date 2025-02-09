@@ -15,7 +15,6 @@
     	${builtins.readFile ./nvim/plugin/telescope.lua}
     	${builtins.readFile ./nvim/plugin/flutter-tools.lua}
     	${builtins.readFile ./nvim/plugin/nvim-tree.lua}
-    	${builtins.readFile ./nvim/plugin/null-ls.lua}
     '';
     extraPackages = with pkgs; [
       mesonlsp
@@ -36,6 +35,7 @@
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
       rose-pine
+      neoformat
       plenary-nvim
       null-ls-nvim
       dressing-nvim
@@ -48,7 +48,7 @@
       flutter-tools-nvim
 	  (nvim-treesitter.withPlugins (p: [
 	  	p.tree-sitter-nix
-	  	p.tree-sitter-vim
+        p.tree-sitter-vim
 	  	p.tree-sitter-bash
 	  	p.tree-sitter-lua
 	  	p.tree-sitter-python

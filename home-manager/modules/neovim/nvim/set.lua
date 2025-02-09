@@ -2,6 +2,8 @@ vim.opt.guicursor = ""
 
 vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
 vim.cmd([[autocmd VimEnter * NvimTreeToggle]])
+vim.cmd([[autocmd BufWritePre *.js Neoformat]])
+
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

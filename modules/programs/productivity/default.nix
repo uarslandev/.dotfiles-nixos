@@ -9,7 +9,8 @@
     obsidian
     localsend
 	anki
-	evince
+    evince
+    tuxguitar
     libreoffice
     vlc
     glaxnimate
