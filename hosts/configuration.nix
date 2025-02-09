@@ -83,7 +83,7 @@
 	lsof
 	zip
     unzip
-    playerctl
+    #playerctl
     cifs-utils
     ffmpeg
 	steam-run

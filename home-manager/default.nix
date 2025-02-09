@@ -70,7 +70,7 @@ in
 	".config/picom".source = link "${home}"+"/picom";
 	".config/alacritty".source = link "${home}"+"/alacritty";
 	".xmobarrc".source = link "${home}"+"/.xmobarrc";
-	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
+#	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -90,30 +90,30 @@ in
   #
   # if you don't want to manage your shell through Home Manager.
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    TERMINAL = "kitty";
-  };
+#  home.sessionVariables = {
+#    EDITOR = "nvim";
+#    TERMINAL = "kitty";
+#  };
 
- dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-      "org/gnome/settings-daemon/plugins/power" = {
-        power-button-action="suspend";
-      };
-
-    };
-
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita-dark";
-        package = pkgs.gnome.gnome-themes-extra;
-      };
-    };
-
-    # Wayland, X, etc. support for session vars
+# dconf.settings = {
+#      "org/gnome/desktop/interface" = {
+#        color-scheme = "prefer-dark";
+#      };
+#      "org/gnome/settings-daemon/plugins/power" = {
+#        power-button-action="suspend";
+#      };
+#
+#    };
+#
+#    gtk = {
+#      enable = true;
+#      theme = {
+#        name = "Adwaita-dark";
+#        package = pkgs.gnome.gnome-themes-extra;
+#      };
+#    };
+#
+#    # Wayland, X, etc. support for session vars
 #    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
 
 #  qt = {

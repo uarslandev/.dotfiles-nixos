@@ -15,9 +15,11 @@
     	${builtins.readFile ./nvim/plugin/telescope.lua}
     	${builtins.readFile ./nvim/plugin/flutter-tools.lua}
     	${builtins.readFile ./nvim/plugin/nvim-tree.lua}
+    	${builtins.readFile ./nvim/plugin/null-ls.lua}
     '';
     extraPackages = with pkgs; [
       mesonlsp
+      pls
       pyright
       luajitPackages.lua-lsp
       lua-language-server
@@ -35,6 +37,7 @@
 	  nvim-tree-lua
       rose-pine
       plenary-nvim
+      null-ls-nvim
       dressing-nvim
       omnisharp-extended-lsp-nvim
       vim-prettier
