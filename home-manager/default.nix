@@ -95,15 +95,21 @@ in
 #    TERMINAL = "kitty";
 #  };
 
-# dconf.settings = {
-#      "org/gnome/desktop/interface" = {
-#        color-scheme = "prefer-dark";
-#      };
-#      "org/gnome/settings-daemon/plugins/power" = {
-#        power-button-action="suspend";
-#      };
+ dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+      "org/gnome/settings-daemon/plugins/power" = {
+        power-button-action="suspend";
+      };
+    };
+
+#    gtk.enable = true;
+#    gtk.cursorTheme.name = "Bibata-Modern-Ice";
+#    gtk.cursorTheme.package = pkgs.bibata-cursors;
 #
-#    };
+#    gtk.theme.package = pkgs.adw-gtk3;
+#    gtk.theme.name = "adw-gtk3";
 #
 #    gtk = {
 #      enable = true;
