@@ -1,14 +1,30 @@
 {
     "InternalPDFViewer": {
-        "Embedded": false,
-        "File": ""
+        "Embedded": true,
+        "File": "../../Drive/Drive1/Uni/ITS/final_report/paper_template.pdf"
     },
     "Session": {
         "Bookmarks": [
         ],
-        "CurrentFile": "",
+        "CurrentFile": "../../Drive/Drive1/Uni/ITS/final_report/paper_template.tex",
         "FileVersion": 1,
         "Files": [
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Drive/Drive1/Uni/ITS/final_report/paper_template.tex",
+                "FirstLine": 38,
+                "FoldedLines": "",
+                "Line": 50
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "../../Drive/Drive1/Uni/ITS/final_report/literature.bib",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 0
+            }
         ],
         "MasterFile": "",
         "VerticalSplit": false

@@ -1,0 +1,43 @@
+{
+    "bibitems": [
+    ],
+    "bibtexfiles": [
+        "/home/umut/Drive/Drive1/Uni/ITS/final_report/literature.bib#literature.bib"
+    ],
+    "childdocs": [
+    ],
+    "filename": "/home/umut/Drive/Drive1/Uni/ITS/final_report/paper_template.tex",
+    "labels": [
+        "fig:ui2",
+        "fig:architecture",
+        "fig:ui1"
+    ],
+    "modified": "Tue Feb 11 13:19:00 2025",
+    "packages": [
+        "#tikz",
+        "utf8#inputenc",
+        "T1#fontenc",
+        "#graphicx",
+        "english#babel",
+        "#csquotes",
+        "left=2.5cm,right=2.5cm,top=3cm,bottom=3cm#geometry",
+        "#natbib",
+        "#doi",
+        "#hyperref",
+        "#nameref",
+        "12pt,a4paper#latex-document",
+        "12pt,a4paper#tex"
+    ],
+    "refs": [
+    ],
+    "toc": [
+        "2#Introduction#23",
+        "2#Background and Related Work#27",
+        "2#System Architecture#35",
+        "2#Implementation#63",
+        "2#Experiments#87",
+        "2#Conclusion#105"
+    ],
+    "usercommands": [
+    ]
+}
