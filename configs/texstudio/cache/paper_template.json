@@ -8,26 +8,26 @@
     ],
     "filename": "/home/umut/Drive/Drive1/Uni/ITS/final_report/paper_template.tex",
     "labels": [
+        "fig:ui2",
         "fig:ui1",
-        "fig:architecture",
-        "fig:ui2"
+        "fig:architecture"
     ],
-    "modified": "Tue Feb 11 17:41:39 2025",
+    "modified": "Wed Feb 12 19:14:28 2025",
     "packages": [
-        "#hyperref",
-        "#nameref",
-        "utf8#inputenc",
-        "#natbib",
-        "#csquotes",
-        "english#babel",
+        "#graphicx",
         "12pt,a4paper#latex-document",
         "12pt,a4paper#tex",
-        "left=2.5cm,right=2.5cm,top=3cm,bottom=3cm#geometry",
+        "#natbib",
         "#doi",
+        "#csquotes",
+        "#hyperref",
+        "#nameref",
+        "english#babel",
         "#tikzlibrarypositioning",
-        "#graphicx",
-        "T1#fontenc",
-        "#tikz"
+        "utf8#inputenc",
+        "left=2.5cm,right=2.5cm,top=3cm,bottom=3cm#geometry",
+        "#tikz",
+        "T1#fontenc"
     ],
     "refs": [
     ],
