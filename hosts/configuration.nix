@@ -92,6 +92,15 @@
     nixpkgs-manual
     ripgrep
   ];
+
+  services.upower = {
+      enable = true;
+      percentageLow = 15;
+      percentageCritical = 5;
+      percentageAction = 4;
+      criticalPowerAction = "Hibernate";
+    };
+
   programs.dconf.enable = true;
 
     programs.steam = {
