@@ -10,12 +10,20 @@
         "FileVersion": 1,
         "Files": [
             {
-                "Col": 41,
+                "Col": 23,
                 "EditorGroup": 0,
                 "FileName": "../../Drive/Drive1/Uni/ITS/final_report/paper_template.tex",
-                "FirstLine": 80,
+                "FirstLine": 26,
                 "FoldedLines": "",
-                "Line": 86
+                "Line": 40
+            },
+            {
+                "Col": 64,
+                "EditorGroup": 0,
+                "FileName": "../../Drive/Drive1/Uni/ITS/final_report/literature.bib",
+                "FirstLine": 0,
+                "FoldedLines": "",
+                "Line": 9
             }
         ],
         "MasterFile": "",

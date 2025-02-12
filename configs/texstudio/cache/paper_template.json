@@ -12,35 +12,35 @@
         "fig:ui1",
         "fig:architecture"
     ],
-    "modified": "Wed Feb 12 19:14:28 2025",
+    "modified": "Wed Feb 12 22:06:18 2025",
     "packages": [
-        "#graphicx",
-        "12pt,a4paper#latex-document",
-        "12pt,a4paper#tex",
-        "#natbib",
-        "#doi",
-        "#csquotes",
-        "#hyperref",
-        "#nameref",
-        "english#babel",
-        "#tikzlibrarypositioning",
         "utf8#inputenc",
+        "english#babel",
+        "#graphicx",
         "left=2.5cm,right=2.5cm,top=3cm,bottom=3cm#geometry",
         "#tikz",
-        "T1#fontenc"
+        "#tikzlibrarypositioning",
+        "T1#fontenc",
+        "12pt,a4paper#latex-document",
+        "12pt,a4paper#tex",
+        "#hyperref",
+        "#nameref",
+        "#doi",
+        "#natbib",
+        "#csquotes"
     ],
     "refs": [
     ],
     "toc": [
         "2#Introduction#24",
         "2#Background and Related Work#32",
-        "2#System Architecture#42",
-        "2#Implementation#72",
-        "2#Experiments#113",
-        "3#Pre-Test and Participant Profile#117",
-        "3#Interaction Protocol#120",
-        "3#Post-Test and Data Analysis#127",
-        "2#Conclusion#132"
+        "2#System Architecture#40",
+        "2#Implementation#70",
+        "2#Experiments#104",
+        "3#Pre-Test and Participant Profile#108",
+        "3#Interaction Protocol#115",
+        "3#Post-Test and Data Analysis#125",
+        "2#Conclusion#133"
     ],
     "usercommands": [
     ]
