@@ -8,27 +8,27 @@
     ],
     "filename": "/home/umut/Drive/Drive1/Uni/SRM2.0/Report/template.tex",
     "labels": [
-        "sec:methods",
-        "sec:background",
-        "sec:analysis",
+        "sec:impact",
         "sec:conclusion",
         "sec:introduction",
-        "sec:impact"
+        "sec:methods",
+        "sec:background",
+        "sec:analysis"
     ],
     "modified": "Thu Feb 13 13:29:10 2025",
     "packages": [
+        "#graphicx",
+        "#geometry",
         "#amsmath",
+        "style=numeric-comp, backend=biber,#biblatex",
         "#setspace",
-        "#hyperref",
-        "#nameref",
-        "utf8#inputenc",
         "12pt#class-report",
         "12pt#latex-document",
         "12pt#tex",
-        "#geometry",
-        "style=numeric-comp, backend=biber,#biblatex",
-        "#csquotes",
-        "#graphicx"
+        "#hyperref",
+        "#nameref",
+        "utf8#inputenc",
+        "#csquotes"
     ],
     "refs": [
     ],
