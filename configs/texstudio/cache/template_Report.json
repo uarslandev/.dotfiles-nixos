@@ -1,0 +1,43 @@
+{
+    "bibitems": [
+    ],
+    "bibtexfiles": [
+        "/home/umut/Drive/Drive1/Uni/SRM/Report/references.bib#references.bib"
+    ],
+    "childdocs": [
+    ],
+    "filename": "/home/umut/Drive/Drive1/Uni/SRM/Report/template_Report.tex",
+    "labels": [
+        "sec:introduction",
+        "sec:main",
+        "sec:conclusion"
+    ],
+    "modified": "Thu Feb 13 10:49:05 2025",
+    "packages": [
+        "style=apa#biblatex",
+        "utf8#inputenc",
+        "#geometry",
+        "12pt#class-report",
+        "12pt#latex-document",
+        "12pt#tex",
+        "#graphicx",
+        "#csquotes",
+        "#hyperref",
+        "#nameref",
+        "#setspace",
+        "#amsmath"
+    ],
+    "refs": [
+    ],
+    "toc": [
+        "2#Introduction#29",
+        "2#Main Discussion#33",
+        "3#Methods in AI Music Generation#35",
+        "3#Analysis of Research Papers#37",
+        "3#Impact on the Music Industry#39",
+        "2#Conclusion#42",
+        "2#Declaration#50"
+    ],
+    "usercommands": [
+    ]
+}

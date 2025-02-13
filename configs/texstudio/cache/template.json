@@ -1,0 +1,53 @@
+{
+    "bibitems": [
+    ],
+    "bibtexfiles": [
+        "/home/umut/Drive/Drive1/Uni/SRM2.0/Report/references.bib#references.bib"
+    ],
+    "childdocs": [
+    ],
+    "filename": "/home/umut/Drive/Drive1/Uni/SRM2.0/Report/template.tex",
+    "labels": [
+        "sec:methods",
+        "sec:background",
+        "sec:analysis",
+        "sec:conclusion",
+        "sec:introduction",
+        "sec:impact"
+    ],
+    "modified": "Thu Feb 13 13:29:10 2025",
+    "packages": [
+        "#amsmath",
+        "#setspace",
+        "#hyperref",
+        "#nameref",
+        "utf8#inputenc",
+        "12pt#class-report",
+        "12pt#latex-document",
+        "12pt#tex",
+        "#geometry",
+        "style=numeric-comp, backend=biber,#biblatex",
+        "#csquotes",
+        "#graphicx"
+    ],
+    "refs": [
+    ],
+    "toc": [
+        "2#Introduction#29",
+        "2#Background and Related Work#42",
+        "2#Methods in AI Music Generation#48",
+        "3#Symbolic AI Approaches#50",
+        "3#Machine Learning Approaches#52",
+        "3#Hybrid Models#54",
+        "3#Tools and Platforms#56",
+        "2#Analysis of Research Papers#59",
+        "2#Impact and Ethical Considerations#65",
+        "3#Impact on the Music Industry#67",
+        "3#Ethical and Legal Issues#69",
+        "3#Public Perception and Future Trends#71",
+        "2#Conclusion#74",
+        "2#Declaration#85"
+    ],
+    "usercommands": [
+    ]
+}

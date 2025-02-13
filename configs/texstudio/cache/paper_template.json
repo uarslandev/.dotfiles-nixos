@@ -2,45 +2,39 @@
     "bibitems": [
     ],
     "bibtexfiles": [
-        "/home/umut/Drive/Drive1/Uni/ITS/final_report/literature.bib#literature.bib"
+        "/home/umut/Downloads/templates/literature.bib#literature.bib"
     ],
     "childdocs": [
     ],
-    "filename": "/home/umut/Drive/Drive1/Uni/ITS/final_report/paper_template.tex",
+    "filename": "/home/umut/Downloads/templates/paper_template.tex",
     "labels": [
-        "fig:ui2",
-        "fig:ui1",
-        "fig:architecture"
+        "fig:my_figure"
     ],
-    "modified": "Wed Feb 12 22:06:18 2025",
+    "modified": "Thu Jan 30 15:44:24 2025",
     "packages": [
+        "#csquotes",
+        "left=2.5cm,right=2.5cm,top=3cm,bottom=3cm#geometry",
+        "#natbib",
         "utf8#inputenc",
         "english#babel",
         "#graphicx",
-        "left=2.5cm,right=2.5cm,top=3cm,bottom=3cm#geometry",
-        "#tikz",
-        "#tikzlibrarypositioning",
+        "#hyperref",
+        "#nameref",
         "T1#fontenc",
         "12pt,a4paper#latex-document",
         "12pt,a4paper#tex",
-        "#hyperref",
-        "#nameref",
-        "#doi",
-        "#natbib",
-        "#csquotes"
+        "#doi"
     ],
     "refs": [
+        "fig:my_figure"
     ],
     "toc": [
         "2#Introduction#24",
-        "2#Background and Related Work#32",
-        "2#System Architecture#40",
-        "2#Implementation#70",
-        "2#Experiments#104",
-        "3#Pre-Test and Participant Profile#108",
-        "3#Interaction Protocol#115",
-        "3#Post-Test and Data Analysis#125",
-        "2#Conclusion#133"
+        "2#Background and related work#30",
+        "2#System architecture#40",
+        "2#Implementation#55",
+        "2#Experiments#62",
+        "2#Conclusion#71"
     ],
     "usercommands": [
     ]

@@ -1,0 +1,146 @@
+{
+    "bibitems": [
+    ],
+    "bibtexfiles": [
+    ],
+    "childdocs": [
+    ],
+    "filename": "/home/umut/Drive/Drive1/Uni/SRM/main.tex",
+    "labels": [
+        "eq:dev",
+        "tab:tab1",
+        "sec:Daten",
+        "fig:ACF"
+    ],
+    "modified": "Tue Dec 1 14:14:40 2020",
+    "packages": [
+        "dvips#graphics",
+        "#latexsym",
+        "german,english#babel",
+        "#hyperref",
+        "#nameref",
+        "dcucite#harvard",
+        "scaled#helvet",
+        "#multicol",
+        "twoside,openright,12pt#class-report",
+        "twoside,openright,12pt#latex-document",
+        "twoside,openright,12pt#tex",
+        "#amsfonts",
+        "#fancyhdr",
+        "#pgf"
+    ],
+    "refs": [
+        "tab:tab1",
+        "fig:ACF"
+    ],
+    "toc": [
+        "1#Einleitung und Motivation#200",
+        "2#Daten#238",
+        "2#Methodenerklärung#242",
+        "1#Hauptteil#260",
+        "2#Formatvorgaben#275",
+        "3#Zitate#280",
+        "3#Formeln#290",
+        "3#Abbildungen#313",
+        "3#Tabellen#325",
+        "1#Zusammenfassung und Ausblick#347",
+        "1#Appendix#385",
+        "2#Datenappendix#391",
+        "2#Glossar#394",
+        "1#Versicherung#399"
+    ],
+    "usercommands": [
+        [
+            "\\footrulewidth",
+            "\\footrulewidth"
+        ],
+        [
+            "lemma",
+            "\\end{lemma}"
+        ],
+        [
+            "lemma",
+            "\\begin{lemma}"
+        ],
+        [
+            "notlist",
+            "\\end{notlist}"
+        ],
+        [
+            "notlist",
+            "\\begin{notlist}"
+        ],
+        [
+            "notlist",
+            "\\begin{notlist}"
+        ],
+        [
+            "notlist",
+            "\\end{notlist}"
+        ],
+        [
+            "cor",
+            "\\end{cor}"
+        ],
+        [
+            "cor",
+            "\\begin{cor}"
+        ],
+        [
+            "definition",
+            "\\end{definition}"
+        ],
+        [
+            "definition",
+            "\\begin{definition}"
+        ],
+        [
+            "definition",
+            "\\begin{definition}{}"
+        ],
+        [
+            "definition",
+            "\\end{definition}"
+        ],
+        [
+            "\\chaptermark",
+            "\\chaptermark{}"
+        ],
+        [
+            "\\eqref",
+            "\\eqref{}"
+        ],
+        [
+            "proof",
+            "\\end{proof}"
+        ],
+        [
+            "proof",
+            "\\begin{proof}"
+        ],
+        [
+            "proof",
+            "\\begin{proof}"
+        ],
+        [
+            "proof",
+            "\\end{proof}"
+        ],
+        [
+            "rem",
+            "\\end{rem}"
+        ],
+        [
+            "rem",
+            "\\begin{rem}"
+        ],
+        [
+            "theorem",
+            "\\end{theorem}"
+        ],
+        [
+            "theorem",
+            "\\begin{theorem}"
+        ]
+    ]
+}
