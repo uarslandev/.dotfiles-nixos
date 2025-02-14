@@ -1,21 +1,21 @@
 {
     "InternalPDFViewer": {
         "Embedded": true,
-        "File": "../../Drive/Drive1/Uni/SRM2.0/Report/template.pdf"
+        "File": "../../Drive/Drive1/Uni/SRM2.0/ReportV2/template.pdf"
     },
     "Session": {
         "Bookmarks": [
         ],
-        "CurrentFile": "../../Drive/Drive1/Uni/SRM2.0/Report/template.tex",
+        "CurrentFile": "../../Drive/Drive1/Uni/SRM2.0/ReportV2/template.tex",
         "FileVersion": 1,
         "Files": [
             {
-                "Col": 331,
+                "Col": 0,
                 "EditorGroup": 0,
                 "FileName": "../../Drive/Drive1/Uni/SRM2.0/Report/template.tex",
-                "FirstLine": 36,
+                "FirstLine": 51,
                 "FoldedLines": "",
-                "Line": 42
+                "Line": 110
             },
             {
                 "Col": 8,
@@ -24,6 +24,14 @@
                 "FirstLine": 116,
                 "FoldedLines": "",
                 "Line": 136
+            },
+            {
+                "Col": 14,
+                "EditorGroup": 0,
+                "FileName": "../../Drive/Drive1/Uni/SRM2.0/ReportV2/template.tex",
+                "FirstLine": 105,
+                "FoldedLines": "",
+                "Line": 135
             }
         ],
         "MasterFile": "",
