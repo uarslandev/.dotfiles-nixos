@@ -10,20 +10,20 @@
         "FileVersion": 1,
         "Files": [
             {
-                "Col": 39,
+                "Col": 331,
                 "EditorGroup": 0,
                 "FileName": "../../Drive/Drive1/Uni/SRM2.0/Report/template.tex",
-                "FirstLine": 0,
+                "FirstLine": 36,
                 "FoldedLines": "",
-                "Line": 31
+                "Line": 42
             },
             {
-                "Col": 0,
+                "Col": 8,
                 "EditorGroup": 0,
                 "FileName": "../../Drive/Drive1/Uni/SRM2.0/Report/references.bib",
-                "FirstLine": 98,
+                "FirstLine": 116,
                 "FoldedLines": "",
-                "Line": 0
+                "Line": 136
             }
         ],
         "MasterFile": "",

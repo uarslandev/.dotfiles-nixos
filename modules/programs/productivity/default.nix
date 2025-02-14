@@ -22,6 +22,7 @@
 	kdenlive
     calibre
     texstudio
+    biber
 	texliveFull
 	inkscape
   ];
