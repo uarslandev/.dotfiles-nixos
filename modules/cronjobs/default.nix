@@ -11,6 +11,7 @@
     systemCronJobs = [
       "*/1 * * * *      umut    cd ~/Drive/Drive1 && grive"
       "*/1 * * * *      umut    cd ~/Drive/Drive2 && grive"
+      "*/1 * * * *      umut    dfs && git pull"
     ];
   };
 }
