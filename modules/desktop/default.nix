@@ -27,7 +27,8 @@
 		stack
 		xmobar
 		lxappearance
-		feh
+        feh
+        plasma5Packages.kdeconnect-kde
 		rofi
 		flameshot
 		networkmanagerapplet

@@ -20,7 +20,8 @@ services.zerotierone = {
 	zoom-us
 	thunderbird
 	youtube-music
-	google-chrome
+    google-chrome
+    firefox-bin
 	tor-browser
   ];
 }
