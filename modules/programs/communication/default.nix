@@ -16,6 +16,7 @@ services.zerotierone = {
     element-desktop
     qbittorrent
     slack
+    protonvpn-gui
     gnome-network-displays
 	zoom-us
 	thunderbird
