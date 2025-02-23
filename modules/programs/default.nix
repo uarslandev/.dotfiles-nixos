@@ -11,7 +11,7 @@
 	./communication
 	./development
     ./productivity
-    ./resolve
+#    ./resolve
 	./scripts
   ];
   nixpkgs.config.allowUnfree = true;

@@ -8,27 +8,22 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a01489fd-009f-4cfe-a92c-bf4189009789";
+    { device = "/dev/disk/by-uuid/ef013580-ad28-44cd-b0f9-5b23903610ea";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/9b8f5b69-c9ea-4175-8aa1-21e282e8c639";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/22fc613a-4108-416e-9e34-9d8aa1eb62a3";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B163-369E";
+    { device = "/dev/disk/by-uuid/0F7D-6D63";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  fileSystems."/home/umut/HDD" =
-    { device = "/dev/disk/by-uuid/b75bf802-0c3f-4158-8bab-63b58dd75324";
-      fsType = "ext4";
     };
 
   swapDevices = [ ];
@@ -38,9 +33,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.ztfp6m6yk5.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
