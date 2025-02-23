@@ -104,30 +104,20 @@ in
       };
     };
 
-#    gtk.enable = true;
-#    gtk.cursorTheme.name = "Bibata-Modern-Ice";
-#    gtk.cursorTheme.package = pkgs.bibata-cursors;
-#
-#    gtk.theme.package = pkgs.adw-gtk3;
-#    gtk.theme.name = "adw-gtk3";
-#
-#    gtk = {
-#      enable = true;
-#      theme = {
-#        name = "Adwaita-dark";
-#        package = pkgs.gnome.gnome-themes-extra;
-#      };
-#    };
-#
-#    # Wayland, X, etc. support for session vars
+    gtk.cursorTheme.name = "Bibata-Modern-Ice";
+    gtk.cursorTheme.package = pkgs.bibata-cursors;
+
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Adwaita-dark";
+        package = pkgs.gnome.gnome-themes-extra;
+      };
+    };
+
+    # Wayland, X, etc. support for session vars
 #    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
 
-#  qt = {
-#    enable = true;
-#    platformTheme = "gnome";
-#    style = "adwaita-dark";
-#  };
- 
 # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
