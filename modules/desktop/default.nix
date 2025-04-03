@@ -30,7 +30,8 @@
         feh
         plasma5Packages.kdeconnect-kde
 		rofi
-		flameshot
+        flameshot
+        glib
 		networkmanagerapplet
 		arandr
 		pavucontrol

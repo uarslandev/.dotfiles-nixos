@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 let
-	home = "/home/umut/.dotfiles/configs";
-	link = config.lib.file.mkOutOfStoreSymlink;
+  home = "/home/umut/.dotfiles/configs";
+  link = config.lib.file.mkOutOfStoreSymlink;
 in
-{
+  {
 
-  imports = [
-    ./modules
-  ];
+    imports = [
+      ./modules
+    ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "umut";
@@ -49,27 +49,27 @@ in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-	".config/bg.jpg".source = link "${home}"+"/bg.jpg";
-	".config/lock.png".source = link "${home}"+"/lock.png";
-	".config/dunst".source = link "${home}"+"/dunst";
-	".config/fcitx5".source = link "${home}"+"/fcitx5";
-	".config/GIMP".source = link "${home}"+"/GIMP";
-	".config/hypr".source = link "${home}"+"/hypr";
-	".config/neofetch".source = link "${home}"+"/neofetch";
-	".config/swaylock".source = link "${home}"+"/swaylock";
-	".config/wofi".source = link "${home}"+"/wofi";
-	".config/waybar".source = link "${home}"+"/waybar";
-	".config/keepassxc".source = link "${home}"+"/keepassxc";
-	".config/rofi".source = link "${home}"+"/rofi";
-	".config/texstudio".source = link "${home}"+"/texstudio";
-	".config/i3".source = link "${home}"+"/i3";
-	".config/i3status".source = link "${home}"+"/i3status";
-	".config/kitty".source = link "${home}"+"/kitty";
-	".config/xmonad".source = link "${home}"+"/xmonad";
-	".config/tmux".source = link "${home}"+"/tmux";
-	".config/picom".source = link "${home}"+"/picom";
-	".config/alacritty".source = link "${home}"+"/alacritty";
-	".xmobarrc".source = link "${home}"+"/.xmobarrc";
+    ".config/bg.jpg".source = link "${home}"+"/bg.jpg";
+    ".config/lock.png".source = link "${home}"+"/lock.png";
+    ".config/dunst".source = link "${home}"+"/dunst";
+    ".config/fcitx5".source = link "${home}"+"/fcitx5";
+    ".config/GIMP".source = link "${home}"+"/GIMP";
+    ".config/hypr".source = link "${home}"+"/hypr";
+    ".config/neofetch".source = link "${home}"+"/neofetch";
+    ".config/swaylock".source = link "${home}"+"/swaylock";
+    ".config/wofi".source = link "${home}"+"/wofi";
+    ".config/waybar".source = link "${home}"+"/waybar";
+    ".config/keepassxc".source = link "${home}"+"/keepassxc";
+    ".config/rofi".source = link "${home}"+"/rofi";
+    ".config/texstudio".source = link "${home}"+"/texstudio";
+    ".config/i3".source = link "${home}"+"/i3";
+    ".config/i3status".source = link "${home}"+"/i3status";
+    ".config/kitty".source = link "${home}"+"/kitty";
+    ".config/xmonad".source = link "${home}"+"/xmonad";
+    ".config/tmux".source = link "${home}"+"/tmux";
+    ".config/picom".source = link "${home}"+"/picom";
+    ".config/alacritty".source = link "${home}"+"/alacritty";
+    ".xmobarrc".source = link "${home}"+"/.xmobarrc";
 #	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
 
     # # You can also set the file content immediately.
@@ -95,29 +95,35 @@ in
 #    TERMINAL = "kitty";
 #  };
 
- dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-      "org/gnome/settings-daemon/plugins/power" = {
-        power-button-action="suspend";
-      };
-    };
+dconf.settings = {
+  "org/gnome/desktop/interface" = {
+    color-scheme = "prefer-dark";
+  };
+  "org/gnome/settings-daemon/plugins/power" = {
+    power-button-action="suspend";
+  };
+};
 
-    gtk.cursorTheme.name = "Bibata-Modern-Ice";
-    gtk.cursorTheme.package = pkgs.bibata-cursors;
+gtk.cursorTheme.name = "Bibata-Modern-Ice";
+gtk.cursorTheme.package = pkgs.bibata-cursors;
 
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita-dark";
-        package = pkgs.gnome.gnome-themes-extra;
-      };
-    };
+gtk = {
+  enable = true;
+  theme = {
+    name = "Adwaita-dark";
+    package = pkgs.gnome.gnome-themes-extra;
+  };
+};
+
+qt = {
+  enable = true;
+  platformTheme = "gtk";
+  style.name = "adwaita-dark";
+};
 
     # Wayland, X, etc. support for session vars
 #    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
 
 # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+programs.home-manager.enable = true;
 }
