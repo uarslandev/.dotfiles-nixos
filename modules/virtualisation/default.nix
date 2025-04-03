@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     virt-manager
+    waydroid
     virt-viewer
     spice
     spice-gtk
