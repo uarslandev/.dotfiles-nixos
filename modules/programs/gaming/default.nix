@@ -6,6 +6,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    modrinth-app-unwrapped
 	xemu
     ani-cli
     heroic

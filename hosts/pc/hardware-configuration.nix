@@ -14,21 +14,16 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ef013580-ad28-44cd-b0f9-5b23903610ea";
+    { device = "/dev/disk/by-uuid/8e98f403-6d28-4b5b-8da6-3e8097184498";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/22fc613a-4108-416e-9e34-9d8aa1eb62a3";
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/51705561-059e-458c-884d-9316acf9a49f";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0F7D-6D63";
+    { device = "/dev/disk/by-uuid/09AA-70D1";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  fileSystems."/home/umut/HDD" =
-    { device = "/dev/disk/by-uuid/4b8dfe14-13cf-4daf-9e0d-e9b32377fbd6";
-      fsType = "ext4";
     };
 
   swapDevices = [ ];
@@ -38,9 +33,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.ztfp6m6yk5.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
