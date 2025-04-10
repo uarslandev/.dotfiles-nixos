@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    ./hardware-configuration.nix
+    ../modules/programs/resolve/
     ];
   networking.hostName = "pc";
 

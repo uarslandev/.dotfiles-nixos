@@ -9,6 +9,7 @@
     virt-manager
     waydroid
     virt-viewer
+    virtiofsd
     spice
     spice-gtk
 	distrobox
