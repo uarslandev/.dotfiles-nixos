@@ -21,6 +21,7 @@
 	nix-search = "nix search nixpkgs";
 	nix-update = "nix flake update";
 	t = "tmux";
+	sp = "systemctl-suspend";
 	n = "nvim";
     sd = "backup && systemctl poweroff -i";
     rb = "backup && systemctl reboot -i";
@@ -51,7 +52,7 @@
   ];
  
   zplug = {
-    enable = true;
+    enable = false;
     plugins = [
       { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
       { name = "zsh-users/zsh-history-substring-search"; } # Simple plugin installation
@@ -63,6 +64,7 @@
    oh-my-zsh = {
     enable = true;
     plugins = [ "git git-auto-fetch fzf"];
+    theme = "robbyrussell";
   };
   initExtra = ''
 	bindkey -s ^f "tmux-sessionizer\n"

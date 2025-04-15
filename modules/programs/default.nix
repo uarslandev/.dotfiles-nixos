@@ -7,7 +7,7 @@
 {
   imports = [
 	./packages
-	./gaming
+#	./gaming
 	./communication
 	./development
     ./productivity

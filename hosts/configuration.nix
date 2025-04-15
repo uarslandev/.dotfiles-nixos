@@ -53,7 +53,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.umut = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    #shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "kvm" "jackaudio" "video" "dialout" ]; # Enable ‘sudo’ for the user.
   };
 
