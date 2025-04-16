@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     bc
+    ida-free
     espeak-ng
     unityhub
   	vscode
