@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     bc
+    espeak-ng
     unityhub
   	vscode
     python3
