@@ -8,24 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ];
+  ];
   networking.hostName = "pc";
 
   #boot.kernelParams = [ "amd_iommu=on" "nvidia-drm.fbdev=1"];
   boot.kernelModules = [ "kvm-amd" ];
   #boot.extraModprobeConfig = "options vfio-pci ids=10de:1d01, 10de:0fb8";
 
-
-#  nixpkgs.overlays = [
-#    (final: prev: {
-#      davinci-resolve-studio = prev.davinci-resolve-studio.overrideAttrs (oldAttrs: {
-#        postInstall = ''
-#          rm -rf $out/bin/resolve
-#        '';
-#      });
-#    })
-#  ];
-#
   environment.systemPackages = with pkgs; [
   ];
 
@@ -38,7 +27,7 @@
 
     nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];

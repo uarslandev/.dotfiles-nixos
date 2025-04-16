@@ -27,7 +27,8 @@
 	insomnia
 	maven
 	nodejs
-	jdk17
+    jdk17
+    zulu21
     qalculate-gtk
   ];
 }

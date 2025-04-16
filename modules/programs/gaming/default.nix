@@ -6,8 +6,10 @@
 
 {
   environment.systemPackages = with pkgs; [
-	xemu
-    modrinth-app-unwrapped
+    xemu
+    #proton-ge-bin
+    modrinth-app
+    ferium
     ani-cli
     heroic
 	pcsx2

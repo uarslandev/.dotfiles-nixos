@@ -7,12 +7,12 @@
 {
   imports = [
     ./packages
-	./gaming
-./communication
-./development
-./productivity
+    ./gaming
+    ./communication
+    ./development
+    ./productivity
     ./resolve
-./scripts
+    ./scripts
   ];
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;

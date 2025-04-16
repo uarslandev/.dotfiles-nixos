@@ -15,6 +15,9 @@
 	XMONAD_CONFIG_DIR = "$XDG_CONFIG_HOME/xmonad";
     XMONAD_CACHE_DIR = "$XDG_CONFIG_HOME/xmonad";
     XMONAD_DATA_DIR = "$XDG_CONFIG_HOME/xmonad";
+
+    #Fix Modrinth
+    WEBKIT_DISABLE_DMABUF_RENDERER = "1";
 	
     # Not officially in the specification
     XDG_BIN_HOME    = "$HOME/.local/bin";
