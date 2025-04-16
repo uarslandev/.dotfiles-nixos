@@ -20,7 +20,6 @@
                 "electron-25.9.0"
               ];
   programs = {
-    zsh.enable = true;
     fzf.fuzzyCompletion = true;
 	xss-lock.enable = true;
 	direnv.enable = true;

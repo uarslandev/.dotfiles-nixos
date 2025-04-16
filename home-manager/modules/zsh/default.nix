@@ -43,6 +43,7 @@
 	stopvm = "sudo virsh shutdown win11";
 	backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
   };
+
   plugins = [
 	{
 		name = "powerlevel10k-config";
@@ -52,7 +53,7 @@
   ];
  
   zplug = {
-    enable = false;
+    enable = true;
     plugins = [
       { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
       { name = "zsh-users/zsh-history-substring-search"; } # Simple plugin installation
