@@ -70,6 +70,7 @@ in
     ".config/picom".source = link "${home}"+"/picom";
     ".config/alacritty".source = link "${home}"+"/alacritty";
     ".xmobarrc".source = link "${home}"+"/.xmobarrc";
+    ".trayer.sh".source = link "${home}"+"/.trayer.sh";
 #	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
 
     # # You can also set the file content immediately.
