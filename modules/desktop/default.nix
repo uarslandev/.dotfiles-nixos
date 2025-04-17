@@ -47,6 +47,7 @@
         networkmanagerapplet
         arandr
         pavucontrol
+        trayer
         autorandr
         brightnessctl
         alacritty

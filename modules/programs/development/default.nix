@@ -6,29 +6,32 @@
 
 {
   environment.systemPackages = with pkgs; [
-    bc
-    ida-free
-    espeak-ng
-    unityhub
-  	vscode
-    python3
-	python3Packages.pip
-	python3Packages.virtualenv
-	arduino-core
 	arduino
-	arduino-cli
-	jetbrains-toolbox
-	git
+    arduino-cli
+    conda
+	arduino-core
+	gdb
 	gh
 	ghidra
-	gdb
-	nmap
-	ngrok
+	git
 	insomnia
+	jetbrains-toolbox
 	maven
+	ngrok
+	nmap
 	nodejs
+	python3Packages.pip
+	python3Packages.virtualenv
+  	vscode
+    bc
+    espeak-ng
+    ida-free
     jdk17
-    zulu21
+    python3
     qalculate-gtk
+    micromamba
+    libmamba
+    unityhub
+    zulu21
   ];
 }

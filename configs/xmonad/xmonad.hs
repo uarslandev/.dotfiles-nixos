@@ -4,8 +4,6 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.ToggleLayouts
 import XMonad.Util.Loggers
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -14,32 +12,27 @@ import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.IndependentScreens
 import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run
-import XMonad.Util.Ungrab
-import XMonad.Layout.Magnifier
-import XMonad.Layout.ThreeColumns
-
 import Graphics.X11.Xlib
 import Graphics.X11.Xinerama
 import Graphics.X11.Xrandr
 import System.Process (callCommand)
+import XMonad.Layout.ThreeColumns
 
 main :: IO ()
 main = do
     n <- countScreens
-    xmprocs <- mapM (\i -> spawnPipe $ "xmobar /home/umut/.xmobarrc" ++ " -x " ++ show i) [0..n-1]
-    
-    xmonad $ ewmhFullscreen . ewmh $ docks $ def
+    xmprocs <- mapM (\i -> spawnPipe $ "xmobar /home/user/.xmobarrc" ++ " -x " ++ show i) [0..n-1]
+
+    xmonad $ ewmhFullscreen . ewmh $  xmobarProp $ def
         { modMask            = mod4Mask
         , terminal           = "alacritty"
         , borderWidth        = 1
-        , focusFollowsMouse  = True
+		, focusFollowsMouse  = True
         , normalBorderColor  = "#282c34"
-        , handleEventHook    = fullscreenEventHook
+		, handleEventHook    = fullscreenEventHook
         , focusedBorderColor = "#61afef"
         , startupHook        = myStartupHook >> setWMName "LG3D"
         , layoutHook         = myLayout
-        , manageHook         = myManageHook
-        , logHook            = dynamicLogWithPP $ myXmobarPP xmprocs
         } `additionalKeysP` myKeys
 
 myStartupHook = do
@@ -51,14 +44,13 @@ myStartupHook = do
     spawn "feh --bg-fill ~/.config/bg.jpg"
     spawn "picom"
 
-myLayout = toggleLayouts Full $ spacing 8 $ Tall 1 (3/100) (1/2) ||| ThreeColMid 1 (3/100) (1/2)
+myLayout = toggleLayouts  Full $ spacing 8 $ Tall 1 (3/100) (1/2)
 
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "Firefox" --> doShift "2"
     , className =? "Gimp" --> doFloat
-    , isFullscreen --> doFullFloat
-    , isDialog --> doFloat
+    , isFullscreen --> doFloat
     ]
 
 myKeys =
@@ -68,32 +60,31 @@ myKeys =
     , ("M-S-o", spawn "keepassxc")
     , ("M-S-;", spawn "copyq show")
     , ("M-S-i", spawn "pavucontrol")
-    , ("M-S-s", unGrab *> spawn "flameshot gui")
+    , ("M-S-s", spawn "flameshot gui")
     , ("M-S-l", spawn "lock")
     , ("M-S-c", kill)  -- Close focused window
     , ("M-b", sendMessage ToggleStruts)
     , ("M-f", sendMessage (Toggle "Full"))
     , ("M-q", spawn "xmonad --recompile; pkill xmobar; pkill trayer; xmonad --restart")
-    , ("M-S-z", spawn "xscreensaver-command -lock")
-    , ("M-C-s", unGrab *> spawn "scrot -s")
     ]
 
-myXmobarPP :: [Handle] -> PP
-myXmobarPP h = def
+myXmobarPP :: PP
+myXmobarPP = def
     { ppSep             = magenta " • "
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#61afef" 2
+    , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
     , ppHidden          = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
     , ppExtras          = [logTitles formatFocused formatUnfocused]
-    , ppOutput          = \x -> hPutStrLn (h !! 0) x  -- Use the first handle for output
     }
   where
     formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
     formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
 
+    -- | Windows should have *some* title, which should not not exceed a
+    -- sane length.
     ppWindow :: String -> String
     ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
 
@@ -104,3 +95,5 @@ myXmobarPP h = def
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
+
+
