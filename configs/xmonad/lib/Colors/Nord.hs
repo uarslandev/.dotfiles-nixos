@@ -25,4 +25,4 @@ color15 = "#8FBCBB"
 color16 = "#ECEFF4"
 
 colorTrayer :: String
-colorTrayer = "--tint 0x2E3440"
+colorTrayer = "--tint 0x2e3440"

@@ -28,7 +28,7 @@ main = do
     xmprocs <- mapM (\i -> spawnPipe $ "xmobar /home/user/.xmobarrc" ++ " -x " ++ show i) [0..n-1]
     xmonad $ ewmhFullscreen . ewmh $  xmobarProp $ def
         { modMask            = mod4Mask
-        , terminal           = "alacritty"
+        , terminal           = "kitty"
         , manageHook = myManageHook <+> manageHook def
         , borderWidth        = 1
         , focusFollowsMouse  = True
@@ -49,11 +49,11 @@ myStartupHook = do
     spawn "killall trayer"
     spawn ("sleep 2 &&  trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 
-myLayout = toggleLayouts Full $ spacing 8 $ threeColMid
+myLayout = toggleLayouts Full $ spacing 10 $ tiled ||| threeCol ||| threeColMid
   where
-    tiled       = Tall 1 (2/100) (1/2)
-    threeCol    = ThreeCol 1 (3/100) (1/2)
-    threeColMid = ThreeColMid 1 (3/100) (1/2)
+    tiled       = Tall 1 (2/100) (1/2)       -- Definition of 'tiled'
+    threeCol    = ThreeCol 1 (3/100) (1/2)    -- Definition of 'threeCol'
+    threeColMid = ThreeColMid 1 (3/100) (1/2) -- Definition of 'threeColMid'
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -78,6 +78,7 @@ myManageHook = composeAll
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
     , isFullscreen --> doFullFloat
     , className =? "Alacritty"   --> doShift (myWorkspaces !! 0)  -- www
+    , className =? "kitty"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Code"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Brave-browser"   --> doShift (myWorkspaces !! 1)  -- www
     , className =? "Firefox"   --> doShift (myWorkspaces !! 1)  -- www
@@ -90,7 +91,9 @@ myManageHook = composeAll
     ]
 
 myKeys =
-    [ ("M-S-<Return>", spawn "alacritty")
+    [ ("M-S-<Return>", spawn "kitty")
+    , ("M-<Space>", sendMessage NextLayout)       -- Mod+Space → Next layout
+    , ("M-S-<Space>", sendMessage FirstLayout)
     , ("M-d", spawn "rofi -show drun -show-icons")
     , ("M-S-p", spawn "thunar")
     , ("M-S-o", spawn "keepassxc")
@@ -102,6 +105,16 @@ myKeys =
     , ("M-b", sendMessage ToggleStruts)
     , ("M-f", sendMessage (Toggle "Full"))
     , ("M-q", spawn "xmonad --recompile; pkill xmobar; pkill trayer; xmonad --restart")
+    , ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+    , ("<XF86AudioLowerVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+    , ("<XF86AudioMute>", spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+    , ("<XF86AudioMicMute>", spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+    , ("<XF86MonBrightnessUp>", spawn "brightnessctl set 5%+")
+    , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5%-")
+    , ("<XF86AudioNext>", spawn "playerctl next")
+    , ("<XF86AudioPause>", spawn "playerctl play-pause")
+    , ("<XF86AudioPlay>", spawn "playerctl play-pause")
+    , ("<XF86AudioPrev>", spawn "playerctl previous")
     ]
 
 myXmobarPP :: PP
