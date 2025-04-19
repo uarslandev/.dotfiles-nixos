@@ -1,8 +1,1 @@
 $ /nix/store/qx0hj9kgasghdmyjxqlg2mmjfix420hd-ghc-9.8.2-with-packages/bin/ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -v0 -outputdir /home/umut/.config/xmonad/build-x86_64-linux -o /home/umut/.config/xmonad/xmonad-x86_64-linux
-
-xmonad.hs:30:1: warning: [GHC-94817] [-Wtabs]
-    Tab character found here, and in three further locations.
-    Suggested fix: Please use spaces instead.
-   |
-30 |                 , focusFollowsMouse  = True
-   | ^^^^^^^^

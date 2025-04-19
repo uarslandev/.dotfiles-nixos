@@ -45,7 +45,7 @@ Config { font            = "Ubuntu Bold 9"
             -- Time and date
             , Run Date "<fn=2>\xf017</fn>   %b %d %Y - (%H:%M) " "date" 50
             -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
-            , Run Com ".trayer.sh" [] "trayerpad" 20
+            , Run Com "./trayer.sh" [] "trayerpad" 20
             -- Prints out the left side items such as workspaces, layout, etc.
             , Run UnsafeStdinReader
 
@@ -54,5 +54,5 @@ Config { font            = "Ubuntu Bold 9"
             ]
             , sepChar  = "%"
             , alignSep = "}{"
-            , template = "<fc=#5294e2> <action=`jgmenu_run`><fn=2>  |</fn></action></fc> %XMonadLog%}{<box type=Bottom width=2 mb=2 color=#8FBCBB><fc=#8FBCBB>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#A3BE8C><fc=#A3BE8C><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#81A1C1><fc=#81A1C1><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#EBCB8B><fc=#EBCB8B>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#B48EAD><fc=#B48EAD>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#88C0D0><fc=#88C0D0>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=#BF616A><fc=#BF616A>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#A3BE8C><fc=#A3BE8C><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
+            , template = "<fc=#5294e2> <action=`jgmenu_run`><fn=2>  |</fn></action></fc> %XMonadLog%}{<box type=Bottom width=2 mb=2 color=#8FBCBB><fc=#8FBCBB>%penguin%  %kernel%</fc></box> |  <box type=Bottom width=2 mb=2 color=#A3BE8C><fc=#A3BE8C><action=`alacritty -e htop`>%cpu%</action></fc></box>  |  <box type=Bottom width=2 mb=2 color=#81A1C1><fc=#81A1C1><action=`alacritty -e htop`>%memory%</action></fc></box>  |  <box type=Bottom width=2 mb=2 color=#EBCB8B><fc=#EBCB8B>%disku%</fc></box> |  <box type=Bottom width=2 mb=2 color=#B48EAD><fc=#B48EAD>%uparrow%  %uptime%</fc></box> |  <box type=Bottom width=2 mb=2 color=#88C0D0><fc=#88C0D0>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box> |  <box type=Bottom width=2 mb=2 color=#BF616A><fc=#BF616A>%baticon%  %battery%</fc></box> |  <box type=Bottom width=2 mb=2 color=#A3BE8C><fc=#A3BE8C><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> |   %trayerpad% "
 }

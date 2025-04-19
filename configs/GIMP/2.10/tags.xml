@@ -1870,24 +1870,6 @@
   <resource identifier="BlexMono Nerd Font weight=450 Italic" checksum="(null)">
   </resource>
 
-  <resource identifier="Cantarell" checksum="(null)">
-  </resource>
-
-  <resource identifier="Cantarell" checksum="(null)">
-  </resource>
-
-  <resource identifier="Cantarell Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Cantarell Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Cantarell Thin" checksum="(null)">
-  </resource>
-
-  <resource identifier="Cantarell Ultra-Bold" checksum="(null)">
-  </resource>
-
   <resource identifier="CaskaydiaCove Nerd Font" checksum="(null)">
   </resource>
 
@@ -10438,24 +10420,6 @@
   <resource identifier="RecMonoSmCasual Nerd Font Propo Italic" checksum="(null)">
   </resource>
 
-  <resource identifier="Roboto Condensed," checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Roboto Condensed, Light Italic" checksum="(null)">
-  </resource>
-
   <resource identifier="RobotoMono Nerd Font" checksum="(null)">
   </resource>
 
@@ -10721,138 +10685,6 @@
   </resource>
 
   <resource identifier="ShureTechMono Nerd Font Propo" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Heavy" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Heavy Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Light Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Medium" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Medium Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Semi-Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Semi-Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Ultra-Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Code Pro Ultra-Light Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3," checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Heavy" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Heavy Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Light Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Medium" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Medium Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Semi-Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Semi-Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Ultra-Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="Source Sans 3 Ultra-Light Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Heavy" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Heavy Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Light Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Medium" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Medium Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Semi-Bold" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Semi-Bold Italic" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Ultra-Light" checksum="(null)">
-  </resource>
-
-  <resource identifier="SourceSans3VF Ultra-Light Italic" checksum="(null)">
   </resource>
 
   <resource identifier="SpaceMono Nerd Font" checksum="(null)">
