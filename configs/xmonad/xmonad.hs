@@ -57,7 +57,7 @@ myLayout = toggleLayouts Full $ spacing 10 $ tiled ||| threeCol ||| threeColMid
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
-myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
+myWorkspaces = [" dev ", " www ", " prod ", " gfx ", " chat ", " anki ", " idk1 ", " idk2 ", " idk3 "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 myManageHook :: ManageHook
@@ -72,22 +72,29 @@ myManageHook = composeAll
     , className =? "splash"          --> doFloat
     , className =? "toolbar"         --> doFloat
     , className =? "Yad"             --> doCenterFloat
-    , title =? "Oracle VM VirtualBox Manager"   --> doFloat
-    , title =? "Order Chain - Market Snapshots" --> doFloat
-    , title =? "emacs-run-launcher" --> doFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
     , isFullscreen --> doFullFloat
     , className =? "Alacritty"   --> doShift (myWorkspaces !! 0)  -- www
-    , className =? "kitty"   --> doShift (myWorkspaces !! 0)  -- www
-    , className =? "Code"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Brave-browser"   --> doShift (myWorkspaces !! 1)  -- www
+    , className =? "Code"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Firefox"   --> doShift (myWorkspaces !! 1)  -- www
     , className =? "Gimp" --> doF (W.shift " gfx ") <+> doFloat
-    , className =? "Google-chrome"   --> doShift (myWorkspaces !! 1)
-    , className =? "VirtualBox Manager" --> doShift (myWorkspaces !! 4)  -- vbox
-    , className =? "discord"             --> doShift (myWorkspaces !! 5)  -- vid
-    , className =? "vesktop"             --> doShift (myWorkspaces !! 5)  -- vid
-    , className =? "mpv"             --> doShift (myWorkspaces !! 7)  -- vid
+    , className =? "anki"             --> doShift (myWorkspaces !! 6)  -- vid
+    , className =? "discord"             --> doShift (myWorkspaces !! 4)  -- vid
+    , className =? "element"             --> doShift (myWorkspaces !! 4)  -- vid
+    , className =? "gimp"             --> doShift (myWorkspaces !! 3)  -- vid
+    , className =? "kitty"   --> doShift (myWorkspaces !! 0)  -- www
+    , className =? "mpv"             --> doShift (myWorkspaces !! 6)  -- vid
+    , className =? "notion"   --> doShift (myWorkspaces !! 2)
+    , className =? "resolve"             --> doShift (myWorkspaces !! 3)  -- vid
+    , className =? "thunderbird"             --> doShift (myWorkspaces !! 4)  -- vid
+    , className =? "vesktop"             --> doShift (myWorkspaces !! 4)  -- vid
+    , className =? "obsidian"             --> doShift (myWorkspaces !! 2)  -- vid
+    , className =? "Google-chrome" <&&> title ~? "Google Chrome" --> doShift (myWorkspaces !! 1)
+    , title =? "Notion - Dashboard"             --> doShift (myWorkspaces !! 4)  -- vid
+    , title =? "Notion"             --> doShift (myWorkspaces !! 2)  -- vid
+    , title =? "Notion Calendar"             --> doShift (myWorkspaces !! 2)  -- vid
+    -- Move to Workspace
     ]
 
 myKeys =
