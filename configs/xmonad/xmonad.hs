@@ -65,6 +65,9 @@ myManageHook = composeAll
     [ -- Floating rules first
       className =? "notification"    --> doFloat 
     , className =? "file_progress"   --> doFloat
+    , className =? "steamwebhelper"  --> doFloat
+    , title =? "Steam Settings"      --> doFloat
+    , title =? "Friends List"        --> doFloat
     , className =? "dialog"          --> doFloat
     , className =? "download"        --> doFloat
     , className =? "error"           --> doFloat

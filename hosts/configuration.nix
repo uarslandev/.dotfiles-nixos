@@ -7,7 +7,7 @@
 {
   imports =
     [ 
-	../modules
+      ../modules
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -30,7 +30,7 @@
   i18n.extraLocaleSettings = {
     LC_MESSAGES = "en_US.UTF-8";
     LC_TIME = "ja_JP.UTF-8";
-    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -63,57 +63,60 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     exfat
-	neovim
+    neovim
     wget
     neovim
-	pciutils
+    pciutils
     tree
     ranger
-	killall
-	neofetch
-	btop
-	nvtopPackages.full
-	samba4Full
-	htop
-	tmux
-	nautilus
-	fuse
+    killall
+    neofetch
+    btop
+    nvtopPackages.full
+    samba4Full
+    htop
+    tmux
+    nautilus
+    fuse
     rar
     nix-search-cli
-	ntfs3g
-	fuse3
-	lsof
-	zip
+    ntfs3g
+    fuse3
+    lsof
+    zip
     unzip
     #playerctl
     cifs-utils
     ffmpeg
-	steam-run
-	cudatoolkit
+    steam-run
+    cudatoolkit
     cudaPackages_12.cudnn
     nixpkgs-manual
     ripgrep
   ];
 
   services.upower = {
-      enable = true;
-      percentageLow = 15;
-      percentageCritical = 5;
-      percentageAction = 4;
-      criticalPowerAction = "Hibernate";
-    };
+    enable = true;
+    percentageLow = 15;
+    percentageCritical = 5;
+    percentageAction = 4;
+    criticalPowerAction = "Hibernate";
+  };
 
   programs.dconf.enable = true;
 
-    programs.steam = {
+  programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+
     extraPackages = with pkgs; [
       gamescope
-      proton-ge-bin
-    ]
-    ;
+      gamemode
+    ];
   };
 
 
