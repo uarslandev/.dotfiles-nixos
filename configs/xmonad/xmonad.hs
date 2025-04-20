@@ -49,7 +49,7 @@ myStartupHook = do
     spawn "killall trayer"
     spawn ("sleep 2 &&  trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 
-myLayout = toggleLayouts Full $ spacing 10 $ tiled ||| threeCol ||| threeColMid
+myLayout = toggleLayouts Full $ spacing 1 $ tiled ||| threeCol ||| threeColMid
   where
     tiled       = Tall 1 (2/100) (1/2)       -- Definition of 'tiled'
     threeCol    = ThreeCol 1 (3/100) (1/2)    -- Definition of 'threeCol'
