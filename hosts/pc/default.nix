@@ -16,6 +16,7 @@
   #boot.extraModprobeConfig = "options vfio-pci ids=10de:1d01, 10de:0fb8";
 
   environment.systemPackages = with pkgs; [
+    assaultcube
   ];
 
   hardware.nvidia = {

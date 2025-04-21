@@ -57,7 +57,7 @@ myLayout = toggleLayouts Full $ spacing 0 $ tiled ||| threeCol ||| threeColMid
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
-myWorkspaces = [" dev ", " www ", " prod ", " gfx ", " chat ", " anki ", " idk1 ", " idk2 ", " idk3 "]
+myWorkspaces = [" dev ", " www ", " prod ", " gfx ", " chat ", " anki ", " idk1 ", " idk2 ", " game "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 myManageHook :: ManageHook
@@ -66,6 +66,7 @@ myManageHook = composeAll
       className =? "notification"    --> doFloat 
     , className =? "file_progress"   --> doFloat
     , className =? "steamwebhelper"  --> doFloat
+    , className =? "steam"           --> doFloat
     , title =? "Steam Settings"      --> doFloat
     , title =? "Friends List"        --> doFloat
     , className =? "dialog"          --> doFloat
@@ -77,6 +78,7 @@ myManageHook = composeAll
     , className =? "Yad"             --> doCenterFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
     , className =? "Alacritty"   --> doShift (myWorkspaces !! 0)  -- www
+    , className =? "steam"   --> doShift (myWorkspaces !! 8)  -- www
     , className =? "Brave-browser"   --> doShift (myWorkspaces !! 1)  -- www
     , className =? "Code"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Firefox"   --> doShift (myWorkspaces !! 1)  -- www
