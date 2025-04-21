@@ -6,7 +6,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-	arduino
+    arduino
     arduino-cli
     conda
 	arduino-core

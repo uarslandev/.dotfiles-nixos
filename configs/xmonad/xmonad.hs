@@ -49,7 +49,7 @@ myStartupHook = do
     spawn "killall trayer"
     spawn ("sleep 2 &&  trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 
-myLayout = toggleLayouts Full $ spacing 1 $ tiled ||| threeCol ||| threeColMid
+myLayout = toggleLayouts Full $ spacing 0 $ tiled ||| threeCol ||| threeColMid
   where
     tiled       = Tall 1 (2/100) (1/2)       -- Definition of 'tiled'
     threeCol    = ThreeCol 1 (3/100) (1/2)    -- Definition of 'threeCol'
@@ -76,12 +76,13 @@ myManageHook = composeAll
     , className =? "toolbar"         --> doFloat
     , className =? "Yad"             --> doCenterFloat
     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat
-    , isFullscreen --> doFullFloat
     , className =? "Alacritty"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Brave-browser"   --> doShift (myWorkspaces !! 1)  -- www
     , className =? "Code"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "Firefox"   --> doShift (myWorkspaces !! 1)  -- www
     , className =? "Gimp" --> doF (W.shift " gfx ") <+> doFloat
+    , className =? "Gimp-2.10"   --> doShift (myWorkspaces !! 3)  -- www
+    , className =? "Google-chrome" <&&> title ~? "Google Chrome" --> doShift (myWorkspaces !! 1)
     , className =? "anki"             --> doShift (myWorkspaces !! 6)  -- vid
     , className =? "discord"             --> doShift (myWorkspaces !! 4)  -- vid
     , className =? "element"             --> doShift (myWorkspaces !! 4)  -- vid
@@ -89,14 +90,14 @@ myManageHook = composeAll
     , className =? "kitty"   --> doShift (myWorkspaces !! 0)  -- www
     , className =? "mpv"             --> doShift (myWorkspaces !! 6)  -- vid
     , className =? "notion"   --> doShift (myWorkspaces !! 2)
+    , className =? "obsidian"             --> doShift (myWorkspaces !! 2)  -- vid
     , className =? "resolve"             --> doShift (myWorkspaces !! 3)  -- vid
     , className =? "thunderbird"             --> doShift (myWorkspaces !! 4)  -- vid
     , className =? "vesktop"             --> doShift (myWorkspaces !! 4)  -- vid
-    , className =? "obsidian"             --> doShift (myWorkspaces !! 2)  -- vid
-    , className =? "Google-chrome" <&&> title ~? "Google Chrome" --> doShift (myWorkspaces !! 1)
+    , isFullscreen --> doFullFloat
     , title =? "Notion - Dashboard"             --> doShift (myWorkspaces !! 4)  -- vid
-    , title =? "Notion"             --> doShift (myWorkspaces !! 2)  -- vid
     , title =? "Notion Calendar"             --> doShift (myWorkspaces !! 2)  -- vid
+    , title =? "Notion"             --> doShift (myWorkspaces !! 2)  -- vid
     -- Move to Workspace
     ]
 
