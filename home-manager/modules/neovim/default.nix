@@ -17,20 +17,20 @@
     	${builtins.readFile ./nvim/plugin/nvim-tree.lua}
     '';
     extraPackages = with pkgs; [
-      mesonlsp
-      pls
-      pyright
-      luajitPackages.lua-lsp
-      lua-language-server
-      markdown-oxide
-      dockerfile-language-server-nodejs
-      typescript-language-server
-      vscode-langservers-extracted
-      kotlin-language-server
-      haskell-language-server
       ccls
+      dockerfile-language-server-nodejs
+      haskell-language-server
+      kotlin-language-server
+      lua-language-server
+      luajitPackages.lua-lsp
+      markdown-oxide
+      mesonlsp
       nixd
       nodePackages.prettier
+      pls
+      pyright
+      typescript-language-server
+      vscode-langservers-extracted
     ];
     plugins = with pkgs.vimPlugins; [
 	  nvim-tree-lua
@@ -48,6 +48,10 @@
       flutter-tools-nvim
 	  (nvim-treesitter.withPlugins (p: [
 	  	p.tree-sitter-nix
+	  	p.tree-sitter-javascript
+	  	p.tree-sitter-tsx
+	  	p.tree-sitter-typescript
+	  	p.tree-sitter-json5
         p.tree-sitter-vim
 	  	p.tree-sitter-bash
 	  	p.tree-sitter-lua
@@ -55,7 +59,7 @@
 	  	p.tree-sitter-json
 	  	p.tree-sitter-haskell
       ]))
-      nvim-treesitter.withAllGrammars
+#      nvim-treesitter.withAllGrammars
 	  playground
 	  vim-nix
 	  lsp-zero-nvim
