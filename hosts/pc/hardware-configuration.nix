@@ -14,19 +14,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/421f0175-b321-4dd5-89df-63d20a3f4074";
+    { device = "/dev/disk/by-uuid/4e90dba6-256b-4c49-a48c-28a3b2b67c3f";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/df7f5751-4a5d-4be4-bd8a-b4d9dec9b25f";
-
-  fileSystems."/home/umut/HDD" =
-    { device = "/dev/disk/by-uuid/254d15e1-8485-4353-81d6-f704db6b067d";
-      fsType = "ext4";
-    };
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/3817e64c-b6fb-476b-ae1c-e42c72f558fc";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/FAC4-D6CA";
+    { device = "/dev/disk/by-uuid/812B-0575";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };

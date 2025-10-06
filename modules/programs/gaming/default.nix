@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     xemu
     #proton-ge-bin
+    protonup-qt
     modrinth-app
     ferium
     ani-cli
