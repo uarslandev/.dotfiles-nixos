@@ -14,7 +14,8 @@
 	./desktop
 	./environmental
 	./fonts
-	./programs
+    ./programs
+    ./systemd
 	./virtualisation
     ];
 }
