@@ -34,7 +34,6 @@
 
 
   environment.systemPackages = with pkgs; [
-        # Xmonad
         picom
         stack
         xmobar
@@ -62,6 +61,7 @@
         hypridle
         wl-clipboard
         waybar
+        kanshi
         hyprshot
         nwg-look
         hyprpicker

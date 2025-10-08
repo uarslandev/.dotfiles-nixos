@@ -57,6 +57,7 @@ in
     ".config/hypr".source = link "${home}"+"/hypr";
     ".config/neofetch".source = link "${home}"+"/neofetch";
     ".config/swaylock".source = link "${home}"+"/swaylock";
+    ".config/kanshi".source = link "${home}"+"/kanshi";
     ".config/wofi".source = link "${home}"+"/wofi";
     ".config/waybar".source = link "${home}"+"/waybar";
     ".config/keepassxc".source = link "${home}"+"/keepassxc";
