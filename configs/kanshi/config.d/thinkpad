@@ -8,3 +8,8 @@ profile docking-lab {
 profile built-in {
     output eDP-1 enable
 }
+
+profile drimalla-lab {
+    output eDP-1 enable scale 1.0 position 0,0
+    output HDMI-A-2 enable scale 1.0 position 0x1080
+}
