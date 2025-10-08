@@ -24,7 +24,6 @@
     fzf.fuzzyCompletion = true;
     xss-lock.enable = true;
     direnv.enable = true;
-    thunar.enable = true;
   };
   services = {
     gvfs.enable = true;

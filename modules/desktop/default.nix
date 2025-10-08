@@ -64,6 +64,7 @@
         kanshi
         hyprshot
         nwg-look
+        nwg-displays
         hyprpicker
         wofi
       ];

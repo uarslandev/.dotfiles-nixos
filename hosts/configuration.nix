@@ -68,6 +68,7 @@
     fuse2
     neovim
     wget
+    pcmanfm
     neovim
     pciutils
     tree
@@ -79,7 +80,6 @@
     samba4Full
     htop
     tmux
-    nautilus
     fuse
     rar
     nix-search-cli
