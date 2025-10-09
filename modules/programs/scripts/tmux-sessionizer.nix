@@ -13,14 +13,14 @@ selected_name=$(basename "$selected" | tr . _)
 init_file="/tmp/.tmux_project_init_$(echo "$selected" | md5sum | cut -d' ' -f1)"
 
 # Write project-specific init script in /tmp
-cat > "$init_file" <<EOF
+cat > "$init_file" <<'EOF'
 export PROJECT_ROOT="$selected"
 cd() {
-  local input="\${1:-}"
-  if [[ -z "\$input" || "\$input" == "~" || "\$input" == "\$HOME" ]]; then
-    builtin cd "\$PROJECT_ROOT"
+  local input="''${1:-}"
+  if [[ -z "$input" || "$input" == "~" || "$input" == "$HOME" ]]; then
+    builtin cd "$PROJECT_ROOT"
   else
-    builtin cd "\$input"
+    builtin cd "$input"
   fi
 }
 EOF
