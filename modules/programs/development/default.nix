@@ -29,7 +29,8 @@
     jdk17
     python3
     qalculate-gtk
-    micromamba
+    #micromamba
+    mamba
     libmamba
     unityhub
     zulu21
