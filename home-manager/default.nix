@@ -49,6 +49,7 @@ in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".local/bin/".source = link "${home}"+"/local/bin/";
     ".config/bg.jpg".source = link "${home}"+"/bg.jpg";
     ".config/lock.png".source = link "${home}"+"/lock.png";
     ".config/dunst".source = link "${home}"+"/dunst";
