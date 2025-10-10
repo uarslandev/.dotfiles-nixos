@@ -3,9 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    autocd = true;
+#    autosuggestion.enable = true;
+#    enableCompletion = true;
+#    autocd = true;
     sessionVariables = {
       AWT_TOOLKIT = "MToolkit";
       _JAVA_AWT_WM_NONREPARENTING=1;
@@ -14,6 +14,7 @@
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
       cal = "cal -mw";
+      b = "backup";
       gd = "git diff";
       gs = "git status";
       lg = "looking-glass-client -F";
