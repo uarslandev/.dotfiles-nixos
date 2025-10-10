@@ -72,6 +72,7 @@
   };
   initExtra = ''
         bindkey -s ^f "tmux-sessionizer\n"
+        bindkey -s ^b "books\n"
         bindkey -s ^t "tmux kill-server\n"
 
       if [[ -n "$PROJECT_ROOT" && -d "$PROJECT_ROOT" ]]; then
