@@ -84,6 +84,7 @@
     rar
     nix-search-cli
     ntfs3g
+    fd
     fuse3
     lsof
     zip
