@@ -23,12 +23,13 @@
       pc = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/configuration.nix
-	  ./hosts/pc
+          ./hosts/pc
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${user} = import ./home-manager;
+            home-manager.backupFileExtension = "backup";
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
@@ -37,16 +38,17 @@
       };
     };
 
-	nixosConfigurations = {
+    nixosConfigurations = {
       thinkpad = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/configuration.nix
-		  ./hosts/thinkpad
+          ./hosts/thinkpad
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${user} = import ./home-manager;
+              home-manager.backupFileExtension = "backup";
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
@@ -54,16 +56,17 @@
         ];
       };
     };
-	nixosConfigurations = {
+    nixosConfigurations = {
       work = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/configuration.nix
-		  ./hosts/work
+          ./hosts/work
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${user} = import ./home-manager;
+              home-manager.backupFileExtension = "backup";
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
