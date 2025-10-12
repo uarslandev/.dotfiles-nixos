@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -12,15 +11,16 @@
   let
     system = "x86_64-linux";
     user = "umut";
+
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
     lib = nixpkgs.lib;
-
   in {
     nixosConfigurations = {
       pc = nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [
           ./hosts/configuration.nix
           ./hosts/pc
@@ -28,18 +28,16 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./home-manager;
-            home-manager.backupFileExtension = "backup";
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            home-manager.users.${user} = import ./home-manager;
+
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };
-    };
 
-    nixosConfigurations = {
       thinkpad = nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [
           ./hosts/configuration.nix
           ./hosts/thinkpad
@@ -47,17 +45,19 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./home-manager;
-              home-manager.backupFileExtension = "backup";
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            home-manager.users.${user} = import ./home-manager {
+              inherit pkgs lib;
+              config = {};
+            };
+
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };
-    };
-    nixosConfigurations = {
+
       work = nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [
           ./hosts/configuration.nix
           ./hosts/work
@@ -65,11 +65,13 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./home-manager;
-              home-manager.backupFileExtension = "backup";
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            home-manager.users.${user} = import ./home-manager {
+              inherit pkgs lib;
+              config = {};
+            };
+
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };

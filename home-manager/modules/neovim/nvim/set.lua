@@ -1,36 +1,40 @@
 vim.opt.guicursor = ""
 
+-- Auto commands
 vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
 vim.cmd([[autocmd VimEnter * NvimTreeToggle]])
 vim.cmd([[autocmd BufWritePre *.js Neoformat]])
 
-
+-- Line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- Indentation
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.smartindent = true
-
+-- Text and editing
 vim.opt.wrap = false
+vim.opt.colorcolumn = "80"
 
+-- File management
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
+-- Search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- UI
 vim.opt.termguicolors = true
-
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
