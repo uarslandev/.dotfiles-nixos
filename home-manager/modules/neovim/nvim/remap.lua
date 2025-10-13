@@ -15,6 +15,12 @@ vim.api.nvim_set_keymap('i', '"<CR>', '"<CR>"<ESC>O', { noremap = true, silent =
 vim.api.nvim_set_keymap('i', "'<CR>", "'<CR>'<ESC>O", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '`<CR>', '`<CR>`<ESC>O', { noremap = true, silent = true })
 
+vim.keymap.set('n', 'j', 'jzz', { desc = 'Scroll downwards' })
+vim.keymap.set('n', 'k', 'kzz', { desc = 'Scroll downwards' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll downwards' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll downwards' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll upwards' })
+
 
 -- Set leader key to space
 vim.g.mapleader = " "

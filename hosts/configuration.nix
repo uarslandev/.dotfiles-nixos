@@ -79,6 +79,8 @@
     neofetch
     btop
     nvtopPackages.full
+    networkmanager-openvpn
+    networkmanager-vpnc
     samba4Full
     htop
     tmux
