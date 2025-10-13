@@ -36,13 +36,11 @@
         ];
       };
 
-
-    nixosConfigurations = {
       thinkpad = nixpkgs.lib.nixosSystem {
         system = system;
         modules = [
           ./hosts/configuration.nix
-          ./hosts/pc
+          ./hosts/thinkpad
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
