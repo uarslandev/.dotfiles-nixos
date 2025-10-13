@@ -36,20 +36,19 @@
         ];
       };
 
+
+    nixosConfigurations = {
       thinkpad = nixpkgs.lib.nixosSystem {
         system = system;
         modules = [
           ./hosts/configuration.nix
-          ./hosts/thinkpad
+          ./hosts/pc
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users.${user} = import ./home-manager {
-              inherit pkgs lib;
-              config = {};
-            };
+            home-manager.users.${user} = import ./home-manager;
 
             home-manager.backupFileExtension = "backup";
           }
