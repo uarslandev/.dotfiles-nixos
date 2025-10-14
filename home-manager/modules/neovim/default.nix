@@ -33,19 +33,27 @@
       vscode-langservers-extracted
     ];
     plugins = with pkgs.vimPlugins; [
-	  nvim-tree-lua
-      rose-pine
-      neoformat
-      plenary-nvim
-      null-ls-nvim
-      dressing-nvim
-      omnisharp-extended-lsp-nvim
-      vim-prettier
-      haskell-vim
-	  nvim-colorizer-lua
 	  lsp-format-nvim
-      formatter-nvim
+      nvim-colorizer-lua
+      lualine-nvim
+      bufferline-nvim
+      bufdelete-nvim
+      lazygit-nvim
+      nvim-dap
+	  nvim-tree-lua
+      dressing-nvim
       flutter-tools-nvim
+      formatter-nvim
+      haskell-vim
+      neoformat
+      nvim-surround
+      auto-pairs
+      null-ls-nvim
+      omnisharp-extended-lsp-nvim
+      plenary-nvim
+      rose-pine
+      vim-airline
+      vim-prettier
 	  (nvim-treesitter.withPlugins (p: [
 	  	p.tree-sitter-nix
 	  	p.tree-sitter-javascript
@@ -59,16 +67,16 @@
 	  	p.tree-sitter-json
 	  	p.tree-sitter-haskell
       ]))
-#      nvim-treesitter.withAllGrammars
-	  playground
-	  vim-nix
-	  lsp-zero-nvim
-	  nvim-lspconfig
-	  nvim-cmp
+      nvim-treesitter.withAllGrammars
 	  cmp-nvim-lsp
+	  lsp-zero-nvim
+	  nvim-cmp
+	  nvim-lspconfig
+	  playground
 	  undotree
-      vim-fugitive
+	  vim-nix
       telescope-nvim
+      vim-fugitive
 #	  {
 #		plugin = pkgs.vimPlugins.vim-startify;
 #		config = "let g:startify_change_to_vcs_root = 0";
