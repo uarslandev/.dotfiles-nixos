@@ -8,7 +8,7 @@ require("flutter-tools").setup {
     -- This determines whether notifications are show with `vim.notify` or with the plugin's custom UI
     -- please note that this option is eventually going to be deprecated and users will need to
     -- depend on plugins like `nvim-notify` instead.
-    notification_style = 'native' | 'plugin'
+    notification_style = vim.fn.exists('g:nvim_notify') == 1 and "plugin" or "native"
   },
   decorations = {
     statusline = {

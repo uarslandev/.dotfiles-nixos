@@ -33,14 +33,14 @@
       vscode-langservers-extracted
     ];
     plugins = with pkgs.vimPlugins; [
-	  lsp-format-nvim
+      lsp-format-nvim
       nvim-colorizer-lua
       lualine-nvim
       bufferline-nvim
       bufdelete-nvim
       lazygit-nvim
       nvim-dap
-	  nvim-tree-lua
+      nvim-tree-lua
       dressing-nvim
       flutter-tools-nvim
       formatter-nvim
