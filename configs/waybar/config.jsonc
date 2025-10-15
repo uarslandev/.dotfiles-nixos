@@ -7,7 +7,7 @@
 //    "output": "eDP-1",  // remove this if u dont want ur waybar on 1 monitor.(orcustomizeit)
 
      
-    "modules-left": ["group/window"],
+    "modules-left": ["group/window", "tray"],
     "modules-center": ["custom/launcher", "clock", "hyprland/workspaces"], 
     "modules-right": ["group/datetime-power"], 
 
@@ -20,9 +20,15 @@
 
     "group/datetime-power": {
         "orientation": "horizontal",
-        "modules": ["wlr/taskbar", "custom/power"]
+        "modules": ["wlr/taskbar","battery" ,"custom/power"]
     },
 
+    "tray": {
+    "icon-theme": "gruvbox-dark-icons",      // icon theme for the tray
+    "all-outputs": true,
+    "format": "{icon}",
+    "tooltip": true
+},
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -45,8 +51,7 @@
 
     "clock": {
         "on-click": "",
-        "format": "{:%I:%M %p}",
-        "format-alt": "{:%d-%m-%Y}"
+        "format": "{:%p%I時%M分 %Y年%m月%d日 (第%V週)}"
     },
 
     "pulseaudio": {
@@ -61,7 +66,7 @@
         "format-icons": {
             "default": ["   ", "   ", "   ", "   ", "   ","   ","   ", "   ", "   "]
         },
-        "format-muted": "",
+        "format-muted": "󰖁",
         "on-click": "pavucontrol",
         "tooltip": false
     },
