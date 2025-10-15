@@ -20,6 +20,7 @@ window#waybar {
 #clock,
 #custom-launcher,
 #datetime-power,
+#tray,
 #wlr-taskbar {
     background-color: black;
     border-radius: 10px;

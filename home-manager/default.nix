@@ -97,15 +97,25 @@ in
 #    TERMINAL = "kitty";
 #  };
 
-#dconf.settings = {
-#  "org/gnome/desktop/interface" = {
-#    color-scheme = "prefer-dark";
-#  };
-#  "org/gnome/settings-daemon/plugins/power" = {
-#    power-button-action="suspend";
-#  };
-#};
-#
+  home.pointerCursor = {
+    gtk.enable = true;
+#    name = "Catppuccin-Mocha-Light-Cursors";
+#    package = pkgs.catppuccin-cursors.mochaLight;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    size = 16;
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-theme = "adw-gtk3-dark";
+      color-scheme = "prefer-dark";
+    };
+        # For Gnome shell
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+    };
+  };
 
   home.packages = with pkgs; [
     nodejs
@@ -117,37 +127,44 @@ in
     })
   ];
 
-gtk.gtk3.extraConfig = {
-  "gtk-application-prefer-dark-theme" = 1;
-};
+  gtk = {
+    enable = true;
 
-gtk.gtk4.extraConfig = {
-  "gtk-application-prefer-dark-theme" = 1;
-};
+    gtk3 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+    };
 
-gtk = {
-  enable = true;
-  cursorTheme = {
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-  };
+    gtk4 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+    };
 
-  theme = {
-    name = "adw-gtk3-dark";
-    package = pkgs.adw-gtk3;
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    };
+
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     #name = "Adwaita-dark";
     #package = pkgs.gnome-themes-extra;
   };
   iconTheme = {
-    name = "gruvbox-dark-icons";
-    package = pkgs.gruvbox-dark-icons-gtk;
+    name = "Papirus-Dark";
+    package = pkgs.catppuccin-papirus-folders.override {
+      flavor = "mocha";
+      accent = "lavender";
+    };
   };
 };
 
 qt = {
   enable = true;
   platformTheme = "gtk";
-  style.name = "adwaita-dark";
+  style = {
+    name = "gtk2";
+    package = pkgs.libsForQt5.breeze-qt5;
+  };
 };
 
     # Wayland, X, etc. support for session vars
