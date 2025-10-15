@@ -18,19 +18,19 @@ window#waybar {
 #custom-random-wallpaper,
 #group-window,
 #clock,
-#datetime-power {
+#custom-launcher,
+#datetime-power,
+#wlr-taskbar {
     background-color: black;
     border-radius: 10px;
+    border: 2px solid #A020F0; /* purple border */
     padding: 0 10px;
     margin: 4px 5px;
     color: white;
 }
-#wlr-taskbar {
-    background-color: black;
-    border-radius: 10px;
-    padding: 0 10px;
-    margin: 4px 5px;
-    color: white;
+
+#custom-launcher {
+    font-size: 14pt;
 }
 
 #workspaces {
@@ -75,16 +75,15 @@ window#waybar {
 
 #group-window #pulseaudio {
     background-color: transparent;
-    border: none;
+    border: 2px solid #A020F0; /* purple border */
     padding: 0;
     margin: 0 8px 0 0;
     color: inherit;
 }
 
-
 #datetime-power #clock {
     background-color: transparent;
-    border: none;
+    border: 2px solid #A020F0; /* purple border */
     padding: 0;
     margin: 0 8px 0 0;
     color: inherit;
@@ -92,7 +91,6 @@ window#waybar {
 
 #datetime-power #custom-power {
     background-color: transparent;
-    border: none;
     padding: 0;
     margin: 0;
     color: inherit;
@@ -105,10 +103,12 @@ window#waybar {
 #clock {
     background-color: black;
     border-radius: 10px;
+    border: 2px solid #A020F0; /* purple border */
     padding: 0 10px;
     margin: 4px 5px;
     color: white;
 }
+
 tooltip {
     background-color: black;
     border: 1px solid rgba(137, 180, 250, 0.3);
@@ -120,3 +120,4 @@ tooltip {
 tooltip label {
     color: white;
 }
+
