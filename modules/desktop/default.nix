@@ -76,7 +76,7 @@
         kitty
         swww
         hyprlock
-        swaylock-effects
+        hyprpaper
         hypridle
         wl-clipboard
         waybar
