@@ -7,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     arduino
+    sshfs
     arduino-cli
     conda
 	arduino-core

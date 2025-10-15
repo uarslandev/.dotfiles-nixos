@@ -11,6 +11,7 @@
     	${builtins.readFile ./nvim/set.lua}
     	${builtins.readFile ./nvim/plugin/lsp.lua}
     	${builtins.readFile ./nvim/plugin/colors.lua}
+    	${builtins.readFile ./nvim/plugin/undotree.lua}
     	${builtins.readFile ./nvim/plugin/fugitive.lua}
     	${builtins.readFile ./nvim/plugin/telescope.lua}
     	${builtins.readFile ./nvim/plugin/flutter-tools.lua}

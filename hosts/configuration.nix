@@ -72,6 +72,7 @@
     wget
     pcmanfm
     neovim
+    playerctl
     pciutils
     tree
     ranger

@@ -72,9 +72,10 @@
         dunst
 
         # Hyprland
-#        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-hyprland
         kitty
         swww
+        hyprlock
         swaylock-effects
         hypridle
         wl-clipboard

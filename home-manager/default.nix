@@ -8,9 +8,7 @@ in
     imports = [
       ./modules
     ];
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "umut";
+  # Home Manager needs a bit of information about you and the paths it should manage. home.username = "umut";
   home.homeDirectory = "/home/umut";
 
   # This value determines the Home Manager release that your configuration is
@@ -107,7 +105,22 @@ in
 #  };
 #};
 #
+
+  home.packages = with pkgs; [
+    nodejs
+    (writeShellApplication {
+      name = "gemini";
+      text = ''
+        exec ${nodejs}/bin/npx @google/gemini-cli "$@"
+      '';
+    })
+  ];
+
 gtk.gtk3.extraConfig = {
+  "gtk-application-prefer-dark-theme" = 1;
+};
+
+gtk.gtk4.extraConfig = {
   "gtk-application-prefer-dark-theme" = 1;
 };
 
@@ -121,6 +134,8 @@ gtk = {
   theme = {
     name = "adw-gtk3-dark";
     package = pkgs.adw-gtk3;
+    #name = "Adwaita-dark";
+    #package = pkgs.gnome-themes-extra;
   };
   iconTheme = {
     name = "gruvbox-dark-icons";
@@ -130,7 +145,7 @@ gtk = {
 
 qt = {
   enable = true;
-  platformTheme = "gnome";
+  platformTheme = "gtk";
   style.name = "adwaita-dark";
 };
 
