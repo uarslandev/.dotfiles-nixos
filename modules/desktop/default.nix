@@ -57,6 +57,7 @@
         xmobar
         lxappearance
         feh
+        hyprpicker
         plasma5Packages.kdeconnect-kde
         rofi
         flameshot
