@@ -90,9 +90,8 @@ window#waybar {
     color: inherit;
 }
 
-#datetime-power #custom-power {
+#custom-power {
     background-color: transparent;
-    border: 2px solid #A020F0; /* purple border */
     padding: 0;
     margin: 0;
     color: inherit;
