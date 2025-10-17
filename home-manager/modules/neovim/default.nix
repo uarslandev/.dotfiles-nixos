@@ -13,6 +13,7 @@
     	${builtins.readFile ./nvim/plugin/lazygit.lua}
     	${builtins.readFile ./nvim/plugin/bufdelete.lua}
     	${builtins.readFile ./nvim/plugin/lualine.lua}
+    	${builtins.readFile ./nvim/plugin/nvim-dap.lua}
     	${builtins.readFile ./nvim/plugin/bufferline.lua}
     	${builtins.readFile ./nvim/plugin/colors.lua}
     	${builtins.readFile ./nvim/plugin/undotree.lua}
