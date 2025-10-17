@@ -19,8 +19,8 @@
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      pc = nixpkgs.lib.nixosSystem {
-        system = system;
+      pc = lib.nixosSystem {
+        inherit system;
         modules = [
           ./hosts/configuration.nix
           ./hosts/pc
@@ -28,16 +28,14 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
             home-manager.users.${user} = import ./home-manager;
-
             home-manager.backupFileExtension = "backup";
           }
         ];
       };
 
-      thinkpad = nixpkgs.lib.nixosSystem {
-        system = system;
+      thinkpad = lib.nixosSystem {
+        inherit system;
         modules = [
           ./hosts/configuration.nix
           ./hosts/thinkpad
@@ -45,16 +43,14 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
             home-manager.users.${user} = import ./home-manager;
-
             home-manager.backupFileExtension = "backup";
           }
         ];
       };
 
-      work = nixpkgs.lib.nixosSystem {
-        system = system;
+      work = lib.nixosSystem {
+        inherit system;
         modules = [
           ./hosts/configuration.nix
           ./hosts/work
@@ -62,12 +58,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            home-manager.users.${user} = import ./home-manager {
-              inherit pkgs lib;
-              config = {};
-            };
-
+            home-manager.users.${user} = import ./home-manager;
             home-manager.backupFileExtension = "backup";
           }
         ];
