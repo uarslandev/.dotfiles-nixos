@@ -2,16 +2,27 @@
 let
   custom-sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "hyprland_kath";
+    #themeConfig = {
+    #  Background = "path/to/background.jpg";
+    #  Font = "M+1 Nerd Font";
+    #};
   };
 in
   {
     services.xserver.enable = true;
-    services.xserver.displayManager.sddm = {
+    services.displayManager.sddm = {
       enable = true;
-      wayland.enable = true;
-      theme = "sddm-astronaut-theme";
-    };
+      extraPackages = [
+        custom-sddm-astronaut
+      ];
 
+      theme = "sddm-astronaut-theme";
+      settings = {
+        Theme = {
+          Current = "sddm-astronaut-theme";
+        };
+      };
+    };
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -31,9 +42,10 @@ in
 
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
+    custom-sddm-astronaut
+    kdePackages.qtmultimedia
     dunst
     brightnessctl
-    #custom-sddm-astronaut
     networkmanagerapplet
     pavucontrol
     hyprpicker
