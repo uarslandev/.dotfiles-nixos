@@ -24,29 +24,28 @@ lsp_zero.extend_lspconfig({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
--- These are just examples. Replace them with the language
--- servers you have installed in your system
---require('lspconfig').clangd.setup({})
-require('lspconfig').omnisharp.setup({})
-require('lspconfig').nixd.setup({})
---require('lspconfig').denols.setup({})
-require('lspconfig').dockerls.setup({})
---require('lspconfig').graphql.setup({})
---require('lspconfig').haskell-language-server.setup({})
---require('lspconfig').java_language_server.setup({})
-require('lspconfig').html.setup({})
-require('lspconfig').cssls.setup({})
-require('lspconfig').jsonls.setup({})
-require('lspconfig').eslint.setup({})
-require('lspconfig').kotlin_language_server.setup({})
---require('lspconfig').lua_ls.setup({})
---require('lspconfig').marksman.setup({})
-require('lspconfig').pyright.setup({})
---require('lspconfig').sqlls.setup({})
---require('lspconfig').texlab.setup({})
-require('lspconfig').ts_ls.setup({})
---require('lspconfig').volar.setup({})
-
+vim.lsp.enable({
+  'clangd',
+  'omnisharp',
+  'nixd',
+  -- 'denols',
+  'dockerls',
+  -- 'graphql',
+  -- 'haskell-language-server',
+  -- 'java_language_server',
+  'html',
+  'cssls',
+  'jsonls',
+  'eslint',
+  'kotlin_language_server',
+  -- 'lua_ls',
+  -- 'marksman',
+  'pyright',
+  -- 'sqlls',
+  -- 'texlab',
+  'ts_ls',
+  -- 'volar',
+})
 
 ---
 -- Autocompletion setup

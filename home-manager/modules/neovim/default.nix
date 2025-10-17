@@ -10,6 +10,8 @@
     	${builtins.readFile ./nvim/luasnip.lua}
     	${builtins.readFile ./nvim/set.lua}
     	${builtins.readFile ./nvim/plugin/lsp.lua}
+    	${builtins.readFile ./nvim/plugin/bufdelete.lua}
+    	${builtins.readFile ./nvim/plugin/bufferline.lua}
     	${builtins.readFile ./nvim/plugin/colors.lua}
     	${builtins.readFile ./nvim/plugin/undotree.lua}
     	${builtins.readFile ./nvim/plugin/fugitive.lua}
@@ -36,6 +38,7 @@
     plugins = with pkgs.vimPlugins; [
       lsp-format-nvim
       nvim-colorizer-lua
+      bufdelete
       lualine-nvim
       bufferline-nvim
       lazygit-nvim
