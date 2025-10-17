@@ -27,7 +27,7 @@
   	vscode
     bc
     espeak-ng
-    ida-free
+    #ida-free
     jdk17
     python3
     qalculate-gtk
