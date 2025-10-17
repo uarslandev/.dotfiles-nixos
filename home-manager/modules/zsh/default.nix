@@ -3,9 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-#    autosuggestion.enable = true;
-#    enableCompletion = true;
-#    autocd = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
+    autocd = true;
     sessionVariables = {
       AWT_TOOLKIT = "MToolkit";
       _JAVA_AWT_WM_NONREPARENTING=1;
