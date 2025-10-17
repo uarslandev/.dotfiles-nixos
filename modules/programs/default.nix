@@ -40,12 +40,6 @@
     power-profiles-daemon.enable = true;
     logind = {
       lidSwitch = "ignore";
-      extraConfig = ''
-        HandlePowerKey=ignore
-        HandleSuspendKey=ignore
-        HandleHibernateKey=ignore
-        HandleLidSwitchDocked=ignore
-      '';
     };
   };
 }

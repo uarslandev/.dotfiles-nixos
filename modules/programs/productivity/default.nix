@@ -19,7 +19,7 @@
 	gpick
 	obs-studio
 	blender
-	kdenlive
+    kdePackages.kdenlive
     calibre
     texstudio
 	texliveFull
