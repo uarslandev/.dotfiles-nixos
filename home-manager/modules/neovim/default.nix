@@ -21,6 +21,7 @@ in
         ${builtins.readFile ./nvim/set.lua}
         ${builtins.readFile ./nvim/plugin/lsp.lua}
         ${builtins.readFile ./nvim/plugin/lazygit.lua}
+        ${builtins.readFile ./nvim/plugin/floaterm.lua}
         ${builtins.readFile ./nvim/plugin/bufdelete.lua}
         ${builtins.readFile ./nvim/plugin/nvim-dap.lua}
         ${builtins.readFile ./nvim/plugin/lualine.lua}
