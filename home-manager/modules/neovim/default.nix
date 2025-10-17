@@ -7,7 +7,6 @@
     enable = true;
     extraLuaConfig = ''
     	${builtins.readFile ./nvim/remap.lua}
-    	${builtins.readFile ./nvim/bufferline.lua}
     	${builtins.readFile ./nvim/luasnip.lua}
     	${builtins.readFile ./nvim/set.lua}
     	${builtins.readFile ./nvim/plugin/lsp.lua}
@@ -39,7 +38,6 @@
       nvim-colorizer-lua
       lualine-nvim
       bufferline-nvim
-      bufdelete-nvim
       lazygit-nvim
       nvim-dap
       nvim-tree-lua
