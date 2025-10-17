@@ -7,6 +7,7 @@
     enable = true;
     extraLuaConfig = ''
     	${builtins.readFile ./nvim/remap.lua}
+    	${builtins.readFile ./nvim/bufferline.lua.lua}
     	${builtins.readFile ./nvim/luasnip.lua}
     	${builtins.readFile ./nvim/set.lua}
     	${builtins.readFile ./nvim/plugin/lsp.lua}
