@@ -1,8 +1,10 @@
 vim.opt.guicursor = ""
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Auto commands
-vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
-vim.cmd([[autocmd VimEnter * NvimTreeToggle]])
+--vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
+--vim.cmd([[autocmd VimEnter * NvimTreeToggle]])
 vim.cmd([[autocmd BufWritePre *.js Neoformat]])
 
 -- Line numbers
