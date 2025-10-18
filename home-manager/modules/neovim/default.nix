@@ -19,6 +19,8 @@ in
         ${builtins.readFile ./nvim/remap.lua}
         ${builtins.readFile ./nvim/luasnip.lua}
         ${builtins.readFile ./nvim/set.lua}
+        ${builtins.readFile ./nvim/plugin/colors.lua}
+        ${builtins.readFile ./nvim/plugin/telescope.lua}
         ${builtins.readFile ./nvim/plugin/lsp.lua}
         ${builtins.readFile ./nvim/plugin/lazygit.lua}
         ${builtins.readFile ./nvim/plugin/floaterm.lua}
@@ -26,10 +28,8 @@ in
         ${builtins.readFile ./nvim/plugin/nvim-dap.lua}
         ${builtins.readFile ./nvim/plugin/lualine.lua}
         ${builtins.readFile ./nvim/plugin/bufferline.lua}
-        ${builtins.readFile ./nvim/plugin/colors.lua}
         ${builtins.readFile ./nvim/plugin/undotree.lua}
         ${builtins.readFile ./nvim/plugin/fugitive.lua}
-        ${builtins.readFile ./nvim/plugin/telescope.lua}
         ${builtins.readFile ./nvim/plugin/flutter-tools.lua}
         ${builtins.readFile ./nvim/plugin/nvim-tree.lua}
       '';
@@ -43,7 +43,7 @@ in
         markdown-oxide
         mesonlsp
         nixd
-        nodePackages.prettier
+        #nodePackages.prettier
         pls
         pyright
         typescript-language-server

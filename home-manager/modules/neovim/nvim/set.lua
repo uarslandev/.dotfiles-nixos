@@ -5,7 +5,8 @@ vim.g.maplocalleader = " "
 -- Auto commands
 --vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
 --vim.cmd([[autocmd VimEnter * NvimTreeToggle]])
-vim.cmd([[autocmd BufWritePre *.js Neoformat]])
+--vim.cmd([[autocmd BufWritePre *.js Neoformat]])
+autocmd ColorScheme * highlight jsClassKeyword cterm=italic ctermfg=Magenta | highlight ..
 
 -- Line numbers
 vim.opt.nu = true
@@ -39,4 +40,3 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
-
