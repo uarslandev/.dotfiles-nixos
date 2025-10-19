@@ -43,8 +43,8 @@ in
         markdown-oxide
         mesonlsp
         nixd
-        #nodePackages.prettier
         pls
+        lua-language-server
         pyright
         typescript-language-server
         vscode-langservers-extracted
