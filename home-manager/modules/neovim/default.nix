@@ -72,7 +72,7 @@ in
         null-ls-nvim
         omnisharp-extended-lsp-nvim
         plenary-nvim
-        rose-pine
+        catppuccin-nvim
         vim-airline
         vim-prettier
         (nvim-treesitter.withPlugins (p: [
