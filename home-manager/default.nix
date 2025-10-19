@@ -97,55 +97,54 @@ in
 #    TERMINAL = "kitty";
 #  };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-#    name = "Catppuccin-Mocha-Light-Cursors";
-#    package = pkgs.catppuccin-cursors.mochaLight;
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    size = 16;
+home.pointerCursor = {
+  gtk.enable = true;
+  name = "Catppuccin-Mocha-Dark-Cursors";
+  package = pkgs.catppuccin-cursors.mochaDark;
+#      name = "Bibata-Modern-Ice";
+#      package = pkgs.bibata-cursors;
+size = 12;
   };
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = "adw-gtk3-dark";
+      gtk-theme = "catppuccin-frappe-blue-standard";
       color-scheme = "prefer-dark";
     };
         # For Gnome shell
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
-    };
-  };
+        "org/gnome/shell/extensions/user-theme" = {
+          name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+        };
+      };
 
-  home.packages = with pkgs; [
-    nodejs
-    (writeShellApplication {
-      name = "gemini";
-      text = ''
-        exec ${nodejs}/bin/npx @google/gemini-cli "$@"
-      '';
-    })
-  ];
+      home.packages = with pkgs; [
+        nodejs
+        (writeShellApplication {
+          name = "gemini";
+          text = ''
+            exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
+          ];
 
-  gtk = {
-    enable = true;
+          gtk = {
+            enable = true;
 
-    gtk3 = {
-      extraConfig.gtk-application-prefer-dark-theme = true;
-    };
+            gtk3 = {
+              extraConfig.gtk-application-prefer-dark-theme = true;
+            };
 
-    gtk4 = {
-      extraConfig.gtk-application-prefer-dark-theme = true;
-    };
+            gtk4 = {
+              extraConfig.gtk-application-prefer-dark-theme = true;
+            };
 
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
+            cursorTheme = {
+              name = "Catppuccin-Mocha-Dark-Cursors";
 
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
+              package = pkgs.catppuccin-cursors.mochaDark;
+            };
+
+            theme = {
+              name = "catppuccin-frappe-blue-standard";
+              package = pkgs.catppuccin-gtk;
     #name = "Adwaita-dark";
     #package = pkgs.gnome-themes-extra;
   };

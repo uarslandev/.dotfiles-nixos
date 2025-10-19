@@ -13,7 +13,6 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    nerd-fonts
     meslo-lg
     meslo-lgs-nf
     nerd-fonts._0xproto
