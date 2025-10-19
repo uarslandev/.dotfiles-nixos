@@ -99,8 +99,9 @@ in
 
 home.pointerCursor = {
   gtk.enable = true;
-  name = "Catppuccin-Mocha-Dark-Cursors";
-  package = pkgs.catppuccin-cursors.mochaDark;
+  package = pkgs.catppuccin-cursors.mochaSapphire;
+  name = "catppuccin-mocha-sapphire-cursors";
+
 #      name = "Bibata-Modern-Ice";
 #      package = pkgs.bibata-cursors;
 size = 12;
@@ -137,9 +138,9 @@ size = 12;
             };
 
             cursorTheme = {
-              name = "Catppuccin-Mocha-Dark-Cursors";
 
-              package = pkgs.catppuccin-cursors.mochaDark;
+              package = pkgs.catppuccin-cursors.mochaSapphire;
+              name = "catppuccin-mocha-sapphire-cursors";
             };
 
             theme = {
