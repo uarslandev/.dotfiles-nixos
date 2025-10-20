@@ -6,6 +6,7 @@ let
     runScript = "zsh";
     profile = ''
       set -e
+      alias conda=micromamba
       eval "$(micromamba shell hook --shell=posix)"
       export MAMBA_ROOT_PREFIX=${builtins.getEnv "PWD"}/.mamba
       if ! test -d $MAMBA_ROOT_PREFIX/envs/my-mamba-environment; then
