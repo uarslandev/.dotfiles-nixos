@@ -4,6 +4,7 @@
   imports = [
     # 1. Import the file that *defines* the custom service
     ./kanshi-service.nix 
+    ./drive-service.nix
   ];
 
   # Define the custom 'session.target' user unit
