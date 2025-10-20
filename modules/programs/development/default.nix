@@ -10,7 +10,6 @@
     postgresql
     sshfs
     arduino-cli
-    conda
 	arduino-core
 	gdb
 	gh
