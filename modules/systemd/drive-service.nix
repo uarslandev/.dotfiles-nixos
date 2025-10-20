@@ -4,10 +4,10 @@
   systemd.user = {
     services.rclone-bisync = {
       enable = true;
-      description = "Run Rclone bisync between local Drive and remote drive1";
+      description = "Run Rclone bisync between local Drive and remote drive";
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.rclone}/bin/rclone bisync %h/Drive drive1: \
+        ExecStart = "${pkgs.rclone}/bin/rclone bisync %h/Drive drive: \
 --create-empty-src-dirs \
 --compare size,modtime,checksum \
 --slow-hash-sync-only \
