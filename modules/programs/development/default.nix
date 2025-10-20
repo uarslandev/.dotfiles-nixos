@@ -15,7 +15,7 @@
 	gdb
 	gh
 	ghidra
-	git
+    gitFull
 	insomnia
 	jetbrains-toolbox
 	maven

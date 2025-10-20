@@ -6,7 +6,7 @@ profile docking-lab {
 
 
 profile built-in {
-    output eDP-1 enable scale 1.0 position 0,0
+    output eDP-1 enable scale 1.6 position 0,0
 }
 
 profile drimalla-lab {
