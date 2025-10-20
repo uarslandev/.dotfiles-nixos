@@ -7,14 +7,14 @@
       description = "Run Rclone bisync between local Drive and remote drive1";
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.rclone}/bin/rclone bisync \"$HOME/Drive\" drive1: \
-          --create-empty-src-dirs \
-          --compare size,modtime,checksum \
-          --slow-hash-sync-only \
-          --resilient \
-          -MvP \
-          --drive-skip-gdocs \
-          --fix-case'";
+        ExecStart = "/bin/rclone bisync %h/Drive drive1: \
+--create-empty-src-dirs \
+--compare size,modtime,checksum \
+--slow-hash-sync-only \
+--resilient \
+-MvP \
+--drive-skip-gdocs \
+--fix-case";
       };
     };
 
