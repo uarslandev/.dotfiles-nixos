@@ -97,10 +97,10 @@ in
 #    TERMINAL = "kitty";
 #  };
 
-home.pointerCursor = {
-  gtk.enable = true;
-  package = pkgs.catppuccin-cursors.mochaSapphire;
-  name = "catppuccin-mocha-sapphire-cursors";
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.catppuccin-cursors.mochaSapphire;
+    name = "catppuccin-mocha-sapphire-cursors";
 
 #      name = "Bibata-Modern-Ice";
 #      package = pkgs.bibata-cursors;
@@ -123,29 +123,29 @@ size = 12;
         (writeShellApplication {
           name = "gemini";
           text = ''
-            exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
-          ];
+              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
+            ];
 
-          gtk = {
-            enable = true;
+            gtk = {
+              enable = true;
 
-            gtk3 = {
-              extraConfig.gtk-application-prefer-dark-theme = true;
-            };
+              gtk3 = {
+                extraConfig.gtk-application-prefer-dark-theme = true;
+              };
 
-            gtk4 = {
-              extraConfig.gtk-application-prefer-dark-theme = true;
-            };
+              gtk4 = {
+                extraConfig.gtk-application-prefer-dark-theme = true;
+              };
 
-            cursorTheme = {
+              cursorTheme = {
 
-              package = pkgs.catppuccin-cursors.mochaSapphire;
-              name = "catppuccin-mocha-sapphire-cursors";
-            };
+                package = pkgs.catppuccin-cursors.mochaSapphire;
+                name = "catppuccin-mocha-sapphire-cursors";
+              };
 
-            theme = {
-              name = "catppuccin-frappe-blue-standard";
-              package = pkgs.catppuccin-gtk;
+              theme = {
+                name = "catppuccin-frappe-blue-standard";
+                package = pkgs.catppuccin-gtk;
     #name = "Adwaita-dark";
     #package = pkgs.gnome-themes-extra;
   };

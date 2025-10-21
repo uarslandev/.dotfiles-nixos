@@ -21,13 +21,14 @@
 	
     # Not officially in the specification
     XDG_BIN_HOME    = "$HOME/.local/bin";
-    PATH = [ 
+    PATH = [
+      "$HOME/.npm-global/bin"
       "${XDG_BIN_HOME}"
     ];
   };
   variables = {
     EDITOR = "nvim";
-    TERMINAL = "alacritty";
+    TERMINAL = "kitty";
   };
  };
 }
