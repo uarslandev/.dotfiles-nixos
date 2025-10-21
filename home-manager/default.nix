@@ -97,10 +97,10 @@ in
 #    TERMINAL = "kitty";
 #  };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.catppuccin-cursors.mochaSapphire;
-    name = "catppuccin-mocha-sapphire-cursors";
+home.pointerCursor = {
+  gtk.enable = true;
+  package = pkgs.catppuccin-cursors.mochaSapphire;
+  name = "catppuccin-mocha-sapphire-cursors";
 
 #      name = "Bibata-Modern-Ice";
 #      package = pkgs.bibata-cursors;
@@ -168,7 +168,23 @@ qt = {
 
     # Wayland, X, etc. support for session vars
 #    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
-
+programs = {
+  direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableBashIntegration = true; # see note on other shells below
+  };
+  zsh = {
+    enable = true; # see note on other shells
+    initExtra = ''
+      set -e
+      if ! test -d $IN_NIX_SHELL; then
+      eval "$(micromamba shell hook --shell zsh)" 
+      fi
+      set +e
+    '';
+  };
+};
 # Let Home Manager install and manage itself.
 programs.home-manager.enable = true;
 }

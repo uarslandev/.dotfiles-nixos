@@ -14,7 +14,7 @@
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
       cal = "cal -mw";
-      mamba-shell = "nix-shell ~/.dotfiles/shells/micromamba.nix";
+      conda-shell = "nix-shell ~/.dotfiles/shells/micromamba.nix";
       b = "backup";
       gd = "git diff";
       gs = "git status";
