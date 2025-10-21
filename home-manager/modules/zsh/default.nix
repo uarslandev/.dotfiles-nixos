@@ -15,7 +15,6 @@
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
       cal = "cal -mw";
       mamba-shell = "nix-shell ~/.dotfiles/shells/micromamba.nix";
-      conda = "micromamba";
       b = "backup";
       gd = "git diff";
       gs = "git status";
