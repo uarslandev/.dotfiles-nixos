@@ -9,7 +9,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/1 * * * *      umut    cd ~/Drive && grive"
+      "*/1 * * * *      umut    grive -p ~/Drive"
       "*/1 * * * *      umut    dfs && git pull"
     ];
   };
