@@ -19,6 +19,7 @@ in
         ${builtins.readFile ./nvim/remap.lua}
         ${builtins.readFile ./nvim/luasnip.lua}
         ${builtins.readFile ./nvim/set.lua}
+        ${builtins.readFile ./nvim/plugin/treesitter.lua}
         ${builtins.readFile ./nvim/plugin/colors.lua}
         ${builtins.readFile ./nvim/plugin/telescope.lua}
         ${builtins.readFile ./nvim/plugin/lsp.lua}
@@ -73,6 +74,7 @@ in
         omnisharp-extended-lsp-nvim
         plenary-nvim
         catppuccin-nvim
+        gruvbox-flat-nvim
         vim-airline
         vim-prettier
         (nvim-treesitter.withPlugins (p: [
