@@ -15,6 +15,7 @@ in
   environment.systemPackages = with pkgs; [
     arduino
     postgresql
+    gemini-cli-bin
     mongodb
     mongodb-cli
     mongodb-compass
@@ -23,6 +24,7 @@ in
 	arduino-core
 	gdb
     gh
+    ida-free
 	ghidra
     gitFull
 	insomnia
@@ -36,7 +38,6 @@ in
   	vscode
     bc
     espeak-ng
-    #ida-free
     jdk17
     python3
     qalculate-gtk
