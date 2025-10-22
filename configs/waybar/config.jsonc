@@ -49,7 +49,7 @@
   },
 
   "clock": {
-    "timezone": "America/Fortaleza",
+    "timezone": "Germany/Berlin",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "{:%d/%m/%Y - %H:%M:%S}",
     "interval": 1
