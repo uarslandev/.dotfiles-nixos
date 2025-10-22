@@ -24,7 +24,7 @@ in
 	arduino-core
 	gdb
     gh
-    ida-free
+    #ida-free
 	ghidra
     gitFull
 	insomnia

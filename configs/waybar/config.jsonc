@@ -1,144 +1,107 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 40,
-    "spacing": 8,
-    "margin-top": 8,
-//    "output": "eDP-1",  // remove this if u dont want ur waybar on 1 monitor.(orcustomizeit)
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
 
-     
-    "modules-left": ["group/window", "tray"],
-    "modules-center": ["custom/launcher", "clock", "hyprland/workspaces"], 
-    "modules-right": ["group/datetime-power"], 
+  "modules-center": ["clock", "custom/weather"],
 
+  "modules-right": [
+    "pulseaudio",
+    "custom/uptime",
+    "backlight",
+    "battery",
+    "network",
+    "cpu",
+    "memory",
+    "custom/docker",
+    "tray",
+    "custom/lock",
+    "custom/power"
+  ],
 
-    "group/window": {
-        "orientation": "horizontal",
-        "modules": ["pulseaudio", "custom/hyprland-window"]
-    },
-
-
-    "group/datetime-power": {
-        "orientation": "horizontal",
-        "modules": ["wlr/taskbar","battery" ,"custom/power"]
-    },
-
-    "tray": {
-    "icon-theme": "gruvbox-dark-icons",      // icon theme for the tray
-    "all-outputs": true,
-    "format": "{icon}",
-    "tooltip": true
-},
-
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "一", "2": "二", "3": "三", "4": "四", "5": "五",
-            "6": "六", "7": "七", "8": "八", "9": "九", "10": "十",
-            "urgent": "!",
-            "focused": "●",
-            "default": ""
-        }
-    },
-
-    "custom/launcher":{
-        "format": " ",
-        "on-click": "wofi -show drun",
-        "on-click-right": "killall wofi"
-    },
-
-    "clock": {
-        "on-click": "",
-        "format": "{:%p%I時%M分 %Y年%m月%d日 (第%V週)}"
-    },
-
-    "pulseaudio": {
-        "scroll-step": 0.5,
-        "max-volume": 150,
-        "states": {
-            "warning": 30,
-            "normal": 89,
-            "critical": 150
-        },
-        "format": "   ",
-        "format-icons": {
-            "default": ["   ", "   ", "   ", "   ", "   ","   ","   ", "   ", "   "]
-        },
-        "format-muted": "󰖁",
-        "on-click": "pavucontrol",
-        "tooltip": false
-    },
-
-    "custom/power": {
-        "format": " 󰐥 ",
-        "tooltip": "Power Menu",
-        "on-click": "eww open pwrmnu"
-    },
-
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 16,
-        "icon-theme": "Papirus",
-        "tooltip": true,
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "active-first": true,
-        "all-outputs": true,
-        "app-ids-exclude": [
-            "waybar"
-        ],
-        "ignore-list": [
-            "waybar",
-            "Alacritty",
-            "kitty",
-            "foot",
-            "Gnome-terminal",
-            "org.gnome.Terminal",
-            "io.elementary.Terminal",
-            "Code",
-            "code-oss",
-            "geany",
-            "atom",
-            "Thunar",
-            "nautilus",
-            "dolphin",
-            "org.gnome.Nautilus",
-            "org.kde.dolphin",
-            "Gnome-control-center",
-            "org.kde.plasma.SystemSettings",
-            "pavucontrol",
-            "nm-connection-editor",
-            "blueman-manager",
-            "wlogout",
-            "imv",
-            "Gimp",
-            "Inkscape",
-            "TelegramDesktop",
-            "discord",
-            "Slack",
-            "gnome-text-editor"
-        ]
-    },
-    
-    
-
-
-    "custom/hyprland-window": {
-        "exec": "playerctl metadata -f '{{ artist }} - {{ trunc(title, 25) }}'",
-        "exec-if": "playerctl status 2>/dev/null",
-        "interval": 2,
-        "tooltip": true,
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous",
-        "format": "{icon} {text}",
-        "format-icons": {
-            "Playing": "  ",
-            "Paused": " ",
-            "default": ""
-        }
+  "hyprland/workspaces": {
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
     }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50
+  },
+
+  "clock": {
+    "timezone": "America/Fortaleza",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%d/%m/%Y - %H:%M:%S}",
+    "interval": 1
+  },
+
+  "network": {
+    "format-wifi": "󰤢 {bandwidthDownBits}",
+    "format-ethernet": "󰈀 {bandwidthDownBits}",
+    "format-disconnected": "󰤠 No Network",
+    "interval": 5,
+    "tooltip": false
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "  {used:0.1f}G/{total:0.1f}G"
+  },
+
+  "custom/uptime": {
+    "format": "{}",
+    "interval": 1600,
+    "exec": "sh -c '(uptime -p)'"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout &",
+    "format": "⏻"
+  },
+
+  "custom/docker": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 10,
+    "exec": "$(pwd)/scripts/docker-stats/docker-stats",
+    "tooltip": true
+  },
+
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "$(pwd)/scripts/weather-stats/weather-stats",
+    "return-type": "json"
+  }
 }

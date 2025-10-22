@@ -1,120 +1,156 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
-    font-size: 13px;
-    min-height: 0;
+  font-family: JetbrainsMono Nerd Font;
+  font-size: 10px;
+  min-height: 0;
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-bottom: 0px;
 }
 
-window#waybar {
-    background: transparent;
-    border-radius: 14px;
-}
-
-#workspaces,
-#window,
-#battery,
-#custom-lock,
-#custom-random-wallpaper,
-#group-window,
-#clock,
-#custom-launcher,
-#datetime-power,
-#tray,
-#wlr-taskbar {
-    background-color: black;
-    border-radius: 10px;
-    padding: 0 10px;
-    margin: 4px 5px;
-    color: white;
-}
-
-#custom-launcher {
-    font-size: 14pt;
+#waybar {
+  background: transparent;
+  color: #c6d0f5;
+  margin: 2px 2px;
 }
 
 #workspaces {
-    padding: 0 4px;
+  border-radius: 5px;
+  margin: 5px;
+  background: #101010;
+  margin-left: 2px;
 }
 
 #workspaces button {
-    background-color: black;
-    border-radius: 10px;
-    padding: 0 10px;
-    margin: 1px;
-    color: white;
+  color: #babbf1;
+  border-radius: 5px;
+  padding: 0.4rem;
 }
+
+#workspaces button.active {
+  color: #99d1db;
+  border-radius: 5px;
+}
+
+button {
+  background: transparent;
+}
+
 #workspaces button:hover {
-    color: black;
-    background-color: rgba(255, 255, 255, 0.2);
+  background: #1e1e1e;
+  border: 0px solid transparent;
 }
 
-#window {
-    color: white;
-    font-weight: 500;
-}
-
-#battery {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-#battery.critical,
-#battery.warning {
-    color: rgba(224, 176, 255, 0.5);
-}
-
-#battery.critical {
-    animation: blink 1s linear infinite alternate;
-}
-
-@keyframes blink {
-    to {
-        opacity: 0.5;
-    }
-}
-
-#group-window #pulseaudio {
-    background-color: transparent;
-    padding: 0;
-    margin: 0 8px 0 0;
-    color: inherit;
-}
-
-#datetime-power #clock {
-    background-color: transparent;
-    padding: 0;
-    margin: 0 8px 0 0;
-    color: inherit;
-}
-
-#custom-power {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    color: inherit;
-}
-
-#group-work-clock {
-    padding: 0;
+#custom-music,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#custom-lock,
+#custom-power,
+#custom-weather,
+#custom-uptime,
+#custom-docker {
+  background-color: #101010;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
 }
 
 #clock {
-    background-color: black;
-    border-radius: 10px;
-    padding: 0 10px;
-    margin: 4px 5px;
-    color: white;
+  color: #8caaee;
+  border-radius: 5px;
 }
 
-tooltip {
-    background-color: black;
-    border: 1px solid rgba(137, 180, 250, 0.3);
-    border-radius: 8px;
-    color: white;
-    font-size: 12px;
+#custom-weather {
+  color: #8caaee;
+  margin-left: 0.5rem;
+  border-radius: 5px;
 }
 
-tooltip label {
-    color: white;
+#battery {
+  color: #a6d189;
 }
 
+#battery.charging {
+  color: #a6d189;
+}
+
+#battery.warning:not(.charging) {
+  color: #e78284;
+}
+
+#backlight {
+  color: #e5c890;
+}
+
+#backlight,
+#battery {
+  border-radius: 0;
+}
+
+#pulseaudio {
+  color: #ea999c;
+  border-radius: 5px 0px 0px 5px;
+}
+
+#custom-docker {
+  color: #85c1dc;
+}
+
+#custom-music {
+  color: #ca9ee6;
+  border-radius: 5px;
+}
+
+#custom-lock {
+  color: #babbf1;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0px 5px 5px 0px;
+  color: #e78284;
+}
+
+#custom-docker.docker {
+  color: #85c1dc;
+}
+
+#custom-docker.docker-none {
+  color: #737994;
+}
+
+#custom-docker.docker-error {
+  color: #e78284;
+}
+
+#custom-weather.clear {
+  color: #e5c890; /* Sunny yellow */
+}
+
+#custom-weather.cloud {
+  color: #99d1db; /* Light blue */
+}
+
+#custom-weather.rain {
+  color: #8caaee; /* Blue */
+}
+
+#custom-weather.snow {
+  color: #c6d0f5; /* White-ish */
+}
+
+#custom-weather.thunder {
+  color: #ca9ee6; /* Purple */
+}
+
+#custom-weather.fog {
+  color: #b0b4bc; /* Gray */
+}
+
+#custom-weather.error {
+  color: #e78284; /* Red */
+}
