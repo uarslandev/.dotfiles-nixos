@@ -17,6 +17,7 @@ in
     postgresql
     gemini-cli-bin
     mongodb
+    docker-client
     mongodb-cli
     mongodb-compass
     sshfs
