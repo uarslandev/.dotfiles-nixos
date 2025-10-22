@@ -14,6 +14,8 @@ in
 {
   environment.systemPackages = with pkgs; [
     arduino
+    podman
+    podman-desktop
     postgresql
     gemini-cli-bin
     mongodb

@@ -11,6 +11,7 @@ in
 {
   environment.systemPackages = with pkgs; [
     xclip
+    smile
     distrobox
     keepassxc
     copyq
