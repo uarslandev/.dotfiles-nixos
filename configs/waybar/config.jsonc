@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces"],
 
   "modules-center": ["clock", "custom/weather"],
 
@@ -26,6 +26,12 @@
       "default": ""
     }
   },
+
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "wofi -show drun",
+        "on-click-right": "killall wofi"
+    },
 
   "tray": {
     "icon-size": 16,
