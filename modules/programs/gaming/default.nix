@@ -9,7 +9,7 @@
     xemu
     #proton-ge-bin
     protonup-qt
-    #modrinth-app
+    modrinth-app
     ferium
     ani-cli
     heroic
