@@ -50,62 +50,63 @@ in
         typescript-language-server
         vscode-langservers-extracted
       ];
-      plugins = with pkgs.vimPlugins; [
-        lsp-format-nvim
-        nvim-colorizer-lua
-        bufdelete-nvim
-        lualine-nvim
-        floaterm
-        nvim-whichkey-setup-lua
-        bufferline-nvim
-        lazygit-nvim
-        nvim-dap
-        nvim-dap-python
-        nvim-dap-ui
-        nvim-tree-lua
-        dressing-nvim
-        flutter-tools-nvim
-        formatter-nvim
-        haskell-vim
-        neoformat
-        nvim-surround
-        auto-pairs
-        null-ls-nvim
-        omnisharp-extended-lsp-nvim
-        plenary-nvim
-        catppuccin-nvim
-        gruvbox-flat-nvim
-        vim-airline
-        vim-prettier
-        (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-javascript
-          p.tree-sitter-tsx
-          p.tree-sitter-typescript
-          p.tree-sitter-json5
-          p.tree-sitter-vim
-          p.tree-sitter-bash
-          p.tree-sitter-lua
-          p.tree-sitter-python
-          p.tree-sitter-json
-          p.tree-sitter-haskell
-        ]))
-        nvim-treesitter.withAllGrammars
-        cmp-nvim-lsp
-        lsp-zero-nvim
-        nvim-cmp
-        nvim-lspconfig
-        playground
-        undotree
-        vim-nix
-        telescope-nvim
-        telescope-fzf-native-nvim
-        telescope-fzf-writer-nvim
-        vim-fugitive
-#	  {
-#		plugin = pkgs.vimPlugins.vim-startify;
-#		config = "let g:startify_change_to_vcs_root = 0";
-#      }
+    plugins = with pkgs.vimPlugins; [
+      lsp-format-nvim
+      copilot-vim
+      nvim-colorizer-lua
+      bufdelete-nvim
+      lualine-nvim
+      floaterm
+      nvim-whichkey-setup-lua
+      bufferline-nvim
+      lazygit-nvim
+      nvim-dap
+      nvim-dap-python
+      nvim-dap-ui
+      nvim-tree-lua
+      dressing-nvim
+      flutter-tools-nvim
+      formatter-nvim
+      haskell-vim
+      neoformat
+      nvim-surround
+      auto-pairs
+      null-ls-nvim
+      omnisharp-extended-lsp-nvim
+      plenary-nvim
+      catppuccin-nvim
+      gruvbox-flat-nvim
+      vim-airline
+      vim-prettier
+      (nvim-treesitter.withPlugins (p: [
+        p.tree-sitter-nix
+        p.tree-sitter-javascript
+        p.tree-sitter-tsx
+        p.tree-sitter-typescript
+        p.tree-sitter-json5
+        p.tree-sitter-vim
+        p.tree-sitter-bash
+        p.tree-sitter-lua
+        p.tree-sitter-python
+        p.tree-sitter-json
+        p.tree-sitter-haskell
+      ]))
+      nvim-treesitter.withAllGrammars
+      cmp-nvim-lsp
+      lsp-zero-nvim
+      nvim-cmp
+      nvim-lspconfig
+      playground
+      undotree
+      vim-nix
+      telescope-nvim
+      telescope-fzf-native-nvim
+      telescope-fzf-writer-nvim
+      vim-fugitive
+      #	  {
+      #		plugin = pkgs.vimPlugins.vim-startify;
+      #		config = "let g:startify_change_to_vcs_root = 0";
+      #      }
     ];
   };
 }

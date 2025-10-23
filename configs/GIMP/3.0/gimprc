@@ -1,0 +1,77 @@
+# GIMP gimprc
+# 
+# This is your personal gimprc file.  Any variable defined in this file takes
+# precedence over the value defined in the system-wide gimprc:
+# /nix/store/s1h1gdlvk850b1xbl689pp4mn2hd2zj0-gimp-3.0.4/etc/gimp/3.0/gimprc
+# Most values can be set within GIMP by changing some options in the
+# Preferences dialog.
+
+(use-opencl yes)
+(language "")
+(prev-language "American English")
+(config-version "3.0.4")
+(default-image
+    (width 1280)
+    (height 720)
+    (unit pixels)
+    (xresolution 72)
+    (yresolution 72)
+    (resolution-unit inches)
+    (image-type rgb)
+    (precision u8-non-linear)
+    (color-profile NULL)
+    (simulation-profile NULL)
+    (simulation-bpc no)
+    (simulation-intent relative-colorimetric)
+    (fill-type background)
+    (comment "Created with GIMP"))
+(undo-levels 10)
+(import-add-alpha yes)
+(import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
+(monitor-yresolution 95)
+(default-view
+    (show-menubar yes)
+    (show-statusbar yes)
+    (show-rulers yes)
+    (show-scrollbars yes)
+    (show-selection yes)
+    (show-layer-boundary no)
+    (show-canvas-boundary yes)
+    (show-guides yes)
+    (show-grid no)
+    (show-sample-points yes)
+    (snap-to-guides yes)
+    (snap-to-grid no)
+    (snap-to-canvas no)
+    (snap-to-path no)
+    (snap-to-bbox no)
+    (snap-to-equidistance no)
+    (padding-mode custom)
+    (padding-color
+        (color "R'G'B'A double" 32 "\31\31\31\31\31\31\271\77\31\31\31\31\31\31\271\77\31\31\31\31\31\31\271\77\0\0\0\0\0\0\360\77" 0))
+    (padding-in-show-all no))
+(toolbox-wilber no)
+(fill-options
+    (style fg-color)
+    (custom-style solid-color)
+    (antialias yes)
+    (feather no)
+    (feather-radius 10))
+(stroke-options
+    (style fg-color)
+    (custom-style solid-color)
+    (antialias yes)
+    (feather no)
+    (feather-radius 10)
+    (method line)
+    (width 6)
+    (unit pixels)
+    (cap-style butt)
+    (join-style miter)
+    (miter-limit 10)
+    (dash-offset 0)
+    (dash-info 0)
+    (emulate-brush-dynamics no))
+
+
+# end of gimprc
