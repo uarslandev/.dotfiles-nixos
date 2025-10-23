@@ -80,6 +80,7 @@
     neovim
     wget
     pcmanfm
+    xarchiver
     neovim
     playerctl
     pciutils
