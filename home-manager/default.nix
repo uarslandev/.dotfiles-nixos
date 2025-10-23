@@ -174,16 +174,6 @@ programs = {
     nix-direnv.enable = true;
     enableBashIntegration = true; # see note on other shells below
   };
-  zsh = {
-    enable = true; # see note on other shells
-    initExtra = ''
-      set -e
-      if ! test -d $IN_NIX_SHELL; then
-      eval "$(micromamba shell hook --shell zsh)" 
-      fi
-      set +e
-    '';
-  };
 };
 # Let Home Manager install and manage itself.
 programs.home-manager.enable = true;
