@@ -3,9 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-#    autosuggestion.enable = true;
-#    enableCompletion = true;
-#    autocd = true;
+    #    autosuggestion.enable = true;
+    #    enableCompletion = true;
+    #    autocd = true;
 
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
@@ -17,6 +17,7 @@
       gs = "git status";
       lg = "looking-glass-client -F";
       n = "nvim";
+      wip = "git add . && git commit -m 'wip' && git push";
       nix-search = "nix search nixpkgs";
       nix-update = "nix flake update";
       ns = "nix-shell";
@@ -68,11 +69,11 @@
     #    ];
     #  };
 
-#    oh-my-zsh = {
-#      enable = true;
-#      plugins = [ "git git-auto-fetch fzf"];
-#      theme = "robbyrussell";
-#    };
+    #    oh-my-zsh = {
+    #      enable = true;
+    #      plugins = [ "git git-auto-fetch fzf"];
+    #      theme = "robbyrussell";
+    #    };
     initExtra = ''
         bindkey -s ^f "tmux-sessionizer\n"
         bindkey -s ^b "books\n"
