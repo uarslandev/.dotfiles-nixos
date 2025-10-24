@@ -51,7 +51,7 @@
   services.libinput.enable = true;
 
   home-manager.backupFileExtension = "backup";
-#
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.umut = {
     isNormalUser = true;

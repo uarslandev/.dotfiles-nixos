@@ -3,13 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-#    autosuggestion.enable = true;
-#    enableCompletion = true;
-#    autocd = true;
-#    sessionVariables = {
-#      AWT_TOOLKIT = "MToolkit";
-#      _JAVA_AWT_WM_NONREPARENTING=1;
-#    };
+    autosuggestion.enable = true;
+    enableCompletion = true;
+    autocd = true;
 
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
@@ -49,31 +45,35 @@
       update = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
     };
 
-#    plugins = [
-#	{
-#		name = "powerlevel10k-config";
-#		src = ./p10k;
-#		file = "p10k.zsh";
-#	}	
-#  ];
-#
-#  zplug = {
-#    enable = true;
-#    plugins = [
-#      { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
-#      { name = "zsh-users/zsh-history-substring-search"; } # Simple plugin installation
-#      { name = "zsh-users/zsh-syntax-highlighting"; } # Simple plugin installation
-#      { name = "zsh-users/zsh-completions"; } # Simple plugin installation
-#              { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
-#    ];
-#  };
+    plugins = [
+      {
+        name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "powerlevel10k-config";
+        src = ./p10k;
+        file = "p10k.zsh";
+      }	
+    ];
+    #
+    #  zplug = {
+    #    enable = true;
+    #    plugins = [
+    #      { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
+    #      { name = "zsh-users/zsh-history-substring-search"; } # Simple plugin installation
+    #      { name = "zsh-users/zsh-syntax-highlighting"; } # Simple plugin installation
+    #      { name = "zsh-users/zsh-completions"; } # Simple plugin installation
+    #      { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; } # Installations with additional options. For the list of options, please refer to Zplug README.
+    #    ];
+    #  };
 
-  oh-my-zsh = {
-    enable = true;
-      #    plugins = [ "git git-auto-fetch fzf"];
-    #theme = "robbyrussell";
-  };
-  initExtra = ''
+#    oh-my-zsh = {
+#      enable = true;
+#      plugins = [ "git git-auto-fetch fzf"];
+#      theme = "robbyrussell";
+#    };
+    initExtra = ''
         bindkey -s ^f "tmux-sessionizer\n"
         bindkey -s ^b "books\n"
         bindkey -s ^t "tmux kill-server\n"
@@ -96,6 +96,6 @@
               fi
           }
       fi
-  '';
-};
+    '';
+  };
 }

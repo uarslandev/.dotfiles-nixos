@@ -172,7 +172,8 @@ programs = {
   direnv = {
     enable = true;
     nix-direnv.enable = true;
-    enableBashIntegration = true; # see note on other shells below
+    enableBashIntegration = false; # see note on other shells below
+    enableZshIntegration = false; # see note on other shells below
   };
 };
 # Let Home Manager install and manage itself.
