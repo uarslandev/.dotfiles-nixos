@@ -3,9 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-    #    autosuggestion.enable = true;
-    #    enableCompletion = true;
-    #    autocd = true;
+        autosuggestion.enable = true;
+        enableCompletion = true;
+    autocd = true;
 
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";

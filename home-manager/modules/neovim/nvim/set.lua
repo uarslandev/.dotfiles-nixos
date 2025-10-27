@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 -- Auto commands
 --vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
 --vim.cmd([[autocmd VimEnter * NvimTreeToggle]])
---vim.cmd([[autocmd BufWritePre *.js Neoformat]])
+vim.cmd([[autocmd BufWritePre * Prettier]])
 
 -- Line numbers
 vim.opt.nu = true

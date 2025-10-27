@@ -1,17 +1,39 @@
-let g:prettier#config#print_width = 'auto'
+local prettier = require("prettier")
 
-let g:prettier#config#tab_width = 'auto'
-
-let g:prettier#config#use_tabs = 'auto'
-
-let g:prettier#config#parser = ''
-
-let g:prettier#config#config_precedence = 'file-override'
-
-let g:prettier#config#prose_wrap = 'preserve'
-
-let g:prettier#config#html_whitespace_sensitivity = 'css'
-
-let g:prettier#config#require_pragma = 'false'
-
-let g:prettier#config#end_of_line = get(g:, 'prettier#config#end_of_line', 'lf')
+prettier.setup({
+  bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+  cli_options = {
+    arrow_parens = "always",
+    bracket_spacing = true,
+    bracket_same_line = false,
+    embedded_language_formatting = "auto",
+    end_of_line = "lf",
+    html_whitespace_sensitivity = "css",
+    -- jsx_bracket_same_line = false,
+    jsx_single_quote = false,
+    print_width = 80,
+    prose_wrap = "preserve",
+    quote_props = "as-needed",
+    semi = true,
+    single_attribute_per_line = false,
+    single_quote = false,
+    tab_width = 2,
+    trailing_comma = "es5",
+    use_tabs = false,
+    vue_indent_script_and_style = false,
+  },
+})
