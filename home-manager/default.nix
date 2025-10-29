@@ -20,6 +20,19 @@ in
   # release notes.
   home.stateVersion = "22.11"; # Please read the comment before changing.
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "librewolf.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "application/pdf" = "firefox.desktop";
+      "application/msword" = "writer.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
     # # Adds the 'hello' command to your environment. It prints a friendly

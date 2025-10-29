@@ -10,6 +10,6 @@ profile built-in {
 }
 
 profile drimalla-lab {
-    output eDP-1 enable scale 1.6 position 0,1080
-    output HDMI-A-2 enable scale 1.0 position 320,0
+    output eDP-1 enable scale 1.6 position 160,1080
+    output HDMI-A-2 enable scale 1.0 position 0,0
 }

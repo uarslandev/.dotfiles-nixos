@@ -57,7 +57,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
-    extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "kvm" "jackaudio" "video" "dialout" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "networkmanager" "kvm" "jackaudio" "video" "dialout" ]; # Enable ‘sudo’ for the user.
   };
 
   services.mongodb = {
@@ -77,6 +77,7 @@
     fuse
     fuse3
     fuse2
+    file
     neovim
     wget
     pcmanfm
