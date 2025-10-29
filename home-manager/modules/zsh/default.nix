@@ -27,6 +27,7 @@
       t = "tmux";
       chrome = "google-chrome-stable";
       dfs = "cd ~/.dotfiles";
+      ls = "ls --color=auto";
       ga = "git add";
       gb = "git branch -a";
       gc = "git commit -m";
