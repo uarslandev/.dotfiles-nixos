@@ -1,0 +1,19 @@
+{
+  "paths": [
+    {
+      "_path": "bin/x86_64-conda-linux-gnu-ld",
+      "file_mode": "binary",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/binutils_split_1761334581390/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+      "sha256": "65d57cd270b3cce21d4f134d6372514982095a1c0800de4f03b365fed74fadb4",
+      "size_in_bytes": 2940688
+    },
+    {
+      "_path": "x86_64-conda-linux-gnu/bin/ld",
+      "path_type": "softlink",
+      "sha256": "65d57cd270b3cce21d4f134d6372514982095a1c0800de4f03b365fed74fadb4",
+      "size_in_bytes": 2940688
+    }
+  ],
+  "paths_version": 1
+}

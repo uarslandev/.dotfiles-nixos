@@ -5,9 +5,9 @@ let
 in
   {
 
-    imports = [
-      ./modules
-    ];
+  imports = [
+    ./modules
+  ];
   # Home Manager needs a bit of information about you and the paths it should manage. home.username = "umut";
   home.homeDirectory = "/home/umut";
 
@@ -29,29 +29,30 @@ in
       "x-scheme-handler/about" = "firefox.desktop";
       "application/pdf" = "firefox.desktop";
       "application/msword" = "writer.desktop";
+      "image/png" = "feh.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
     };
   };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+  # # Adds the 'hello' command to your environment. It prints a friendly
+  # # "Hello, world!" when run.
+  # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  # # It is sometimes useful to fine-tune packages, for example, by applying
+  # # overrides. You can do that directly here, just don't forget the
+  # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+  # # fonts?
+  # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-#  ];
+  # # You can also create simple shell scripts directly inside your
+  # # configuration. For example, this adds a command 'my-hello' to your
+  # # environment:
+  # (pkgs.writeShellScriptBin "my-hello" ''
+  #   echo "Hello, ${config.home.username}!"
+  # '')
+  #  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -85,7 +86,7 @@ in
     ".config/alacritty".source = link "${home}"+"/alacritty";
     ".xmobarrc".source = link "${home}"+"/.xmobarrc";
     ".trayer.sh".source = link "${home}"+"/.trayer.sh";
-#	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
+    #	"mimeapps.list".source = link "${home}"+"/mimeapps.list";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -105,19 +106,19 @@ in
   #
   # if you don't want to manage your shell through Home Manager.
 
-#  home.sessionVariables = {
-#    EDITOR = "nvim";
-#    TERMINAL = "kitty";
-#  };
+  #  home.sessionVariables = {
+  #    EDITOR = "nvim";
+  #    TERMINAL = "kitty";
+  #  };
 
-home.pointerCursor = {
-  gtk.enable = true;
-  package = pkgs.catppuccin-cursors.mochaSapphire;
-  name = "catppuccin-mocha-sapphire-cursors";
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.catppuccin-cursors.mochaSapphire;
+    name = "catppuccin-mocha-sapphire-cursors";
 
-#      name = "Bibata-Modern-Ice";
-#      package = pkgs.bibata-cursors;
-size = 12;
+    #      name = "Bibata-Modern-Ice";
+    #      package = pkgs.bibata-cursors;
+    size = 12;
   };
 
   dconf.settings = {
@@ -125,70 +126,81 @@ size = 12;
       gtk-theme = "catppuccin-frappe-blue-standard";
       color-scheme = "prefer-dark";
     };
-        # For Gnome shell
-        "org/gnome/shell/extensions/user-theme" = {
-          name = "Catppuccin-Macchiato-Standard-Blue-Dark";
-        };
-      };
-
-      home.packages = with pkgs; [
-        nodejs
-        (writeShellApplication {
-          name = "gemini";
-          text = ''
-              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
-            ];
-
-            gtk = {
-              enable = true;
-
-              gtk3 = {
-                extraConfig.gtk-application-prefer-dark-theme = true;
-              };
-
-              gtk4 = {
-                extraConfig.gtk-application-prefer-dark-theme = true;
-              };
-
-              cursorTheme = {
-
-                package = pkgs.catppuccin-cursors.mochaSapphire;
-                name = "catppuccin-mocha-sapphire-cursors";
-              };
-
-              theme = {
-                name = "catppuccin-frappe-blue-standard";
-                package = pkgs.catppuccin-gtk;
-    #name = "Adwaita-dark";
-    #package = pkgs.gnome-themes-extra;
-  };
-  iconTheme = {
-    name = "Papirus-Dark";
-    package = pkgs.catppuccin-papirus-folders.override {
-      flavor = "mocha";
-      accent = "lavender";
+    # For Gnome shell
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
     };
   };
-};
 
-qt = {
-  enable = true;
-  platformTheme = "gtk";
-  style = {
-    name = "gtk2";
-  };
-};
+  home.packages = with pkgs; [
+    nodejs
+    (writeShellApplication {
+      name = "gemini";
+      text = ''
+              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
+  ];
 
-    # Wayland, X, etc. support for session vars
-#    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
-programs = {
-  direnv = {
+  gtk = {
     enable = true;
-    nix-direnv.enable = true;
-    enableBashIntegration = false; # see note on other shells below
-    enableZshIntegration = false; # see note on other shells below
+
+    gtk3 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+    };
+
+    gtk4 = {
+      extraConfig.gtk-application-prefer-dark-theme = true;
+    };
+
+    cursorTheme = {
+
+      package = pkgs.catppuccin-cursors.mochaSapphire;
+      name = "catppuccin-mocha-sapphire-cursors";
+    };
+
+    theme = {
+      name = "catppuccin-frappe-blue-standard";
+      package = pkgs.catppuccin-gtk;
+      #name = "Adwaita-dark";
+      #package = pkgs.gnome-themes-extra;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "lavender";
+      };
+    };
   };
-};
-# Let Home Manager install and manage itself.
-programs.home-manager.enable = true;
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "gtk2";
+    };
+  };
+
+  # Wayland, X, etc. support for session vars
+  #    systemd.user.sessionVariables = config.home-manager.users.justinas.home.sessionVariables;
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      enableZshIntegration = true; # see note on other shells below
+    };
+    zsh = {
+      enable = true; # see note on other shells
+      initExtra = ''
+      set -e
+      if ! test -d $IN_NIX_SHELL; then
+        eval "$(micromamba shell hook --shell zsh)" 
+      fi
+      set +e
+      '';
+    };
+
+  };
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }

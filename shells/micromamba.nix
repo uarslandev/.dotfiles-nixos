@@ -14,7 +14,8 @@ let
       export MAMBA_ROOT_PREFIX=${builtins.getEnv "PWD"}/.mamba
       eval "$(micromamba shell hook --shell=zsh | sed 's/complete / # complete/g')"
       #micromamba create --yes -q -n my-mamba-environment
-      #micromamba activate its
+      #micromamba activate my-mamba-environment
+      #micromamba install --yes -f conda-requirements.txt -c conda-forge
       set +e
     '';
 

@@ -1,0 +1,18 @@
+{
+  "arch": "x86_64",
+  "build": "h1aa0949_4",
+  "build_number": 4,
+  "constrains": [
+    "binutils_impl_linux-64 2.44"
+  ],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "zstd >=1.5.7,<1.6.0a0"
+  ],
+  "license": "GPL-3.0-only",
+  "name": "ld_impl_linux-64",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1761335175964,
+  "version": "2.44"
+}

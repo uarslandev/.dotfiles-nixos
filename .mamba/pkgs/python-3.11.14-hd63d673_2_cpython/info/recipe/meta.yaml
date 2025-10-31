@@ -1,0 +1,227 @@
+# This file created by conda-build 25.9.0
+# ------------------------------------------------
+
+package:
+  name: python
+  version: 3.11.14
+source:
+  - url: https://www.python.org/ftp/python/3.11.14/Python-3.11.14.tar.xz
+    md5: 2f7d50f6e41d61607022dfeb7741df3a
+    patches:
+      - patches/0001-Win32-Change-FD_SETSIZE-from-512-to-2048.patch
+      - patches/0002-Win32-distutils-Add-support-to-cygwinccompiler-for-V.patch
+      - patches/0003-bpo-45258-search-for-isysroot-in-addition-to-sysroot.patch
+      - patches/0004-runtime_library_dir_option-Use-1st-word-of-CC-as-com.patch
+      - patches/0005-Win32-Do-not-download-externals.patch
+      - patches/0006-Fix-find_library-so-that-it-looks-in-sys.prefix-lib-.patch
+      - patches/0007-bpo-22699-Allow-compiling-on-debian-ubuntu-with-a-di.patch
+      - patches/0008-Disable-registry-lookup-unless-CONDA_PY_ALLOW_REG_PA.patch
+      - patches/0009-Unvendor-openssl.patch
+      - patches/0010-Unvendor-sqlite3.patch
+      - patches/0011-Use-ranlib-from-env-if-env-variable-is-set.patch
+      - patches/0012-Add-CondaEcosystemModifyDllSearchPath.patch
+      - patches/0013-Add-d1trimfile-SRC_DIR-to-make-pdbs-more-relocatable.patch
+      - patches/0014-Doing-d1trimfile.patch
+      - patches/0015-cross-compile-darwin.patch
+      - patches/0016-Fix-TZPATH-on-windows.patch
+      - patches/0017-Make-dyld-search-work-with-SYSTEM_VERSION_COMPAT-1.patch
+      - patches/0018-Fix-LDSHARED-when-CC-is-overriden-on-Linux-too.patch
+      - patches/0019-Unvendor-bzip2.patch
+      - patches/0020-Unvendor-libffi.patch
+      - patches/0021-Unvendor-tcltk.patch
+      - patches/0022-unvendor-xz.patch
+      - patches/0023-unvendor-zlib.patch
+      - patches/0024-Do-not-pass-g-to-GCC-when-not-Py_DEBUG.patch
+      - patches/0025-Unvendor-expat.patch
+      - patches/0026-Do-not-define-pid_t-as-it-might-conflict-with-the-ac.patch
+build:
+  number: 2
+  activate_in_script: true
+  no_link: null
+  ignore_run_exports_from:
+    - gxx_linux-64 14.*
+    - xorg-libx11
+    - xorg-xorgproto
+  detect_binary_files_with_prefix: true
+  skip_compile_pyc: null
+  string: hd63d673_2_cpython
+  run_exports:
+    noarch:
+      - python
+    weak:
+      - python_abi 3.11.* *_cp311
+  script_env:
+    - CONDA_FORGE=yes
+    - PY_INTERP_DEBUG=no
+    - PY_INTERP_LINKAGE_NATURE=static
+requirements:
+  build:
+    - _libgcc_mutex 0.1 conda_forge
+    - _openmp_mutex 4.5 2_gnu
+    - binutils_impl_linux-64 2.44 hdf8817f_2
+    - binutils_linux-64 2.44 h4852527_2
+    - gcc_impl_linux-64 14.3.0 hd9e9e21_7
+    - gcc_linux-64 14.3.0 h298d278_12
+    - gxx_impl_linux-64 14.3.0 he663afc_7
+    - gxx_linux-64 14.3.0 h95f728e_12
+    - kernel-headers_linux-64 3.10.0 he073ed8_18
+    - ld_impl_linux-64 2.44 ha97dd6f_2
+    - libgcc 15.2.0 h767d61c_7
+    - libgcc-devel_linux-64 14.3.0 h85bb3a7_107
+    - libgcc-ng 15.2.0 h69a702a_7
+    - libgomp 15.2.0 h767d61c_7
+    - libltdl 2.4.3a h5888daf_0
+    - libsanitizer 14.3.0 hd08acf3_7
+    - libstdcxx 15.2.0 h8f9b012_7
+    - libstdcxx-devel_linux-64 14.3.0 h85bb3a7_107
+    - libtool 2.5.4 h5888daf_0
+    - make 4.4.1 hb9d3cd8_2
+    - pkg-config 0.29.2 h4bc722e_1009
+    - sysroot_linux-64 2.17 h0157908_18
+    - tzdata 2025b h78e105d_0
+  host:
+    - _libgcc_mutex 0.1 conda_forge
+    - _openmp_mutex 4.5 2_gnu
+    - bzip2 1.0.8 hda65f42_8
+    - ca-certificates 2025.10.5 hbd8a1cb_0
+    - expat 2.7.1 hecca717_0
+    - ld_impl_linux-64 2.44 ha97dd6f_2
+    - libexpat 2.7.1 hecca717_0
+    - libffi 3.5.2 h9ec8514_0
+    - libgcc 15.2.0 h767d61c_7
+    - libgcc-ng 15.2.0 h69a702a_7
+    - libgomp 15.2.0 h767d61c_7
+    - liblzma 5.8.1 hb9d3cd8_2
+    - liblzma-devel 5.8.1 hb9d3cd8_2
+    - libnsl 2.0.1 hb9d3cd8_1
+    - libsqlite 3.50.4 h0c1763c_0
+    - libuuid 2.41.2 he9a06e4_0
+    - libxcb 1.17.0 h8a09558_0
+    - libxcrypt 4.4.36 hd590300_1
+    - libzlib 1.3.1 hb9d3cd8_2
+    - ncurses 6.5 h2d0b736_3
+    - openssl 3.5.4 h26f9b46_0
+    - pthread-stubs 0.4 hb9d3cd8_1002
+    - readline 8.2 h8c095d6_2
+    - sqlite 3.50.4 hbc0de68_0
+    - tk 8.6.13 noxft_hd72426e_102
+    - xorg-libx11 1.8.12 h4f16b4b_0
+    - xorg-libxau 1.0.12 hb9d3cd8_0
+    - xorg-libxdmcp 1.1.5 hb9d3cd8_0
+    - xorg-xorgproto 2024.1 hb9d3cd8_1
+    - zlib 1.3.1 hb9d3cd8_2
+  run:
+    - __glibc >=2.17,<3.0.a0
+    - bzip2 >=1.0.8,<2.0a0
+    - ld_impl_linux-64 >=2.36.1
+    - libexpat >=2.7.1,<3.0a0
+    - libffi >=3.5.2,<3.6.0a0
+    - libgcc >=14
+    - liblzma >=5.8.1,<6.0a0
+    - libnsl >=2.0.1,<2.1.0a0
+    - libsqlite >=3.50.4,<4.0a0
+    - libuuid >=2.41.2,<3.0a0
+    - libxcrypt >=4.4.36
+    - libzlib >=1.3.1,<2.0a0
+    - ncurses >=6.5,<7.0a0
+    - openssl >=3.5.4,<4.0a0
+    - readline >=8.2,<9.0a0
+    - tk >=8.6.13,<8.7.0a0
+    - tzdata
+  run_constrained:
+    - python_abi 3.11.* *_cp311
+test:
+  downstreams:
+    - cython
+    - setuptools
+  requires:
+    - cmake
+    - gcc_linux-64 14.*
+    - gxx_linux-64 14.*
+    - ninja
+    - ripgrep
+    - sysroot_linux-64 2.17.*
+    - xorg-libx11
+  files:
+    - run_test.py
+    - tests/cmake/*
+    - tests/cython/*
+    - tests/distutils/*
+    - tests/prefix-replacement/*
+  commands:
+    - python -V
+    - python3 -V
+    - 2to3 -h
+    - pydoc -h
+    - python3-config --help
+    - python -c "from zoneinfo import ZoneInfo; from datetime import datetime; dt
+      = datetime(2020, 10, 31, 12, tzinfo=ZoneInfo('America/Los_Angeles')); print(dt.tzname())"
+    - python -m venv test-venv
+    - test-venv/bin/python -c "import ctypes"
+    - python -c "import sysconfig; print(sysconfig.get_config_var('CC'))"
+    - _CONDA_PYTHON_SYSCONFIGDATA_NAME=_sysconfigdata_x86_64_conda_linux_gnu python
+      -c "import sysconfig; print(sysconfig.get_config_var('CC'))"
+    - for f in ${CONDA_PREFIX}/lib/python*/_sysconfig*.py; do echo "Checking $f:";
+      if [[ `rg @ $f` ]]; then echo "FAILED ON $f"; cat $f; exit 1; fi; done
+    - test ! -f ${PREFIX}/lib/libpython${PKG_VERSION%.*}.a
+    - test ! -f ${PREFIX}/lib/libpython${PKG_VERSION%.*}.nolto.a
+    - pushd tests
+    - pushd distutils
+    - python setup.py install -v -v
+    - python -c "import foobar"
+    - popd
+    - pushd prefix-replacement
+    - bash build-and-test.sh
+    - popd
+    - pushd cmake
+    - cmake -GNinja -DPY_VER=3.11.14
+    - popd
+    - popd
+    - python run_test.py
+    - test -d "$PREFIX/lib/python3.1/site-packages"
+    - python3.1 --version
+    - python -c "from ctypes import CFUNCTYPE; CFUNCTYPE(None)(id)"
+    - TERM=xterm >/dev/null python -c "import curses; scr = curses.initscr(); curses.unget_wch('x');
+      assert 'x' ==  scr.get_wch()"
+    - python -c "import crypt"
+about:
+  home: https://www.python.org/
+  license: Python-2.0
+  license_file: LICENSE
+  summary: General purpose programming language
+  description: 'Python is a widely used high-level, general-purpose, interpreted,
+    dynamic
+
+    programming language. Its design philosophy emphasizes code
+
+    readability, and its syntax allows programmers to express concepts in
+
+    fewer lines of code than would be possible in languages such as C++ or
+
+    Java. The language provides constructs intended to enable clear programs
+
+    on both a small and large scale.
+
+    '
+  doc_url: https://www.python.org/doc/versions/
+  doc_source_url: https://github.com/python/pythondotorg/blob/master/docs/source/index.rst
+  dev_url: https://docs.python.org/devguide/
+extra:
+  feedstock-name: python
+  recipe-maintainers:
+    - chrisburr
+    - isuruf
+    - jakirkham
+    - katietz
+    - mbargull
+    - mingwandroid
+    - msarahan
+    - ocefpaf
+    - pelson
+    - scopatz
+    - xhochy
+  final: true
+  copy_test_source_files: true
+  flow_run_id: azure_20251022.8.1
+  remote_url: https://github.com/conda-forge/python-feedstock
+  sha: 7312a8200d8dba1d9402199b541e95b2a4b09220

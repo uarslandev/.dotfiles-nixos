@@ -49,6 +49,7 @@ in
     networkmanagerapplet
     pavucontrol
     hyprpicker
+    feh
     kitty
     swww
     hyprlock

@@ -8,10 +8,10 @@ let
     url = "https://channels.nixos.org/nixos-24.05/nixexprs.tar.xz";
     sha256 = "1f8j7fh0nl4qmqlxn6lis8zf7dnckm6jri4rwmj0qm1qivhr58lv";
   }) { 
-    system = "x86_64-linux";  # Explicitly set your system architecture
-  };
+      system = "x86_64-linux";  # Explicitly set your system architecture
+    };
 in
-{
+  {
   environment.systemPackages = with pkgs; [
     arduino
     podman
@@ -24,21 +24,21 @@ in
     mongodb-compass
     sshfs
     arduino-cli
-	arduino-core
-	gdb
+    arduino-core
+    gdb
     gh
     #ida-free
-	ghidra
+    ghidra
     gitFull
-	insomnia
-	jetbrains-toolbox
-	maven
-	ngrok
-	nmap
-	nodejs
-	python3Packages.pip
-	python3Packages.virtualenv
-  	vscode
+    insomnia
+    jetbrains-toolbox
+    maven
+    ngrok
+    nmap
+    nodejs
+    python3Packages.pip
+    python3Packages.virtualenv
+    vscode
     bc
     espeak-ng
     jdk17
@@ -46,6 +46,6 @@ in
     qalculate-gtk
     unityhub
     zulu21
-    ] ++ (with oldPkgs; [ micromamba ]);
+  ];
 
 }

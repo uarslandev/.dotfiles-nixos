@@ -1,21 +1,21 @@
 {
     "InternalPDFViewer": {
         "Embedded": true,
-        "File": "../../Drive/Drive1/Uni/SRM2.0/Report/template.pdf"
+        "File": "../../Documents/xai_report/document.pdf"
     },
     "Session": {
         "Bookmarks": [
         ],
-        "CurrentFile": "../../Drive/Drive1/Uni/SRM2.0/Report/template.tex",
+        "CurrentFile": "../../Documents/xai_report/document.tex",
         "FileVersion": 1,
         "Files": [
             {
-                "Col": 11,
+                "Col": 1,
                 "EditorGroup": 0,
-                "FileName": "../../Drive/Drive1/Uni/SRM2.0/Report/template.tex",
-                "FirstLine": 37,
+                "FileName": "../../Documents/xai_report/document.tex",
+                "FirstLine": 250,
                 "FoldedLines": "",
-                "Line": 43
+                "Line": 272
             }
         ],
         "MasterFile": "",

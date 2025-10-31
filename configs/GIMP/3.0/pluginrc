@@ -180,7 +180,7 @@
         (proc-arg 12 "GimpParamPattern" "GimpPattern" "pattern" "Pattern" "Pattern" 3 0 0 2047)
         (proc-arg 12 "GimpParamGradient" "GimpGradient" "gradient" "Gradient" "Gradient" 3 0 0 2142)
         (proc-arg 5 "GParamBoolean" "gboolean" "toggle-2" "Gradient reverse" "Gradient reverse" 3 0)
-        (proc-arg 12 "GimpParamFont" "GimpFont" "font" "Font" "Font" 3 0 0 3431)
+        (proc-arg 12 "GimpParamFont" "GimpFont" "font" "Font" "Font" 3 0 0 0)
         (proc-arg 1 "GParamInt" "gint" "adjustment-3" "Font size (pixels)" "Font size (pixels)" 3 1 1000 50)
         (proc-arg 12 "GimpParamPalette" "GimpPalette" "palette" "Palette" "Palette" 3 0 0 2096)
         (proc-arg 13 "GimpParamFile" "GFile" "filename" "Environment map" "Environment map" 259 0 1 "file:///nix/store/s1h1gdlvk850b1xbl689pp4mn2hd2zj0-gimp-3.0.4/share/gimp/3.0/scripts/images/beavis.jpg")

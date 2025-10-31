@@ -1,0 +1,11 @@
+prefix=/home/umut/.dotfiles/.mamba/envs/xai
+exec_prefix=/home/umut/.dotfiles/.mamba/envs/xai
+libdir=/home/umut/.dotfiles/.mamba/envs/xai/lib
+includedir=/home/umut/.dotfiles/.mamba/envs/xai/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.41.2
+Cflags: -I${includedir}/uuid
+Libs.private:  -lpthread
+Libs: -L${libdir} -luuid

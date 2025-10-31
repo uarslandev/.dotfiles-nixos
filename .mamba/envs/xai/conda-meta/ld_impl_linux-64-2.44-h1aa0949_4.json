@@ -1,0 +1,55 @@
+{
+    "arch": "x86_64",
+    "build": "h1aa0949_4",
+    "build_number": 4,
+    "build_string": "h1aa0949_4",
+    "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+    "constrains": [
+        "binutils_impl_linux-64 2.44"
+    ],
+    "depends": [
+        "__glibc >=2.17,<3.0.a0",
+        "zstd >=1.5.7,<1.6.0a0"
+    ],
+    "extracted_package_dir": "/home/umut/.dotfiles/.mamba/pkgs/ld_impl_linux-64-2.44-h1aa0949_4",
+    "files": [
+        "bin/x86_64-conda-linux-gnu-ld",
+        "x86_64-conda-linux-gnu/bin/ld"
+    ],
+    "fn": "ld_impl_linux-64-2.44-h1aa0949_4.conda",
+    "license": "GPL-3.0-only",
+    "link": {
+        "source": "/home/umut/.dotfiles/.mamba/pkgs/ld_impl_linux-64-2.44-h1aa0949_4",
+        "type": 1
+    },
+    "md5": "c94ab6ff54ba5172cf1c58267005670f",
+    "name": "ld_impl_linux-64",
+    "package_tarball_full_path": "/home/umut/.dotfiles/.mamba/pkgs/ld_impl_linux-64-2.44-h1aa0949_4.tar.bz2",
+    "paths_data": {
+        "paths": [
+            {
+                "_path": "bin/x86_64-conda-linux-gnu-ld",
+                "path_type": "hardlink",
+                "sha256": "65d57cd270b3cce21d4f134d6372514982095a1c0800de4f03b365fed74fadb4",
+                "sha256_in_prefix": "b297d44c071143affff64d70be4101e2079cffadd8f247dcd6a73834d1e7c83c",
+                "size_in_bytes": 2940688
+            },
+            {
+                "_path": "x86_64-conda-linux-gnu/bin/ld",
+                "path_type": "softlink",
+                "sha256_in_prefix": "b297d44c071143affff64d70be4101e2079cffadd8f247dcd6a73834d1e7c83c",
+                "size_in_bytes": 2940688
+            }
+        ],
+        "paths_version": 1
+    },
+    "platform": "linux",
+    "requested_spec": "",
+    "sha256": "96b6900ca0489d9e5d0318a6b49f8eff43fd85fef6e07cb0c25344ee94cd7a3a",
+    "size": 742501,
+    "subdir": "linux-64",
+    "timestamp": 1761335175964,
+    "track_features": "",
+    "url": "https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.44-h1aa0949_4.conda",
+    "version": "2.44"
+}
