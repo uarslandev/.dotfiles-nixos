@@ -1,5 +1,0 @@
-#!/home/conda/feedstock_root/build_artifacts/python-split_1761172146731/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol/bin/python3.11
-import sys
-from lib2to3.main import main
-
-sys.exit(main("lib2to3.fixes"))
