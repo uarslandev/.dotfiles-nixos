@@ -19,6 +19,7 @@
   boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModprobeConfig = "options kvm_intel nested=1";
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  nixpkgs.config.allowUnfree = true;
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -97,6 +98,7 @@
     tmux
     fuse
     rar
+    patchelf
     nix-search-cli
     ntfs3g
     fd
