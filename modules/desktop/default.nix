@@ -39,9 +39,6 @@ in
     # extraPortals = [ pkgs.xdg-desktop-portal-kde ];
   };
 
-  services.desktopManager.gnome.enable = true;
-
-
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
     custom-sddm-astronaut
