@@ -104,8 +104,8 @@
     lsof
     zip
     unzip
-    #playerctl
     cifs-utils
+    samba
     ffmpeg
     steam-run
     cudatoolkit
