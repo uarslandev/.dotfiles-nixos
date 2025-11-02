@@ -9,27 +9,27 @@ let
   };
 in
   {
-    services.xserver.enable = true;
-    services.displayManager.sddm = {
-      enable = true;
-      extraPackages = [
-        custom-sddm-astronaut
-      ];
+  services.xserver.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    extraPackages = [
+      custom-sddm-astronaut
+    ];
 
-      theme = "sddm-astronaut-theme";
-      settings = {
-        Theme = {
-          Current = "sddm-astronaut-theme";
-        };
+    theme = "sddm-astronaut-theme";
+    settings = {
+      Theme = {
+        Current = "sddm-astronaut-theme";
       };
     };
-    programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
+  };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
-    xdg.portal = {
-      enable = true;
+  xdg.portal = {
+    enable = true;
     # For GNOME or GTK apps, you'll want these:
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
@@ -38,6 +38,8 @@ in
     # If you're using KDE, use this instead:
     # extraPortals = [ pkgs.xdg-desktop-portal-kde ];
   };
+
+  services.desktopManager.gnome.enable = true;
 
 
   environment.systemPackages = with pkgs; [
