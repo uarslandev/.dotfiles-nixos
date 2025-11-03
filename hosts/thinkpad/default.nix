@@ -28,9 +28,11 @@
   };
 
   hardware.graphics = {
-   enable = true;
+    enable = true;
+    driSupport32Bit = true;
    extraPackages = with pkgs; [
-     rocmPackages.clr.icd
+      rocmPackages.clr.icd
+      intel-compute-runtime
    ];
  };
   
