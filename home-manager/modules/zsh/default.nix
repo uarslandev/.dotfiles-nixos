@@ -3,8 +3,8 @@
 {
   programs.zsh = {
     enable = true;
-        autosuggestion.enable = true;
-        enableCompletion = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
     autocd = true;
 
     shellAliases = {
@@ -52,6 +52,10 @@
         name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
+
+      {
+        name = "oh-my-zsh";src = pkgs.oh-my-zsh;
+      }
       {
         name = "powerlevel10k-config";
         src = ./p10k;
@@ -76,9 +80,14 @@
     #      theme = "robbyrussell";
     #    };
     initExtra = ''
+        bindkey -e
         bindkey -s ^f "tmux-sessionizer\n"
         bindkey -s ^b "books\n"
         bindkey -s ^t "tmux kill-server\n"
+        bindkey "\e[1;3D" backward-word
+        bindkey "\e[1;3C" forward-word
+        bindkey "\e[127;5~" backward-kill-word   # might vary
+        bindkey "\e[3;3~" kill-word
 
       if [[ -n "$PROJECT_ROOT" && -d "$PROJECT_ROOT" ]]; then
           # Define the custom cd function to override the built-in/plugin ones
