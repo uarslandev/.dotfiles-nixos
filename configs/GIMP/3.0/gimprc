@@ -28,7 +28,8 @@
 (undo-levels 10)
 (import-add-alpha yes)
 (import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
-(monitor-yresolution 95)
+(monitor-xresolution 81)
+(monitor-yresolution 81)
 (default-view
     (show-menubar yes)
     (show-statusbar yes)

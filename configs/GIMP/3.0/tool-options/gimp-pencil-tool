@@ -9,8 +9,7 @@
 (pattern "Pine")
 (gradient "FG to BG (RGB)")
 (palette "Standard")
-(brush-size 51)
+(brush-size 8)
 (brush-spacing 0.050000000000000003)
-(brush-hardness 0.25)
 
 # end of gimp-pencil-tool options
