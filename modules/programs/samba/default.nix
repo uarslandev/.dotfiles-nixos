@@ -17,7 +17,7 @@
         "map to guest" = "bad user";
       };
       public = {
-        "path" = "/mnt/mapper/Public";   # your mounted encrypted folder
+        "path" = "/mnt/mapper/";   # your mounted encrypted folder
         "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "yes";
