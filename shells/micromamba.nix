@@ -11,7 +11,8 @@ let
 
     profile = ''
       set -e
-      export MAMBA_ROOT_PREFIX=${builtins.getEnv "PWD"}/.mamba
+      #export MAMBA_ROOT_PREFIX=${builtins.getEnv "PWD"}/.mamba
+      export MAMBA_ROOT_PREFIX=${builtins.getEnv "HOME"}/.mamba
       eval "$(micromamba shell hook --shell=zsh | sed 's/complete / # complete/g')"
       #micromamba create --yes -q -n my-mamba-environment
       #micromamba activate my-mamba-environment
