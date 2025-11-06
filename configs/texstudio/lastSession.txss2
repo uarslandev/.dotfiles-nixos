@@ -1,7 +1,7 @@
 {
     "InternalPDFViewer": {
-        "Embedded": true,
-        "File": "../../Documents/xai_report/document.pdf"
+        "Embedded": false,
+        "File": ""
     },
     "Session": {
         "Bookmarks": [
@@ -10,12 +10,12 @@
         "FileVersion": 1,
         "Files": [
             {
-                "Col": 1,
+                "Col": 0,
                 "EditorGroup": 0,
                 "FileName": "../../Documents/xai_report/document.tex",
-                "FirstLine": 250,
+                "FirstLine": 257,
                 "FoldedLines": "",
-                "Line": 272
+                "Line": 284
             }
         ],
         "MasterFile": "",

@@ -132,13 +132,13 @@ in
     };
   };
 
-  home.packages = with pkgs; [
-    nodejs
-    (writeShellApplication {
-      name = "gemini";
-      text = ''
-              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
-  ];
+#  home.packages = with pkgs; [
+#    nodejs
+#    (writeShellApplication {
+#      name = "gemini";
+#      text = ''
+#              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
+#  ];
 
   gtk = {
     enable = true;
