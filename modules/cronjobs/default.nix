@@ -10,7 +10,7 @@
     enable = true;
     systemCronJobs = [
       "*/1 * * * *      umut    grive -p ~/Drive"
-      "*/1 * * * *      umut    dfs && git pull"
+      "*/1 * * * *      umut    cd $HOME/.dotfiles && git pull"
     ];
   };
 }
