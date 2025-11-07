@@ -1,15 +1,28 @@
-profile docking-lab {
-    output eDP-1 disable
+output "Dell Inc. DELL U2719D G1BH223"{
+  mode 2560x1440@59.99800
+  position 0,0
+  scale 1
+  alias $work2k
+}
+
+output eDP-1 {
+  mode 2560x1440@60
+  scale 1.6
+  alias $builtin
+}
+
+profile docking-lab-kopp {
+  output $builtin disable
     output DP-3 enable scale 1.0 position 0,0
     output DP-4 enable scale 1.0 position 1920,0
 }
 
 
 profile built-in {
-    output eDP-1 enable scale 1.6 position 0,0
+  output $builtin
 }
 
-profile drimalla-lab {
-    output eDP-1 enable scale 1.6 position 160,1080
-    output HDMI-A-2 enable scale 1.0 position 0,0
+profile drimalla-lab-2 {
+  output $builtin position 480,1440
+  output $work2k
 }
