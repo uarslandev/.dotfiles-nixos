@@ -61,6 +61,11 @@
     extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "networkmanager" "kvm" "jackaudio" "video" "dialout" ]; # Enable ‘sudo’ for the user.
   };
 
+  swapDevices = [{
+    device = "/swapfile";
+    size = 16 * 1024; # 16GB
+  }];
+
   services.mongodb = {
     enable = true;
     #package = "mongodb-7_0";

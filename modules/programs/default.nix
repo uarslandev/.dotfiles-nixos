@@ -40,7 +40,7 @@
     };
     power-profiles-daemon.enable = true;
     logind = {
-      lidSwitch = "ignore";
+      lidSwitch = "hibernate";
     };
   };
 }
