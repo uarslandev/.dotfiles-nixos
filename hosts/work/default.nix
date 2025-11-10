@@ -27,14 +27,14 @@
     ];
   };
 
-  hardware.graphics = {
+ hardware.graphics = {
     enable = true;
-   extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      intel-compute-runtime
-   ];
- };
-  
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+        intel-compute-runtime
+    ];
+  };  
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
