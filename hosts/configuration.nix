@@ -66,13 +66,6 @@
     size = 16 * 1024; # 16GB
   }];
 
-  services.mongodb = {
-    enable = true;
-    #package = "mongodb-7_0";
-    enableAuth = false;
-    #bind_ip = "10.5.0.2";
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

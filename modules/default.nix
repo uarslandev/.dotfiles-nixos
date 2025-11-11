@@ -16,7 +16,8 @@
 	./fonts
     ./programs
     ./systemd
-	./virtualisation
+      ./virtualisation
+      ./services
     ];
 }
 
