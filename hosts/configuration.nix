@@ -37,23 +37,16 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
-  # Enable the GNOME Desktop Environment.
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   security.polkit.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
   home-manager.backupFileExtension = "backup";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.umut = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -66,10 +59,8 @@
     size = 16 * 1024; # 16GB
   }];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim 
     exfat
     nix-prefetch-scripts
     nurl
@@ -119,30 +110,7 @@
     binfmt = true;
   };
 
-  services.upower = {
-    enable = true;
-    percentageLow = 15;
-    percentageCritical = 5;
-    percentageAction = 4;
-    criticalPowerAction = "Hibernate";
-  };
-
   programs.dconf.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-
-    extraPackages = with pkgs; [
-      gamescope
-      gamemode
-    ];
-  };
-
 
   # List services that you want to enable:
 

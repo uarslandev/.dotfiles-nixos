@@ -4,6 +4,7 @@
   imports = [
     "./tlp"
     "./cpufreq"
+    "./upower"
     "./mongo"
   ];
 }

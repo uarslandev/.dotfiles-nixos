@@ -20,6 +20,20 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    extraPackages = with pkgs; [
+      gamescope
+      gamemode
+    ];
+  };
+
   programs = {
     #zsh.enable = true;
     fzf.fuzzyCompletion = true;
