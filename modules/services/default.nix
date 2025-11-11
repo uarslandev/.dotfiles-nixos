@@ -2,9 +2,9 @@
 
 {
   imports = [
-    "./tlp"
-    "./cpufreq"
-    "./upower"
-    "./mongo"
+    ./tlp
+    ./cpufreq
+    ./upower
+    ./mongo
   ];
 }

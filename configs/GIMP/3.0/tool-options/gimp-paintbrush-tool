@@ -1,7 +1,7 @@
 # GIMP gimp-paintbrush-tool options
 
 (foreground
-    (color "R'G'B'A double" 32 "\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77" 0))
+    (color "R'G'B'A u8" 4 "\377\377\377\377" 0))
 (background
     (color "HSVA float" 16 "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\200\77" 0))
 (brush "2. Hardness 025")
@@ -9,7 +9,8 @@
 (pattern "Pine")
 (gradient "FG to BG (RGB)")
 (palette "Standard")
-(brush-size 8)
+(brush-size 271)
 (brush-spacing 0.050000000000000003)
+(brush-hardness 0.25)
 
 # end of gimp-paintbrush-tool options

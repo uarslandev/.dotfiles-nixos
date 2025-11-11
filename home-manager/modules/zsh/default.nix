@@ -3,9 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    autocd = true;
+    autosuggestion.enable = false;
+    enableCompletion = false;
+    autocd = false;
 
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
@@ -53,9 +53,9 @@
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
 
-      {
-        name = "oh-my-zsh";src = pkgs.oh-my-zsh;
-      }
+#      {
+#        name = "oh-my-zsh";src = pkgs.oh-my-zsh;
+#      }
       {
         name = "powerlevel10k-config";
         src = ./p10k;

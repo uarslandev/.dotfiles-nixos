@@ -1055,6 +1055,7 @@
 # (action "channels-lock-position")
 # (action "filters-noise-cell")
 # (action "context-opacity-opaque")
+# (action "windows-display-0002")
 # (action "filters-gegl-unpremultiply")
 # (action "script-fu-selection-rounded-rectangle")
 # (action "plug-in-guillotine")

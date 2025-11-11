@@ -52,7 +52,7 @@
       nssmdns4 = true;
       openFirewall = true;
     };
-    power-profiles-daemon.enable = true;
+    power-profiles-daemon.enable = false;
     logind = {
       lidSwitch = "hibernate";
     };

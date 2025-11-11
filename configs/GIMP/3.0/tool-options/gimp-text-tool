@@ -1,8 +1,9 @@
 # GIMP gimp-text-tool options
 
 (foreground
-    (color "R'G'B'A double" 32 "\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77" 0))
+    (color "R'G'B'A u8" 4 "\377\377\377\377" 0))
 (palette "Standard")
-(font "Monospace")
+(font "Sans-serif")
+(box-mode fixed)
 
 # end of gimp-text-tool options

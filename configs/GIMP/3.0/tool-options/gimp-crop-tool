@@ -3,7 +3,7 @@
 (aspect-denominator 77)
 (aspect-numerator 147)
 (foreground
-    (color "R'G'B'A double" 32 "\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77\0\0\0\0\0\0\360\77" 0))
+    (color "R'G'B'A u8" 4 "\377\377\377\377" 0))
 (background
     (color "HSVA float" 16 "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\200\77" 0))
 (pattern "Pine")
