@@ -54,10 +54,12 @@
     extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "networkmanager" "kvm" "jackaudio" "video" "dialout" ]; # Enable ‘sudo’ for the user.
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 16 * 1024; # 16GB
-  }];
+    swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024; # 32GB in MB
+    }
+  ];
 
   environment.systemPackages = with pkgs; [
     vim 

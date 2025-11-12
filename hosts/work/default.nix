@@ -10,9 +10,12 @@
       ./hardware-configuration.nix
     ];
   networking.hostName = "work";
-  boot.kernelParams = ["intel_iommu=on"];
+  #boot.kernelParams = ["intel_iommu=on"];
   boot.kernelModules = ["kvm-intel"];
 
+  boot.kernelParams = ["resume_offset=16824320"];
+
+  boot.resumeDevice = "/dev/mapper/crypted";
 
   systemd.targets.sleep.enable = true;
   systemd.targets.suspend.enable = true;
@@ -27,10 +30,10 @@
     ];
   };
 
- hardware.graphics = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-        intel-compute-runtime
+      intel-compute-runtime
     ];
   };  
 
