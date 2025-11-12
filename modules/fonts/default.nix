@@ -17,10 +17,10 @@
     meslo-lgs-nf
     nerd-fonts._0xproto
     nerd-fonts.droid-sans-mono
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     iosevka
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
     fira-code
     fira-code-symbols

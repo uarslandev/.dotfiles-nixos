@@ -23,13 +23,14 @@ in
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = "librewolf.desktop";
+      "text/html" = "nvim.desktop";
+      "text/plain" = "nvim.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "application/pdf" = "firefox.desktop";
       "application/msword" = "writer.desktop";
-      "image/png" = "feh.desktop";
+      "image/png" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
     };
   };

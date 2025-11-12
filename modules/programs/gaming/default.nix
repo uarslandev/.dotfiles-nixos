@@ -9,15 +9,14 @@
     xemu
     #proton-ge-bin
     protonup-qt
-    modrinth-app
     ferium
     ani-cli
     heroic
-	pcsx2
-	mangohud
-	bottles
-	wineWowPackages.stable
-	(wine.override { wineBuild = "wine64"; })
+    pcsx2
+    mangohud
+    bottles
+    wineWowPackages.stable
+    (wine.override { wineBuild = "wine64"; })
 
     # wine-staging (version with experimental features)
     wineWowPackages.staging
@@ -27,8 +26,8 @@
 
     # native wayland support (unstable)
     wineWowPackages.waylandFull
-	gamemode
-	lutris
+    gamemode
+    lutris
 
   ];
 }

@@ -12,44 +12,44 @@
     virtiofsd
     spice
     spice-gtk
-	distrobox
+    distrobox
     spice-protocol
-    win-virtio
+    virtio-win
     win-spice
-	scream
-	dmidecode
-	looking-glass-client
-	pv
-	pigz
+    scream
+    dmidecode
+    looking-glass-client
+    pv
+    pigz
   ];
 
   systemd.tmpfiles.rules = [
-  "f /dev/shm/looking-glass 0660 umut kvm -"
+    "f /dev/shm/looking-glass 0660 umut kvm -"
   ];
 
-# Scream Audio Server Service
-systemd.user.services.scream = {
-   enable = true;
-   description = "Scream Audio Server";
-   serviceConfig = {
+  # Scream Audio Server Service
+  systemd.user.services.scream = {
+    enable = true;
+    description = "Scream Audio Server";
+    serviceConfig = {
       ExecStart = "${pkgs.scream}/bin/scream -o pulse -i virbr0";
       Restart = "always";
-   };
-   wantedBy = [ "default.target" ];
-   requires = [ "pipewire-pulse.service" ];
-};  
+    };
+    wantedBy = [ "default.target" ];
+    requires = [ "pipewire-pulse.service" ];
+  };  
 
   virtualisation = {
-  docker.enable = true;
-	libvirtd = {
-		enable = true;
-		qemu = {
-			swtpm.enable = true;
-		};
-		onBoot = "ignore";
-		onShutdown = "shutdown";
-	};
-	spiceUSBRedirection.enable = true;
+    docker.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+      };
+      onBoot = "ignore";
+      onShutdown = "shutdown";
+    };
+    spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
 }

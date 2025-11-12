@@ -19,8 +19,8 @@
   nixpkgs.config.nvidia.acceptLicense = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
+    "jitsi-meet-1.0.8792"
   ];
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

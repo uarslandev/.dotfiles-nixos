@@ -54,7 +54,7 @@
     extraGroups = [ "sudo" "wheel" "docker" "libvirtd" "network" "networkmanager" "kvm" "jackaudio" "video" "dialout" ]; # Enable ‘sudo’ for the user.
   };
 
-    swapDevices = [
+  swapDevices = [
     {
       device = "/var/lib/swapfile";
       size = 32 * 1024; # 32GB in MB
