@@ -52,9 +52,6 @@
       nssmdns4 = true;
       openFirewall = true;
     };
-    logind = {
-      lidSwitch = "hibernate";
-    };
   };
 }
 
