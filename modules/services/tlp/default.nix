@@ -1,46 +1,69 @@
 { config, pkgs, ... }:
 let
   hibernateEnvironment = {
-    HIBERNATE_SECONDS = "3600";
+    HIBERNATE_SECONDS = "10";
     HIBERNATE_LOCK = "/var/run/autohibernate.lock";
   };
 in {
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
 
-  systemd.services.systemd-suspend-then-hibernate = {
-    serviceConfig = {
-      Environment = "SYSTEMD_BYPASS_SUSPEND_THEN_HIBERNATE=0";
-      ExecStart = "${config.systemd.package}/lib/systemd/systemd-sleep suspend-then-hibernate";
-    };
-    environment = {
-      HIBERNATE_DELAY_SEC = "10";
-          HIBERNATE_SECONDS = "10";
-    HIBERNATE_LOCK = "/var/run/autohibernate.lock";
-
-    };
+  systemd.services."awake-after-suspend-for-a-time" = {
+    description = "Sets up the suspend so that it'll wake for hibernation only if not on AC power";
+    wantedBy = [ "suspend.target" ];
+    before = [ "systemd-suspend.service" ];
+    environment = hibernateEnvironment;
+    script = ''
+      if [ $(cat /sys/class/power_supply/AC/online) -eq 0 ]; then
+      curtime=$(date +%s)
+      echo "$curtime $1" >> /tmp/autohibernate.log
+      echo "$curtime" > $HIBERNATE_LOCK
+      ${pkgs.utillinux}/bin/rtcwake -m no -s $HIBERNATE_SECONDS
+      else
+      echo "System is on AC power, skipping wake-up scheduling for hibernation." >> /tmp/autohibernate.log
+      fi
+      '';
+    serviceConfig.Type = "simple";
   };
 
+  systemd.services."hibernate-after-recovery" = {
+    description = "Hibernates after a suspend recovery due to timeout";
+    wantedBy = [ "suspend.target" ];
+    after = [ "systemd-suspend.service" ];
+    environment = hibernateEnvironment;
+    script = ''
+      curtime=$(date +%s)
+      sustime=$(cat $HIBERNATE_LOCK)
+      rm $HIBERNATE_LOCK
+      if [ $(($curtime - $sustime)) -ge $HIBERNATE_SECONDS ] ; then
+      systemctl hibernate
+      else
+      ${pkgs.utillinux}/bin/rtcwake -m no -s 1
+      fi
+      '';
+    serviceConfig.Type = "simple";
+  };
 
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchExternalPower = "suspend-then-hibernate";
-    lidSwitchDocked = "ignore";
-    powerKey = "hibernate";
-    powerKeyLongPress = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchExternalPower = "lock";
+    HandlePowerKey = "suspend-then-hibernate";
+    IdleAction = "suspend-then-hibernate";
+    IdleActionSec = "10";
   };
 
   # Kernel sleep configuration: use deep sleep for suspend
   boot.kernelParams = [ "mem_sleep_default=deep" ];
 
-  # systemd sleep configuration
+  # Systemd sleep config for hybrid mode
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30
-    SuspendState=mem
-    HibernateState=disk
+    AllowSuspendThenHibernate=yes
+    SuspendMode=suspend
+    HibernateMode=hibernate
+    SuspendThenHibernateDelay=10  # Seconds before hibernate after suspend (adjust as needed)
   '';
 
   services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
