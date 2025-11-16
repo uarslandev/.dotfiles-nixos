@@ -1,0 +1,3 @@
+output {
+  DVI-D-1 mode 1920x1080@60 position 0,0 scale 1.6
+}
