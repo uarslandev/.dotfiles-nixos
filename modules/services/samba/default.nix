@@ -17,7 +17,7 @@
         "map to guest" = "bad user";
       };
       public = {
-        "path" = "/mnt/mapper/";   # your mounted encrypted folder
+        "path" = "/run/media/umut/5deb61eb-a980-4935-89c8-af6970a43e4d";   # your mounted encrypted folder
         "browseable" = "yes";
         "read only" = "no";
         "guest ok" = "yes";
