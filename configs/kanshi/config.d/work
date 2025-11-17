@@ -12,6 +12,13 @@ output "Dell Inc. DELL U2719D G1BH223"{
   alias $work2k
 }
 
+output "Dell Inc. DELL U2723QE BDK13H3"{
+  mode 3840x2160@59.99800
+  position 0,0
+  scale 1
+  alias $work4k
+}
+
 
 output eDP-1 {
   mode 2560x1600@120
@@ -32,4 +39,10 @@ profile drimalla-lab-1 {
 profile drimalla-lab-2 {
   output $builtin position 480,1440
   output $work2k
+}
+
+
+profile drimalla-office {
+  output $builtin position 400,1350
+  output $work4k scale 1.6
 }

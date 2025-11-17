@@ -16,8 +16,7 @@ in
     keepassxc
     copyq
     imagemagick
-    rclone
     scrot
-  ] ++ (with oldPkgs; [ grive2 ]);
+  ] ++ (with oldPkgs; [ grive2 rclone ]);
 }
 
