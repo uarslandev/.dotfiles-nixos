@@ -12,7 +12,6 @@
     ./development
     ./productivity
     #./resolve
-    ./samba
     ./scripts
   ];
   nixpkgs.config.allowUnfree = true;

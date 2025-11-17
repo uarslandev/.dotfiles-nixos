@@ -27,3 +27,4 @@
 
   networking.firewall.allowPing = true;
 }
+
