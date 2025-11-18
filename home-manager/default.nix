@@ -107,10 +107,10 @@ in
   #
   # if you don't want to manage your shell through Home Manager.
 
-  #  home.sessionVariables = {
-  #    EDITOR = "nvim";
-  #    TERMINAL = "kitty";
-  #  };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    TERMINAL = "kitty";
+  };
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -133,13 +133,13 @@ in
     };
   };
 
-#  home.packages = with pkgs; [
-#    nodejs
-#    (writeShellApplication {
-#      name = "gemini";
-#      text = ''
-#              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
-#  ];
+  #  home.packages = with pkgs; [
+  #    nodejs
+  #    (writeShellApplication {
+  #      name = "gemini";
+  #      text = ''
+  #              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
+  #  ];
 
   gtk = {
     enable = true;
