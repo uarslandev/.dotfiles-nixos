@@ -85,6 +85,7 @@
     #    };
     initExtra = ''
         bindkey -e
+        export WORDCHARS='*?_[]~=&;!#$%^(){}'
         bindkey -s ^f "tmux-sessionizer\n"
         bindkey -s ^b "books\n"
         bindkey -s ^t "tmux kill-server\n"

@@ -43,34 +43,17 @@ in
     categories = [ "System" "TerminalEmulator" ];
   };
 
-xdg.desktopEntries."neovim" = {
-  name = "Neovim wrapper";
-  genericName = "Text Editor";
-  comment = "Edit text files with Neovim";
-  # Launch kitty and tell it to run nvim with any files passed (%F)
-  exec = "kitty nvim %F";
-  icon = "nvim";
-  terminal = false;              # important: false because we are launching kitty ourselves
-  type = "Application";
-  categories = [ "Utility" "TextEditor" ];
-  mimeType = [
-    "text/english"
-    "text/plain"
-    "text/x-makefile"
-    "text/x-c++hdr"
-    "text/x-c++src"
-    "text/x-chdr"
-    "text/x-csrc"
-    "text/x-java"
-    "text/x-moc"
-    "text/x-pascal"
-    "text/x-tcl"
-    "text/x-tex"
-    "application/x-shellscript"
-    "text/x-c"
-    "text/x-c++"
-  ];
-  startupNotify = false;
+  xdg.desktopEntries = {
+    nvim = {
+      name = "Neovim";
+      exec = "kitty nvim %F"; # Example: Open files in kitty terminal
+      icon = "nvim";
+      terminal = false;
+      type = "Application";
+      categories = [ "Utility" "TextEditor" ];
+      mimeType = [ "text/plain" "text/x-chdr" "text/x-csrc" "text/x-shellscript" ];
+      comment = "Edit text files";
+    };
   };
 
   # The home.packages option allows you to install Nix packages into your
