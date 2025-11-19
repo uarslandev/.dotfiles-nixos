@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+    };
+  };
   environment = {
     sessionVariables = rec {
       XDG_CACHE_HOME  = "$HOME/.cache";
@@ -31,6 +39,8 @@
     variables = {
       EDITOR   = "nvim";
       TERMINAL = "kitty";
+      BROWSER = "firefox";
+      TERM = "kitty";
     };
   };
 }

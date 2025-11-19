@@ -61,6 +61,8 @@
     }
   ];
 
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
   environment.systemPackages = with pkgs; [
     vim 
     exfat

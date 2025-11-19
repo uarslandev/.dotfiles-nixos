@@ -20,6 +20,10 @@
       wip = "git add . && git commit -m 'wip' && git push";
       nix-search = "nix search nixpkgs";
       nix-update = "nix flake update";
+      ta = "tmux attach -t dona";
+      tn = "tmux new -s";
+      tls = "tmux ls";
+      tk = "tmux kill-session -t";
       ns = "nix-shell";
       sp = "systemctl-suspend";
       startvm = "sudo virsh start win11";
