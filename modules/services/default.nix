@@ -6,5 +6,6 @@
     ./cpufreq
     ./upower
     ./mongo
+    ./samba
   ];
 }
