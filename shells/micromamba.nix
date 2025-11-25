@@ -5,6 +5,7 @@ let
 
     targetPkgs = _: [
       pkgs.micromamba
+      pkgs.linuxHeaders
     ];
 
     runScript = "zsh";
