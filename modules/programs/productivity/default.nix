@@ -4,26 +4,33 @@
 
 { config, pkgs, ... }:
 
+
+
 {
   environment.systemPackages = with pkgs; [
+    (pkgs.kodi.withPackages (kodiPkgs: with kodiPkgs; [
+      jellyfin 
+      pvr-iptvsimple 
+      vfs-sftp
+    ]))
     obsidian
     localsend
-	anki
+    anki
     evince
     tuxguitar
     libreoffice
     vlc
     glaxnimate
     zotero
-	gimp
-	gpick
-	obs-studio
-	blender
+    gimp
+    gpick
+    obs-studio
+    blender
     kdePackages.kdenlive
     calibre
     texstudio
-	texliveFull
-	inkscape
+    texliveFull
+    inkscape
   ];
 }
 
