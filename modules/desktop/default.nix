@@ -63,5 +63,6 @@ in
     nwg-displays
     hyprpicker
     wofi
+    rofi
   ];
 }
