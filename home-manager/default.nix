@@ -84,6 +84,7 @@ in
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     ".local/bin/".source = link "${home}"+"/local/bin/";
+    "wallpapers".source = link "${home}"+"/wallpapers/";
     ".config/bg.jpg".source = link "${home}"+"/bg.jpg";
     ".config/sddm".source = link "${home}"+"/sddm";
     ".config/lock.png".source = link "${home}"+"/lock.png";
