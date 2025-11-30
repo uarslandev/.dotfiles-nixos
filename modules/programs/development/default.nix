@@ -52,5 +52,4 @@ in
     unityhub
     zulu21
   ];
-
 }

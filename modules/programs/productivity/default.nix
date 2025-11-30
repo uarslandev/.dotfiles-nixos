@@ -7,6 +7,7 @@
 
 
 {
+  programs.kdeconnect.enable = true;
   environment.systemPackages = with pkgs; [
     (pkgs.kodi.withPackages (kodiPkgs: with kodiPkgs; [
       jellyfin 

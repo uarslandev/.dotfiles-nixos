@@ -147,22 +147,14 @@ in
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = "catppuccin-frappe-blue-standard";
+      gtk-theme = "Kanagawa-BL";
       color-scheme = "prefer-dark";
     };
     # For Gnome shell
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+      name = "Kanagawa-BL";
     };
   };
-
-  #  home.packages = with pkgs; [
-  #    nodejs
-  #    (writeShellApplication {
-  #      name = "gemini";
-  #      text = ''
-  #              exec ${nodejs}/bin/npx @google/gemini-cli "$@" ''; })
-  #  ];
 
   gtk = {
     enable = true;
@@ -176,23 +168,20 @@ in
     };
 
     cursorTheme = {
-
       package = pkgs.catppuccin-cursors.mochaSapphire;
       name = "catppuccin-mocha-sapphire-cursors";
     };
 
     theme = {
-      name = "catppuccin-frappe-blue-standard";
-      package = pkgs.catppuccin-gtk;
+      name = "Kanagawa-BL";
+      package = pkgs.kanagawa-gtk-theme;
       #name = "Adwaita-dark";
       #package = pkgs.gnome-themes-extra;
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "lavender";
-      };
+      name = "Kanagawa";
+      package = pkgs.kanagawa-icon-theme;
+      
     };
   };
 
