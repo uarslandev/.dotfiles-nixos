@@ -39,3 +39,8 @@ output_path = '~/.config/rofi/colors.rasi'
 input_path = './templates/template.lua'
 output_path = '~/.dotfiles/home-manager/modules/neovim/nvim/plugin/template.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.btop]
+input_path = 'templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+

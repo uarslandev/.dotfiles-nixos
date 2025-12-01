@@ -85,9 +85,9 @@ in
     # ".screenrc".source = dotfiles/screenrc;
     ".local/bin/".source = link "${home}"+"/local/bin/";
     "wallpapers".source = link "${home}"+"/wallpapers/";
-    ".config/bg.jpg".source = link "${home}"+"/bg.jpg";
     ".config/sddm".source = link "${home}"+"/sddm";
     ".config/matugen".source = link "${home}"+"/matugen";
+    ".config/btop".source = link "${home}"+"/btop";
     ".config/swaync".source = link "${home}"+"/swaync";
     ".config/lock.png".source = link "${home}"+"/lock.png";
     ".config/dunst".source = link "${home}"+"/dunst";
