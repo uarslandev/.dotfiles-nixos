@@ -87,6 +87,8 @@ in
     "wallpapers".source = link "${home}"+"/wallpapers/";
     ".config/bg.jpg".source = link "${home}"+"/bg.jpg";
     ".config/sddm".source = link "${home}"+"/sddm";
+    ".config/matugen".source = link "${home}"+"/matugen";
+    ".config/swaync".source = link "${home}"+"/swaync";
     ".config/lock.png".source = link "${home}"+"/lock.png";
     ".config/dunst".source = link "${home}"+"/dunst";
     ".config/fcitx5".source = link "${home}"+"/fcitx5";

@@ -1,0 +1,42 @@
+[config]
+# ...
+
+#[config.wallpaper]
+#pywalfox
+#kitty
+#waybar
+#gtk3
+#gtk4
+#Rofi
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/plugins/colors.conf'
+post_hook = 'hyprctl reload'
+#pre_hook = ''
+
+[templates.swaync]
+input_path = './templates/colors.css'
+output_path = '~/.config/swaync/colors.css'
+
+[templates.waybar]
+input_path = './templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.kitty]
+input_path = 'templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.gtk3]
+input_path = 'templates/gtk.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+
+[templates.gtk4]
+input_path = 'templates/gtk.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.rofi]
+input_path = 'templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
