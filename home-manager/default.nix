@@ -161,11 +161,11 @@ in
 
   home.file.".config/gtk-3.0/gtk.css".text = ''
   @import 'colors.css';
-  '';
+'';
 
-  home.file.".config/gtk-4.0/gtk.css".text = ''
+home.file.".config/gtk-4.0/gtk.css".text = ''
   @import 'colors.css';
-  '';
+'';
 
   gtk = {
     enable = true;
@@ -183,16 +183,16 @@ in
       name = "catppuccin-mocha-sapphire-cursors";
     };
 
-    theme = {
+      #theme = {
       #name = "Kanagawa-BL";
       #package = pkgs.kanagawa-gtk-theme;
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
+      #name = "Adwaita-dark";
+      #package = pkgs.gnome-themes-extra;
+    #};
     iconTheme = {
       name = "Kanagawa";
       package = pkgs.kanagawa-icon-theme;
-
+      
     };
   };
 
