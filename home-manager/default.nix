@@ -147,16 +147,16 @@ in
     size = 12;
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "Adwaita-dark";
-      color-scheme = "prefer-dark";
-    };
-    # For Gnome shell
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "Adwaita-dark";
-    };
-  };
+#  dconf.settings = {
+#    "org/gnome/desktop/interface" = {
+#      gtk-theme = "Adwaita-dark";
+#      color-scheme = "prefer-dark";
+#    };
+#    # For Gnome shell
+#    "org/gnome/shell/extensions/user-theme" = {
+#      name = "Adwaita-dark";
+#    };
+#  };
 
   gtk = {
     enable = true;
@@ -183,8 +183,8 @@ in
       theme = {
       #name = "Kanagawa-BL";
       #package = pkgs.kanagawa-gtk-theme;
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
     iconTheme = {
       name = "Kanagawa";
