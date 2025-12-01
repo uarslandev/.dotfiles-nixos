@@ -25,7 +25,7 @@ local function auxiliary_function()
   source_matugen()
 
   -- Because reloading base16 overwrites lualine configuration, just source lualine here
-  dofile(os.getenv("HOME") .. '/.config/nvim/config/plugins/lualine-nvim.lua') -- path of your lualine setup
+  dofile(os.getenv("HOME") .. '/.dotfiles/home-manager/modules/neovim/nvim/plugin/lualine.lua') -- path of your lualine setup
 
   -- Any other options you wish to set upon matugen reloads can also go here!
   vim.api.nvim_set_hl(0, "Comment", { italic = true })
