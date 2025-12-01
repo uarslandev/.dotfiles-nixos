@@ -158,19 +158,21 @@ in
     };
   };
 
-  home.file.".config/gtk-3.0/gtk.css".text = ''
-  @import 'colors.css';
-'';
-
   gtk = {
     enable = true;
 
     gtk3 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
+      extraCss = ''
+        @import url("/home/umut/.config/gtk-3.0/colors.css");
+      '';
     };
 
     gtk4 = {
       extraConfig.gtk-application-prefer-dark-theme = true;
+      extraCss = ''
+        @import url("/home/umut/.config/gtk-4.0/colors.css");
+      '';
     };
 
     cursorTheme = {
