@@ -159,6 +159,14 @@ in
     };
   };
 
+  home.file.".config/gtk-3.0/gtk.css".text = ''
+  @import 'colors.css';
+  '';
+
+  home.file.".config/gtk-4.0/gtk.css".text = ''
+  @import 'colors.css';
+  '';
+
   gtk = {
     enable = true;
 
@@ -184,7 +192,7 @@ in
     iconTheme = {
       name = "Kanagawa";
       package = pkgs.kanagawa-icon-theme;
-      
+
     };
   };
 
