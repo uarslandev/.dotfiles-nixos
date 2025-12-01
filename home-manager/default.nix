@@ -14,7 +14,6 @@ in
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
-  #
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
@@ -163,10 +162,6 @@ in
   @import 'colors.css';
 '';
 
-home.file.".config/gtk-4.0/gtk.css".text = ''
-  @import 'colors.css';
-'';
-
   gtk = {
     enable = true;
 
@@ -183,12 +178,12 @@ home.file.".config/gtk-4.0/gtk.css".text = ''
       name = "catppuccin-mocha-sapphire-cursors";
     };
 
-      #theme = {
+      theme = {
       #name = "Kanagawa-BL";
       #package = pkgs.kanagawa-gtk-theme;
-      #name = "Adwaita-dark";
-      #package = pkgs.gnome-themes-extra;
-    #};
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
     iconTheme = {
       name = "Kanagawa";
       package = pkgs.kanagawa-icon-theme;
