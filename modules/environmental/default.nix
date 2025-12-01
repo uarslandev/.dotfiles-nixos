@@ -34,6 +34,7 @@
       ROC_ENABLE_PRE_VEGA      = "1";
       DRI_PRIME                 = "1";
       QT_QPA_PLATFORM           = "xcb";
+      QT_QPA_PLATFORMTHEME           = "gtk3";
     };
 
     variables = {

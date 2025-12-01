@@ -8,7 +8,10 @@ cd "$WALL_DIR" || exit
 
 IFS="$\n"
 
-SELECTED_WALL=$(for a in *.jpg *.png *.jpeg; do echo -en "$a\0icon\x1f$a\n" ; done | rofi -dmenu -p "")
+dir="$HOME/.config/rofi/"
+theme='menu.rasi'
+
+SELECTED_WALL=$(for a in *.jpg *.png; do echo -en "$a\0icon\x1f$a\n" ; done | rofi -dmenu -theme "${dir}/${theme}" -p "")
 
 if [ -n "$SELECTED_WALL" ]; then
   walset-backend "$SELECTED_WALL"
