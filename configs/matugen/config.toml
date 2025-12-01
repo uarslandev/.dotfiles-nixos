@@ -44,3 +44,7 @@ post_hook = 'pkill -SIGUSR1 nvim'
 input_path = './templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
 
+[templates.tmux]
+input_path = './templates/tmux-colors.conf'
+output_path = '~/.config/tmux/generated.conf'
+post_hook = 'tmux source-file ~/.config/tmux/generated.conf'
