@@ -148,12 +148,12 @@ in
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = "Kanagawa-BL";
+      gtk-theme = "Adwaita-dark";
       color-scheme = "prefer-dark";
     };
     # For Gnome shell
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Kanagawa-BL";
+      name = "Adwaita-dark";
     };
   };
 
@@ -174,10 +174,10 @@ in
     };
 
     theme = {
-      name = "Kanagawa-BL";
-      package = pkgs.kanagawa-gtk-theme;
-      #name = "Adwaita-dark";
-      #package = pkgs.gnome-themes-extra;
+      #name = "Kanagawa-BL";
+      #package = pkgs.kanagawa-gtk-theme;
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
     };
     iconTheme = {
       name = "Kanagawa";

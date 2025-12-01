@@ -10,7 +10,6 @@ let
 in
   {
   services.xserver.enable = true;
-  services.desktopManager.gnome.enable = true;
   services.displayManager.sddm = {
     enable = true;
     extraPackages = [
@@ -43,11 +42,15 @@ in
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-hyprland
     custom-sddm-astronaut
+    matugen
     kdePackages.qtmultimedia
-    dunst
+    swaynotificationcenter
+    libnotify
     brightnessctl
     networkmanagerapplet
     pavucontrol
+    pywal
+    notify
     hyprpicker
     feh
     kitty
@@ -62,7 +65,6 @@ in
     nwg-look
     nwg-displays
     hyprpicker
-    wofi
     rofi
   ];
 }

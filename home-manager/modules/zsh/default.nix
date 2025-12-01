@@ -20,7 +20,7 @@
       wip = "git add . && git commit -m 'wip' && git push";
       nix-search = "nix search nixpkgs";
       nix-update = "nix flake update";
-      ta = "tmux attach -t dona";
+      ta = "tmux attach -t";
       tn = "tmux new -s";
       tls = "tmux ls";
       tk = "tmux kill-session -t";
