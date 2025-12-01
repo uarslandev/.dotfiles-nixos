@@ -56,6 +56,7 @@ in
       nvim-colorizer-lua
       bufdelete-nvim
       lualine-nvim
+      base16-nvim
       floaterm
       nvim-whichkey-setup-lua
       bufferline-nvim

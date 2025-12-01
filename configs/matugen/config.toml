@@ -40,3 +40,8 @@ output_path = '~/.config/gtk-4.0/colors.css'
 [templates.rofi]
 input_path = 'templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
+
+[templates.neovim]
+input_path = './templates/template.lua'
+output_path = '~/.config/nvim/generated.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
