@@ -5,12 +5,12 @@
 { config, pkgs, ... }:
 
 {
-services.zerotierone = {
-  enable = false;
-  joinNetworks = [
-    "52b337794ff81812"
-  ];
-};
+  services.zerotierone = {
+    enable = false;
+    joinNetworks = [
+      "52b337794ff81812"
+    ];
+  };
   environment.systemPackages = with pkgs; [
     vesktop
     element-desktop
@@ -18,12 +18,12 @@ services.zerotierone = {
     slack
     protonvpn-gui
     gnome-network-displays
-	zoom-us
-	thunderbird
-	youtube-music
+    zoom-us
+    thunderbird
+    youtube-music
     google-chrome
     firefox-bin
-	tor-browser
+    tor-browser
   ];
 }
 
