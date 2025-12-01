@@ -21,6 +21,7 @@ in
         ${builtins.readFile ./nvim/set.lua}
         ${builtins.readFile ./nvim/plugin/treesitter.lua}
         ${builtins.readFile ./nvim/plugin/matugen.lua}
+        ${builtins.readFile ./nvim/plugin/template.lua}
         ${builtins.readFile ./nvim/plugin/telescope.lua}
         ${builtins.readFile ./nvim/plugin/lsp.lua}
         ${builtins.readFile ./nvim/plugin/lazygit.lua}
