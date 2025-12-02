@@ -2,7 +2,7 @@
 
 local function source_matugen()
   -- Update this with the location of your output file
-  local matugen_path = os.getenv("HOME") .. "~/.dotfiles/home-manager/modules/neovim/nvim/plugin/template.lua"  -- dofile doesn't expand $HOME or ~
+  local matugen_path = os.getenv("HOME") .. "/.dotfiles/home-manager/modules/neovim/nvim/plugin/template.lua"  -- dofile doesn't expand $HOME or ~
 
   local file, err = io.open(matugen_path, "r")
   -- If the matugen file does not exist (yet or at all), we must initialize a color scheme ourselves
@@ -21,7 +21,7 @@ end
 -- Main entrypoint on matugen reloads
 local function auxiliary_function()
   -- Load the matugen style file to get all the new colors
-  local matugen_path = os.getenv("HOME") .. "/.config/nvim/generated.lua"
+  local matugen_path = os.getenv("HOME") .. "/.dotfiles/home-manager/modules/neovim/nvim/plugin/template.lua"
   source_matugen()
 
   -- Because reloading base16 overwrites lualine configuration, just source lualine here
