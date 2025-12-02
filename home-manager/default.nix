@@ -147,16 +147,16 @@ in
     size = 12;
   };
 
-#  dconf.settings = {
-#    "org/gnome/desktop/interface" = {
-#      gtk-theme = "Adwaita-dark";
-#      color-scheme = "prefer-dark";
-#    };
-#    # For Gnome shell
-#    "org/gnome/shell/extensions/user-theme" = {
-#      name = "Adwaita-dark";
-#    };
-#  };
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-theme = "adw-gtk3-dark";
+      color-scheme = "prefer-dark";
+    };
+    # For Gnome shell
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "adw-gtk3-dark";
+    };
+  };
 
   gtk = {
     enable = true;
