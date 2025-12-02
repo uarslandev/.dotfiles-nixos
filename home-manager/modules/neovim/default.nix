@@ -29,6 +29,7 @@ in
         ${builtins.readFile ./nvim/plugin/bufferline.lua}
         ${builtins.readFile ./nvim/plugin/undotree.lua}
         ${builtins.readFile ./nvim/plugin/fugitive.lua}
+        ${builtins.readFile ./nvim/plugin/colorizer.lua}
         ${builtins.readFile ./nvim/plugin/flutter-tools.lua}
         ${builtins.readFile ./nvim/plugin/nvim-tree.lua}
         ${builtins.readFile ./nvim/plugin/template.lua}
