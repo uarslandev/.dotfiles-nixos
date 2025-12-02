@@ -1,5 +1,7 @@
  #!/usr/bin/env bash
 
+FPS=144
+
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <path_to_image>"
   exit 1
@@ -9,7 +11,7 @@ IMAGE="$1"
 
 notify-send "Changing Theme"
 
-swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="60"
+swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="$FPS"
 
 # generate pywal colors
 wal -i "$IMAGE" -n -s -t -e
