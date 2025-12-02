@@ -20,15 +20,18 @@ fi
 
 if [ "$1" = "open" ]; then
     hyprctl dispatch dpms on
+    backup
     exit 0
 fi
 
 # Lid closed
 if [ "$on_ac" -eq 1 ]; then
     hyprctl dispatch dpms off
+    backup
     systemctl suspend
 else
     hyprctl dispatch dpms off
+    backup
     systemctl suspend-then-hibernate
 fi
 

@@ -6,15 +6,15 @@ require('base16-colorscheme').setup({
   base02 = '#231918',
   base03 = '#534341',
   base04 = '#d8c2be',
-  base05 = '#f1dfdc',
+  base05 = '#f1dedc',
   base06 = '#392e2c',
   base07 = '#423735',
 
   base08 = '#ffb4ab',
-  base09 = '#dec48c',
-  base0A = '#e7bdb6',
-  base0B = '#ffb4a8',
-  base0C = '#564419',
+  base09 = '#dec38c',
+  base0A = '#e7bdb7',
+  base0B = '#ffb4a9',
+  base0C = '#574419',
   base0D = '#73342b',
   base0E = '#5d3f3b',
   base0F = '#93000a',
@@ -38,22 +38,22 @@ vim.api.nvim_set_hl(0, 'Visual', {
 })
 
 set_hl_mutliple({ 'TSComment', 'Comment' }, {
-  fg = '#fbdfa6',
+  fg = '#fcdfa6',
 })
 
 set_hl_mutliple({ 'TSMethod', 'Method' }, {
-  fg = '#dec48c',
+  fg = '#dec38c',
 })
 
 set_hl_mutliple({ 'TSFunction', 'Function' }, {
-  fg = '#e7bdb6',
+  fg = '#e7bdb7',
 })
 
 vim.api.nvim_set_hl(0, 'Keyword', {
-  fg = '#904b40',
+  fg = '#904a41',
 })
 
 vim.api.nvim_set_hl(0, 'MsgArea', {
   bg = '#140c0b',
-  fg = '#ffb4a8',
+  fg = '#ffb4a9',
 })
