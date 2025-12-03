@@ -31,7 +31,6 @@ in
         ${builtins.readFile ./nvim/plugin/fugitive.lua}
         ${builtins.readFile ./nvim/plugin/colorizer.lua}
         ${builtins.readFile ./nvim/plugin/flutter-tools.lua}
-        ${builtins.readFile ./nvim/plugin/nvim-tree.lua}
         ${builtins.readFile ./nvim/plugin/template.lua}
         ${builtins.readFile ./nvim/plugin/matugen.lua}
         ${builtins.readFile ./nvim/plugin/floaterm.lua}
@@ -66,7 +65,7 @@ in
       nvim-dap
       nvim-dap-python
       nvim-dap-ui
-      nvim-tree-lua
+      #nvim-tree-lua
       dressing-nvim
       flutter-tools-nvim
       formatter-nvim
