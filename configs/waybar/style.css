@@ -17,7 +17,7 @@
 #workspaces {
   border-radius: 5px;
   margin: 5px;
-  background: @surface_container_lowest;
+  background: @background;
   margin-left: 2px;
 }
 
@@ -48,6 +48,7 @@ button {
 #battery,
 #pulseaudio,
 #network,
+#workspaces
 #cpu,
 #custom-launcher,
 #memory,
@@ -56,7 +57,7 @@ button {
 #custom-weather,
 #custom-uptime,
 #custom-docker {
-  background-color: @surface_container_lowest;
+  background-color: @background;
   padding: 0.5rem 1rem;
   margin: 5px 0;
 }

@@ -38,7 +38,7 @@ in
       extraPackages = with pkgs; [
         ccls
         dockerfile-language-server-nodejs
-        haskell-language-server
+      haskell-language-server
         kotlin-language-server
         lua-language-server
         luajitPackages.lua-lsp

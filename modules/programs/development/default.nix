@@ -22,8 +22,7 @@ in
     docker-client
     mongodb-cli
     mongodb-compass
-    #bc
-    #bcompare
+    sass
     sshfs
     arduino-cli
     arduino-core
