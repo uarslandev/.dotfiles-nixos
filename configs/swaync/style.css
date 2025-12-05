@@ -20,7 +20,7 @@
 .control-center .notification-row:focus,
 .control-center .notification-row:hover {
 	opacity: 1;
-	background: transparent;
+	background: @background;
 }
 
 .notification-row:focus .notification,
