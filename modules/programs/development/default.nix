@@ -13,6 +13,7 @@ let
 in
   {
   environment.systemPackages = with pkgs; [
+    nasm
     arduino
     podman
     podman-desktop
