@@ -13,6 +13,7 @@ let
 in
   {
   environment.systemPackages = with pkgs; [
+    imhex
     nasm
     arduino
     podman

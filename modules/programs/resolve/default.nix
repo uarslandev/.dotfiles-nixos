@@ -31,108 +31,109 @@ let
       davinci-patched = pkgs.davinci-resolve-studio.davinci.overrideAttrs (old: {
         # Note: $out IS /opt/resolve
         postInstall = ''
-#          {old.postInstall or ""}
-#          {lib.getExe pkgs.perl} -pi -e 's/\x03\x00\x89\x45\xFC\x83\x7D\xFC\x00\x74\x11\x48\x8B\x45\xC8\x8B/\x03\x00\x89\x45\xFC\x83\x7D\xFC\x00\xEB\x11\x48\x8B\x45\xC8\x8B/' $out/bin/resolve
-#          {lib.getExe pkgs.perl} -pi -e 's/\x74\x11\x48\x8B\x45\xC8\x8B\x55\xFC\x89\x50\x58\xB8\x00\x00\x00/\xEB\x11\x48\x8B\x45\xC8\x8B\x55\xFC\x89\x50\x58\xB8\x00\x00\x00/' $out/bin/resolve
-#          {lib.getExe pkgs.perl} -pi -e 's/\x41\xb6\x01\x84\xc0\x0f\x84\xb0\x00\x00\x00\x48\x85\xdb\x74\x08\x45\x31\xf6\xe9\xa3\x00\x00\x00/\x41\xb6\x00\x84\xc0\x0f\x84\xb0\x00\x00\x00\x48\x85\xdb\x74\x08\x45\x31\xf6\xe9\xa3\x00\x00\x00/' $out/bin/resolve
-#          touch $out/.license/blackmagic.lic
-#          echo -e "LICENSE blackmagic davinciresolvestudio 999999 permanent uncounted\n  hostid=ANY issuer=CGP customer=CGP issued=28-dec-2023\n  akey=0000-0000-0000-0000 _ck=00 sig=\"00\"" > $out/.license/blackmagic.lic
-        '';
+          ${old.postInstall or ""}
+          ${lib.getExe pkgs.perl} -pi -e 's/\x03\x00\x89\x45\xFC\x83\x7D\xFC\x00\x74\x11\x48\x8B\x45\xC8\x8B/\x03\x00\x89\x45\xFC\x83\x7D\xFC\x00\xEB\x11\x48\x8B\x45\xC8\x8B/' $out/bin/resolve
+          ${lib.getExe pkgs.perl} -pi -e 's/\x83\xfd\x01\x0f\x85\xdb\x01\x00\x00/\x83\xfd\x01\x0f\x84\xdb\x01\x00\x00/' $out/bin/resolve
+          #{lib.getExe pkgs.perl} -pi -e 's/\x74\x11\x48\x8B\x45\xC8\x8B\x55\xFC\x89\x50\x58\xB8\x00\x00\x00/\xEB\x11\x48\x8B\x45\xC8\x8B\x55\xFC\x89\x50\x58\xB8\x00\x00\x00/' $out/bin/resolve
+          #{lib.getExe pkgs.perl} -pi -e 's/\x41\xb6\x01\x84\xc0\x0f\x84\xb0\x00\x00\x00\x48\x85\xdb\x74\x08\x45\x31\xf6\xe9\xa3\x00\x00\x00/\x41\xb6\x00\x84\xc0\x0f\x84\xb0\x00\x00\x00\x48\x85\xdb\x74\x08\x45\x31\xf6\xe9\xa3\x00\x00\x00/' $out/bin/resolve
+          touch $out/.license/blackmagic.lic
+          echo -e "LICENSE blackmagic davinciresolvestudio 999999 permanent uncounted\n  hostid=ANY issuer=CGP customer=CGP issued=28-dec-2023\n  akey=0000-0000-0000-0000 _ck=00 sig=\"00\"" > $out/.license/blackmagic.lic
+          '';
       });
     in
-    
-    # the following was copied from davinci's derivation from nixpkgs.
-    # if davinci updates, this should be updated too
-    # but remember to replace "davinci" with "davinci-patched"
-    pkgs.buildFHSEnv {
-      inherit (davinci-patched) pname version;
 
-      targetPkgs =
-        pkgs:
-        with pkgs;
-        [
-          alsa-lib
-          aprutil
-          bzip2
-          dbus
-          expat
-          fontconfig
-          freetype
-          glib
-          libGL
-          libGLU
-          libarchive
-          libcap
-          librsvg
-          libtool
-          libuuid
-          libxcrypt # provides libcrypt.so.1
-          libxkbcommon
-          nspr
-          ocl-icd
-          opencl-headers
-          python3
-          python3.pkgs.numpy
-          udev
-          xdg-utils # xdg-open needed to open URLs
-          xorg.libICE
-          xorg.libSM
-          xorg.libX11
-          xorg.libXcomposite
-          xorg.libXcursor
-          xorg.libXdamage
-          xorg.libXext
-          xorg.libXfixes
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXrandr
-          xorg.libXrender
-          xorg.libXt
-          xorg.libXtst
-          xorg.libXxf86vm
-          xorg.libxcb
-          xorg.xcbutil
-          xorg.xcbutilimage
-          xorg.xcbutilkeysyms
-          xorg.xcbutilrenderutil
-          xorg.xcbutilwm
-          xorg.xkeyboardconfig
-          zlib
-        ]
-        ++ [ davinci-patched ];
+      # the following was copied from davinci's derivation from nixpkgs.
+      # if davinci updates, this should be updated too
+      # but remember to replace "davinci" with "davinci-patched"
+      pkgs.buildFHSEnv {
+        inherit (davinci-patched) pname version;
 
-      extraPreBwrapCmds = ''
+        targetPkgs =
+          pkgs:
+          with pkgs;
+          [
+            alsa-lib
+            aprutil
+            bzip2
+            dbus
+            expat
+            fontconfig
+            freetype
+            glib
+            libGL
+            libGLU
+            libarchive
+            libcap
+            librsvg
+            libtool
+            libuuid
+            libxcrypt # provides libcrypt.so.1
+            libxkbcommon
+            nspr
+            ocl-icd
+            opencl-headers
+            python3
+            python3.pkgs.numpy
+            udev
+            xdg-utils # xdg-open needed to open URLs
+            xorg.libICE
+            xorg.libSM
+            xorg.libX11
+            xorg.libXcomposite
+            xorg.libXcursor
+            xorg.libXdamage
+            xorg.libXext
+            xorg.libXfixes
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXrandr
+            xorg.libXrender
+            xorg.libXt
+            xorg.libXtst
+            xorg.libXxf86vm
+            xorg.libxcb
+            xorg.xcbutil
+            xorg.xcbutilimage
+            xorg.xcbutilkeysyms
+            xorg.xcbutilrenderutil
+            xorg.xcbutilwm
+            xorg.xkeyboardconfig
+            zlib
+          ]
+          ++ [ davinci-patched ];
+
+        extraPreBwrapCmds = ''
         mkdir -p ~/.local/share/DaVinciResolve/Extras || exit 1
-      '';
+        '';
 
-      extraBwrapArgs = [
-        ''--bind "$HOME"/.local/share/DaVinciResolve/Extras ${davinci-patched}/Extras''
-      ];
+        extraBwrapArgs = [
+          ''--bind "$HOME"/.local/share/DaVinciResolve/Extras ${davinci-patched}/Extras''
+        ];
 
-      runScript = "${lib.getExe pkgs.bash} ${pkgs.writeText "davinci-wrapper" ''
+        runScript = "${lib.getExe pkgs.bash} ${pkgs.writeText "davinci-wrapper" ''
         export QT_XKB_CONFIG_ROOT="${pkgs.xkeyboard_config}/share/X11/xkb"
         export QT_PLUGIN_PATH="${davinci-patched}/libs/plugins:$QT_PLUGIN_PATH"
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib:/usr/lib32:${davinci-patched}/libs
-        ${davinci-patched}/bin/resolve
-      ''}";
+          ${davinci-patched}/bin/resolve
+        ''}";
 
-      extraInstallCommands = ''
+        extraInstallCommands = ''
         mkdir -p $out/share/applications $out/share/icons/hicolor/128x128/apps
         ln -s ${davinci-patched}/share/applications/*.desktop $out/share/applications/
         ln -s ${davinci-patched}/graphics/DV_Resolve.png $out/share/icons/hicolor/128x128/apps/davinci-resolve-studio.png
-      '';
+        '';
 
-      passthru = {
-        inherit davinci-patched;
-        updateScript = lib.getExe (
-          pkgs.writeShellApplication {
-            name = "update-davinci-resolve";
-            runtimeInputs = [
-              pkgs.curl
-              pkgs.jq
-              pkgs.common-updater-scripts
-            ];
-            text = ''
+        passthru = {
+          inherit davinci-patched;
+          updateScript = lib.getExe (
+            pkgs.writeShellApplication {
+              name = "update-davinci-resolve";
+              runtimeInputs = [
+                pkgs.curl
+                pkgs.jq
+                pkgs.common-updater-scripts
+              ];
+              text = ''
               set -o errexit
               drv=pkgs/by-name/da/davinci-resolve/package.nix
               currentVersion=${lib.escapeShellArg davinci-patched.version}
@@ -143,13 +144,13 @@ let
               sed -i -e "s/""$latestLinuxVersion""/""$currentVersion""/" "$drv"
               latestStudioLinuxVersion="$(echo "$downloadsJSON" | jq '[.downloads[] | select(.urls.Linux) | .urls.Linux[] | select(.downloadTitle | test("DaVinci Resolve")) | .downloadTitle]' | grep -oP 'DaVinci Resolve Studio \K\d+\.\d+(\.\d+)?' | sort | tail -n 1)"
               update-source-version davinci-resolve-studio "$latestStudioLinuxVersion" --source-key=davinci.src
-            '';
-          }
-        );
+              '';
+            }
+          );
+        };
       };
-    };
 in
-{
+  {
   environment.systemPackages = [ davinci-resolve-studio-cracked ];
 
   # following configuration was taken from
