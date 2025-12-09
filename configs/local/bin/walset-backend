@@ -11,7 +11,7 @@ IMAGE="$1"
 
 notify-send "Changing Theme"
 
-swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="$FPS"
+swww img "$IMAGE" --transition-type="random" --transition-step=1 --transition-fps="$FPS"
 
 # generate pywal colors
 wal -i "$IMAGE" -n -s -t -e

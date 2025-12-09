@@ -14,6 +14,11 @@ in
   {
   environment.systemPackages = with pkgs; [
     cargo
+    glib
+    pkg-config
+    SDL2_image
+    sdl2-compat
+    SDL2
     imhex
     nasm
     arduino

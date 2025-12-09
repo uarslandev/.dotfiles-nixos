@@ -10,7 +10,6 @@ let
 in
   {
   services.xserver.enable = true;
-  services.desktopManager.gnome.enable = true;
   services.displayManager.sddm = {
     enable = true;
     extraPackages = [
@@ -45,7 +44,9 @@ in
     custom-sddm-astronaut
     matugen
     kdePackages.qtmultimedia
+    libsForQt5.libqtpas
     swaynotificationcenter
+    walker
     libnotify
     brightnessctl
     networkmanagerapplet
