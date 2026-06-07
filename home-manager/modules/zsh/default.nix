@@ -3,9 +3,9 @@
 {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    autocd = true;
+    autosuggestion.enable = false;
+    enableCompletion = false;
+    autocd = false;
 
     shellAliases = {
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
@@ -52,19 +52,19 @@
     };
 
     plugins = [
-      {
-        name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
+      #      {
+        #        name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;
+        #file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      #    }
 
 #      {
 #        name = "oh-my-zsh";src = pkgs.oh-my-zsh;
 #      }
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k;
-        file = "p10k.zsh";
-      }	
+      #{
+#        name = "powerlevel10k-config";
+#        src = ./p10k;
+#        file = "p10k.zsh";
+      #}	
     ];
     #
     #  zplug = {
@@ -78,11 +78,11 @@
     #    ];
     #  };
 
-    #    oh-my-zsh = {
-    #      enable = true;
-    #      plugins = [ "git git-auto-fetch fzf"];
-    #      theme = "robbyrussell";
-    #    };
+        oh-my-zsh = {
+          enable = true;
+      #          plugins = [ "git git-auto-fetch fzf"];
+          theme = "robbyrussell";
+        };
     initExtra = ''
         bindkey -e
         export WORDCHARS='*?_[]~=&;!#$%^(){}'
