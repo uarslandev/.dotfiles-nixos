@@ -11,6 +11,7 @@
         ll = "ls -lah";
         la = "ls -A";
         dfs = "cd ~/.dotfiles";
+        b = "backup";
         n = "nvim";
         wip = "git add . && git commit -m 'wip' && git push";
               nix-search = "nix search nixpkgs";
@@ -23,6 +24,7 @@
       ga = "git add";
       gb = "git branch -a";
       gc = "git commit -m";
+      gp = "git push";
       gcd = "git commit -m $(date +'%F_%T')";
       nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
       backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
