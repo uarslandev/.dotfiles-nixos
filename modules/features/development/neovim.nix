@@ -4,12 +4,22 @@
   flake.nixosModules.neovim = { pkgs, ... }:
 
   let
-    # 1. Define the configuration using neovimUtils
-    neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
+    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped {
       withPython3 = true;
       withNodeJs = true;
-      
-      # Plugins MUST go here so the wrapper handles their paths correctly
+
+      wrapperArgs = [
+        "--set"
+        "NVIM_APPNAME"
+        "nvim"
+      ];
+
+      # Explicitly declare your start packages so the wrapper updates packpath
+      wrapperArgs' = [
+        "--add-flags" 
+        "--cmd \"set packpath^=${pkgs.vim-utils.packDir { myNeovimPackages.start = plugins; }}\""
+      ];
+
       plugins = with pkgs.vimPlugins; [
         telescope-nvim
         plenary-nvim
@@ -33,8 +43,8 @@
         gitsigns-nvim
       ];
 
-      # This is the correct place for your custom Lua configuration
-      customRC = ''
+      # Expressly use 'luaRcContent' so the wrapper outputs a native init.lua
+      luaRcContent = ''
         -- Leader MUST be first
         vim.g.mapleader = " "
         vim.g.maplocalleader = " "
@@ -127,15 +137,6 @@
         vim.keymap.set('n', '<F11>', dap.step_into, opts)
       '';
     };
-
-    # 2. Pass the generated config and wrapper arguments to wrapNeovimUnstable
-    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig // {
-      wrapperArgs = [
-        "--set"
-        "NVIM_APPNAME"
-        "nvim"
-      ];
-    });
 
   in
   {
