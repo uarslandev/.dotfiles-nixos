@@ -38,7 +38,6 @@
         "nvim"
       ];
 
-      # ONLY basic Neovim options are set here. No plugin requires or maps.
       luaRcContent = ''
         -- Leader MUST be first
         vim.g.mapleader = " "
@@ -53,6 +52,18 @@
         vim.opt.shiftwidth = 2
         vim.opt.expandtab = true
         vim.opt.smartindent = true
+
+        local opts = { noremap = true, silent = true }
+
+        -- ========================
+        -- Telescope
+        -- ========================
+        require("telescope").setup {}
+
+        vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, opts)
+        vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, opts)
+        vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
+        vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, opts)
       '';
     };
 
