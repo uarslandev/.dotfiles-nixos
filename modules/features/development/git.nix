@@ -1,6 +1,8 @@
 { self, inputs, ... }: {
   flake.nixosModules.git = { pkgs, ... }: {
-    programs.git = {
+    programs = {
+      gh.enable = true;
+    git = {
       enable = true;
 
       config = {
@@ -8,6 +10,7 @@
         pull.rebase = true;
         push.autoSetupRemote = true;
       };
+    };
     };
   };
 }
