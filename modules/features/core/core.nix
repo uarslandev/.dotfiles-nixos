@@ -8,6 +8,8 @@
             discord
             vim
             networkmanagerapplet
+            nextcloud-client
+            keepassxc
         ];
     };
 }

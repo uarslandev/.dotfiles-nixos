@@ -4,6 +4,7 @@
         environment.systemPackages = with pkgs; [
             ripgrep
             fd
+            gh
             fzf
             eza
             bat
@@ -16,7 +17,6 @@
             tree
             btop
             fastfetch
-            git
             rsync
             just
         ];

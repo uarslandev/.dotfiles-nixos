@@ -27,6 +27,7 @@
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
           "Mod+S".spawn-sh =
             "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+          "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
 
           # ───── Window control ─────
           "Mod+Q".close-window = {};

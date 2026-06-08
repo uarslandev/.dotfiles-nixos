@@ -1,7 +1,6 @@
 { self, inputs, ... }: {
   flake.nixosModules.git = { pkgs, ... }: {
     programs = {
-      gh.enable = true;
     git = {
       enable = true;
 
