@@ -4,46 +4,41 @@
   flake.nixosModules.neovim = { pkgs, ... }:
 
   let
-    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped {
+    myPlugins = with pkgs.vimPlugins; [
+      telescope-nvim
+      plenary-nvim
+
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+
+      luasnip
+      cmp_luasnip
+
+      nvim-treesitter.withAllGrammars
+
+      nvim-dap
+      nvim-dap-python
+
+      toggleterm-nvim
+      nvim-tree-lua
+      gitsigns-nvim
+    ];
+
+    neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
       withPython3 = true;
       withNodeJs = true;
-
+      plugins = myPlugins;
+      
       wrapperArgs = [
         "--set"
         "NVIM_APPNAME"
         "nvim"
       ];
 
-      # Explicitly declare your start packages so the wrapper updates packpath
-      wrapperArgs' = [
-        "--add-flags" 
-        "--cmd \"set packpath^=${pkgs.vim-utils.packDir { myNeovimPackages.start = plugins; }}\""
-      ];
-
-      plugins = with pkgs.vimPlugins; [
-        telescope-nvim
-        plenary-nvim
-
-        nvim-lspconfig
-        nvim-cmp
-        cmp-nvim-lsp
-        cmp-buffer
-        cmp-path
-
-        luasnip
-        cmp_luasnip
-
-        nvim-treesitter.withAllGrammars
-
-        nvim-dap
-        nvim-dap-python
-
-        toggleterm-nvim
-        nvim-tree-lua
-        gitsigns-nvim
-      ];
-
-      # Expressly use 'luaRcContent' so the wrapper outputs a native init.lua
+      # ONLY basic Neovim options are set here. No plugin requires or maps.
       luaRcContent = ''
         -- Leader MUST be first
         vim.g.mapleader = " "
@@ -58,91 +53,15 @@
         vim.opt.shiftwidth = 2
         vim.opt.expandtab = true
         vim.opt.smartindent = true
-
-        local opts = { noremap = true, silent = true }
-
-        -- ========================
-        -- Telescope
-        -- ========================
-        require("telescope").setup {}
-
-        vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, opts)
-        vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, opts)
-        vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, opts)
-        vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, opts)
-
-        -- ========================
-        -- Treesitter
-        -- ========================
-        require("nvim-treesitter.configs").setup {
-          highlight = { enable = true },
-          indent = { enable = true },
-        }
-
-        -- ========================
-        -- LSP
-        -- ========================
-        local lspconfig = require("lspconfig")
-
-        lspconfig.pyright.setup {}
-        lspconfig.rust_analyzer.setup {}
-        lspconfig.nil_ls.setup {}
-
-        -- ========================
-        -- Completion
-        -- ========================
-        local cmp = require("cmp")
-
-        cmp.setup {
-          mapping = cmp.mapping.preset.insert {
-            ["<Tab>"] = cmp.mapping.select_next_item(),
-            ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-            ["<CR>"] = cmp.mapping.confirm { select = true },
-          },
-          sources = {
-            { name = "nvim_lsp" },
-            { name = "buffer" },
-            { name = "path" },
-          },
-        }
-
-        -- ========================
-        -- File explorer
-        -- ========================
-        require("nvim-tree").setup {}
-
-        vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
-
-        -- ========================
-        -- Terminal
-        -- ========================
-        require("toggleterm").setup { direction = "float" }
-
-        vim.keymap.set('n', '<leader>tt', ':ToggleTerm<CR>', opts)
-
-        -- ========================
-        -- Git
-        -- ========================
-        require("gitsigns").setup {}
-
-        -- ========================
-        -- DAP (Python)
-        -- ========================
-        require("dap-python").setup("python3")
-
-        local dap = require("dap")
-
-        vim.keymap.set('n', '<F5>', dap.continue, opts)
-        vim.keymap.set('n', '<F10>', dap.step_over, opts)
-        vim.keymap.set('n', '<F11>', dap.step_into, opts)
       '';
     };
+
+    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped neovimConfig;
 
   in
   {
     environment.systemPackages = [
       nvim
-
       pkgs.ripgrep
       pkgs.fd
       pkgs.git
