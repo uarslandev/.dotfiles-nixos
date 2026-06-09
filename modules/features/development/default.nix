@@ -9,7 +9,6 @@
       self.nixosModules.python
       self.nixosModules.zsh
       self.nixosModules.git
-      self.nixosModules.security-tools
       self.nixosModules.ides
       self.nixosModules.neovim
     ];

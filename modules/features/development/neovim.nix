@@ -229,7 +229,7 @@
       '';
     };
 
-    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (pkgs.neovimUtils.makeNeovimConfig neovimConfig);
+    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped neovimConfig;
 
   in
   {
