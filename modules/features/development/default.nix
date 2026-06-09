@@ -1,41 +1,25 @@
 { self, inputs, ... }: {
-  flake.nixosModules.gaming =
-    { pkgs, ... }:
+  imports = [
+    ./cli.nix
+    ./databases.nix
+    ./security.nix
+    ./ides.nix
+    ./python.nix
+    ./neovim.nix
+    ./git.nix
+  ];
+
+  flake.nixosModules.development =
+    { ... }:
     {
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
-
-      programs = {
-        gamemode.enable = true;
-
-        gamescope = {
-          enable = true;
-          capSysNice = true;
-        };
-
-        steam = {
-          enable = true;
-          gamescopeSession.enable = true;
-          remotePlay.openFirewall = true;
-          dedicatedServer.openFirewall = true;
-          extraCompatPackages = with pkgs; [
-            proton-ge-bin
-          ];
-        };
-      };
-
-      environment.systemPackages = with pkgs; [
-        bottles
-        goverlay
-        heroic
-        lutris
-        mangohud
-        protontricks
-        protonup-qt
-        steamtinkerlaunch
-        winetricks
+      imports = [
+        self.nixosModules.development-cli
+        self.nixosModules.databases
+        self.nixosModules.security
+        self.nixosModules.ides
+        self.nixosModules.python
+        self.nixosModules.neovim
+        self.nixosModules.git
       ];
     };
 }
