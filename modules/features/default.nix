@@ -3,7 +3,7 @@
     ./applications
     ./development
     ./system
-    ./gaming/default.nix # Explicitly import the default.nix from gaming folder
+    ./gaming
   ];
 
   flake.nixosModules.features =

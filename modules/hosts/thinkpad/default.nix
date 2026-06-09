@@ -8,7 +8,7 @@
 
       # Feature Categories
       self.nixosModules.development
-      #self.nixosModules.applications
+      self.nixosModules.applications
       self.nixosModules.system
       self.nixosModules.gaming
 
