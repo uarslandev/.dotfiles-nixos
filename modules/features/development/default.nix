@@ -7,6 +7,7 @@
     ./python.nix
     ./neovim.nix
     ./git.nix
+    ./cli-tools.nix
   ];
 
   flake.nixosModules.development =
@@ -20,6 +21,7 @@
         self.nixosModules.python
         self.nixosModules.neovim
         self.nixosModules.git
+        self.nixosModules.cli-tools
       ];
     };
 }
