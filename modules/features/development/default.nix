@@ -1,15 +1,9 @@
 { self, inputs, ... }: {
-  imports = [
-    ./networking.nix
-    ./containerization.nix
-  ];
-
-  flake.nixosModules.system =
+  flake.nixosModules.applications =
     { ... }:
     {
       imports = [
-        self.nixosModules.networking
-        self.nixosModules.containerization
+        self.nixosModules.multimedia
       ];
     };
 }
