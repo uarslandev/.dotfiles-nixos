@@ -8,6 +8,7 @@
     ./cli.nix
     ./databases.nix
     ./security.nix
+    ./security-tools.nix
     ./ides.nix
     ./networking.nix # New networking module
   ];
@@ -24,6 +25,7 @@
         self.nixosModules.development-cli
         self.nixosModules.databases
         self.nixosModules.security
+        self.nixosModules.security-tools
         self.nixosModules.ides
         self.nixosModules.networking # New networking module
       ];
