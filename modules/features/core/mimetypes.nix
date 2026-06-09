@@ -4,7 +4,6 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        alacritty
         kdePackages.dolphin
         firefox
         vscode

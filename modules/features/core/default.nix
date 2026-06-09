@@ -7,6 +7,7 @@
         self.nixosModules.cli
         self.nixosModules.mimetypes
         self.nixosModules.ai
+        self.nixosModules.alacritty
       ];
 
       programs = {

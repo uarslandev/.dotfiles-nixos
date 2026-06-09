@@ -11,6 +11,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  chaotic.scx.enable = true; # Sched-ext for better responsiveness/gaming
+  
   boot.initrd.luks.devices."luks-c0f3bc45-0014-4d08-a98e-e3ef293dc443".device = "/dev/disk/by-uuid/c0f3bc45-0014-4d08-a98e-e3ef293dc443";
   networking.hostName = "thinkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

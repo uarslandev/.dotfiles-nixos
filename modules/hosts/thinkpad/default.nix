@@ -2,6 +2,7 @@
 {
   flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
     modules = [
+      inputs.chaotic.nixosModules.default
       self.nixosModules.thinkpadConfiguration
       self.nixosModules.desktop
 
