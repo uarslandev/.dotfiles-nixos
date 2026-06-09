@@ -2,7 +2,7 @@
   flake.nixosModules.development = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       vscode
-      jetbrains.pycharm-community
+      jetbrains.pycharm-oss
       gcc
       gnumake
       python3
