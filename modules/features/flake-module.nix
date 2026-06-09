@@ -1,15 +1,6 @@
 { inputs, ... }: {
   flake.nixosModules = {
-    # Import individual feature modules
-    cli = import ./cli.nix;
-    virtualisation = import ./virtualisation.nix;
-    security-ctf = import ./security-ctf.nix;
-    development = import ./development.nix;
-    core-apps = import ./core-apps.nix;
-    gaming = import ./gaming.nix;
-    design = import ./design.nix;
-
-    # Meta-module to connect everything to the Thinkpad
+    # Aggregator module to connect everything to the Thinkpad
     thinkpad-defaults = { config, ... }: {
       imports = [
         # Reference the modules defined in this flake
