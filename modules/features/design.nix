@@ -4,7 +4,7 @@
       inkscape
       gimp
       krita
-      kdenlive
+      kdePackages.kdenlive
       blender
     ];
   };
