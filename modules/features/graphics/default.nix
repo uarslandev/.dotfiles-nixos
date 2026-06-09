@@ -8,7 +8,7 @@
     environment.systemPackages = with pkgs; [
       vulkan-loader
       vulkan-tools
-      glxinfo
+      mesa-demos
     ];
   };
 }
