@@ -12,7 +12,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  chaotic.scx.enable = true; # Sched-ext for better responsiveness/gaming
+  services.scx.enable = true; # Sched-ext for better responsiveness/gaming
+  
+  chaotic.nyx.cache.enable = true;
+  chaotic.nyx.overlay.enable = true;
   
   boot.initrd.luks.devices."luks-c0f3bc45-0014-4d08-a98e-e3ef293dc443".device = "/dev/disk/by-uuid/c0f3bc45-0014-4d08-a98e-e3ef293dc443";
   networking.hostName = "thinkpad"; # Define your hostname.
