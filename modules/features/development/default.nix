@@ -7,6 +7,7 @@
     ./python.nix
     ./neovim.nix
     ./git.nix
+    ./containerization.nix
     ./cli-tools.nix
   ];
 
@@ -21,6 +22,7 @@
         self.nixosModules.python
         self.nixosModules.neovim
         self.nixosModules.git
+        self.nixosModules.containerization
         self.nixosModules.cli-tools
       ];
     };
