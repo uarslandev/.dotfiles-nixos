@@ -10,6 +10,7 @@
       # Core
       self.nixosModules.cli
       self.nixosModules.core
+      self.nixosModules.mimetypes
     ];
   };
 }

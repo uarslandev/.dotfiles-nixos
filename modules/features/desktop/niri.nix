@@ -29,6 +29,10 @@
             "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
           "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
 
+          # ───── Session Management ─────
+          "Mod+Shift+E".quit = {};
+          #"Mod+Shift+R".reload-config = {};
+
           # ───── Window control ─────
           "Mod+Q".close-window = {};
           "Mod+Shift+Q".close-window = {};
@@ -48,16 +52,24 @@
           "Mod+Down".focus-window-down = {};
           "Mod+Up".focus-window-up = {};
 
-          # ───── Move windows ─────
+          # ───── Move Windows & Columns ─────
+          # Left/Right moves the whole column. Up/Down moves windows inside stacks.
+          "Mod+Shift+H".move-column-left = {};
+          "Mod+Shift+L".move-column-right = {};
           "Mod+Shift+J".move-window-down = {};
           "Mod+Shift+K".move-window-up = {};
+
+          # ───── Column Stacking Controls (The Niri Magic) ─────
+          # "Consume" pulls a window into a vertical stack; "Expel" kicks it out into its own column.
+          "Mod+BracketLeft".consume-or-expel-window-left = {};
+          "Mod+BracketRight".consume-or-expel-window-right = {};
 
           # ───── Monitors ─────
           "Mod+Ctrl+H".focus-monitor-left = {};
           "Mod+Ctrl+L".focus-monitor-right = {};
 
-          "Mod+Shift+H".move-column-to-monitor-left = {};
-          "Mod+Shift+L".move-column-to-monitor-right = {};
+          "Mod+Ctrl+Shift+H".move-column-to-monitor-left = {};
+          "Mod+Ctrl+Shift+L".move-column-to-monitor-right = {};
 
           # ───── Workspaces ─────
           "Mod+1".focus-workspace = 1;
@@ -82,10 +94,10 @@
           "Mod+Shift+9".move-column-to-workspace = 9;
           "Mod+Shift+0".move-column-to-workspace = 10;
 
-          # ───── Column width control (THIS fixes your “half screen browser” issue) ─────
-          "Mod+Shift+Left".set-column-width = "-10%";
-          "Mod+Shift+Right".set-column-width = "+10%";
-          "Mod+Shift+R".set-column-width = "100%";
+          # ───── Column width control ─────
+          "Mod+Minus".set-column-width = "-10%";
+          "Mod+Equal".set-column-width = "+10%";
+          "Mod+R".set-column-width = "100%";
 
           # ───── Media keys ─────
           "XF86MonBrightnessUp".spawn-sh =
