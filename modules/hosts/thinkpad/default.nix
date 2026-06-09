@@ -3,7 +3,6 @@
   flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.thinkpadConfiguration
-      self.nixosModules.niri
       self.nixosModules.desktop
 
       # Feature Categories

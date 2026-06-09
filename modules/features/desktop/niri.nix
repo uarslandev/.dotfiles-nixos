@@ -156,13 +156,13 @@
         "${lib.getExe pkgs.brightnessctl} set 5%-";
 
         "XF86AudioRaiseVolume".spawn-sh =
-        "${lib.getExe pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+        "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
 
         "XF86AudioLowerVolume".spawn-sh =
-        "${lib.getExe pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+        "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
 
         "XF86AudioMute".spawn-sh =
-        "${lib.getExe pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
         "XF86AudioPlay".spawn-sh =
         "${lib.getExe pkgs.playerctl} play-pause";
