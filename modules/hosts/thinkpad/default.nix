@@ -1,8 +1,11 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }:
+{
   flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.thinkpadConfiguration
       self.nixosModules.niri
+      self.nixosModules.desktop
+      self.nixosModules.gaming
       # Development
       self.nixosModules.zsh
       self.nixosModules.git

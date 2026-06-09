@@ -1,15 +1,26 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
+  flake.nixosModules.core =
+    { pkgs, ... }:
+    {
+      programs = {
+        firefox.enable = true;
+        thunderbird.enable = true;
+      };
 
-    flake.nixosModules.core = {pkgs, ...}: {
-        programs = {
-            firefox.enable = true;            
-        };
-        environment.systemPackages = with pkgs; [
-            discord
-            vim
-            networkmanagerapplet
-            nextcloud-client
-            keepassxc
-        ];
+      environment.systemPackages = with pkgs; [
+        discord
+        element-desktop
+        keepassxc
+        libreoffice-qt6-fresh
+        networkmanagerapplet
+        nextcloud-client
+        obsidian
+        signal-desktop
+        teamspeak6-client
+        telegram-desktop
+        vim
+        zoom-us
+      ];
     };
 }
