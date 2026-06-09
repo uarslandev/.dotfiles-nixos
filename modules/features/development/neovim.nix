@@ -4,7 +4,7 @@
   flake.nixosModules.neovim = { pkgs, ... }:
 
   let
-    neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
+    neovimConfig = {
       withPython3 = true;
       withNodeJs = true;
       
@@ -229,7 +229,7 @@
       '';
     };
 
-    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped neovimConfig;
+    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (pkgs.neovimUtils.makeNeovimConfig neovimConfig);
 
   in
   {

@@ -1,7 +1,7 @@
 { self, inputs, ... }: {
   flake.nixosModules.ides = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
-      jetbrains.idea-ultimate
+      jetbrains.idea
       jetbrains.pycharm-professional
       jetbrains.datagrip
       jetbrains.webstorm
