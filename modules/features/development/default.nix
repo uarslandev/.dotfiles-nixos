@@ -1,33 +1,23 @@
 { self, inputs, ... }: {
-  imports = [
-    ./python.nix
-    ./neovim.nix
-    ./git.nix
-    ./containerization.nix
-    ./cli-tools.nix
-    ./cli.nix
-    ./databases.nix
-    ./security.nix
-    ./security-tools.nix
-    ./ides.nix
-    ./networking.nix # New networking module
-  ];
+  flake.nixosModules.gaming = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      steam
+      lutris
+      heroic
+      bottles        # Advanced Windows environment manager
+      mangohud       # FPS counter and system overlay
+      gamemode       # Performance daemon
+      gameconqueror  # Cheat Engine-like GUI for memory editing (scanmem frontend)
+      
+      # Windows Compatibility Layer
+      wine-staging   # Bleeding edge Wine for better game compatibility
+      winetricks     # Helper script to install DLLs and libraries in Wine
+    ];
 
-  flake.nixosModules.development =
-    { pkgs, ... }:
-    {
-      imports = [
-        self.nixosModules.python
-        self.nixosModules.neovim
-        self.nixosModules.git
-        self.nixosModules.containerization
-        self.nixosModules.cli-tools
-        self.nixosModules.development-cli
-        self.nixosModules.databases
-        self.nixosModules.security
-        self.nixosModules.security-tools
-        self.nixosModules.ides
-        self.nixosModules.networking # New networking module
-      ];
-    };
+    # Steam requires some global configuration for hardware acceleration and DRM
+    programs.steam.enable = true;
+
+    # Enable GameMode optimizations (daemon and renice support)
+    programs.gamemode.enable = true;
+  };
 }
