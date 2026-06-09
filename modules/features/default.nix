@@ -1,8 +1,12 @@
-{ self, inputs, ... }: {
-  imports = [
-    ./applications
-    ./development
-    ./system
-    ./gaming
-  ];
+{ self, ... }: {
+  flake.nixosModules.applications =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = with pkgs; [
+        # Add your GUI applications here
+        firefox
+        discord
+        vlc
+      ];
+    };
 }
