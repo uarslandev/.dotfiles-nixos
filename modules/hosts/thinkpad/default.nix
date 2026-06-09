@@ -5,12 +5,15 @@
       self.nixosModules.thinkpadConfiguration
       self.nixosModules.niri
       self.nixosModules.desktop
+
+      # Feature Categories
+      self.nixosModules.development
+      self.nixosModules.applications
+      self.nixosModules.system
       self.nixosModules.gaming
-      # Development
+
+      # Shell & Core Utilities
       self.nixosModules.zsh
-      self.nixosModules.git
-      self.nixosModules.neovim
-      # Core
       self.nixosModules.cli
       self.nixosModules.core
       self.nixosModules.mimetypes
