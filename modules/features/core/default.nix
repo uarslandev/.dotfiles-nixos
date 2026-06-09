@@ -6,18 +6,12 @@
       imports = [
         self.nixosModules.cli
         self.nixosModules.mimetypes
+        self.nixosModules.ai
       ];
 
       programs = {
         firefox.enable = true;
         thunderbird.enable = true;
-      };
-
-      services.syncthing = {
-        enable = true;
-        user = "umut";
-        dataDir = "/home/umut/Documents";
-        configDir = "/home/umut/.config/syncthing";
       };
 
       environment.systemPackages = with pkgs; [
@@ -29,7 +23,6 @@
         nextcloud-client
         obsidian
         signal-desktop
-        syncthing
         teamspeak6-client
         telegram-desktop
         thunderbird

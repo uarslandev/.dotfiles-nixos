@@ -1,5 +1,5 @@
-{
-  flake.nixosModules.security-ctf = { pkgs, ... }: {
+{ ... }: {
+  flake.nixosModules.security = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       nmap
       wireshark
@@ -12,6 +12,10 @@
       ghidra-bin
       pwntools
     ];
+    
     programs.wireshark.enable = true;
+    
+    security.rtkit.enable = true;
+    # Add other security hardening or tools here
   };
 }

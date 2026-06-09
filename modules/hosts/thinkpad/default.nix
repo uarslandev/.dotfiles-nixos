@@ -8,9 +8,12 @@
 
       # Feature Categories
       self.nixosModules.core
+      self.nixosModules.services
+      self.nixosModules.graphics
+      self.nixosModules.vpn
       self.nixosModules.virtualisation
       self.nixosModules.development
-      self.nixosModules.security-ctf
+      self.nixosModules.security
       self.nixosModules.gaming
       self.nixosModules.design
 
