@@ -16,7 +16,7 @@
 
     environment.systemPackages = with pkgs; [
       vscode
-      jetbrains.pycharm-oss
+      jetbrains.pycharm
       gcc
       gnumake
       python3

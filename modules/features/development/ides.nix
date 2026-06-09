@@ -2,7 +2,7 @@
   flake.nixosModules.ides = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       jetbrains.idea
-      jetbrains.pycharm-professional
+      jetbrains.pycharm
       jetbrains.datagrip
       jetbrains.webstorm
       jetbrains.clion
