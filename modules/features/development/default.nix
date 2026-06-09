@@ -1,17 +1,18 @@
 { self, inputs, ... }: {
-  flake.nixosModules.development =
-    { ... }:
+  imports = [
+    ./multimedia.nix
+  ];
+
+  flake.nixosModules.applications =
+    { pkgs, ... }:
     {
       imports = [
-        self.nixosModules.development-cli
-        self.nixosModules.databases
-        self.nixosModules.security
-        self.nixosModules.ides
-        self.nixosModules.python
-        self.nixosModules.neovim
-        self.nixosModules.git
-        self.nixosModules.containerization
-        self.nixosModules.cli-tools
+        self.nixosModules.multimedia
+      ];
+      environment.systemPackages = with pkgs; [
+        # Add your GUI applications here
+        firefox
+        discord
       ];
     };
 }
