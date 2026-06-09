@@ -1,16 +1,4 @@
 { self, inputs, ... }: {
-  imports = [
-    ./cli.nix
-    ./databases.nix
-    ./security.nix
-    ./ides.nix
-    ./python.nix
-    ./neovim.nix
-    ./git.nix
-    ./containerization.nix
-    ./cli-tools.nix
-  ];
-
   flake.nixosModules.development =
     { ... }:
     {
