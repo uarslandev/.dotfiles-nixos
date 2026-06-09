@@ -8,7 +8,6 @@
 
       # Feature Categories
       self.nixosModules.development
-      self.nixosModules.system
       self.nixosModules.gaming
 
       # Shell & Core Utilities
