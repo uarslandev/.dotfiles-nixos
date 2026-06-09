@@ -1,16 +1,13 @@
-{ self, inputs, ... }:
-{
-  flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      self.nixosModules.thinkpadConfiguration
-      self.nixosModules.niri
-      self.nixosModules.desktop
-      self.nixosModules.thinkpad-defaults # Aggregates all general features
-
-      # Shell & Core Utilities
-      self.nixosModules.zsh
+{ self, ... }: {
+  flake.nixosModules.thinkpad = { ... }: {
+    imports = [
+      self.nixosModules.thinkpadConfiguration # Hardware/Specific config
       self.nixosModules.core
-      self.nixosModules.mimetypes
+      self.nixosModules.virtualisation
+      self.nixosModules.development
+      self.nixosModules.security-ctf
+      self.nixosModules.gaming
+      self.nixosModules.design
     ];
   };
 }

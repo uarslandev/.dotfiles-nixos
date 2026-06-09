@@ -19,6 +19,8 @@
             fastfetch
             rsync
             just
+            git
+            lazygit
         ];
     };
 }
