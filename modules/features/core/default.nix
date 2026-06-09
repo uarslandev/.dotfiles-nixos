@@ -32,6 +32,7 @@
         syncthing
         teamspeak6-client
         telegram-desktop
+        thunderbird
         vim
         zoom-us
       ];
