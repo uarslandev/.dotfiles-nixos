@@ -31,7 +31,7 @@
           prefer-no-csd = true;
 
           layout.gaps = 10;
-          layout.border.width = 1;
+          layout.border.width = 0.25;
 
           binds = {
 
