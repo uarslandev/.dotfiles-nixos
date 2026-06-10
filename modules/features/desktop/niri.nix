@@ -30,7 +30,9 @@
           input.keyboard.xkb.layout = "us,ua";
           prefer-no-csd = true;
 
-          layout.gaps = 5;
+          border.width = 10;
+
+          layout.gaps = 10;
           binds = {
 
             # ───── Apps ─────
