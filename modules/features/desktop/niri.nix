@@ -38,7 +38,7 @@
 
           layout.gaps = 10;
           layout.border.width = 1.0;
-          #layout.focus-ring.width = 4.0;
+          layout.focus-ring.width = 0.0;
 
           window-rules = [
             {
