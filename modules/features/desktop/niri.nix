@@ -37,7 +37,15 @@
           prefer-no-csd = true;
 
           layout.gaps = 10;
-          layout.border.width = 0.25;
+          layout.corner-radius = 12;
+          layout.border = {
+            enable = true;
+            width = 4.0;
+          };
+          layout.focus-ring = {
+            enable = true;
+            width = 4.0;
+          };
 
           binds = {
 
@@ -49,7 +57,8 @@
 
             "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
 
-            "Mod+V".spawn-sh = "${lib.getExe pkgs.kitty} --class cliphist-picker sh -c '${pkgs.cliphist}/bin/cliphist list | ${pkgs.fzf}/bin/fzf | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy'";
+            "Mod+V".spawn-sh =
+              "${lib.getExe pkgs.kitty} --class cliphist-picker sh -c '${pkgs.cliphist}/bin/cliphist list | ${pkgs.fzf}/bin/fzf | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy'";
 
             # ───── Session Management ─────
 
