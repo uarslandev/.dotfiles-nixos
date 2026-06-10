@@ -40,7 +40,7 @@
         [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
         '';
 
-      initExtra = ''
+      interactiveShellInit = ''
         # Use emacs keybindings even if EDITOR is set to vi
         bindkey -e
 
