@@ -8,6 +8,7 @@
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    qylock.url = "github:Darkkal44/qylock";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake

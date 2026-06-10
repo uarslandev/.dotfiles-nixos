@@ -5,6 +5,7 @@
     {
       imports = [
         self.nixosModules.niri
+        self.nixosModules.sddm
       ];
 
       programs.dconf.enable = true;
