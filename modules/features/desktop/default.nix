@@ -29,6 +29,17 @@
         QT_QPA_PLATFORM = "wayland;xcb";
         SDL_VIDEODRIVER = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
+        GTK_IM_MODULE = "fcitx";
+        QT_IM_MODULE = "fcitx";
+        XMODIFIERS = "@im=fcitx";
+      };
+
+      i18n.inputMethod = {
+        enabled = "fcitx5";
+        fcitx5.addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-gtk
+        ];
       };
 
       environment.systemPackages = with pkgs; [

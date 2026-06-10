@@ -16,8 +16,10 @@
       };
 
       environment.systemPackages = with pkgs; [
+        anki-bin
         discord
         element-desktop
+        fzf
         keepassxc
         libreoffice-qt6-fresh
         networkmanagerapplet

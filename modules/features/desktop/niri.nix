@@ -23,11 +23,17 @@
         settings = {
           spawn-at-startup = [
             (lib.getExe self'.packages.myNoctalia)
+            "${pkgs.fcitx5}/bin/fcitx5 -d"
+            "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
+            "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
           ];
 
           xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-          input.keyboard.xkb.layout = "us,ua";
+          input.keyboard.xkb = {
+            layout = "de";
+            variant = "us";
+          };
           prefer-no-csd = true;
 
           layout.gaps = 10;
@@ -42,6 +48,8 @@
             "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
 
             "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
+
+            "Mod+V".spawn-sh = "${lib.getExe pkgs.kitty} --class cliphist-picker sh -c '${pkgs.cliphist}/bin/cliphist list | ${pkgs.fzf}/bin/fzf | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy'";
 
             # ───── Session Management ─────
 
