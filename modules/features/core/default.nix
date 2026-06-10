@@ -32,6 +32,7 @@
         thunderbird
         vim
         zoom-us
+        tmux
       ];
     };
 }
