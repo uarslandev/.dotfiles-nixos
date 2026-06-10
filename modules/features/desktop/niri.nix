@@ -37,15 +37,15 @@
           prefer-no-csd = true;
 
           layout.gaps = 10;
-          layout.corner-radius = 12;
-          layout.border = {
-            enable = true;
-            width = 4.0;
-          };
-          layout.focus-ring = {
-            enable = true;
-            width = 4.0;
-          };
+          layout.border.width = 1.0;
+          #layout.focus-ring.width = 4.0;
+
+          window-rules = [
+            {
+              geometry-corner-radius = 12;
+              clip-to-geometry = true;
+            }
+          ];
 
           binds = {
 

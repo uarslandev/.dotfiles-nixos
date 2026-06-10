@@ -17,7 +17,7 @@
 
       environment.systemPackages = with pkgs; [
         anki-bin
-        kdeconnect-kde
+        kdePackages.kdeconnect-kde
         discord
         element-desktop
         fzf
