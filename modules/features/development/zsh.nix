@@ -62,13 +62,13 @@
 
         runtimePkgs = [
           self'.packages.neovim
+          self'.packages.tmux
+          self'.packages.git
+          self'.packages.ai
           pkgs.fzf
-          pkgs.tmux
-          pkgs.git
           pkgs.ripgrep
           pkgs.fd
-        ];
-      };
+          ];      };
     };
 
   flake.nixosModules.zsh =

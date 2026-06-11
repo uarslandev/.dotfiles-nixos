@@ -11,6 +11,7 @@
       self.nixosModules.git
       self.nixosModules.ides
       self.nixosModules.neovim
+      self.nixosModules.tmux
       self.nixosModules.latex
     ];
 

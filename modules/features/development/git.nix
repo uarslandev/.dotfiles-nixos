@@ -1,15 +1,21 @@
 { self, inputs, ... }: {
-  flake.nixosModules.git = { pkgs, ... }: {
-    programs = {
-    git = {
-      enable = true;
+  perSystem = { pkgs, ... }: {
+    packages.git = inputs.wrapper-modules.wrappers.git.wrap {
+      inherit pkgs;
 
-      config = {
+      settings = {
         init.defaultBranch = "main";
         pull.rebase = true;
         push.autoSetupRemote = true;
+        user.name = "Umut Arslan";
+        user.email = "umutarslan.dev@gmail.com";
       };
     };
-    };
+  };
+
+  flake.nixosModules.git = { pkgs, ... }: {
+    environment.systemPackages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.git
+    ];
   };
 }
