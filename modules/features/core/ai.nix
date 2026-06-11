@@ -5,7 +5,6 @@
     {
       environment.systemPackages = with pkgs; [
         gemini-cli
-        codex-acp
         claude-code
       ];
     };

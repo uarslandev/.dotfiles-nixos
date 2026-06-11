@@ -80,7 +80,7 @@
     {
       programs.zsh = {
         enable = true;
-        
+
         # Disable default NixOS prompt init which sets prompt_cr
         promptInit = "";
 
