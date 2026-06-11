@@ -68,13 +68,20 @@
           pkgs.fzf
           pkgs.ripgrep
           pkgs.fd
-          ];      };
+        ];
+      };
     };
 
   flake.nixosModules.zsh =
     { pkgs, ... }:
     {
+      nixpkgs.overlays = [
+        (final: prev: {
+          zsh = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh;
+        })
+      ];
       programs.zsh.enable = true;
-      users.defaultUserShell = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh;
+      users.defaultUserShell = pkgs.zsh;
+      users.users.umut.shell = pkgs.zsh;
     };
 }
