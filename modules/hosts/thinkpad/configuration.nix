@@ -34,6 +34,7 @@
 
       # Enable networking
       networking.networkmanager.enable = true;
+      networking.networkmanager.packages = [ pkgs.networkmanager-openvpn ];
 
       # Set your time zone.
       time.timeZone = "Europe/Berlin";
