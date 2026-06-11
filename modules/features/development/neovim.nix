@@ -1,62 +1,9 @@
 { self, inputs, ... }:
 
 {
-  flake.nixosModules.neovim = { pkgs, ... }:
-
-  let
-    neovimConfig = {
-      withPython3 = true;
-      withNodeJs = true;
-      
-      plugins = with pkgs.vimPlugins; [
-        # Core & UI Essentials
-        telescope-nvim
-        plenary-nvim
-        nvim-web-devicons
-        lualine-nvim
-        nvim-autopairs
-        rainbow-delimiters-nvim
-        which-key-nvim
-
-        # Code Manipulation Utilities
-        comment-nvim
-        conform-nvim
-
-        # LSP Core Tooling
-        nvim-lspconfig
-        lsp_signature-nvim
-        
-        # Completion Engine Stack
-        nvim-cmp
-        cmp-nvim-lsp
-        cmp-buffer
-        cmp-path
-
-        # Snippets Engine
-        luasnip
-        cmp_luasnip
-
-        # Treesitter Syntax Parsing
-        nvim-treesitter.withAllGrammars
-
-        # Debugging Suite (DAP)
-        nvim-dap
-        nvim-dap-ui
-        nvim-nio 
-        nvim-dap-python
-
-        # Layout & Tooling Utilities
-        toggleterm-nvim
-        nvim-tree-lua
-        gitsigns-nvim
-      ];
-      
-      wrapperArgs = [
-        "--set"
-        "NVIM_APPNAME"
-        "nvim"
-      ];
-
+  perSystem =
+    { pkgs, ... }:
+    let
       luaRcContent = ''
         -- Leader MUST be first
         vim.g.mapleader = " "
@@ -79,7 +26,7 @@
         -- ========================
         -- Requested Custom Keymaps
         -- ========================
-        
+
         -- Copy/Yank to System Clipboard
         vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = "Yank to system clipboard" })
         vim.keymap.set('n', '<leader>Y', '"+Y', { desc = "Yank line to system clipboard" })
@@ -95,7 +42,7 @@
         require("nvim-autopairs").setup {}
         require("Comment").setup {} -- Capitalized fix applied here
         require("which-key").setup {}
-        
+
         local rainbow_delimiters = require("rainbow-delimiters")
         vim.g.rainbow_delimiters = {
           strategy = { [""] = rainbow_delimiters.strategy["global"] },
@@ -211,7 +158,7 @@
         -- DAP (Debugging Framework)
         -- ========================
         require("dap-python").setup("python3")
-        
+
         local dap = require("dap")
         local dapui = require("dapui")
 
@@ -227,33 +174,91 @@
         vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
         vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = "Debug: Toggle UI Panels" })
       '';
+
+      plugins = with pkgs.vimPlugins; [
+        # Core & UI Essentials
+        telescope-nvim
+        plenary-nvim
+        nvim-web-devicons
+        lualine-nvim
+        nvim-autopairs
+        rainbow-delimiters-nvim
+        which-key-nvim
+
+        # Code Manipulation Utilities
+        comment-nvim
+        conform-nvim
+
+        # LSP Core Tooling
+        nvim-lspconfig
+        lsp_signature-nvim
+
+        # Completion Engine Stack
+        nvim-cmp
+        cmp-nvim-lsp
+        cmp-buffer
+        cmp-path
+
+        # Snippets Engine
+        luasnip
+        cmp_luasnip
+
+        # Treesitter Syntax Parsing
+        nvim-treesitter.withAllGrammars
+
+        # Debugging Suite (DAP)
+        nvim-dap
+        nvim-dap-ui
+        nvim-nio
+        nvim-dap-python
+
+        # Layout & Tooling Utilities
+        toggleterm-nvim
+        nvim-tree-lua
+        gitsigns-nvim
+      ];
+
+      runtimePkgs = [
+        # CLI Dependencies
+        pkgs.ripgrep
+        pkgs.fd
+        pkgs.git
+        pkgs.gcc
+        pkgs.python3
+
+        # Language Server Binaries
+        pkgs.pyright
+        pkgs.rust-analyzer
+        pkgs.nil
+        pkgs.nixd
+
+        # Project Code Formatters (Invoked by conform-nvim)
+        pkgs.nixfmt
+        pkgs.black
+      ];
+    in
+    {
+      packages.neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
+        inherit pkgs;
+
+        settings.config_directory = pkgs.writeTextDir "init.lua" luaRcContent;
+
+        specs.general = plugins;
+
+        inherit runtimePkgs;
+
+        hosts.python3.nvim-host.enable = true;
+        hosts.node.nvim-host.enable = true;
+      };
     };
 
-    nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped neovimConfig;
+  flake.nixosModules.neovim =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.neovim
+      ];
 
-  in
-  {
-    environment.systemPackages = [
-      nvim
-
-      # CLI Dependencies
-      pkgs.ripgrep
-      pkgs.fd
-      pkgs.git
-      pkgs.gcc
-      pkgs.python3
-
-      # Language Server Binaries
-      pkgs.pyright
-      pkgs.rust-analyzer
-      pkgs.nil
-      pkgs.nixd
-
-      # Project Code Formatters (Invoked by conform-nvim)
-      pkgs.nixfmt-rfc-style
-      pkgs.black
-    ];
-
-    programs.neovim.enable = false;
-  };
+      programs.neovim.enable = false;
+    };
 }
