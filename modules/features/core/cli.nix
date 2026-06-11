@@ -8,6 +8,7 @@
         ripgrep
         fd
         gh
+        file
         fzf
         eza
         bat
