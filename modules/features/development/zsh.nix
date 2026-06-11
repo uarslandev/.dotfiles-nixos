@@ -1,13 +1,9 @@
 { self, inputs, ... }: {
-  flake.nixosModules.zsh = { pkgs, ... }: {
-    programs.zsh = {
-      enable = true;
+  perSystem = { pkgs, self', ... }: {
+    packages.zsh = inputs.wrapper-modules.wrappers.zsh.wrap {
+      inherit pkgs;
 
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      enableCompletion = true;
-
-      shellAliases = {
+      zshAliases = {
         ll = "ls -lah";
         la = "ls -A";
         dfs = "cd ~/.dotfiles";
@@ -33,14 +29,12 @@
         ssh = "TERM=xterm-256color ssh";
       };
 
-      histSize = 10000;
-
-      promptInit = ''
+      zshrc.content = ''
+        # Powerlevel10k Prompt
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-        '';
 
-      interactiveShellInit = ''
+        # Interactive Shell Initialization
         # Use emacs keybindings even if EDITOR is set to vi
         bindkey -e
 
@@ -62,8 +56,20 @@
         # Make word navigation behave more like bash
         WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
       '';
-    };
 
-    users.defaultUserShell = pkgs.zsh;
+      runtimePkgs = [
+        self'.packages.neovim
+        pkgs.fzf
+        pkgs.tmux
+        pkgs.git
+        pkgs.ripgrep
+        pkgs.fd
+      ];
+    };
   };
-                       }
+
+  flake.nixosModules.zsh = { pkgs, ... }: {
+    programs.zsh.enable = true;
+    users.defaultUserShell = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh;
+  };
+}
