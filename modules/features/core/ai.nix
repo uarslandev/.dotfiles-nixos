@@ -5,6 +5,7 @@
     {
       environment.systemPackages = with pkgs; [
         gemini-cli
+        antigravity-cli
         claude-code
       ];
     };

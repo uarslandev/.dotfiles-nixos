@@ -71,7 +71,17 @@
           (( ! ''${+functions[p10k]} )) || p10k finalize
         '';
 
-        runtimePkgs = [ ];
+        runtimePkgs = [
+          self'.packages.neovim
+          self'.packages.git
+          self'.packages.tmux
+          pkgs.gemini-cli
+          pkgs.antigravity-cli
+          pkgs.claude-code
+          pkgs.fzf
+          pkgs.ripgrep
+          pkgs.fd
+        ];
       };
     };
 
