@@ -1,13 +1,26 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 {
+  perSystem =
+    { pkgs, ... }:
+    {
+      packages.gh = pkgs.symlinkJoin {
+        name = "gh";
+        paths = [ pkgs.gh ];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/gh --unset DBUS_SESSION_BUS_ADDRESS
+        '';
+      };
+    };
 
   flake.nixosModules.cli =
     { pkgs, ... }:
     {
-      environment.systemPackages = with pkgs; [
+      environment.systemPackages = [
+        self.packages.${pkgs.stdenv.hostPlatform.system}.gh
+      ] ++ (with pkgs; [
         ripgrep
         fd
-        gh
         file
         fzf
         eza
@@ -24,7 +37,7 @@
         rsync
         just
         lazygit
-      ];
+      ]);
 
       environment.variables.EDITOR = "nvim";
 
