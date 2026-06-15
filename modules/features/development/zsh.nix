@@ -12,11 +12,35 @@
             selected=$1
         else
             all_dirs=$(${pkgs.findutils}/bin/find ~/Repos ~/Projects ~/Github ~/Gitlab -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
-            selected=$( (cat "$RECENT_FILE"; echo "$all_dirs") | awk 'NF && !seen[$0]++' | ${pkgs.fzf}/bin/fzf --prompt="Select session: " --height=40% --reverse)
-        fi
+            selection_out=$( (cat "$RECENT_FILE"; echo "$all_dirs") | awk 'NF && !seen[$0]++' | ${pkgs.fzf}/bin/fzf --prompt="Select session (Del to delete): " --height=40% --reverse --expect=del)
+            
+            if [[ -z "$selection_out" ]]; then
+                exit 0
+            fi
 
-        if [[ -z "$selected" ]]; then
-            exit 0
+            key=$(echo "$selection_out" | head -n 1)
+            selected=$(echo "$selection_out" | tail -n +2)
+
+            if [[ -z "$selected" ]]; then
+                exit 0
+            fi
+
+            if [[ "$key" == "del" ]]; then
+                selected=$(realpath "$selected")
+                if grep -qF "$selected" "$RECENT_FILE"; then
+                    echo -n "Are you sure you want to delete '$selected' from recents? (y/N): "
+                    read -r answer
+                    if [[ "$answer" =~ ^[Yy]$ ]]; then
+                        grep -vF "$selected" "$RECENT_FILE" > "$RECENT_FILE.tmp"
+                        mv "$RECENT_FILE.tmp" "$RECENT_FILE"
+                        echo "Deleted '$selected' from recents."
+                    else
+                        echo "Deletion cancelled."
+                    fi
+                    sleep 1
+                fi
+                exec "$0" "$@"
+            fi
         fi
 
         selected=$(realpath "$selected")
@@ -50,10 +74,36 @@
 
         NEW_CONN_LABEL="[New Connection]"
 
-        selection=$( (echo "$NEW_CONN_LABEL"; cat "$RECENT_FILE") | ${pkgs.fzf}/bin/fzf --prompt="Select SSH session: " --height=40% --reverse)
+        # Use fzf --expect to capture Delete key
+        selection_out=$( (echo "$NEW_CONN_LABEL"; cat "$RECENT_FILE") | ${pkgs.fzf}/bin/fzf --prompt="Select SSH session (Del to delete): " --height=40% --reverse --expect=del)
+
+        if [[ -z "$selection_out" ]]; then
+            exit 0
+        fi
+
+        key=$(echo "$selection_out" | head -n 1)
+        selection=$(echo "$selection_out" | tail -n +2)
 
         if [[ -z "$selection" ]]; then
             exit 0
+        fi
+
+        if [[ "$key" == "del" ]]; then
+            if [[ "$selection" != "$NEW_CONN_LABEL" ]]; then
+                echo -n "Are you sure you want to delete '$selection'? (y/N): "
+                read -r answer
+                if [[ "$answer" =~ ^[Yy]$ ]]; then
+                    grep -vF "$selection" "$RECENT_FILE" > "$RECENT_FILE.tmp"
+                    mv "$RECENT_FILE.tmp" "$RECENT_FILE"
+                    echo "Deleted '$selection'."
+                else
+                    echo "Deletion cancelled."
+                fi
+                sleep 1
+                exec "$0" "$@"
+            else
+                exec "$0" "$@"
+            fi
         fi
 
         if [[ "$selection" == "$NEW_CONN_LABEL" ]]; then
@@ -74,17 +124,10 @@
             # Step 2: Query remote directories
             echo "Connecting to $host to find repositories/folders..."
             
-            # Use the system ssh command in your PATH (e.g. to access custom cloudflared setup, etc.)
-            # Pipe commands to sh -s on stdin to execute under a POSIX shell regardless of remote default shell (e.g. fish)
-            remote_dir=$(ssh -o ConnectTimeout=10 "$host" "sh -s" 2>/dev/null << 'EOF' | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse
-repos=$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \; 2>/dev/null)
-if [ -n "$repos" ]; then
-    echo "$repos"
-else
-    find ~/ -maxdepth 2 -type d 2>/dev/null
-fi
-EOF
-)
+            # Pass command as argument and keep stdin/stderr attached to terminal so interactive prompts (like cloudflared login) function properly
+            remote_cmd="repos=\$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \\; 2>/dev/null); if [ -n \"\$repos\" ]; then echo \"\$repos\"; else find ~/ -maxdepth 2 -type d 2>/dev/null; fi"
+            
+            remote_dir=$(ssh -o ConnectTimeout=10 "$host" "sh -c '$remote_cmd'" | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse)
 
             if [[ -z "$remote_dir" ]]; then
                 exit 0
