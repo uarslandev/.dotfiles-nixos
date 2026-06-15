@@ -4,6 +4,10 @@
     { pkgs, self', ... }:
     {
       packages.tmux-sessionizer = pkgs.writeShellScriptBin "tmux-sessionizer" ''
+        if [[ -z "$TMUX" ]]; then
+            exec ${pkgs.tmux}/bin/tmux new-session -A -s main "$0" "$@"
+        fi
+
         RECENT_FILE="$HOME/.local/share/tmux-recent"
         mkdir -p "$(dirname "$RECENT_FILE")"
         touch "$RECENT_FILE"
@@ -11,7 +15,13 @@
         if [[ $# -eq 1 ]]; then
             selected=$1
         else
-            all_dirs=$(${pkgs.findutils}/bin/find ~/Repos ~/Projects ~/Github ~/Gitlab -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+            # Scan repositories dynamically up to depth 4, fallback to directories up to depth 2 if none found
+            repos=$(${pkgs.findutils}/bin/find ~/ -name '.*' -not -name '.git' -prune -o -name .git -type d -exec dirname {} \; 2>/dev/null)
+            if [[ -n "$repos" ]]; then
+                all_dirs="$repos"
+            else
+                all_dirs=$(${pkgs.findutils}/bin/find ~/ -maxdepth 2 -name '.*' -prune -o -type d -print 2>/dev/null)
+            fi
             selection_out=$( (cat "$RECENT_FILE"; echo "$all_dirs") | awk 'NF && !seen[$0]++' | ${pkgs.fzf}/bin/fzf --prompt="Select session (Del to delete): " --height=40% --reverse --expect=del)
             
             if [[ -z "$selection_out" ]]; then
@@ -49,25 +59,19 @@
         echo "$selected" | cat - "$RECENT_FILE" | awk '!seen[$0]++' > "$RECENT_FILE.tmp" && mv "$RECENT_FILE.tmp" "$RECENT_FILE"
 
         selected_name=$(basename "$selected" | tr . _)
-        tmux_running=$(pgrep tmux)
-
-        if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-            ${pkgs.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected"
-            exit 0
-        fi
 
         if ! ${pkgs.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
             ${pkgs.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected"
         fi
 
-        if [[ -z $TMUX ]]; then
-            ${pkgs.tmux}/bin/tmux attach-session -t "$selected_name"
-        else
-            ${pkgs.tmux}/bin/tmux switch-client -t "$selected_name"
-        fi
+        ${pkgs.tmux}/bin/tmux switch-client -t "$selected_name"
       '';
 
       packages.tmux-ssh-sessionizer = pkgs.writeShellScriptBin "tmux-ssh-sessionizer" ''
+        if [[ -z "$TMUX" ]]; then
+            exec ${pkgs.tmux}/bin/tmux new-session -A -s main "$0" "$@"
+        fi
+
         RECENT_FILE="$HOME/.local/share/tmux-ssh-recent"
         mkdir -p "$(dirname "$RECENT_FILE")"
         touch "$RECENT_FILE"
@@ -127,14 +131,22 @@
             # Pass command as argument and keep stdout/stderr attached to terminal
             remote_cmd="repos=\$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \\; 2>/dev/null); if [ -n \"\$repos\" ]; then echo \"\$repos\"; else find ~/ -maxdepth 2 -type d 2>/dev/null; fi"
             
-            # Capture output first to allow real-time terminal display of connection logs/prompts (e.g. cloudflared authentication)
-            remote_dirs=$(ssh -F ~/.ssh/config -o ConnectTimeout=15 "$host" "sh -c '$remote_cmd'")
+            # Capture output first, and redirect stderr to a temp file.
+            # This hides harmless warnings (like "not a terminal" from cloudflared) if successful,
+            # but prints them if the connection actually fails.
+            err_file=$(mktemp)
+            remote_dirs=$(ssh -F ~/.ssh/config -o ConnectTimeout=15 "$host" "sh -c '$remote_cmd'" 2> "$err_file")
 
             if [[ -z "$remote_dirs" ]]; then
-                echo "No directories found or connection failed."
-                sleep 2
+                echo "Connection failed or no directories found." >&2
+                if [[ -s "$err_file" ]]; then
+                    cat "$err_file" >&2
+                fi
+                rm -f "$err_file"
+                sleep 5
                 exit 0
             fi
+            rm -f "$err_file"
 
             remote_dir=$(echo "$remote_dirs" | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse)
 
@@ -159,24 +171,14 @@
         clean_dir=$(echo "$dir_base" | tr '.:/ ' '----')
         session_name="ssh-$clean_host-$clean_dir"
 
-        tmux_running=$(pgrep tmux)
         # Use system ssh command with explicit config file (stored as array to avoid shell quoting issues)
-        ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "cd '$selected_dir' 2>/dev/null || cd ~; exec \${SHELL:-/bin/sh} -l")
-
-        if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
-            ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "${ssh_cmd[@]}"
-            exit 0
-        fi
+        ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l")
 
         if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
-            ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "${ssh_cmd[@]}"
+            ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "''${ssh_cmd[@]}"
         fi
 
-        if [[ -z "$TMUX" ]]; then
-            ${pkgs.tmux}/bin/tmux attach-session -t "$session_name"
-        else
-            ${pkgs.tmux}/bin/tmux switch-client -t "$session_name"
-        fi
+        ${pkgs.tmux}/bin/tmux switch-client -t "$session_name"
       '';
 
       # Portable Zsh package for use with 'nix run' on other systems
@@ -248,7 +250,7 @@
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
             zle -I
-            tmux-sessionizer
+            tmux-sessionizer < /dev/tty
             zle redisplay
           }
           zle -N tmux-sessionizer-widget
@@ -257,7 +259,7 @@
           # bind ctrl+g to tmux-ssh-sessionizer
           tmux-ssh-sessionizer-widget() {
             zle -I
-            tmux-ssh-sessionizer
+            tmux-ssh-sessionizer < /dev/tty
             zle redisplay
           }
           zle -N tmux-ssh-sessionizer-widget
@@ -362,7 +364,7 @@
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
             zle -I
-            tmux-sessionizer
+            tmux-sessionizer < /dev/tty
             zle redisplay
           }
           zle -N tmux-sessionizer-widget
@@ -371,7 +373,7 @@
           # bind ctrl+g to tmux-ssh-sessionizer
           tmux-ssh-sessionizer-widget() {
             zle -I
-            tmux-ssh-sessionizer
+            tmux-ssh-sessionizer < /dev/tty
             zle redisplay
           }
           zle -N tmux-ssh-sessionizer-widget
