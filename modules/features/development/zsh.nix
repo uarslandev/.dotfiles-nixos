@@ -29,7 +29,7 @@
                 selected=$(realpath "$selected")
                 if grep -qF "$selected" "$RECENT_FILE"; then
                     echo -n "Are you sure you want to delete '$selected' from recents? (y/N): "
-                    read -r answer
+                    read -r answer < /dev/tty
                     if [[ "$answer" =~ ^[Yy]$ ]]; then
                         grep -vF "$selected" "$RECENT_FILE" > "$RECENT_FILE.tmp"
                         mv "$RECENT_FILE.tmp" "$RECENT_FILE"
@@ -91,7 +91,7 @@
         if [[ "$key" == "del" ]]; then
             if [[ "$selection" != "$NEW_CONN_LABEL" ]]; then
                 echo -n "Are you sure you want to delete '$selection'? (y/N): "
-                read -r answer
+                read -r answer < /dev/tty
                 if [[ "$answer" =~ ^[Yy]$ ]]; then
                     grep -vF "$selection" "$RECENT_FILE" > "$RECENT_FILE.tmp"
                     mv "$RECENT_FILE.tmp" "$RECENT_FILE"
@@ -112,7 +112,7 @@
             hosts=$(grep -h -i "^Host " ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | awk '{print $2}' | grep -v '\*' | sort -u)
             if [[ -z "$hosts" ]]; then
                 echo "No hosts found in ~/.ssh/config. Please enter host manually:"
-                read -r host
+                read -r host < /dev/tty
             else
                 host=$(echo "$hosts" | ${pkgs.fzf}/bin/fzf --prompt="Select host: " --height=40% --reverse)
             fi
@@ -160,16 +160,16 @@
         session_name="ssh-$clean_host-$clean_dir"
 
         tmux_running=$(pgrep tmux)
-        # Use system ssh command with explicit config file
-        ssh_cmd="ssh -F ~/.ssh/config -t $selected_host \"cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l\""
+        # Use system ssh command with explicit config file (stored as array to avoid shell quoting issues)
+        ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "cd '$selected_dir' 2>/dev/null || cd ~; exec \${SHELL:-/bin/sh} -l")
 
         if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
-            ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "$ssh_cmd"
+            ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "${ssh_cmd[@]}"
             exit 0
         fi
 
         if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
-            ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "$ssh_cmd"
+            ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "${ssh_cmd[@]}"
         fi
 
         if [[ -z "$TMUX" ]]; then
