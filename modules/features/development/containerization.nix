@@ -1,4 +1,5 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }:
+{
   flake.nixosModules.containerization =
     { pkgs, ... }:
     {
@@ -6,6 +7,8 @@
         # Add containerization tools here
         docker
         podman
+        podman-desktop
       ];
     };
 }
+
