@@ -111,15 +111,23 @@
 
             "Mod+Ctrl+H".focus-monitor-left = { };
             "Mod+Ctrl+L".focus-monitor-right = { };
+            "Mod+Ctrl+K".focus-monitor-up = { };
+            "Mod+Ctrl+J".focus-monitor-down = { };
 
             "Mod+Ctrl+Left".focus-monitor-left = { };
             "Mod+Ctrl+Right".focus-monitor-right = { };
+            "Mod+Ctrl+Up".focus-monitor-up = { };
+            "Mod+Ctrl+Down".focus-monitor-down = { };
 
             "Mod+Ctrl+Shift+H".move-column-to-monitor-left = { };
             "Mod+Ctrl+Shift+L".move-column-to-monitor-right = { };
+            "Mod+Ctrl+Shift+K".move-column-to-monitor-up = { };
+            "Mod+Ctrl+Shift+J".move-column-to-monitor-down = { };
 
             "Mod+Ctrl+Shift+Left".move-column-to-monitor-left = { };
             "Mod+Ctrl+Shift+Right".move-column-to-monitor-right = { };
+            "Mod+Ctrl+Shift+Up".move-column-to-monitor-up = { };
+            "Mod+Ctrl+Shift+Down".move-column-to-monitor-down = { };
 
             # ───── Workspaces ─────
 
