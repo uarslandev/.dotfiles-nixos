@@ -20,7 +20,15 @@
       packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
 
+        disableConfigValidation = true;
+
+        extraSettings = [
+          { include = "/home/umut/.config/niri/monitor.kdl"; }
+          { include = "/home/umut/.config/niri/noctalia.kdl"; }
+        ];
+
         settings = {
+
           spawn-at-startup = [
             (lib.getExe self'.packages.myNoctalia)
             "${pkgs.fcitx5}/bin/fcitx5 -d"

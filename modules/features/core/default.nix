@@ -20,6 +20,7 @@
         kdePackages.kdeconnect-kde
         discord
         element-desktop
+        nixpkgs-manual
         fzf
         keepassxc
         libreoffice-qt6-fresh

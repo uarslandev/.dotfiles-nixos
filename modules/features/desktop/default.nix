@@ -46,6 +46,7 @@
       environment.systemPackages = with pkgs; [
         adwaita-icon-theme
         brightnessctl
+        nwg-displays
         cliphist
         gnome-themes-extra
         helvum

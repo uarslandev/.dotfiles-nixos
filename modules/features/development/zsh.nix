@@ -61,6 +61,7 @@
           backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
           ssh = "TERM=xterm-256color ssh";
+          wrapper-path = "nix eval --impure --raw --expr '(builtins.getFlake \"/home/umut/.dotfiles\").inputs.wrapper-modules.outPath'";
         };
 
         zshrc.content = ''
@@ -171,6 +172,7 @@
           backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
           ssh = "TERM=xterm-256color ssh";
+          wrapper-path = "nix eval --impure --raw --expr '(builtins.getFlake \"/home/umut/.dotfiles\").inputs.wrapper-modules.outPath'";
         };
 
         interactiveShellInit = ''
