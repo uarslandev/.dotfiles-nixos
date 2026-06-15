@@ -21,6 +21,56 @@
         vim.opt.clipboard = "" 
         vim.opt.timeoutlen = 300 -- Faster popup time for Which-Key
 
+        -- ========================
+        -- Noctalia Color Scheme Sync
+        -- ========================
+        local watch_dir = "/home/umut/.config/noctalia"
+        local function load_noctalia_colors()
+          local f = io.open(watch_dir .. "/colors.json", "r")
+          if not f then return end
+          local content = f:read("*a")
+          f:close()
+          local ok, colors = pcall(vim.json.decode, content)
+          if not ok then return end
+
+          vim.api.nvim_set_hl(0, "Normal", { bg = colors.mSurface, fg = colors.mOnSurface })
+          vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.mSurfaceVariant or colors.mSurface, fg = colors.mOnSurface })
+          vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "Visual", { bg = colors.mSurfaceVariant or colors.mHover })
+          vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.mSurfaceVariant })
+
+          vim.api.nvim_set_hl(0, "Comment", { fg = colors.mOnSurfaceVariant or "#7f8c8d", italic = true })
+          vim.api.nvim_set_hl(0, "Constant", { fg = colors.mSecondary })
+          vim.api.nvim_set_hl(0, "String", { fg = colors.mTertiary })
+          vim.api.nvim_set_hl(0, "Identifier", { fg = colors.mOnSurface })
+          vim.api.nvim_set_hl(0, "Function", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "Statement", { fg = colors.mPrimary, bold = true })
+          vim.api.nvim_set_hl(0, "Operator", { fg = colors.mOutline })
+          vim.api.nvim_set_hl(0, "PreProc", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "Type", { fg = colors.mSecondary })
+          vim.api.nvim_set_hl(0, "Structure", { fg = colors.mSecondary })
+          vim.api.nvim_set_hl(0, "Special", { fg = colors.mTertiary })
+          vim.api.nvim_set_hl(0, "Error", { fg = colors.mError })
+          vim.api.nvim_set_hl(0, "Todo", { fg = colors.mHover, bold = true })
+
+          vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = colors.mPrimary })
+          vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.mSurfaceVariant })
+        end
+
+        load_noctalia_colors()
+
+        local uv = vim.uv or vim.loop
+        local watcher = uv.new_fs_event()
+        watcher:start(watch_dir, {}, vim.schedule_wrap(function(err, fname, status)
+          if err then return end
+          if fname == "colors.json" then
+            load_noctalia_colors()
+          end
+        end))
+
         local opts = { noremap = true, silent = true }
 
         -- ========================
