@@ -23,6 +23,7 @@
         vscode
         jetbrains.pycharm
         gcc
+        podman
         gnumake
         python3
         nodejs
