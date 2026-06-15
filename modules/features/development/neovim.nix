@@ -31,6 +31,8 @@
         vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', { desc = "Yank to system clipboard" })
         vim.keymap.set('n', '<leader>Y', '"+Y', { desc = "Yank line to system clipboard" })
 
+        vim.keymap.set('n','<leader>p',function() print(vim.fn.expand('%:p')) end)
+
         -- Move Visual Blocks up/down with J and K
         vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
         vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
