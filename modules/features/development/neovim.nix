@@ -155,8 +155,25 @@
         -- ========================
         -- Terminal
         -- ========================
-        require("toggleterm").setup { direction = "float" }
-        vim.keymap.set('n', '<leader>tt', ':ToggleTerm<CR>', { desc = "Toggle Floating Terminal" })
+        -- Open a terminal in a new tab or split
+        vim.keymap.set('n', '<leader>tt', '<cmd>tabnew | terminal<CR>', { desc = "Terminal (New Tab)" })
+        vim.keymap.set('n', '<leader>th', '<cmd>new | terminal<CR>', { desc = "Terminal (Horizontal Split)" })
+        vim.keymap.set('n', '<leader>tv', '<cmd>vnew | terminal<CR>', { desc = "Terminal (Vertical Split)" })
+
+        -- Easy escape from terminal mode to normal mode using double Escape
+        vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
+
+        -- Seamless tab navigation in both normal and terminal mode
+        vim.keymap.set({'n', 't'}, '<A-h>', '<Cmd>tabprevious<CR>', { desc = "Go to previous tab" })
+        vim.keymap.set({'n', 't'}, '<A-l>', '<Cmd>tabnext<CR>', { desc = "Go to next tab" })
+
+        -- Automatically enter insert mode when opening or entering a terminal buffer
+        local term_group = vim.api.nvim_create_augroup("TerminalSettings", { clear = true })
+        vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+          group = term_group,
+          pattern = "term://*",
+          command = "startinsert",
+        })
 
         -- ========================
         -- Git Signs
@@ -222,7 +239,6 @@
         nvim-dap-python
 
         # Layout & Tooling Utilities
-        toggleterm-nvim
         nvim-tree-lua
         gitsigns-nvim
       ];
