@@ -48,7 +48,6 @@
         brightnessctl
         nwg-displays
         cliphist
-        gnome-themes-extra
         helvum
         imv
         kanshi

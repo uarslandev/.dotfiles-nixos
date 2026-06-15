@@ -33,6 +33,81 @@
         fi
       '';
 
+      packages.tmux-ssh-sessionizer = pkgs.writeShellScriptBin "tmux-ssh-sessionizer" ''
+        RECENT_FILE="$HOME/.local/share/tmux-ssh-recent"
+        mkdir -p "$(dirname "$RECENT_FILE")"
+        touch "$RECENT_FILE"
+
+        NEW_CONN_LABEL="[New Connection]"
+
+        selection=$( (echo "$NEW_CONN_LABEL"; cat "$RECENT_FILE") | ${pkgs.fzf}/bin/fzf --prompt="Select SSH session: " --height=40% --reverse)
+
+        if [[ -z "$selection" ]]; then
+            exit 0
+        fi
+
+        if [[ "$selection" == "$NEW_CONN_LABEL" ]]; then
+            # Step 1: Select Host
+            hosts=$(grep -i "^Host " ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | awk '{print $2}' | grep -v '\*' | sort -u)
+            if [[ -z "$hosts" ]]; then
+                echo "No hosts found in ~/.ssh/config. Please enter host manually:"
+                read -r host
+            else
+                host=$(echo "$hosts" | ${pkgs.fzf}/bin/fzf --prompt="Select host: " --height=40% --reverse)
+            fi
+
+            if [[ -z "$host" ]]; then
+                exit 0
+            fi
+
+            # Step 2: Query remote directories
+            echo "Connecting to $host to find repositories/folders..."
+            
+            # Simple script to run remotely
+            remote_cmd="repos=\$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \\; 2>/dev/null); if [[ -n \"\$repos\" ]]; then echo \"\$repos\"; else find ~/ -maxdepth 2 -type d 2>/dev/null; fi"
+            
+            remote_dir=$(${pkgs.openssh}/bin/ssh -o ConnectTimeout=5 "$host" "$remote_cmd" 2>/dev/null | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse)
+
+            if [[ -z "$remote_dir" ]]; then
+                exit 0
+            fi
+
+            selected_host="$host"
+            selected_dir="$remote_dir"
+        else
+            selected_host=$(echo "$selection" | cut -d':' -f1)
+            selected_dir=$(echo "$selection" | cut -d':' -f2-)
+        fi
+
+        # Update recent sessions list
+        entry="$selected_host:$selected_dir"
+        echo "$entry" | cat - "$RECENT_FILE" | awk '!seen[$0]++' > "$RECENT_FILE.tmp" && mv "$RECENT_FILE.tmp" "$RECENT_FILE"
+
+        # Determine session name
+        dir_base=$(basename "$selected_dir")
+        clean_host=$(echo "$selected_host" | tr '.:/ ' '----')
+        clean_dir=$(echo "$dir_base" | tr '.:/ ' '----')
+        session_name="ssh-$clean_host-$clean_dir"
+
+        tmux_running=$(pgrep tmux)
+        ssh_cmd="${pkgs.openssh}/bin/ssh -t $selected_host \"cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l\""
+
+        if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
+            ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "$ssh_cmd"
+            exit 0
+        fi
+
+        if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
+            ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "$ssh_cmd"
+        fi
+
+        if [[ -z "$TMUX" ]]; then
+            ${pkgs.tmux}/bin/tmux attach-session -t "$session_name"
+        else
+            ${pkgs.tmux}/bin/tmux switch-client -t "$session_name"
+        fi
+      '';
+
       # Portable Zsh package for use with 'nix run' on other systems
       packages.zsh = inputs.wrapper-modules.wrappers.zsh.wrap {
         inherit pkgs;
@@ -62,6 +137,7 @@
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
           ssh = "TERM=xterm-256color ssh";
           wrapper-path = "nix eval --impure --raw --expr '(builtins.getFlake \"/home/umut/.dotfiles\").inputs.wrapper-modules.outPath'";
+          tss = "tmux-ssh-sessionizer";
         };
 
         zshrc.content = ''
@@ -116,6 +192,7 @@
           self'.packages.git
           self'.packages.tmux
           self'.packages.tmux-sessionizer
+          self'.packages.tmux-ssh-sessionizer
           pkgs.gemini-cli
           pkgs.antigravity-cli
           pkgs.claude-code
@@ -173,6 +250,7 @@
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
           ssh = "TERM=xterm-256color ssh";
           wrapper-path = "nix eval --impure --raw --expr '(builtins.getFlake \"/home/umut/.dotfiles\").inputs.wrapper-modules.outPath'";
+          tss = "tmux-ssh-sessionizer";
         };
 
         interactiveShellInit = ''

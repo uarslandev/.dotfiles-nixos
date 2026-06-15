@@ -5,6 +5,7 @@
     {
       environment.systemPackages = with pkgs; [
         kdePackages.dolphin
+        kdePackages.ark
         firefox
         vscode
         kdePackages.kservice # REQUIRED: Gives Dolphin the caching tool it expects
