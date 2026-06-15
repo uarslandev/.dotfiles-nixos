@@ -124,10 +124,19 @@
             # Step 2: Query remote directories
             echo "Connecting to $host to find repositories/folders..."
             
-            # Pass command as argument and keep stdin/stderr attached to terminal so interactive prompts (like cloudflared login) function properly
+            # Pass command as argument and keep stdout/stderr attached to terminal
             remote_cmd="repos=\$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \\; 2>/dev/null); if [ -n \"\$repos\" ]; then echo \"\$repos\"; else find ~/ -maxdepth 2 -type d 2>/dev/null; fi"
             
-            remote_dir=$(ssh -o ConnectTimeout=10 "$host" "sh -c '$remote_cmd'" | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse)
+            # Capture output first to allow real-time terminal display of connection logs/prompts (e.g. cloudflared authentication)
+            remote_dirs=$(ssh -F ~/.ssh/config -o ConnectTimeout=15 "$host" "sh -c '$remote_cmd'")
+
+            if [[ -z "$remote_dirs" ]]; then
+                echo "No directories found or connection failed."
+                sleep 2
+                exit 0
+            fi
+
+            remote_dir=$(echo "$remote_dirs" | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse)
 
             if [[ -z "$remote_dir" ]]; then
                 exit 0
@@ -151,8 +160,8 @@
         session_name="ssh-$clean_host-$clean_dir"
 
         tmux_running=$(pgrep tmux)
-        # Use system ssh command
-        ssh_cmd="ssh -t $selected_host \"cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l\""
+        # Use system ssh command with explicit config file
+        ssh_cmd="ssh -F ~/.ssh/config -t $selected_host \"cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l\""
 
         if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
             ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "$ssh_cmd"
