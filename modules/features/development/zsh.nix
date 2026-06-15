@@ -4,15 +4,25 @@
     { pkgs, self', ... }:
     {
       packages.tmux-sessionizer = pkgs.writeShellScriptBin "tmux-sessionizer" ''
+        RECENT_FILE="$HOME/.local/share/tmux-recent"
+        mkdir -p "$(dirname "$RECENT_FILE")"
+        touch "$RECENT_FILE"
+
         if [[ $# -eq 1 ]]; then
             selected=$1
         else
-            selected=$( ${pkgs.findutils}/bin/find ~/Repos ~/Projects ~/Github ~/Gitlab -mindepth 1 -maxdepth 1 -type d 2>/dev/null | ${pkgs.fzf}/bin/fzf )
+            all_dirs=$(${pkgs.findutils}/bin/find ~/Repos ~/Projects ~/Github ~/Gitlab -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+            selected=$( (cat "$RECENT_FILE"; echo "$all_dirs") | awk 'NF && !seen[$0]++' | ${pkgs.fzf}/bin/fzf --prompt="Select session: " --height=40% --reverse)
         fi
 
-        if [[ -z $selected ]]; then
+        if [[ -z "$selected" ]]; then
             exit 0
         fi
+
+        selected=$(realpath "$selected")
+
+        # Update recent sessions list
+        echo "$selected" | cat - "$RECENT_FILE" | awk '!seen[$0]++' > "$RECENT_FILE.tmp" && mv "$RECENT_FILE.tmp" "$RECENT_FILE"
 
         selected_name=$(basename "$selected" | tr . _)
         tmux_running=$(pgrep tmux)
@@ -183,6 +193,15 @@
           zle -N tmux-sessionizer-widget
           bindkey '^f' tmux-sessionizer-widget
 
+          # bind ctrl+g to tmux-ssh-sessionizer
+          tmux-ssh-sessionizer-widget() {
+            zle -I
+            tmux-ssh-sessionizer
+            zle redisplay
+          }
+          zle -N tmux-ssh-sessionizer-widget
+          bindkey '^g' tmux-ssh-sessionizer-widget
+
           # Finalize p10k
           (( ! ''${+functions[p10k]} )) || p10k finalize
         '';
@@ -288,6 +307,15 @@
           zle -N tmux-sessionizer-widget
           bindkey '^f' tmux-sessionizer-widget
 
+          # bind ctrl+g to tmux-ssh-sessionizer
+          tmux-ssh-sessionizer-widget() {
+            zle -I
+            tmux-ssh-sessionizer
+            zle redisplay
+          }
+          zle -N tmux-ssh-sessionizer-widget
+          bindkey '^g' tmux-ssh-sessionizer-widget
+
           # Finalize p10k
           (( ! ''${+functions[p10k]} )) || p10k finalize
         '';
@@ -301,6 +329,7 @@
         pkgs.ripgrep
         pkgs.fd
         self.packages.${pkgs.stdenv.hostPlatform.system}.tmux-sessionizer
+        self.packages.${pkgs.stdenv.hostPlatform.system}.tmux-ssh-sessionizer
       ];
     };
 }
