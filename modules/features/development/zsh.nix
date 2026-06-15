@@ -58,7 +58,8 @@
 
         if [[ "$selection" == "$NEW_CONN_LABEL" ]]; then
             # Step 1: Select Host
-            hosts=$(grep -i "^Host " ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | awk '{print $2}' | grep -v '\*' | sort -u)
+            # Use grep -h to prevent multi-file filename prefixes
+            hosts=$(grep -h -i "^Host " ~/.ssh/config ~/.ssh/config.d/* 2>/dev/null | awk '{print $2}' | grep -v '\*' | sort -u)
             if [[ -z "$hosts" ]]; then
                 echo "No hosts found in ~/.ssh/config. Please enter host manually:"
                 read -r host
@@ -73,10 +74,17 @@
             # Step 2: Query remote directories
             echo "Connecting to $host to find repositories/folders..."
             
-            # Simple script to run remotely
-            remote_cmd="repos=\$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \\; 2>/dev/null); if [[ -n \"\$repos\" ]]; then echo \"\$repos\"; else find ~/ -maxdepth 2 -type d 2>/dev/null; fi"
-            
-            remote_dir=$(${pkgs.openssh}/bin/ssh -o ConnectTimeout=5 "$host" "$remote_cmd" 2>/dev/null | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse)
+            # Use the system ssh command in your PATH (e.g. to access custom cloudflared setup, etc.)
+            # Pipe commands to sh -s on stdin to execute under a POSIX shell regardless of remote default shell (e.g. fish)
+            remote_dir=$(ssh -o ConnectTimeout=10 "$host" "sh -s" 2>/dev/null << 'EOF' | ${pkgs.fzf}/bin/fzf --prompt="Select remote directory: " --height=40% --reverse
+repos=$(find ~/ -maxdepth 4 -name .git -type d -exec dirname {} \; 2>/dev/null)
+if [ -n "$repos" ]; then
+    echo "$repos"
+else
+    find ~/ -maxdepth 2 -type d 2>/dev/null
+fi
+EOF
+)
 
             if [[ -z "$remote_dir" ]]; then
                 exit 0
@@ -100,7 +108,8 @@
         session_name="ssh-$clean_host-$clean_dir"
 
         tmux_running=$(pgrep tmux)
-        ssh_cmd="${pkgs.openssh}/bin/ssh -t $selected_host \"cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l\""
+        # Use system ssh command
+        ssh_cmd="ssh -t $selected_host \"cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l\""
 
         if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
             ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "$ssh_cmd"
