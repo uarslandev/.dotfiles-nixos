@@ -216,7 +216,7 @@
           gc = "git commit -m";
           gp = "git push";
           sd = "backup && shutdown now";
-          gcd = "git commit -m $(date +'%F_%T')";
+          gcd = "git commit -m \$(nixos-generation-ordinal)";
           nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
           backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
@@ -237,6 +237,26 @@
           # Powerlevel10k Prompt
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
           [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+          # Helper to get the NixOS generation ordinal or fallback to date
+          nixos-generation-ordinal() {
+            local link
+            if [[ -L /nix/var/nix/profiles/system ]]; then
+              link=$(readlink /nix/var/nix/profiles/system)
+              local gen=''${link#system-}
+              gen=''${gen%-link}
+              local suffix="th"
+              case $gen in
+                *1[0-9]) suffix="th" ;;
+                *1) suffix="st" ;;
+                *2) suffix="nd" ;;
+                *3) suffix="rd" ;;
+              esac
+              echo "$gen$suffix"
+            else
+              date +'%F_%T'
+            fi
+          }
 
           # Use emacs keybindings even if EDITOR is set to vi
           bindkey -e
@@ -338,7 +358,7 @@
           gc = "git commit -m";
           gp = "git push";
           sd = "backup && shutdown now";
-          gcd = "git commit -m $(date +'%F_%T')";
+          gcd = "git commit -m \$(nixos-generation-ordinal)";
           nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
           backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
@@ -351,6 +371,26 @@
           # Powerlevel10k Prompt
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
           [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+          # Helper to get the NixOS generation ordinal or fallback to date
+          nixos-generation-ordinal() {
+            local link
+            if [[ -L /nix/var/nix/profiles/system ]]; then
+              link=$(readlink /nix/var/nix/profiles/system)
+              local gen=''${link#system-}
+              gen=''${gen%-link}
+              local suffix="th"
+              case $gen in
+                *1[0-9]) suffix="th" ;;
+                *1) suffix="st" ;;
+                *2) suffix="nd" ;;
+                *3) suffix="rd" ;;
+              esac
+              echo "$gen$suffix"
+            else
+              date +'%F_%T'
+            fi
+          }
 
           # Use emacs keybindings even if EDITOR is set to vi
           bindkey -e
