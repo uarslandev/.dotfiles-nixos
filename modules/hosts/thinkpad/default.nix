@@ -18,15 +18,18 @@
       self.nixosModules.design
 
       # Ensure user is in necessary groups (moved from deleted flake-module.nix)
-      ({ pkgs, ... }: {
-        users.users.umut.extraGroups = [ 
-          "networkmanager" 
-          "wheel" 
-          "docker" 
-          "wireshark" 
-          "video" 
-        ];
-      })
+      (
+        { pkgs, ... }:
+        {
+          users.users.umut.extraGroups = [
+            "networkmanager"
+            "wheel"
+            "docker"
+            "wireshark"
+            "video"
+          ];
+        }
+      )
     ];
   };
 }
