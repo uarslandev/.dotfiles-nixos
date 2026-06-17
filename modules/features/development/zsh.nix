@@ -57,13 +57,13 @@
         selected_name=$(basename "$selected" | tr . _)
         if [[ -z "$TMUX" ]]; then
             if ! ${self'.packages.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
-                ${self'.packages.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected"
+                ${self'.packages.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected" -e TMUX_PROJECT_ROOT="$selected"
             else
                 ${self'.packages.tmux}/bin/tmux attach-session -t "$selected_name"
             fi
         else
             if ! ${self'.packages.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
-                ${self'.packages.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected"
+                ${self'.packages.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected" -e TMUX_PROJECT_ROOT="$selected"
             fi
             ${self'.packages.tmux}/bin/tmux switch-client -t "$selected_name"
         fi
@@ -271,6 +271,16 @@
           # Make word navigation behave more like bash
           WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
+          # Prevent accidentally leaving project directory
+          export REAL_HOME="$HOME"
+          cd() {
+            if [[ -n "$TMUX_PROJECT_ROOT" ]] && { [[ $# -eq 0 ]] || [[ "$1" == "$REAL_HOME" ]]; }; then
+              builtin cd "$TMUX_PROJECT_ROOT"
+            else
+              builtin cd "$@"
+            fi
+          }
+
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
             zle push-line
@@ -288,6 +298,14 @@
           }
           zle -N tmux-ssh-sessionizer-widget
           bindkey '^g' tmux-ssh-sessionizer-widget
+
+          # bind ctrl+t to kill tmux server
+          tmux-kill-server-widget() {
+            ${self'.packages.tmux}/bin/tmux kill-server 2>/dev/null
+            zle redisplay
+          }
+          zle -N tmux-kill-server-widget
+          bindkey '^t' tmux-kill-server-widget
 
           # Finalize p10k
           (( ! ''${+functions[p10k]} )) || p10k finalize
@@ -405,6 +423,16 @@
           # Make word navigation behave more like bash
           WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
+          # Prevent accidentally leaving project directory
+          export REAL_HOME="$HOME"
+          cd() {
+            if [[ -n "$TMUX_PROJECT_ROOT" ]] && { [[ $# -eq 0 ]] || [[ "$1" == "$REAL_HOME" ]]; }; then
+              builtin cd "$TMUX_PROJECT_ROOT"
+            else
+              builtin cd "$@"
+            fi
+          }
+
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
             zle push-line
@@ -422,6 +450,14 @@
           }
           zle -N tmux-ssh-sessionizer-widget
           bindkey '^g' tmux-ssh-sessionizer-widget
+
+          # bind ctrl+t to kill tmux server
+          tmux-kill-server-widget() {
+            ${self'.packages.tmux}/bin/tmux kill-server 2>/dev/null
+            zle redisplay
+          }
+          zle -N tmux-kill-server-widget
+          bindkey '^t' tmux-kill-server-widget
 
           # Finalize p10k
           (( ! ''${+functions[p10k]} )) || p10k finalize
