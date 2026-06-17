@@ -274,8 +274,21 @@
           # Prevent accidentally leaving project directory
           export REAL_HOME="$HOME"
           cd() {
-            if [[ -n "$TMUX_PROJECT_ROOT" ]] && { [[ $# -eq 0 ]] || [[ "$1" == "$REAL_HOME" ]]; }; then
-              builtin cd "$TMUX_PROJECT_ROOT"
+            if [[ -n "$TMUX_PROJECT_ROOT" ]]; then
+              local target
+              if [[ $# -eq 0 ]] || [[ "$1" == "$REAL_HOME" ]]; then
+                target="$TMUX_PROJECT_ROOT"
+              else
+                local raw_path="$1"
+                target="$raw_path:A"
+              fi
+
+              if [[ "$target" == "$TMUX_PROJECT_ROOT" ]] || [[ "$target" == "$TMUX_PROJECT_ROOT/"* ]]; then
+                builtin cd "$target"
+              else
+                echo "cd: restricted to project root: $TMUX_PROJECT_ROOT"
+                return 1
+              fi
             else
               builtin cd "$@"
             fi
@@ -426,8 +439,21 @@
           # Prevent accidentally leaving project directory
           export REAL_HOME="$HOME"
           cd() {
-            if [[ -n "$TMUX_PROJECT_ROOT" ]] && { [[ $# -eq 0 ]] || [[ "$1" == "$REAL_HOME" ]]; }; then
-              builtin cd "$TMUX_PROJECT_ROOT"
+            if [[ -n "$TMUX_PROJECT_ROOT" ]]; then
+              local target
+              if [[ $# -eq 0 ]] || [[ "$1" == "$REAL_HOME" ]]; then
+                target="$TMUX_PROJECT_ROOT"
+              else
+                local raw_path="$1"
+                target="$raw_path:A"
+              fi
+
+              if [[ "$target" == "$TMUX_PROJECT_ROOT" ]] || [[ "$target" == "$TMUX_PROJECT_ROOT/"* ]]; then
+                builtin cd "$target"
+              else
+                echo "cd: restricted to project root: $TMUX_PROJECT_ROOT"
+                return 1
+              fi
             else
               builtin cd "$@"
             fi
@@ -453,7 +479,7 @@
 
           # bind ctrl+t to kill tmux server
           tmux-kill-server-widget() {
-            ${self'.packages.tmux}/bin/tmux kill-server 2>/dev/null
+            ${self.packages.${pkgs.stdenv.hostPlatform.system}.tmux}/bin/tmux kill-server 2>/dev/null
             zle redisplay
           }
           zle -N tmux-kill-server-widget
