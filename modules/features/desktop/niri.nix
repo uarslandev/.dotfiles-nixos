@@ -7,6 +7,11 @@
         enable = true;
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
       };
+
+      systemd.tmpfiles.rules = [
+        "d /home/umut/.config/kitty 0755 umut users - -"
+        "f /home/umut/.config/kitty/kitty.conf 0644 umut users - include current-theme.conf\n"
+      ];
     };
 
   perSystem =

@@ -4,8 +4,8 @@
     { pkgs, ... }:
     let
       colorChangeScript = pkgs.writeShellScript "color-change" ''
-        COLORS_FILE="/home/umut/.config/noctalia/colors.json"
-        KITTY_THEME_FILE="/home/umut/.config/kitty/current-theme.conf"
+        COLORS_FILE="$HOME/.config/noctalia/colors.json"
+        KITTY_THEME_FILE="$HOME/.config/kitty/current-theme.conf"
 
         if [ ! -f "$COLORS_FILE" ]; then
           exit 0

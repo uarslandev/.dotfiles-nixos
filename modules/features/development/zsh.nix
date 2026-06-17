@@ -216,7 +216,7 @@
           gc = "git commit -m";
           gp = "git push";
           sd = "backup && shutdown now";
-          gcd = "git commit -m \$(nixos-generation-ordinal)";
+          gcd = "git commit -m \"\$(nixos-generation-ordinal) - \$(hostname)\"";
           nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
           backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
@@ -358,7 +358,7 @@
           gc = "git commit -m";
           gp = "git push";
           sd = "backup && shutdown now";
-          gcd = "git commit -m \$(nixos-generation-ordinal) - \$(hostname)";
+          gcd = "git commit -m \"\$(nixos-generation-ordinal) - \$(hostname)\"";
           nixpkgs-help = "chrome /nix/store/arl0kk5jl0vjyvjj6sp4mhxjclj5d8ac-nixpkgs-manual/share/doc/nixpkgs/manual.html";
           backup = "pushd ~/.dotfiles; ga .; gcd; gp; popd";
           u = "pushd ~/.dotfiles; sudo nixos-rebuild switch --flake .#$(hostname); popd";
