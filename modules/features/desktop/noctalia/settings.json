@@ -64,7 +64,7 @@
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
         "outerCorners": true,
-        "position": "left",
+        "position": "top",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -251,14 +251,14 @@
     },
     "colorSchemes": {
         "darkMode": true,
-        "generationMethod": "tonal-spot",
+        "generationMethod": "vibrant",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Noctalia (default)",
+        "predefinedScheme": "Rose Pine",
         "schedulingMode": "off",
         "syncGsettings": true,
-        "useWallpaperColors": false
+        "useWallpaperColors": true
     },
     "controlCenter": {
         "cards": [
@@ -665,13 +665,13 @@
         ],
         "useOriginalImages": false,
         "useSolidColor": false,
-        "useWallhaven": false,
+        "useWallhaven": true,
         "viewMode": "single",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
-        "wallhavenQuery": "",
+        "wallhavenQuery": "kame house",
         "wallhavenRatios": "",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
