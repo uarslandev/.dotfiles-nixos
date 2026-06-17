@@ -56,16 +56,16 @@
 
         selected_name=$(basename "$selected" | tr . _)
         if [[ -z "$TMUX" ]]; then
-            if ! ${pkgs.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
-                ${pkgs.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected"
+            if ! ${self'.packages.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
+                ${self'.packages.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected"
             else
-                ${pkgs.tmux}/bin/tmux attach-session -t "$selected_name"
+                ${self'.packages.tmux}/bin/tmux attach-session -t "$selected_name"
             fi
         else
-            if ! ${pkgs.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
-                ${pkgs.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected"
+            if ! ${self'.packages.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
+                ${self'.packages.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected"
             fi
-            ${pkgs.tmux}/bin/tmux switch-client -t "$selected_name"
+            ${self'.packages.tmux}/bin/tmux switch-client -t "$selected_name"
         fi
       '';
 
@@ -172,16 +172,16 @@
         # Use system ssh command with explicit config file (stored as array to avoid shell quoting issues)
         ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l")
         if [[ -z "$TMUX" ]]; then
-            if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
-                ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "''${ssh_cmd[@]}"
+            if ! ${self'.packages.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
+                ${self'.packages.tmux}/bin/tmux new-session -s "$session_name" "''${ssh_cmd[@]}"
             else
-                ${pkgs.tmux}/bin/tmux attach-session -t "$session_name"
+                ${self'.packages.tmux}/bin/tmux attach-session -t "$session_name"
             fi
         else
-            if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
-                ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "''${ssh_cmd[@]}"
+            if ! ${self'.packages.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
+                ${self'.packages.tmux}/bin/tmux new-session -ds "$session_name" "''${ssh_cmd[@]}"
             fi
-            ${pkgs.tmux}/bin/tmux switch-client -t "$session_name"
+            ${self'.packages.tmux}/bin/tmux switch-client -t "$session_name"
         fi
       '';
 
@@ -273,18 +273,18 @@
 
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
-            zle -I
-            tmux-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
-            zle redisplay
+            zle push-line
+            BUFFER=" tmux-sessionizer"
+            zle accept-line
           }
           zle -N tmux-sessionizer-widget
           bindkey '^f' tmux-sessionizer-widget
 
           # bind ctrl+g to tmux-ssh-sessionizer
           tmux-ssh-sessionizer-widget() {
-            zle -I
-            tmux-ssh-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
-            zle redisplay
+            zle push-line
+            BUFFER=" tmux-ssh-sessionizer"
+            zle accept-line
           }
           zle -N tmux-ssh-sessionizer-widget
           bindkey '^g' tmux-ssh-sessionizer-widget
@@ -407,18 +407,18 @@
 
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
-            zle -I
-            tmux-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
-            zle redisplay
+            zle push-line
+            BUFFER=" tmux-sessionizer"
+            zle accept-line
           }
           zle -N tmux-sessionizer-widget
           bindkey '^f' tmux-sessionizer-widget
 
           # bind ctrl+g to tmux-ssh-sessionizer
           tmux-ssh-sessionizer-widget() {
-            zle -I
-            tmux-ssh-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
-            zle redisplay
+            zle push-line
+            BUFFER=" tmux-ssh-sessionizer"
+            zle accept-line
           }
           zle -N tmux-ssh-sessionizer-widget
           bindkey '^g' tmux-ssh-sessionizer-widget
