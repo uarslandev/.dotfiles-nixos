@@ -170,7 +170,7 @@
         session_name="ssh-$clean_host-$clean_dir"
 
         # Use system ssh command with explicit config file (stored as array to avoid shell quoting issues)
-        ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l")
+        ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "tmux new-session -A -s '$clean_dir' -c '$selected_dir' 2>/dev/null || tmux attach-session -t '$clean_dir' 2>/dev/null || { cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l; }")
         if [[ -z "$TMUX" ]]; then
             if ! ${self'.packages.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
                 ${self'.packages.tmux}/bin/tmux new-session -s "$session_name" "''${ssh_cmd[@]}"
