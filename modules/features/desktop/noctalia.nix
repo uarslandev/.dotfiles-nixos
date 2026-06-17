@@ -71,7 +71,7 @@ EOF
         inherit pkgs;
         settings =
           let
-            jsonSettings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
+            jsonSettings = builtins.fromJSON (builtins.readFile ./noctalia/settings.json);
             overrides = {
               hooks = {
                 enabled = true;

@@ -11,6 +11,10 @@
       systemd.tmpfiles.rules = [
         "d /home/umut/.config/kitty 0755 umut users - -"
         "f /home/umut/.config/kitty/kitty.conf 0644 umut users - include current-theme.conf\n"
+        "d /home/umut/.config/niri 0755 umut users - -"
+        "f /home/umut/.config/niri/monitor.kdl 0644 umut users - -"
+        "f /home/umut/.config/niri/noctalia.kdl 0644 umut users - -"
+        "L+ /home/umut/.config/noctalia - umut users - /home/umut/.dotfiles/modules/features/desktop/noctalia"
       ];
     };
 

@@ -343,6 +343,10 @@
   flake.nixosModules.zsh =
     { pkgs, ... }:
     {
+      systemd.tmpfiles.rules = [
+        "L+ /home/umut/.p10k.zsh - umut users - /home/umut/.dotfiles/modules/features/development/.p10k.zsh"
+      ];
+
       programs.zsh = {
         enable = true;
 
