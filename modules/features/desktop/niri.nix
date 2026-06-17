@@ -81,6 +81,8 @@
 
             "Mod+Shift+E".quit = { };
 
+            "Mod+Alt+L".spawn-sh = "${inputs.qylock.packages.${pkgs.stdenv.hostPlatform.system}.qylock-quickshell}/bin/qylock-lock";
+
             # ───── Window Control ─────
 
             "Mod+Q".close-window = { };
