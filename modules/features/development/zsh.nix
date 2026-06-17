@@ -55,20 +55,16 @@
         echo "$selected" | cat - "$RECENT_FILE" | awk '!seen[$0]++' > "$RECENT_FILE.tmp" && mv "$RECENT_FILE.tmp" "$RECENT_FILE"
 
         selected_name=$(basename "$selected" | tr . _)
-        tmux_running=$(pgrep tmux)
-
-        if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
-            ${pkgs.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected"
-            exit 0
-        fi
-
-        if ! ${pkgs.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
-            ${pkgs.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected"
-        fi
-
         if [[ -z "$TMUX" ]]; then
-            ${pkgs.tmux}/bin/tmux attach-session -t "$selected_name"
+            if ! ${pkgs.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
+                ${pkgs.tmux}/bin/tmux new-session -s "$selected_name" -c "$selected"
+            else
+                ${pkgs.tmux}/bin/tmux attach-session -t "$selected_name"
+            fi
         else
+            if ! ${pkgs.tmux}/bin/tmux has-session -t "$selected_name" 2>/dev/null; then
+                ${pkgs.tmux}/bin/tmux new-session -ds "$selected_name" -c "$selected"
+            fi
             ${pkgs.tmux}/bin/tmux switch-client -t "$selected_name"
         fi
       '';
@@ -175,20 +171,16 @@
 
         # Use system ssh command with explicit config file (stored as array to avoid shell quoting issues)
         ssh_cmd=(ssh -F "$HOME/.ssh/config" -t "$selected_host" "cd '$selected_dir' 2>/dev/null || cd ~; exec \$SHELL -l")
-        tmux_running=$(pgrep tmux)
-
-        if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
-            ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "''${ssh_cmd[@]}"
-            exit 0
-        fi
-
-        if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
-            ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "''${ssh_cmd[@]}"
-        fi
-
         if [[ -z "$TMUX" ]]; then
-            ${pkgs.tmux}/bin/tmux attach-session -t "$session_name"
+            if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
+                ${pkgs.tmux}/bin/tmux new-session -s "$session_name" "''${ssh_cmd[@]}"
+            else
+                ${pkgs.tmux}/bin/tmux attach-session -t "$session_name"
+            fi
         else
+            if ! ${pkgs.tmux}/bin/tmux has-session -t "$session_name" 2>/dev/null; then
+                ${pkgs.tmux}/bin/tmux new-session -ds "$session_name" "''${ssh_cmd[@]}"
+            fi
             ${pkgs.tmux}/bin/tmux switch-client -t "$session_name"
         fi
       '';
@@ -282,7 +274,7 @@
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
             zle -I
-            tmux-sessionizer < /dev/tty
+            tmux-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
             zle redisplay
           }
           zle -N tmux-sessionizer-widget
@@ -291,7 +283,7 @@
           # bind ctrl+g to tmux-ssh-sessionizer
           tmux-ssh-sessionizer-widget() {
             zle -I
-            tmux-ssh-sessionizer < /dev/tty
+            tmux-ssh-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
             zle redisplay
           }
           zle -N tmux-ssh-sessionizer-widget
@@ -416,7 +408,7 @@
           # bind ctrl+f to tmux-sessionizer
           tmux-sessionizer-widget() {
             zle -I
-            tmux-sessionizer < /dev/tty
+            tmux-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
             zle redisplay
           }
           zle -N tmux-sessionizer-widget
@@ -425,7 +417,7 @@
           # bind ctrl+g to tmux-ssh-sessionizer
           tmux-ssh-sessionizer-widget() {
             zle -I
-            tmux-ssh-sessionizer < /dev/tty
+            tmux-ssh-sessionizer < /dev/tty > /dev/tty 2>/dev/tty
             zle redisplay
           }
           zle -N tmux-ssh-sessionizer-widget
