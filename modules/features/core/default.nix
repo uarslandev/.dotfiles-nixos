@@ -18,6 +18,7 @@
       environment.systemPackages = with pkgs; [
         anki-bin
         kdePackages.kdeconnect-kde
+        sanoid
         discord
         element-desktop
         nixpkgs-manual
