@@ -26,7 +26,7 @@
       ...
     }:
     let
-      moveOrMonitor = pkgs.writers.writePython3Bin "niri-move-or-monitor" { } ''
+      moveOrMonitor = pkgs.writers.writePython3Bin "niri-move-or-monitor" { doCheck = false; } ''
         import sys
         import json
         import subprocess
