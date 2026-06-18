@@ -94,22 +94,22 @@
 
             # ───── Focus (Columns + Windows) ─────
 
-            "Mod+H".focus-column-left = { };
-            "Mod+L".focus-column-right = { };
-            "Mod+J".focus-window-down = { };
-            "Mod+K".focus-window-up = { };
+            "Mod+H".focus-column-or-monitor-left = { };
+            "Mod+L".focus-column-or-monitor-right = { };
+            "Mod+J".focus-window-or-monitor-down = { };
+            "Mod+K".focus-window-or-monitor-up = { };
 
             # Arrow navigation
 
-            "Mod+Left".focus-column-left = { };
-            "Mod+Right".focus-column-right = { };
-            "Mod+Down".focus-window-down = { };
-            "Mod+Up".focus-window-up = { };
+            "Mod+Left".focus-column-or-monitor-left = { };
+            "Mod+Right".focus-column-or-monitor-right = { };
+            "Mod+Down".focus-window-or-monitor-down = { };
+            "Mod+Up".focus-window-or-monitor-up = { };
 
             # ───── Move Windows & Columns ─────
 
-            "Mod+Shift+H".move-column-left = { };
-            "Mod+Shift+L".move-column-right = { };
+            "Mod+Shift+H".move-column-left-or-to-monitor-left = { };
+            "Mod+Shift+L".move-column-right-or-to-monitor-right = { };
             "Mod+Shift+J".move-window-down = { };
             "Mod+Shift+K".move-window-up = { };
 
