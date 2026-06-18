@@ -25,6 +25,60 @@
       self',
       ...
     }:
+    let
+      moveOrMonitor = pkgs.writers.writePython3Bin "niri-move-or-monitor" { } ''
+        import sys
+        import json
+        import subprocess
+
+        def run_niri_cmd(args):
+            subprocess.run(["${pkgs.niri}/bin/niri", "msg", "action"] + args)
+
+        def main():
+            if len(sys.argv) < 2:
+                sys.exit(1)
+            direction = sys.argv[1].lower()
+            res = subprocess.run(["${pkgs.niri}/bin/niri", "msg", "--json", "windows"], capture_output=True, text=True)
+            if res.returncode != 0:
+                sys.exit(1)
+            windows = json.loads(res.stdout)
+            focused_win = next((w for w in windows if w.get("is_focused")), None)
+            if not focused_win:
+                sys.exit(0)
+            layout = focused_win.get("layout")
+            if not layout or focused_win.get("is_floating"):
+                run_niri_cmd([f"move-window-to-monitor-{direction}"])
+                sys.exit(0)
+            pos = layout.get("pos_in_scrolling_layout")
+            if not pos or len(pos) < 2:
+                run_niri_cmd([f"move-window-to-monitor-{direction}"])
+                sys.exit(0)
+            col, row = pos[0], pos[1]
+            workspace_id = focused_win.get("workspace_id")
+            if direction == "up":
+                if row > 1:
+                    run_niri_cmd(["move-window-up"])
+                else:
+                    run_niri_cmd(["move-window-to-monitor-up"])
+            elif direction == "down":
+                col_windows = []
+                for w in windows:
+                    if w.get("workspace_id") == workspace_id:
+                        w_layout = w.get("layout")
+                        if w_layout:
+                            w_pos = w_layout.get("pos_in_scrolling_layout")
+                            if w_pos and w_pos[0] == col:
+                                col_windows.append(w_pos[1])
+                max_row = max(col_windows) if col_windows else row
+                if row < max_row:
+                    run_niri_cmd(["move-window-down"])
+                else:
+                    run_niri_cmd(["move-window-to-monitor-down"])
+
+        if __name__ == "__main__":
+            main()
+      '';
+    in
     {
       packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
@@ -52,6 +106,11 @@
             variant = "us";
           };
           prefer-no-csd = true;
+
+          cursor = {
+            xcursor-theme = "Adwaita";
+            xcursor-size = 24;
+          };
 
           layout.gaps = 10;
           layout.border.width = 1.0;
@@ -110,8 +169,10 @@
 
             "Mod+Shift+H".move-column-left-or-to-monitor-left = { };
             "Mod+Shift+L".move-column-right-or-to-monitor-right = { };
-            "Mod+Shift+J".move-window-down = { };
-            "Mod+Shift+K".move-window-up = { };
+            "Mod+Shift+J".spawn-sh = "${lib.getExe moveOrMonitor} down";
+            "Mod+Shift+K".spawn-sh = "${lib.getExe moveOrMonitor} up";
+            "Mod+Shift+Down".spawn-sh = "${lib.getExe moveOrMonitor} down";
+            "Mod+Shift+Up".spawn-sh = "${lib.getExe moveOrMonitor} up";
 
             # ───── Column Stacking ─────
 
