@@ -203,127 +203,45 @@
         vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle File Explorer" })
 
         -- ========================
-        -- Terminal (ToggleTerm)
+        -- Terminal (vim-floaterm)
         -- ========================
-        require("toggleterm").setup {
-          open_mapping = [[<A-t>]],
-          direction = "float",
-          float_opts = {
-            border = "curved",
-            winblend = 3,
-          },
-        }
-
-        local Terminal = require('toggleterm.terminal').Terminal
-        local terminal_list = {}
-        local active_terminal_index = 0
-
-        -- Helper to get the active terminal
-        local function get_active_term()
-          if active_terminal_index > 0 then
-            return terminal_list[active_terminal_index]
-          end
-          return nil
-        end
-
-        -- Create a new terminal and open it
-        local function create_new_terminal()
-          local next_id = 1
-          local ids = {}
-          for _, t in ipairs(terminal_list) do
-            ids[t.id] = true
-          end
-          while ids[next_id] do
-            next_id = next_id + 1
-          end
-
-          local new_term = Terminal:new({
-            id = next_id,
-            direction = "float",
-            float_opts = {
-              border = "curved",
-              winblend = 3,
-            },
-            on_exit = function(term)
-              -- Handle auto-cleanup on shell exit (e.g. typing "exit")
-              for i, t in ipairs(terminal_list) do
-                if t.id == term.id then
-                  table.remove(terminal_list, i)
-                  break
-                end
-              end
-              -- Adjust active index if it exceeds list size
-              if active_terminal_index > #terminal_list then
-                active_terminal_index = #terminal_list
-              end
-            end
-          })
-
-          table.insert(terminal_list, new_term)
-          active_terminal_index = #terminal_list
-          new_term:toggle()
-        end
-
-        -- Toggle the currently active terminal
-        local function toggle_active_terminal()
-          local term = get_active_term()
-          if term then
-            term:toggle()
-          else
-            create_new_terminal()
-          end
-        end
-
-        -- Kill the active terminal
-        local function kill_active_terminal()
-          local term = get_active_term()
-          if term then
-            term:shutdown()
-          end
-        end
-
-        -- Cycle to next terminal
-        local function next_terminal()
-          if #terminal_list <= 1 then return end
-          local term = get_active_term()
-          if term and term:is_open() then
-            term:toggle()
-          end
-          active_terminal_index = (active_terminal_index % #terminal_list) + 1
-          terminal_list[active_terminal_index]:toggle()
-        end
-
-        -- Cycle to previous terminal
-        local function prev_terminal()
-          if #terminal_list <= 1 then return end
-          local term = get_active_term()
-          if term and term:is_open() then
-            term:toggle()
-          end
-          active_terminal_index = active_terminal_index - 1
-          if active_terminal_index < 1 then
-            active_terminal_index = #terminal_list
-          end
-          terminal_list[active_terminal_index]:toggle()
-        end
+        vim.g.floaterm_width = 0.8
+        vim.g.floaterm_height = 0.8
+        vim.g.floaterm_title = "Terminal ($1/$2)"
 
         -- Easy escape from terminal mode to normal mode using double Escape
         vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
         -- Keymaps to toggle multiple terminals
-        vim.keymap.set({'n', 't'}, '<A-t>', toggle_active_terminal, { desc = "Toggle Terminal" })
-        vim.keymap.set({'n', 't'}, '<A-n>', create_new_terminal, { desc = "New Terminal" })
-        vim.keymap.set({'n', 't'}, '<A-x>', kill_active_terminal, { desc = "Kill Terminal" })
-        vim.keymap.set({'n', 't'}, '<A-j>', next_terminal, { desc = "Next Terminal" })
-        vim.keymap.set({'n', 't'}, '<A-k>', prev_terminal, { desc = "Previous Terminal" })
+        vim.keymap.set({'n', 't'}, '<A-t>', '<Cmd>FloatermToggle<CR>', { desc = "Toggle Terminal" })
+        vim.keymap.set({'n', 't'}, '<A-n>', '<Cmd>FloatermNew<CR>', { desc = "New Terminal" })
+        vim.keymap.set({'n', 't'}, '<A-x>', '<Cmd>FloatermKill<CR>', { desc = "Kill Terminal" })
+        vim.keymap.set({'n', 't'}, '<A-j>', '<Cmd>FloatermNext<CR>', { desc = "Next Terminal" })
+        vim.keymap.set({'n', 't'}, '<A-k>', '<Cmd>FloatermPrev<CR>', { desc = "Previous Terminal" })
 
-        vim.keymap.set('n', '<leader>tt', toggle_active_terminal, { desc = "Toggle Terminal" })
-        vim.keymap.set('n', '<leader>tn', create_new_terminal, { desc = "New Terminal" })
-        vim.keymap.set('n', '<leader>tx', kill_active_terminal, { desc = "Kill Terminal" })
+        vim.keymap.set('n', '<leader>tt', '<Cmd>FloatermToggle<CR>', { desc = "Toggle Terminal" })
+        vim.keymap.set('n', '<leader>tn', '<Cmd>FloatermNew<CR>', { desc = "New Terminal" })
+        vim.keymap.set('n', '<leader>tx', '<Cmd>FloatermKill<CR>', { desc = "Kill Terminal" })
 
         -- Seamless tab navigation in both normal and terminal mode
         vim.keymap.set({'n', 't'}, '<A-h>', '<Cmd>tabprevious<CR>', { desc = "Go to previous tab" })
         vim.keymap.set({'n', 't'}, '<A-l>', '<Cmd>tabnext<CR>', { desc = "Go to next tab" })
+
+        -- Auto-reopen floaterm showing remaining tabs if one is closed/killed
+        vim.api.nvim_create_autocmd("BufDelete", {
+          pattern = "*",
+          callback = function(args)
+            local ok, ft = pcall(vim.api.nvim_get_option_value, "filetype", { buf = args.buf })
+            if ok and ft == "floaterm" then
+              vim.schedule(function()
+                local list = vim.fn['floaterm#buflist#gather']()
+                if #list > 0 then
+                  vim.cmd("FloatermShow")
+                end
+              end)
+            end
+          end
+        })
 
         -- ========================
         -- Git Signs
@@ -389,7 +307,7 @@
         nvim-dap-python
 
         # Layout & Tooling Utilities
-        toggleterm-nvim
+        vim-floaterm
         nvim-tree-lua
         gitsigns-nvim
       ];
