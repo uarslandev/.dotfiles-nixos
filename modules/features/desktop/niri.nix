@@ -109,7 +109,7 @@
 
           cursor = {
             xcursor-theme = "Adwaita";
-            xcursor-size = 24;
+            xcursor-size = 16;
           };
 
           layout.gaps = 10;
@@ -140,7 +140,9 @@
 
             "Mod+Shift+E".quit = { };
 
-            "Mod+Alt+L".spawn-sh = "${inputs.qylock.packages.${pkgs.stdenv.hostPlatform.system}.qylock-quickshell}/bin/qylock-lock";
+            "Mod+Alt+L".spawn-sh = "${
+              inputs.qylock.packages.${pkgs.stdenv.hostPlatform.system}.qylock-quickshell
+            }/bin/qylock-lock";
 
             # ───── Window Control ─────
 
