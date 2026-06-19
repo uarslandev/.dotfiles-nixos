@@ -109,7 +109,7 @@
 
           cursor = {
             xcursor-theme = "Adwaita";
-            xcursor-size = 16;
+            xcursor-size = 10;
           };
 
           layout.gaps = 10;

@@ -134,10 +134,20 @@
         })
 
         -- ========================
+        -- Vimtex Configuration
+        -- ========================
+        vim.g.vimtex_view_method = "zathura"
+        vim.g.vimtex_compiler_method = "latexmk"
+        vim.g.vimtex_view_use_temp_files = 1
+
+        -- ========================
         -- Treesitter
         -- ========================
         require("nvim-treesitter").setup {
-          highlight = { enable = true },
+          highlight = {
+            enable = true,
+            disable = { "latex" }, -- Vimtex handles highlight and indent better for LaTeX
+          },
           indent = { enable = true },
         }
 
@@ -159,11 +169,13 @@
         vim.lsp.config('rust_analyzer', lsp_base_opts)
         vim.lsp.config('nil_ls', lsp_base_opts)
         vim.lsp.config('nixd', lsp_base_opts)
+        vim.lsp.config('texlab', lsp_base_opts)
 
         vim.lsp.enable('pyright')
         vim.lsp.enable('rust_analyzer')
         vim.lsp.enable('nil_ls')
         vim.lsp.enable('nixd')
+        vim.lsp.enable('texlab')
 
         -- Global LSP Mappings
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition" })
@@ -310,6 +322,9 @@
         vim-floaterm
         nvim-tree-lua
         gitsigns-nvim
+
+        # LaTeX Integration
+        vimtex
       ];
 
       runtimePkgs = [
@@ -325,6 +340,10 @@
         pkgs.rust-analyzer
         pkgs.nil
         pkgs.nixd
+        pkgs.texlab
+
+        # PDF Viewer
+        pkgs.zathura
 
         # Project Code Formatters (Invoked by conform-nvim)
         pkgs.nixfmt
