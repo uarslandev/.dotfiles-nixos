@@ -13,12 +13,12 @@
       programs = {
         firefox.enable = true;
         thunderbird.enable = true;
+        kdeconnect.enable = true;
       };
 
       environment.systemPackages = with pkgs; [
         anki-bin
         google-chrome
-        kdePackages.kdeconnect-kde
         sanoid
         discord
         element-desktop
