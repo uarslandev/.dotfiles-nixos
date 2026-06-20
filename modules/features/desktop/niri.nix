@@ -78,6 +78,28 @@
         if __name__ == "__main__":
             main()
       '';
+
+      ocrScript = pkgs.writeShellScriptBin "niri-ocr" ''
+        set -euo pipefail
+        TEMP_IMG=$(mktemp /tmp/ocr-screenshot.XXXXXX.png)
+        trap 'rm -f "$TEMP_IMG"' EXIT
+
+        if ! ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" "$TEMP_IMG"; then
+            exit 0
+        fi
+
+        if TEXT=$(${lib.getExe pkgs.tesseract} "$TEMP_IMG" - 2>/dev/null); then
+            TEXT=$(echo "$TEXT" | xargs)
+            if [ -n "$TEXT" ]; then
+                echo -n "$TEXT" | ${pkgs.wl-clipboard}/bin/wl-copy
+                ${pkgs.libnotify}/bin/notify-send "OCR Successful" "Text copied to clipboard:\n$TEXT" -i edit-paste
+            else
+                ${pkgs.libnotify}/bin/notify-send "OCR Failed" "No text recognized in screenshot." -i dialog-warning
+            fi
+        else
+            ${pkgs.libnotify}/bin/notify-send "OCR Error" "Tesseract OCR failed." -i dialog-error
+        fi
+      '';
     in
     {
       packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
@@ -95,8 +117,7 @@
           spawn-at-startup = [
             (lib.getExe self'.packages.myNoctalia)
             "${pkgs.fcitx5}/bin/fcitx5 -d"
-            "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store"
-            "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store"
+            "${pkgs.copyq}/bin/copyq"
           ];
 
           xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
@@ -133,8 +154,9 @@
 
             "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
 
-            "Mod+V".spawn-sh =
-              "${lib.getExe pkgs.kitty} --class cliphist-picker sh -c '${pkgs.cliphist}/bin/cliphist list | ${pkgs.fzf}/bin/fzf | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy'";
+            "Mod+V".spawn-sh = "${pkgs.copyq}/bin/copyq toggle";
+
+            "Mod+Shift+T".spawn-sh = "${lib.getExe ocrScript}";
 
             # ───── Session Management ─────
 

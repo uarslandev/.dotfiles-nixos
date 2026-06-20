@@ -47,7 +47,7 @@
         adwaita-icon-theme
         brightnessctl
         nwg-displays
-        cliphist
+        copyq
         helvum
         imv
         kanshi
