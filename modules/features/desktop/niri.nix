@@ -102,6 +102,20 @@
             ${pkgs.libnotify}/bin/notify-send "OCR Error" "Tesseract OCR failed." -i dialog-error
         fi
       '';
+
+      lockScript = pkgs.writeShellScriptBin "niri-lock" ''
+        # Start swayidle in the background to turn off the monitor after 2 minutes (120 seconds) of inactivity
+        ${pkgs.swayidle}/bin/swayidle -w \
+          timeout 120 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
+          resume '${pkgs.niri}/bin/niri msg action power-on-monitors' &
+        SWAYIDLE_PID=$!
+
+        # Run lock screen in the foreground
+        ${inputs.qylock.packages.${pkgs.stdenv.hostPlatform.system}.qylock-quickshell}/bin/qylock-lock
+
+        # Clean up swayidle when unlocked
+        kill "$SWAYIDLE_PID" 2>/dev/null || true
+      '';
     in
     {
       packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
@@ -164,9 +178,7 @@
 
             "Mod+Shift+E".quit = { };
 
-            "Mod+Alt+L".spawn-sh = "${
-              inputs.qylock.packages.${pkgs.stdenv.hostPlatform.system}.qylock-quickshell
-            }/bin/qylock-lock";
+            "Mod+Alt+L".spawn-sh = lib.getExe lockScript;
 
             # ───── Window Control ─────
 
