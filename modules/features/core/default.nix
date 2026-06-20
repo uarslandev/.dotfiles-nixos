@@ -17,6 +17,7 @@
 
       environment.systemPackages = with pkgs; [
         anki-bin
+        google-chrome
         kdePackages.kdeconnect-kde
         sanoid
         discord
