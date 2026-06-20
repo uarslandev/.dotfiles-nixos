@@ -36,5 +36,10 @@
         vim
         zoom-us
       ];
+
+      systemd.tmpfiles.rules = [
+        "d /home/umut/.config/Nextcloud 0755 umut users - -"
+        "L+ /home/umut/.config/Nextcloud/nextcloud.cfg - umut users - /home/umut/.dotfiles/modules/features/core/nextcloud.cfg"
+      ];
     };
 }
