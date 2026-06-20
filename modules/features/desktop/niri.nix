@@ -15,6 +15,8 @@
         "f /home/umut/.config/niri/monitor.kdl 0644 umut users - -"
         "f /home/umut/.config/niri/noctalia.kdl 0644 umut users - -"
         "L+ /home/umut/.config/noctalia - umut users - /home/umut/.dotfiles/modules/features/desktop/noctalia"
+        "d /home/umut/.config/copyq 0755 umut users - -"
+        "L+ /home/umut/.config/copyq/copyq.conf - umut users - /home/umut/.dotfiles/modules/features/desktop/copyq.conf"
       ];
     };
 
