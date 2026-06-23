@@ -18,9 +18,10 @@
 
       environment.systemPackages = with pkgs; [
         anki-bin
+        audacity
         google-chrome
         sanoid
-        discord
+        vesktop
         element-desktop
         nixpkgs-manual
         fzf
