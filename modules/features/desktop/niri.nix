@@ -81,6 +81,30 @@
             main()
       '';
 
+      focusOrWorkspace = pkgs.writers.writePython3Bin "niri-focus-or-workspace" { doCheck = false; } ''
+        import sys
+        import json
+        import subprocess
+
+        def run_niri_cmd(args):
+            subprocess.run(["${pkgs.niri}/bin/niri", "msg", "action"] + args)
+
+        def main():
+            if len(sys.argv) < 2:
+                sys.exit(1)
+            direction = sys.argv[1].lower()
+            res = subprocess.run(["${pkgs.niri}/bin/niri", "msg", "--json", "overview-state"], capture_output=True, text=True)
+            if res.returncode == 0:
+                state = json.loads(res.stdout)
+                if state.get("is_open", False):
+                    run_niri_cmd([f"focus-window-or-workspace-{direction}"])
+                    sys.exit(0)
+            run_niri_cmd([f"focus-window-or-monitor-{direction}"])
+
+        if __name__ == "__main__":
+            main()
+      '';
+
       ocrScript = pkgs.writeShellScriptBin "niri-ocr" ''
         set -euo pipefail
         TEMP_IMG=$(mktemp /tmp/ocr-screenshot.XXXXXX.png)
@@ -193,15 +217,15 @@
 
             "Mod+H".focus-column-or-monitor-left = { };
             "Mod+L".focus-column-or-monitor-right = { };
-            "Mod+J".focus-window-or-workspace-down = { };
-            "Mod+K".focus-window-or-workspace-up = { };
+            "Mod+J".spawn-sh = "${lib.getExe focusOrWorkspace} down";
+            "Mod+K".spawn-sh = "${lib.getExe focusOrWorkspace} up";
 
             # Arrow navigation
 
             "Mod+Left".focus-column-or-monitor-left = { };
             "Mod+Right".focus-column-or-monitor-right = { };
-            "Mod+Down".focus-window-or-workspace-down = { };
-            "Mod+Up".focus-window-or-workspace-up = { };
+            "Mod+Down".spawn-sh = "${lib.getExe focusOrWorkspace} down";
+            "Mod+Up".spawn-sh = "${lib.getExe focusOrWorkspace} up";
 
             # ───── Move Windows & Columns ─────
 

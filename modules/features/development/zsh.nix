@@ -253,6 +253,68 @@
           # Use emacs keybindings even if EDITOR is set to vi
           bindkey -e
 
+          # Enable autocorrect
+          setopt correct
+
+          # Plugins & Integrations
+          source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+          source ${pkgs.fzf}/share/fzf/completion.zsh
+          source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+          source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+          source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+          source ${pkgs.zsh-autopair}/share/zsh-autopair/autopair.zsh
+
+          # Bind history substring search keys (Up / Down arrows)
+          bindkey '^[[A' history-substring-search-up
+          bindkey '^[[B' history-substring-search-down
+
+          # Background Git Auto Fetch
+          GIT_AUTO_FETCH_INTERVAL=60
+          git-fetch-all() {
+            (
+              local gitdir
+              if ! gitdir="$(command git rev-parse --git-dir 2>/dev/null)"; then
+                return 0
+              fi
+              if [[ -f "$gitdir/NO_AUTO_FETCH" ]]; then
+                return 0
+              fi
+              local lastrun=0
+              if [[ -f "$gitdir/FETCH_LOG" ]]; then
+                zmodload -F zsh/stat b:zstat 2>/dev/null
+                lastrun="$(zstat +mtime "$gitdir/FETCH_LOG" 2>/dev/null || echo 0)"
+              fi
+              zmodload zsh/datetime 2>/dev/null
+              if (( EPOCHSECONDS - lastrun < GIT_AUTO_FETCH_INTERVAL )); then
+                return 0
+              fi
+              touch "$gitdir/FETCH_LOG"
+              git fetch --all --tags --prune &>/dev/null &!
+            )
+          }
+          git-auto-fetch() {
+            local gitdir
+            if ! gitdir="$(command git rev-parse --git-dir 2>/dev/null)"; then
+              echo "Not a git repository"
+              return 1
+            fi
+            if [[ "$1" == "disabled" ]]; then
+              touch "$gitdir/NO_AUTO_FETCH"
+              echo "git-auto-fetch disabled for this repository"
+            elif [[ "$1" == "enabled" ]]; then
+              rm -f "$gitdir/NO_AUTO_FETCH"
+              echo "git-auto-fetch enabled for this repository"
+            else
+              if [[ -f "$gitdir/NO_AUTO_FETCH" ]]; then
+                echo "git-auto-fetch is currently disabled"
+              else
+                echo "git-auto-fetch is currently enabled"
+              fi
+            fi
+          }
+          autoload -Uz add-zsh-hook
+          add-zsh-hook precmd git-fetch-all
+
           # Movement
           bindkey "^[[1;5C" forward-word
           bindkey "^[[1;5D" backward-word
@@ -336,6 +398,10 @@
           pkgs.fzf
           pkgs.ripgrep
           pkgs.fd
+          pkgs.zsh-autosuggestions
+          pkgs.zsh-syntax-highlighting
+          pkgs.zsh-history-substring-search
+          pkgs.zsh-autopair
         ];
       };
     };
@@ -347,11 +413,19 @@
         "L+ /home/umut/.p10k.zsh - umut users - /home/umut/.dotfiles/modules/features/development/.p10k.zsh"
       ];
 
+      programs.fzf = {
+        keybindings = true;
+        fuzzyCompletion = true;
+      };
+
       programs.zsh = {
         enable = true;
 
         # Disable default NixOS prompt init which sets prompt_cr
         promptInit = "";
+
+        autosuggestions.enable = true;
+        syntaxHighlighting.enable = true;
 
         shellInit = ''
           # This runs at the very top of /etc/zshrc
@@ -421,6 +495,64 @@
 
           # Use emacs keybindings even if EDITOR is set to vi
           bindkey -e
+
+          # Enable autocorrect
+          setopt correct
+
+          # Plugins & Integrations
+          source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+          source ${pkgs.zsh-autopair}/share/zsh-autopair/autopair.zsh
+
+          # Bind history substring search keys (Up / Down arrows)
+          bindkey '^[[A' history-substring-search-up
+          bindkey '^[[B' history-substring-search-down
+
+          # Background Git Auto Fetch
+          GIT_AUTO_FETCH_INTERVAL=60
+          git-fetch-all() {
+            (
+              local gitdir
+              if ! gitdir="$(command git rev-parse --git-dir 2>/dev/null)"; then
+                return 0
+              fi
+              if [[ -f "$gitdir/NO_AUTO_FETCH" ]]; then
+                return 0
+              fi
+              local lastrun=0
+              if [[ -f "$gitdir/FETCH_LOG" ]]; then
+                zmodload -F zsh/stat b:zstat 2>/dev/null
+                lastrun="$(zstat +mtime "$gitdir/FETCH_LOG" 2>/dev/null || echo 0)"
+              fi
+              zmodload zsh/datetime 2>/dev/null
+              if (( EPOCHSECONDS - lastrun < GIT_AUTO_FETCH_INTERVAL )); then
+                return 0
+              fi
+              touch "$gitdir/FETCH_LOG"
+              git fetch --all --tags --prune &>/dev/null &!
+            )
+          }
+          git-auto-fetch() {
+            local gitdir
+            if ! gitdir="$(command git rev-parse --git-dir 2>/dev/null)"; then
+              echo "Not a git repository"
+              return 1
+            fi
+            if [[ "$1" == "disabled" ]]; then
+              touch "$gitdir/NO_AUTO_FETCH"
+              echo "git-auto-fetch disabled for this repository"
+            elif [[ "$1" == "enabled" ]]; then
+              rm -f "$gitdir/NO_AUTO_FETCH"
+              echo "git-auto-fetch enabled for this repository"
+            else
+              if [[ -f "$gitdir/NO_AUTO_FETCH" ]]; then
+                echo "git-auto-fetch is currently disabled"
+              else
+                echo "git-auto-fetch is currently enabled"
+              fi
+            fi
+          }
+          autoload -Uz add-zsh-hook
+          add-zsh-hook precmd git-fetch-all
 
           # Movement
           bindkey "^[[1;5C" forward-word
