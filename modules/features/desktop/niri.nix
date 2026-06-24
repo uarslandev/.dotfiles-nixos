@@ -193,15 +193,15 @@
 
             "Mod+H".focus-column-or-monitor-left = { };
             "Mod+L".focus-column-or-monitor-right = { };
-            "Mod+J".focus-window-or-monitor-down = { };
-            "Mod+K".focus-window-or-monitor-up = { };
+            "Mod+J".focus-window-or-workspace-down = { };
+            "Mod+K".focus-window-or-workspace-up = { };
 
             # Arrow navigation
 
             "Mod+Left".focus-column-or-monitor-left = { };
             "Mod+Right".focus-column-or-monitor-right = { };
-            "Mod+Down".focus-window-or-monitor-down = { };
-            "Mod+Up".focus-window-or-monitor-up = { };
+            "Mod+Down".focus-window-or-workspace-down = { };
+            "Mod+Up".focus-window-or-workspace-up = { };
 
             # ───── Move Windows & Columns ─────
 

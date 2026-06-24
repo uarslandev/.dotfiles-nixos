@@ -8,6 +8,7 @@
         kdePackages.kio-fuse
         kdePackages.kio-extras
         kdePackages.ark
+        google-chrome
         firefox
         vscode
         kdePackages.kservice # REQUIRED: Gives Dolphin the caching tool it expects
@@ -41,7 +42,7 @@
           enable = true;
           defaultApplications = {
             "inode/directory" = [ "org.kde.dolphin.desktop" ];
-            "application/pdf" = [ "firefox.desktop" ];
+            "application/pdf" = [ "google-chrome.desktop" ];
             "application/vnd.oasis.opendocument.text" = [ "libreoffice-writer.desktop" ];
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [
               "libreoffice-writer.desktop"
@@ -51,9 +52,9 @@
             "text/markdown" = [ "code.desktop" ];
             "application/json" = [ "code.desktop" ];
             "text/javascript" = [ "code.desktop" ];
-            "text/html" = [ "firefox.desktop" ];
-            "x-scheme-handler/http" = [ "firefox.desktop" ];
-            "x-scheme-handler/https" = [ "firefox.desktop" ];
+            "text/html" = [ "google-chrome.desktop" ];
+            "x-scheme-handler/http" = [ "google-chrome.desktop" ];
+            "x-scheme-handler/https" = [ "google-chrome.desktop" ];
             "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
             "x-scheme-handler/webcal" = [ "thunderbird.desktop" ];
             "x-scheme-handler/zoommtg" = [ "Zoom.desktop" ];
