@@ -262,7 +262,7 @@
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
           source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
           source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-          source ${pkgs.zsh-autopair}/share/zsh-autopair/autopair.zsh
+          source ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/autopair.zsh
 
           # Bind history substring search keys (Up / Down arrows)
           bindkey '^[[A' history-substring-search-up
@@ -501,7 +501,7 @@
 
           # Plugins & Integrations
           source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-          source ${pkgs.zsh-autopair}/share/zsh-autopair/autopair.zsh
+          source ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/autopair.zsh
 
           # Bind history substring search keys (Up / Down arrows)
           bindkey '^[[A' history-substring-search-up
