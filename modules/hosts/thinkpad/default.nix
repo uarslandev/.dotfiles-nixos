@@ -12,6 +12,7 @@
       self.nixosModules.graphics
       self.nixosModules.vpn
       self.nixosModules.virtualisation
+      self.nixosModules.sanoid
       self.nixosModules.development
       self.nixosModules.security
       self.nixosModules.gaming

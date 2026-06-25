@@ -5,7 +5,7 @@
     {
       imports = [
         self.nixosModules.syncthing
-        #      self.nixosModules.sanoid
+        self.nixosModules.sanoid
       ];
     };
 }
