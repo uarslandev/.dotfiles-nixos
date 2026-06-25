@@ -11,6 +11,7 @@
       gamemode
       proton-ge-custom
       proton-cachyos
+      heroic
     ];
   };
 }

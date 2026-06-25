@@ -5,6 +5,7 @@
       mpv
       ffmpeg
       pavucontrol
+      reaper
       # Audio/Video editing (optional)
       # audacity
     ];
