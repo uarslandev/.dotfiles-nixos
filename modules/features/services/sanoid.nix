@@ -16,7 +16,10 @@
           "immich-backup" = {
             source = "root@batcave:tank/immich";
             target = "zpool/backups/immich";
-            extraArgs = [ "--sshoption=Port=22" ];
+            extraArgs = [
+              "--sshoption=Port=22"
+              "--sshoption=StrictHostKeyChecking=accept-new"
+            ];
           };
         };
       };
