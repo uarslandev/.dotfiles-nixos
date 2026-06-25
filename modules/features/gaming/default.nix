@@ -12,6 +12,8 @@
       proton-ge-custom
       proton-cachyos
       heroic
+      wineWow64Packages.staging
+      winetricks
     ];
   };
 }
