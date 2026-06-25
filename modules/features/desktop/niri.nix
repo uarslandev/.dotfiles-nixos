@@ -147,17 +147,20 @@
 
         disableConfigValidation = true;
 
-<<<<<<< Updated upstream
         extraSettings = [
-          { include = [ { optional = true; } "/home/umut/.config/niri/monitor.kdl" ]; }
-          { include = [ { optional = true; } "/home/umut/.config/niri/noctalia.kdl" ]; }
+          {
+            include = [
+              { optional = true; }
+              "/home/umut/.config/niri/monitor.kdl"
+            ];
+          }
+          {
+            include = [
+              { optional = true; }
+              "/home/umut/.config/niri/noctalia.kdl"
+            ];
+          }
         ];
-=======
-        #        extraSettings = [
-        #          { include = "/home/umut/.config/niri/monitor.kdl"; }
-        #         { include = "/home/umut/.config/niri/noctalia.kdl"; }
-        #        ];
->>>>>>> Stashed changes
 
         settings = {
 
