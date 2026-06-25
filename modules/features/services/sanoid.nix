@@ -6,7 +6,7 @@
       # Enable syncoid to pull the dataset from batcave
       services.syncoid = {
         enable = true;
-        sshKey = "/var/lib/syncoid/id_ed25519";
+        sshKey = "/var/lib/syncoid/id_rsa";
         commonArgs = [
           "--recursive"
           "--no-sync-snap"
@@ -14,7 +14,7 @@
 
         commands = {
           "immich-backup" = {
-            source = "user@batcave:tank/immich";
+            source = "root@batcave:tank/immich";
             target = "zpool/backups/immich";
             extraArgs = [ "--sshoption=Port=22" ];
           };
