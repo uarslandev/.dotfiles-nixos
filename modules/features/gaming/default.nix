@@ -13,11 +13,13 @@
         gamemode
         proton-ge-custom
         proton-cachyos
+        umu-launcher
+        protonup-qt
         heroic
         lutris
         wineWow64Packages.staging
         winetricks
+        protontricks
       ];
     };
 }
-
