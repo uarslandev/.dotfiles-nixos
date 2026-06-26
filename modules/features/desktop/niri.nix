@@ -164,7 +164,7 @@
 
       spawnAndConsume = pkgs.writeShellScriptBin "niri-spawn-and-consume" ''
         ${pkgs.kitty}/bin/kitty &
-        sleep 0.05
+        sleep 0.25
         exec ${pkgs.niri}/bin/niri msg action consume-or-expel-window-left
       '';
     in
@@ -207,7 +207,7 @@
 
           cursor = {
             xcursor-theme = "Adwaita";
-            xcursor-size = 10;
+            xcursor-size = 8;
           };
 
           layout.gaps = 10;

@@ -4,10 +4,14 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        kdePackages.dolphin
-        kdePackages.kio-fuse
-        kdePackages.kio-extras
         kdePackages.ark
+        kdePackages.qtsvg
+        kdePackages.kio # needed since 25.11
+        kdePackages.dolphin
+        kdePackages.kio-fuse # to mount remote filesystems via FUSE
+        kdePackages.kio-extras # extra protocols support (sftp, fish and more)
+        libsForQt5.qtstyleplugin-kvantum # Installs Kvantum theme engine
+        libsForQt5.qt5ct # Qt5 Configuration Tool
         unrar
         google-chrome
         firefox
@@ -15,10 +19,19 @@
         kdePackages.kservice # REQUIRED: Gives Dolphin the caching tool it expects
       ];
 
+      qt = {
+        enable = true;
+
+        # For system-level NixOS, this must be a direct string value, NOT an attribute set.
+        platformTheme = "qt5ct";
+
+        style = "kvantum";
+      };
       # CRITICAL FIX FOR DOLPHIN OUTSIDE PLASMA:
       # Tells KDE apps to look for standard menus and use the correct platform data.
       environment.sessionVariables = {
         XDG_MENU_PREFIX = "plasma-";
+        QT_QPA_PLATFORMTHEME = "qt5ct";
       };
 
       # Declaratively generate the Freedesktop application menu blueprint that Dolphin demands
