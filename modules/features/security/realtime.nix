@@ -28,7 +28,7 @@
           type = "hard";
           value = "99999";
         }
-        # --- Add Esync Limits Here ---
+        # --- Esync Limits ---
         {
           domain = "*";
           item = "nofile";
@@ -43,13 +43,11 @@
         }
       ];
 
-      # Systemd limits required for Esync/Fsync compatibility
-      systemd.extraConfig = ''
-        DefaultLimitNOFILE=524288
-      '';
-
-      systemd.user.extraConfig = ''
-        DefaultLimitNOFILE=524288
-      '';
+      # Modern structured settings for systemd
+      systemd.settings = {
+        Manager = {
+          DefaultLimitNOFILE = "524288";
+        };
+      };
     };
 }
