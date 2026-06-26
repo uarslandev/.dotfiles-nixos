@@ -140,6 +140,36 @@
         # Clean up swayidle when unlocked
         kill "$SWAYIDLE_PID" 2>/dev/null || true
       '';
+
+      spawnAndConsume = pkgs.writers.writePython3Bin "niri-spawn-and-consume" { doCheck = false; } ''
+        import sys
+        import json
+        import subprocess
+        import time
+
+        def main():
+            res = subprocess.run(["${pkgs.niri}/bin/niri", "msg", "--json", "windows"], capture_output=True, text=True)
+            if res.returncode != 0:
+                sys.exit(1)
+            before_ids = {w["id"] for w in json.loads(res.stdout)}
+
+            subprocess.Popen(["${pkgs.kitty}/bin/kitty"])
+
+            start_time = time.time()
+            while time.time() - start_time < 2.0:
+                time.sleep(0.02)
+                res = subprocess.run(["${pkgs.niri}/bin/niri", "msg", "--json", "windows"], capture_output=True, text=True)
+                if res.returncode != 0:
+                    continue
+                windows = json.loads(res.stdout)
+                new_focused = next((w for w in windows if w["id"] not in before_ids and w.get("is_focused")), None)
+                if new_focused:
+                    subprocess.run(["${pkgs.niri}/bin/niri", "msg", "action", "consume-or-expel-window-left"])
+                    break
+
+        if __name__ == "__main__":
+            main()
+      '';
     in
     {
       packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
@@ -333,6 +363,7 @@
 
             "Mod+F1".show-hotkey-overlay = { };
             "Mod+Tab".toggle-overview = { };
+            "Mod+Shift+Tab".spawn-sh = lib.getExe spawnAndConsume;
             "Mod+Escape".toggle-keyboard-shortcuts-inhibit = { };
             "Mod+Ctrl+Space".do-screen-transition = { }; # Adjusted from Shift+Space to avoid conflict
 

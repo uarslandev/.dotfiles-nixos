@@ -436,7 +436,7 @@
         "telemetryEnabled": false
     },
     "hooks": {
-        "colorGeneration": "/nix/store/bv7q0yhw4qlnkkgv7p2z3b63v38w8pal-color-change",
+        "colorGeneration": "/home/umut/.config/noctalia/color-change.sh",
         "darkModeChange": "",
         "enabled": true,
         "performanceModeDisabled": "",
