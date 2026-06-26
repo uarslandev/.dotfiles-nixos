@@ -8,6 +8,7 @@
         kdePackages.kio-fuse
         kdePackages.kio-extras
         kdePackages.ark
+        unrar
         google-chrome
         firefox
         vscode

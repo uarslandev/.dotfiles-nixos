@@ -73,6 +73,33 @@
         }
       ];
 
+      # Enable Nvidia GPU support
+      services.xserver.videoDrivers = [ "nvidia" ];
+
+      hardware.nvidia = {
+        # Modesetting is required for Wayland.
+        modesetting.enable = true;
+
+        # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+        # Enable this if you have graphical corruption after sleep or suspend.
+        powerManagement.enable = false;
+
+        # Fine-grained power management. Turns off GPU when not in use.
+        # Only available on Turing and newer GPUs (GTX 16xx, RTX 20xx+).
+        powerManagement.finegrained = false;
+
+        # Use the Nvidia open source kernel module (not to be confused with nouveau)
+        # Only available on Turing and newer GPUs.
+        # For Pascal (GTX 1060), this MUST be false!
+        open = false;
+
+        # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
+        nvidiaSettings = true;
+
+        # Option to select the driver package.
+        package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+      };
+
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
