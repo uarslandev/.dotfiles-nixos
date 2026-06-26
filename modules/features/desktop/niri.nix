@@ -128,6 +128,19 @@
       '';
 
       lockScript = pkgs.writeShellScriptBin "niri-lock" ''
+        # Get current mute state (1 if muted, 0 if not)
+        if ${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; then
+          WAS_MUTED=1
+        else
+          WAS_MUTED=0
+        fi
+
+        # Mute audio
+        ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ 1 || true
+
+        # Enable Do Not Disturb (disable notifications)
+        ${lib.getExe self'.packages.myNoctalia} ipc call notifications enableDND || true
+
         # Start swayidle in the background to turn off the monitor after 2 minutes (120 seconds) of inactivity
         ${pkgs.swayidle}/bin/swayidle -w \
           timeout 120 '${pkgs.niri}/bin/niri msg action power-off-monitors' \
@@ -139,36 +152,25 @@
 
         # Clean up swayidle when unlocked
         kill "$SWAYIDLE_PID" 2>/dev/null || true
+
+        # Restore audio state if it was not muted before
+        if [ "$WAS_MUTED" = "0" ]; then
+          ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 || true
+        fi
+
+        # Disable Do Not Disturb (enable notifications)
+        ${lib.getExe self'.packages.myNoctalia} ipc call notifications disableDND || true
       '';
 
-      spawnAndConsume = pkgs.writers.writePython3Bin "niri-spawn-and-consume" { doCheck = false; } ''
-        import sys
-        import json
-        import subprocess
-        import time
-
-        def main():
-            res = subprocess.run(["${pkgs.niri}/bin/niri", "msg", "--json", "windows"], capture_output=True, text=True)
-            if res.returncode != 0:
-                sys.exit(1)
-            before_ids = {w["id"] for w in json.loads(res.stdout)}
-
-            subprocess.Popen(["${pkgs.kitty}/bin/kitty"])
-
-            start_time = time.time()
-            while time.time() - start_time < 2.0:
-                time.sleep(0.02)
-                res = subprocess.run(["${pkgs.niri}/bin/niri", "msg", "--json", "windows"], capture_output=True, text=True)
-                if res.returncode != 0:
-                    continue
-                windows = json.loads(res.stdout)
-                new_focused = next((w for w in windows if w["id"] not in before_ids and w.get("is_focused")), None)
-                if new_focused:
-                    subprocess.run(["${pkgs.niri}/bin/niri", "msg", "action", "consume-or-expel-window-left"])
-                    break
-
-        if __name__ == "__main__":
-            main()
+      spawnAndConsume = pkgs.writeShellScriptBin "niri-spawn-and-consume" ''
+        ${pkgs.kitty}/bin/kitty &
+        for i in {1..40}; do
+          if ${pkgs.niri}/bin/niri msg --json windows | ${pkgs.jq}/bin/jq -e '.[] | select(.is_focused == true and .app_id == "kitty")' >/dev/null 2>&1; then
+            ${pkgs.niri}/bin/niri msg action consume-or-expel-window-left
+            break
+          fi
+          sleep 0.05
+        done
       '';
     in
     {
@@ -229,6 +231,7 @@
             # ───── Apps ─────
 
             "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
+            "Mod+Shift+Return".spawn-sh = lib.getExe spawnAndConsume;
 
             "Mod+S".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
 

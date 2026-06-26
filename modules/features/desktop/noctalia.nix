@@ -71,11 +71,11 @@ layout {
     border {
         on
         active-color "$PRIMARY"
-        inactive-color "$SECONDARY"
+        inactive-color "#00000000"
     }
     focus-ring {
         active-color "$PRIMARY"
-        inactive-color "$SECONDARY"
+        inactive-color "#00000000"
     }
 }
 EOF
