@@ -7,6 +7,8 @@
         vlc
         mpv
         ffmpeg
+        yabridge
+        yabridgectl
         pavucontrol
         reaper
         guitarix
