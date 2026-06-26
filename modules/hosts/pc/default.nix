@@ -14,6 +14,7 @@
       self.nixosModules.virtualisation
       self.nixosModules.development
       self.nixosModules.security
+      self.nixosModules.realtime
       self.nixosModules.gaming
       self.nixosModules.design
 
