@@ -16,7 +16,6 @@
         umu-launcher
         protonup-qt
         heroic
-        lutris
         wineWow64Packages.staging
         winetricks
         protontricks
