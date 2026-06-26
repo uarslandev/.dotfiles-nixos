@@ -27,6 +27,7 @@
             "docker"
             "wireshark"
             "video"
+            "audio"
           ];
         }
       )
