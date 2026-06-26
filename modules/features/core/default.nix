@@ -30,6 +30,7 @@
         networkmanagerapplet
         nextcloud-client
         obsidian
+        qbittorrent
         signal-desktop
         teamspeak6-client
         telegram-desktop
