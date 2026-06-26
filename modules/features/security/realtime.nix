@@ -20,13 +20,13 @@
           domain = "@audio";
           item = "nofile";
           type = "soft";
-          value = "99999";
+          value = "1048576";
         }
         {
           domain = "@audio";
           item = "nofile";
           type = "hard";
-          value = "99999";
+          value = "1048576";
         }
         # --- Esync Limits ---
         {
