@@ -9,8 +9,10 @@
         ffmpeg
         yabridge
         yabridgectl
+        qpwgraph
         pavucontrol
         reaper
+        obs-studio
         guitarix
         ardour
         guitarix-vst
