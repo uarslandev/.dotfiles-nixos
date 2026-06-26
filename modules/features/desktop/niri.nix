@@ -164,13 +164,8 @@
 
       spawnAndConsume = pkgs.writeShellScriptBin "niri-spawn-and-consume" ''
         ${pkgs.kitty}/bin/kitty &
-        for i in {1..40}; do
-          if ${pkgs.niri}/bin/niri msg --json windows | ${pkgs.jq}/bin/jq -e '.[] | select(.is_focused == true and .app_id == "kitty")' >/dev/null 2>&1; then
-            ${pkgs.niri}/bin/niri msg action consume-or-expel-window-left
-            break
-          fi
-          sleep 0.05
-        done
+        sleep 0.05
+        exec ${pkgs.niri}/bin/niri msg action consume-or-expel-window-left
       '';
     in
     {
