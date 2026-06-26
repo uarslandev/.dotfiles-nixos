@@ -24,6 +24,7 @@
           users.users.umut.extraGroups = [
             "networkmanager"
             "wheel"
+            "realtime"
             "docker"
             "wireshark"
             "video"

@@ -24,6 +24,7 @@
         {
           users.users.umut.extraGroups = [
             "networkmanager"
+            "realtime"
             "wheel"
             "docker"
             "wireshark"
