@@ -17,7 +17,6 @@
         ardour
         guitarix-vst
         neural-amp-modeler-lv2
-        carla # Recommended LV2/VST host
         gxplugins-lv2
         kapitonov-plugins-pack
         chow-centaur
