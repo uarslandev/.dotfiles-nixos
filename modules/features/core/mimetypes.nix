@@ -25,7 +25,7 @@
         # For system-level NixOS, this must be a direct string value, NOT an attribute set.
         platformTheme = "qt5ct";
 
-        style = "kvantum";
+        #style = "kvantum";
       };
       # CRITICAL FIX FOR DOLPHIN OUTSIDE PLASMA:
       # Tells KDE apps to look for standard menus and use the correct platform data.

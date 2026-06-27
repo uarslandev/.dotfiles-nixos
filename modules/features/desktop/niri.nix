@@ -164,7 +164,7 @@
 
       spawnAndConsume = pkgs.writeShellScriptBin "niri-spawn-and-consume" ''
         ${pkgs.kitty}/bin/kitty &
-        sleep 0.25
+        sleep 0.35
         exec ${pkgs.niri}/bin/niri msg action consume-or-expel-window-left
       '';
     in

@@ -10,6 +10,7 @@
       environment.systemPackages = with pkgs; [
         mangohud # FPS Counter and Overlay
         goverlay # GUI for mangohud
+        scanmem
         gamemode
         proton-ge-custom
         proton-cachyos
