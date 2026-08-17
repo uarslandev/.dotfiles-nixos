@@ -26,12 +26,12 @@ jobs:
 
       - name: Build ISO
         run: |
-          nix build .#nixosConfigurations.installer.config.system.build.isoImage
+          nix build .#iso
 
       - name: Prepare ISO artifact
         run: |
           mkdir -p output
-          cp result/iso/*.iso output/nixos-custom-zfs.iso
+          cp -L result/iso/*.iso output/nixos-custom-zfs.iso
           cd output && sha256sum nixos-custom-zfs.iso > nixos-custom-zfs.iso.sha256
 
       - name: Upload ISO Artifact
