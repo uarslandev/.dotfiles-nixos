@@ -13,11 +13,10 @@
           environment.systemPackages = with pkgs; [
             git
             gparted
-            fdisk
+            util-linux # Provides fdisk, sfdisk, lsblk, etc.
             parted
             efibootmgr
 
-            # Automated installer script
             (writeShellScriptBin "install-system" ''
               set -e
 
