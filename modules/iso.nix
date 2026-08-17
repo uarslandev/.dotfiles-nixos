@@ -97,8 +97,12 @@
                 ZFS_PART="''${PART_PREFIX}''${LAST_PART_NUM}"
               fi
 
+              echo "==> Clearing old ZFS labels on $ZFS_PART..."
+              zpool labelclear -f "$ZFS_PART" || true
+
               echo "==> Creating encrypted ZFS pool (zpool) on $ZFS_PART..."
-              zpool create -O encryption=on \
+              zpool create -f \
+                           -O encryption=on \
                            -O keyformat=passphrase \
                            -O keylocation=prompt \
                            -O compression=on \
