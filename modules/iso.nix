@@ -70,7 +70,7 @@
                 exit 1
               fi
 
-              # Determine partition suffix
+              # Determine partition prefix
               if [[ "''${TARGET_DISK}" =~ nvme || "''${TARGET_DISK}" =~ mmcblk ]]; then
                 PART_PREFIX="''${TARGET_DISK}p"
               else
@@ -144,12 +144,73 @@
               mkdir -p /mnt/home/umut
               git clone "https://github.com/uarslandev/.dotfiles-nixos.git" /mnt/home/umut/.dotfiles
 
-              # Fix boot partition path in hardware config if host module exists
-              FOUND_HW=$(find /mnt/home/umut/.dotfiles/modules -type f -path "*/''${HOSTNAME}/*" -name "*.nix" | head -n 1)
-              if [[ -n "''${FOUND_HW}" ]]; then
-                echo "==> Updating boot partition device reference in ''${FOUND_HW}..."
-                sed -i "s|device = \"/dev/disk/by-id/.*\";|device = \"''${BOOT_PART}\";|g" "''${FOUND_HW}"
+              # Generate valid 8-digit hex hostId required by ZFS
+              GENERATED_HOSTID=$(head -c 8 /etc/machine-id 2>/dev/null || cksum /etc/hostname | awk '{print $1}' | head -c 8)
+              if [ ''${#GENERATED_HOSTID} -ne 8 ]; then
+                GENERATED_HOSTID="8458dbbe"
               fi
+
+              # Write binary hostid file into target system root
+              mkdir -p /mnt/etc
+              echo -ne "\x''${GENERATED_HOSTID:6:2}\x''${GENERATED_HOSTID:4:2}\x''${GENERATED_HOSTID:2:2}\x''${GENERATED_HOSTID:0:2}" > /mnt/etc/hostid
+
+              # Define host target directory
+              HOST_MODULE_DIR="/mnt/home/umut/.dotfiles/modules/hosts/''${HOSTNAME}"
+              mkdir -p "''${HOST_MODULE_DIR}"
+
+              echo "==> Generating module configuration at ''${HOST_MODULE_DIR}/hardware.nix..."
+              cat <<EOF > "''${HOST_MODULE_DIR}/hardware.nix"
+{ self, inputs, ... }: {
+  flake.nixosModules.''${HOSTNAME}Hardware = { config, lib, pkgs, modulesPath, ... }: {
+    imports = [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ];
+
+    boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-intel" ];
+    boot.extraModulePackages = [ ];
+
+    networking.hostId = "''${GENERATED_HOSTID}";
+
+    services.zfs.autoScrub.enable = true;
+    services.zfs.trim.enable = true;
+
+    fileSystems."/" = {
+      device = "zpool/root";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
+
+    fileSystems."/nix" = {
+      device = "zpool/nix";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
+
+    fileSystems."/var" = {
+      device = "zpool/var";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
+
+    fileSystems."/home" = {
+      device = "zpool/home";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
+
+    fileSystems."/boot" = {
+      device = "''${BOOT_PART}";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+    nixpkgs.hostPlatform = lib.mkDefault "${system}";
+    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
+}
+EOF
 
               echo "==> Installing NixOS via Flake..."
               cd /mnt/home/umut/.dotfiles
